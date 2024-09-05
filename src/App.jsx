@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div>
-        <p> 마라탕후루 </p>
+        <p> 포폴만들조 </p>
        </div>
     </>
   )
