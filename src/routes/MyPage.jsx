@@ -1,14 +1,20 @@
 import React from "react";
 import Header from "../components/Header";
 import TemplateCard from "../components/TemplateCard";
-import styles from "./MyPage.module.css";
+import styled from "styled-components";
 import profileIcon from "../assets/icons/profileIcon.png";
 
-function MyPage() {
+const MyPageContainer = styled.div`
+  font-family: "Arial", sans-serif;
+  padding: 0;
+  margin: 0;
+`;
+
+function MyPage({ profileIcon }) {
   return (
-    <div className={styles.MyPage}>
+    <MyPageContainer>
       <Header profilePicture={profileIcon} />
-    </div>
+    </MyPageContainer>
   );
 }
 
