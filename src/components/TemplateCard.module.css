@@ -1,0 +1,72 @@
+.card {
+  position: relative;
+  width: 282px;
+  height: 282px;
+  background-color: #ffffff;
+  border: 2px solid #d0d1d9;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.imageContainer {
+  position: relative;
+  width: 265.06px;
+  height: 141.68px;
+  background-color: #f9f9f9;
+  border: 1px solid #d0d1d9;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumnail {
+  width: 53.77px;
+  height: 41.29px;
+  object-fit: contain;
+}
+
+.templateName {
+  margin-top: 20px;
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #000000;
+}
+
+.description {
+  margin-top: 10px;
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #d0d1d9;
+  width: 244.13px;
+}
+
+.button {
+  margin-top: auto;
+  width: 184.37px;
+  height: 29.94px;
+  background-color: #0a27a6;
+  border-radius: 1000px;
+  border: none;
+  color: #ffffff;
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #092091; /* Darken the button on hover */
+}
