@@ -1,14 +1,14 @@
 import React from "react";
-import Header from "../components/Header";
-import TemplateCard from "../components/TemplateCard";
 import styled from "styled-components";
-import profileIcon from "../assets/icons/profileIcon.png";
+// import TemplateCard from "../components/TemplateCard";
+
+import profileIcon from "../assets/icons/Header/profileIcon.png";
 
 
 function MyPage({ profileIcon }) {
   return (
     <MyPageContainer>
-      <Header profilePicture={profileIcon} />
+      <p>ddd</p>
     </MyPageContainer>
   );
 }
