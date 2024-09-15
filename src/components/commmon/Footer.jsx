@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Logo from "../../assets/icons/TemplateCard/templateThumnail.png";
+import Logo from "../../assets/icons/Logo.png";
 import Facebook from "../../assets/icons/Footer/Facebook.png";
 import Instagram from "../../assets/icons/Footer/Instagram.png";
 import Twitter from "../../assets/icons/Footer/Twitter.png";
@@ -12,7 +12,7 @@ const Footer = () => {
             <MainText>FolioFrame</MainText>
             <LogoWrapper>
                 {/*로고 대신해서...;;*/}
-                <img src={Logo} alt="Logo" width={50} height={50}/>
+                <img src={Logo} alt="Logo" width={30} height={60}/>
             </LogoWrapper>
 
             <TextWrapper>
