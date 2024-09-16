@@ -38,12 +38,12 @@ export default Header;
 
 
 const HeaderContainer = styled.header`
-  position: absolute;
-  width: 100%;
+  // position: relative;
+  width: 40%;
   height: 5em;
   background: #ffffff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; 
   align-items: center;
 `;
 
@@ -51,7 +51,7 @@ const MenuBox = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  width: 100%;
+  width: 70%;
   height: 5em;
 `;
 
@@ -92,7 +92,7 @@ const Profile = styled.div`
   position: absolute;
   width: 30px;
   height: 30px;
-  right: 30px; 
+  right: 200px; 
   border-radius: 50%;
   display: flex;
   align-items: center;

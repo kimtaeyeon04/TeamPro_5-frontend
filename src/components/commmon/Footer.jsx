@@ -37,13 +37,14 @@ export default Footer;
 // css Wrapper
 const FooterWrapper = styled.div`
     background-color : #D0D1D9;
-    width : 100%;
+    width : 90%;
     height: 277px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
     padding : 40px 40px;  /*margin값 40으로 주기로 해서 padding에 위아래 40으로 쥼!!!*/
 `;
 
