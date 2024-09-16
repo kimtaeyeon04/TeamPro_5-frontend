@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DashBoard from "../components/DashBoard";
+import SelectButton from "../components/commmon/SelectBox";
 
 function MyPage({ profilePicture, name, nickname }) {
   return (
@@ -15,6 +16,9 @@ function MyPage({ profilePicture, name, nickname }) {
 
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">내 템플릿</MyTemplateTitle>
+        <div>
+          <SelectButton />
+        </div>
       </MyTemplateContainer>
     </MyPageContainer>
   );
