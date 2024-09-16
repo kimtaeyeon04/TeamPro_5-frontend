@@ -1,22 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-// import TemplateCard from "../components/TemplateCard";
+import DashBoard from "../components/DashBoard";
 
-import profileIcon from "../assets/icons/Header/profileIcon.png";
-
-
-function MyPage({ profileIcon }) {
-  return (
-    <MyPageContainer>
-      <p>ddd</p>
-    </MyPageContainer>
-  );
+function MyPage({ profilePicture, name, nickname }) {
+  return <MyPageContainer className="MyPageContainer"></MyPageContainer>;
 }
 
 export default MyPage;
 
 const MyPageContainer = styled.div`
-  font-family: "Arial", sans-serif;
-  padding: 0;
-  margin: 0;
+  width: 85%; //수정중...
+  min-height: 50vh;
+  margin: 0 auto;
 `;
