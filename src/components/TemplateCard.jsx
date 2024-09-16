@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-
 // 템플릿 카드 1개
 //templateName, description, templateThumnail을 props로!
 const TemplateCard = ({ templateName, description, templateThumnail }) => {
@@ -26,7 +25,6 @@ TemplateCard.propTypes = {
 };
 
 export default TemplateCard;
-
 
 const Card = styled.div`
   position: relative;
