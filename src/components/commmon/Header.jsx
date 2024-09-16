@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
-
 function Header({ profilePicture }) {
   return (
     <HeaderContainer>
@@ -30,21 +29,21 @@ Header.propTypes = {
 };
 // 기본 프로필 사진
 Header.defaultProps = {
-  profilePicture: defaultProfilePicture, 
+  profilePicture: defaultProfilePicture,
 };
 
 export default Header;
 
-
-
 const HeaderContainer = styled.header`
-  // position: relative;
-  width: 40%;
+  width: 85%; //수정 중..
   height: 5em;
   background: #ffffff;
   display: flex;
   justify-content: center; 
   align-items: center;
+  margin: 0 auto; /* 가운데 정렬 */
+  position: relative;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
 `;
 
 const MenuBox = styled.div`
@@ -92,13 +91,12 @@ const Profile = styled.div`
   position: absolute;
   width: 30px;
   height: 30px;
-  right: 200px; 
+  right: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
-
 
 const ProfilePic = styled.img`
   width: 100%;
