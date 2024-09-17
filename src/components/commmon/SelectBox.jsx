@@ -33,7 +33,13 @@ const SelectBox = () => {
     <SelectContainer>
       {/* 카테고리 */}
       <SelectWrapper>
-        <SelectButton onClick={() => setIsCategoryOpen(!isCategoryOpen)}>
+        <SelectButton
+          onClick={() => {
+            setIsCategoryOpen(!isCategoryOpen);
+            setIsSortOpen(false);
+            setIsFilterOpen(false);
+          }}
+        >
           {selectedCategory ? selectedCategory : "카테고리"}
           <ArrowImg src={arrow} alt="arrow" />
         </SelectButton>
@@ -52,7 +58,13 @@ const SelectBox = () => {
 
       {/* 정렬 */}
       <SelectWrapper>
-        <SelectButton onClick={() => setIsSortOpen(!isSortOpen)}>
+        <SelectButton
+          onClick={() => {
+            setIsSortOpen(!isSortOpen);
+            setIsCategoryOpen(false);
+            setIsFilterOpen(false);
+          }}
+        >
           {selectedSort ? selectedSort : "정렬"}
           <ArrowImg src={arrow} alt="arrow" />
         </SelectButton>
@@ -71,7 +83,13 @@ const SelectBox = () => {
 
       {/* 필터 */}
       <SelectWrapper>
-        <SelectButton onClick={() => setIsFilterOpen(!isFilterOpen)}>
+        <SelectButton
+          onClick={() => {
+            setIsFilterOpen(!isFilterOpen);
+            setIsCategoryOpen(false);
+            setIsSortOpen(false);
+          }}
+        >
           {selectedFilter ? selectedFilter : "필터"}
           <ArrowImg src={arrow} alt="arrow" />
         </SelectButton>
