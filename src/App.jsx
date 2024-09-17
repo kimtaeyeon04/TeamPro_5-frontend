@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import profileIcon from "./assets/icons/Header/profileIcon.png";
+import LoginPage from "./pages/LoginPage";
 import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
@@ -10,6 +11,8 @@ function App() {
   return (
     <Routes>
       <Route>
+        <Route path="/LoginPage" element={<LoginPage />} />
+
         <Route element={<LayOut />}>
           <Route
             path="/MyPage"
