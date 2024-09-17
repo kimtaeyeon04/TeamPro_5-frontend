@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import DashBoard from "../components/DashBoard";
-import SelectButton from "../components/commmon/SelectBox";
+import SelectBox from "../components/commmon/SelectBox";
+import SearchBarMini from "../components/SearchBarMini";
 
 function MyPage({ profilePicture, name, nickname }) {
   return (
@@ -16,9 +17,10 @@ function MyPage({ profilePicture, name, nickname }) {
 
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">내 템플릿</MyTemplateTitle>
-        <div>
-          <SelectButton />
-        </div>
+        <MyTemplateMenuContainer>
+          <SelectBox />
+          <SearchBarMini />
+        </MyTemplateMenuContainer>
       </MyTemplateContainer>
     </MyPageContainer>
   );
@@ -50,4 +52,10 @@ const MyTemplateTitle = styled.div`
   text-align: center;
   letter-spacing: -0.4px;
   color: #000000;
+`;
+
+const MyTemplateMenuContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;

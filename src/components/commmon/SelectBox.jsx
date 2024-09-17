@@ -149,7 +149,7 @@ const ArrowImg = styled.img`
 
 const SelectMenu = styled.div`
   position: absolute;
-  top: 50px;
+  top: 80%;
   background-color: #15243e80;
   border-radius: 10px;
   width: 150px;
