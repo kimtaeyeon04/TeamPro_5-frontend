@@ -15,17 +15,21 @@ const SelectBox = () => {
   const [selectedFilter, setSelectedFilter] = useState(null);
 
   const handleCategoryClick = (option) => {
-    setSelectedCategory(option);
+    selectedCategory === option
+      ? setSelectedCategory(null)
+      : setSelectedCategory(option);
     setIsCategoryOpen(false);
   };
 
   const handleSortClick = (option) => {
-    setSelectedSort(option);
+    selectedSort === option ? setSelectedSort(null) : setSelectedSort(option);
     setIsSortOpen(false);
   };
 
   const handleFilterClick = (option) => {
-    setSelectedFilter(option);
+    selectedFilter === option
+      ? setSelectedFilter(null)
+      : setSelectedFilter(option);
     setIsFilterOpen(false);
   };
 
@@ -47,7 +51,7 @@ const SelectBox = () => {
           {categories.map((item, index) => (
             <SelectItem
               key={index}
-              // className={selectedCategory === item ? "highlight" : ""}
+              className={selectedCategory === item ? "highlight" : ""}
               onClick={() => handleCategoryClick(item)}
             >
               {item}
@@ -115,13 +119,14 @@ const SelectContainer = styled.div`
   display: flex;
   margin-top: 10px;
   font-weight: 700;
+  width: 50%;
 `;
 
 const SelectWrapper = styled.div`
   position: relative;
   display: inline-block;
   text-align: center;
-  width: 10%;
+  width: 20%;
 `;
 
 const SelectButton = styled.button`
