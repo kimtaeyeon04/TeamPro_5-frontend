@@ -16,7 +16,13 @@ function App() {
         <Route element={<LayOut />}>
           <Route
             path="/MyPage"
-            element={<MyPage profileIcon={profileIcon} />}
+            element={
+              <MyPage
+                profileIcon={profileIcon}
+                name={"포폴만들조"}
+                nickname={"폴리오프레임"}
+              />
+            }
           />
           <Route path="/MainPage" element={<MainPage />} />
         </Route>
