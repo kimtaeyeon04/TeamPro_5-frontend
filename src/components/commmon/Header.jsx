@@ -39,7 +39,7 @@ const HeaderContainer = styled.header`
   height: 5em;
   background: #ffffff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; 
   align-items: center;
   margin: 0 auto; /* 가운데 정렬 */
   position: relative;
@@ -50,7 +50,7 @@ const MenuBox = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  width: 100%;
+  width: 70%;
   height: 5em;
 `;
 
