@@ -7,13 +7,13 @@ import SearchBarMini from "../components/SearchBarMini";
 function MyPage({ profilePicture, name, nickname }) {
   return (
     <MyPageContainer className="MyPageContainer">
-      <div>
+      <DashBoardContainer>
         <DashBoard
           profilePicture={profilePicture}
           name={name}
           nickname={nickname}
         />
-      </div>
+      </DashBoardContainer>
 
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">내 템플릿</MyTemplateTitle>
@@ -21,6 +21,7 @@ function MyPage({ profilePicture, name, nickname }) {
           <SelectBox />
           <SearchBarMini />
         </MyTemplateMenuContainer>
+        <Line></Line>
       </MyTemplateContainer>
     </MyPageContainer>
   );
@@ -33,6 +34,8 @@ const MyPageContainer = styled.div`
   min-height: 80vh;
   margin: 0 auto;
 `;
+
+const DashBoardContainer = styled.div``;
 
 const MyTemplateContainer = styled.div`
   position: relative;
@@ -58,4 +61,9 @@ const MyTemplateMenuContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const Line = styled.hr`
+  margin: 10px 0px;
+  border: 1px solid #d0d1d9;
 `;

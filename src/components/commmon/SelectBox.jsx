@@ -4,7 +4,19 @@ import arrow from "../../assets/icons/SelectBox/arrow.png";
 
 const categories = ["프론트엔드", "백엔드", "디자인"];
 const sortOptions = ["인기순", "추천수", "최신순"];
-const filterOptions = ["프론트엔드", "백엔드", "디자인"];
+const filterOptions = [
+  "경력",
+  "있음",
+  "없음",
+  "언어",
+  "Java",
+  "Python",
+  "JavaScript",
+  "학력",
+  "학사",
+  "석사",
+  "박사",
+];
 
 const SelectBox = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -98,15 +110,19 @@ const SelectBox = () => {
           <ArrowImg src={arrow} alt="arrow" />
         </SelectButton>
         <SelectMenu isOpen={isFilterOpen}>
-          {filterOptions.map((item, index) => (
-            <SelectItem
-              key={index}
-              className={selectedFilter === item ? "highlight" : ""}
-              onClick={() => handleFilterClick(item)}
-            >
-              {item}
-            </SelectItem>
-          ))}
+          {filterOptions.map((item, index) =>
+            item === "경력" || item === "언어" || item === "학력" ? (
+              <SelectFilterMenu key={index}>{item}</SelectFilterMenu>
+            ) : (
+              <SelectItem
+                key={index}
+                className={selectedFilter === item ? "highlight" : ""}
+                onClick={() => handleFilterClick(item)}
+              >
+                {item}
+              </SelectItem>
+            )
+          )}
         </SelectMenu>
       </SelectWrapper>
     </SelectContainer>
@@ -149,12 +165,24 @@ const ArrowImg = styled.img`
 
 const SelectMenu = styled.div`
   position: absolute;
-  top: 80%;
+  top: 100%;
   background-color: #15243e80;
   border-radius: 10px;
   width: 150px;
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
+`;
+
+const SelectFilterMenu = styled.div`
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d0d1d9;
+  border-radius: 10px;
 `;
 
 const SelectItem = styled.div`
