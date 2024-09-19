@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "OTF B";
+    /* font-weight: 50; */
+    src: url("./fonts/Hakgyoansim Dunggeunmiso OTF B.otf") format("truetype");
+  }
+
+@font-face {
+    font-family: "OTF R";
+    src: url("./fonts/Hakgyoansim Dunggeunmiso OTF R.otf");
+  }
+
+@font-face {
+    font-family: "TTF B";
+    src: url("./fonts/  Hakgyoansim Dunggeunmiso TTF B.ttf");
+  }
+
+
+@font-face {
+    font-family: "TTR R";
+    src: url("./fonts/Hakgyoansim Dunggeunmiso TTF R.ttf");
+  }
+
+
+
+
