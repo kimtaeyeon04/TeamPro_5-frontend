@@ -133,11 +133,10 @@ export default SelectBox;
 
 const SelectContainer = styled.div`
   display: flex;
-  margin-top: 10px;
+  margin-top: 0.625em; 
   font-weight: 700;
   flex-direction: row;
   position: relative;
-  
 `;
 
 const SelectWrapper = styled.div`
@@ -145,14 +144,14 @@ const SelectWrapper = styled.div`
   display: inline-block;
   text-align: center;
   width: 11em;
-  margin-right : -1em;
+  margin-right: -0.625em; 
 `;
 
 const SelectButton = styled.button`
   background-color: white;
-  border: 2px solid #d0d1d9;
-  border-radius: 12px;
-  padding: 10px 0px;
+  border: 0.125em solid #d0d1d9; 
+  border-radius: 0.75em; 
+  padding: 0.625em 0em; 
   font-size: 0.8em;
   color: #d0d1d9;
   cursor: pointer;
@@ -163,7 +162,7 @@ const SelectButton = styled.button`
 
 const ArrowImg = styled.img`
   width: 1.2em;
-  margin-left: 30px;
+  margin-left: 1.875em; 
 `;
 
 const SelectMenu = styled.div`
@@ -171,50 +170,49 @@ const SelectMenu = styled.div`
   top: 100%;
   width: 80%;
   background-color: #15243e80;
-  border-radius: 10px;
+  border-radius: 0.625em; 
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
 `;
 
 const SelectFilterMenu = styled.div`
-  margin: 10px;
-  padding: 10px;
+  margin: 0.625em; 
+  padding: 0.625em;
   color: white;
   font-size: 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #d0d1d9;
-  border-radius: 10px;
+  border-radius: 0.625em; 
 `;
 
 const SelectItem = styled.div`
-  margin: 10px;
-  padding: 10px;
+  margin: 0.625em; 
+  padding: 0.625em; 
   color: white;
   font-size: 0.8em;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid transparent; 
-  border-radius: 10px;
-  box-sizing: border-box; 
+  border: 0.2em solid transparent;
+  border-radius: 0.625em;
+  box-sizing: border-box;
 
   &:hover {
-    border-color: #ffffff; 
-    border-radius : 10px;
+    border-radius: 0.625em; 
+    border : 0.2em solid #fff;
   }
 
   &:last-child {
-    border-botton: none;
+    // border-bottom: none;
   }
 
   &.highlight {
-    border: 1px solid white;
-    border-radius: 8px;
-    padding: 12px;
+    border: 0.0625em solid white; 
+    border-radius: 0.5em; 
+    padding: 0.75em;
     font-weight: bold;
   }
 `;
-

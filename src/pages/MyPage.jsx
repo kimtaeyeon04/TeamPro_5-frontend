@@ -40,21 +40,21 @@ const DashBoardContainer = styled.div`
 
 const MyTemplateContainer = styled.div`
   position: relative;
-  top: 80px;
+  top: 5em;
 `;
 
 const MyTemplateTitle = styled.div`
-  height: 42px;
-  top: 182px;
+ height: 2.625em;
+  top: 11.375em; 
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 1.875em; 
+  line-height: 2.25em; 
   display: flex;
   align-items: center;
   text-align: center;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.025em; 
   color: #000000;
 `;
 
@@ -65,6 +65,6 @@ const MyTemplateMenuContainer = styled.div`
 `;
 
 const Line = styled.hr`
-  margin: 10px 0px;
+  margin: 0.625em 0; 
   border: 1px solid #d0d1d9;
 `;
