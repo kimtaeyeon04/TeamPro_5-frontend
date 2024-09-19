@@ -66,6 +66,7 @@ const PassWrapper = styled.div`
     width: 200%; 
     margin-bottom: -1.25em;
 `;
+
 //css input
 const IDinput = styled.input`
     border-radius : 2em;
