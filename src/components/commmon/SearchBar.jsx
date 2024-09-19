@@ -24,16 +24,17 @@ const SearchBarContainer = styled.div`
 
 const SearchBarWrapper = styled.div`
   width: 50%;
-  height: 3.5em;
-  border: 1px solid #c8c8c8;
-  box-shadow: 0px 2px 2px rgba(12, 12, 13, 0.1),
-    0px 4px 4px rgba(12, 12, 13, 0.05);
-  border-radius: 1000px;
+  height: 3.5em; 
+  border: 0.0625em solid #c8c8c8; 
+  box-shadow: 0em 0.125em 0.125em rgba(12, 12, 13, 0.1),
+    0em 0.25em 0.25em rgba(12, 12, 13, 0.05); 
+  border-radius: 62.5em; 
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 1.25em; 
   float: right;
 `;
+
 
 const SearchInput = styled.input`
   width: 85%;

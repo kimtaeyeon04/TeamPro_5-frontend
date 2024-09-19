@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
+import defaultProfilePicture from "../../assets/icons/profileIcon.svg"; // 기본 이미지
 
 const DashBoard = ({ profilePicture, name, nickname }) => {
   return (
@@ -50,38 +50,38 @@ const DashboardContainer = styled.div`
 
 const DashboardTitle = styled.div`
   width: 45%;
-  height: 42px;
-  top: 182px;
+  height: 2.625em; 
+  top: 11.375em; 
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 1.875em; 
+  line-height: 2.25em; 
   display: flex;
   align-items: center;
   text-align: center;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.025em; 
   color: #000000;
 `;
 
 const DashboardCard = styled.div`
   position: relative;
-  height: 200px;
-  border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  padding: 20px;
-  margin-top: 10px;
+  height: 12.5em; 
+  border: 0.0625em solid #d9d9d9; 
+  box-shadow: 0em 0.25em 0.25em rgba(0, 0, 0, 0.25); 
+  border-radius: 0.625em; 
+  padding: 1.5em; 
+  margin-top: 0.625em; 
 `;
 
 const Profile = styled.div`
   display: inline-block;
   width: 32%;
-  border-radius: 100px;
+  border-radius: 6.25em; 
 `;
 
 const ProfilePic = styled.img`
-  height: 125px;
+  height: 7.8125em; 
   background: #ffffff;
   border-radius: 50%;
 `;
@@ -90,8 +90,8 @@ const Info = styled.div`
   position: relative;
   display: inline-block;
   width: 33%;
-  bottom: 20px;
-  margin-left: 10px;
+  bottom: 1.25em; 
+  margin-left: 0.625em; 
 `;
 
 const Name = styled.p`
@@ -103,15 +103,15 @@ const Name = styled.p`
 `;
 
 const UserName = styled.div`
-  height: 25px;
+  height: 1.5625em; 
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 25px;
-  line-height: 26px;
+  font-size: 1.5625em; 
+  line-height: 1.625em; 
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.625em; 
 `;
 
 const Nickname = styled.p`
@@ -123,12 +123,12 @@ const Nickname = styled.p`
 `;
 
 const UserNickname = styled.div`
-  height: 25px;
+  height: 1.5625em; 
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1em; 
+  line-height: 1.5em; 
   display: flex;
   align-items: center;
 `;
@@ -137,24 +137,25 @@ const Button = styled.div`
   position: relative;
   width: 35%;
   float: right;
-  top: 32px;
+  top: 2em; 
 `;
 
 const ProfileButton = styled.button`
   position: relative;
   width: 80%;
-  height: 38.04px;
+  height: 2.3775em; 
   float: right;
   background: #0a27a6;
-  border: 1px solid #d0d1d9;
-  border-radius: 10px;
+  border: 0.0625em solid #d0d1d9; 
+  border-radius: 0.625em; 
   color: #ffffff;
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 0.9375em; 
+  line-height: 1.125em; 
   display: flex;
   align-items: center;
   justify-content: center;
 `;
+
