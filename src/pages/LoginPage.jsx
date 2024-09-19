@@ -1,13 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
+import Eye from "../assets/icons/Login/Eye.png";
+import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 
 const LoginPage = () => {
+
+    const [eyeVisible, seteyeVisible] = useState(false);
+    
+    const toggleeyeVisible = () =>{
+        seteyeVisible(!eyeVisible);
+    }
+
     return(
         <LoginWrapper>
             <MainText>FolioFrame</MainText>
             <JoinWrapper>
                 <IDinput placeholder="이메일 주소 또는 아이디"></IDinput>
-                <PASSinput placeholder="비밀번호"></PASSinput>
+                <PassWrapper>
+                    <PASSinput type={eyeVisible ? "text" : "password"} placeholder="비밀번호"></PASSinput>
+                    <EyeIcon 
+                        src={eyeVisible ? Eyeoff : Eye} 
+                        alt="eye" 
+                        onClick={toggleeyeVisible}/>
+                </PassWrapper>
+                
+                {/* <EyeIcon></EyeIcon> */}
             </JoinWrapper>
             <LoginButton>로그인</LoginButton>
             <MemberWrapper>
@@ -43,6 +60,12 @@ const MemberWrapper = styled.div`
     margin-top : -2em;
 `;
 
+const PassWrapper = styled.div`
+    position: relative;
+    display: inline-block;
+    width: 200%; 
+    margin-bottom: -1.25em;
+`;
 //css input
 const IDinput = styled.input`
     border-radius : 2em;
@@ -61,7 +84,7 @@ const PASSinput = styled.input`
     border-radius : 2em;
     border : 1px solid #D0D1D9;
     height : 3em;
-    width : 200%;
+    width : 100%;
     text-indent: 1em; 
 
     &::placeholder {
@@ -90,6 +113,16 @@ const JoinButton = styled.button`
     font-weight: 500;
     border : none;
     background-color : transparent;
+`;
+
+const EyeIcon = styled.img`
+    position: absolute;
+    right: 1em; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width : 1.2em;
+    height : 1.2em;
 `;
 
 //css text
