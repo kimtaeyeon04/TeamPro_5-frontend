@@ -34,7 +34,9 @@ const MyPageContainer = styled.div`
   margin: 0 auto;
 `;
 
-const DashBoardContainer = styled.div``;
+const DashBoardContainer = styled.div`
+  margin-left : -1em; 
+`;
 
 const MyTemplateContainer = styled.div`
   position: relative;

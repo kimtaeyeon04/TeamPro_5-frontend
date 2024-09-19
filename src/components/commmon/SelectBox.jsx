@@ -135,14 +135,15 @@ const SelectContainer = styled.div`
   display: flex;
   margin-top: 10px;
   font-weight: 700;
-  width: 50%;
+  width: 60%;
+  
 `;
 
 const SelectWrapper = styled.div`
   position: relative;
   display: inline-block;
   text-align: center;
-  width: 20%;
+  width: 30%;
 `;
 
 const SelectButton = styled.button`
@@ -159,8 +160,8 @@ const SelectButton = styled.button`
 `;
 
 const ArrowImg = styled.img`
-  width: 15%;
-  margin-left: 20px;
+  width: 1.2em;
+  margin-left: 30px;
 `;
 
 const SelectMenu = styled.div`
@@ -194,15 +195,17 @@ const SelectItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid transparent; /
+  border-radius: 10px;
+  box-sizing: border-box; 
 
   &:hover {
-    margin: 10px;
-    border: 2px solid #ffffff;
-    border-radius: 10px;
+    border-color: #ffffff; 
+    border-radius : 10px;
   }
 
   &:last-child {
-    border-bottom: none;
+    border-botton: none;
   }
 
   &.highlight {
@@ -212,3 +215,4 @@ const SelectItem = styled.div`
     font-weight: bold;
   }
 `;
+
