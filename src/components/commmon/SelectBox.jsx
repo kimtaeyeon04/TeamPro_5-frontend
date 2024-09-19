@@ -135,7 +135,8 @@ const SelectContainer = styled.div`
   display: flex;
   margin-top: 10px;
   font-weight: 700;
-  width: 60%;
+  flex-direction: row;
+  position: relative;
   
 `;
 
@@ -143,7 +144,8 @@ const SelectWrapper = styled.div`
   position: relative;
   display: inline-block;
   text-align: center;
-  width: 30%;
+  width: 11em;
+  margin-right : -1em;
 `;
 
 const SelectButton = styled.button`
@@ -195,7 +197,7 @@ const SelectItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid transparent; /
+  border: 1px solid transparent; 
   border-radius: 10px;
   box-sizing: border-box; 
 
