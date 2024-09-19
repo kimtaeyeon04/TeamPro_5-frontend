@@ -150,7 +150,7 @@ const SelectButton = styled.button`
   border: 2px solid #d0d1d9;
   border-radius: 12px;
   padding: 10px 0px;
-  font-size: 14px;
+  font-size: 0.8em;
   color: #d0d1d9;
   cursor: pointer;
   text-align: center;
@@ -166,9 +166,9 @@ const ArrowImg = styled.img`
 const SelectMenu = styled.div`
   position: absolute;
   top: 100%;
+  width: 80%;
   background-color: #15243e80;
   border-radius: 10px;
-  width: 150px;
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
 `;
@@ -177,7 +177,7 @@ const SelectFilterMenu = styled.div`
   margin: 10px;
   padding: 10px;
   color: white;
-  font-size: 14px;
+  font-size: 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,7 +189,7 @@ const SelectItem = styled.div`
   margin: 10px;
   padding: 10px;
   color: white;
-  font-size: 14px;
+  font-size: 0.8em;
   cursor: pointer;
   display: flex;
   justify-content: center;

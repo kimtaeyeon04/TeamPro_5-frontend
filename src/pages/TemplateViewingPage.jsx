@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SearchBar from "../components/commmon/SearchBar";
 
-function TemplateViewing() {
+function TemplateViewingPage() {
   return (
     <TemplateViewingContainer className="TemplateViewingContainer">
       <SearchBar />
@@ -10,7 +10,7 @@ function TemplateViewing() {
   );
 }
 
-export default TemplateViewing;
+export default TemplateViewingPage;
 
 const TemplateViewingContainer = styled.div`
   width: 85%; //수정중...

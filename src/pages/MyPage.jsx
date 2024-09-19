@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import DashBoard from "../components/DashBoard";
+import DashBoard from "../components/MyPage/DashBoard";
 import SelectBox from "../components/commmon/SelectBox";
-import SearchBarMini from "../components/SearchBarMini";
+import SearchBarMini from "../components/MyPage/SearchBarMini";
 
 function MyPage({ profilePicture, name, nickname }) {
   return (
@@ -31,7 +31,6 @@ export default MyPage;
 
 const MyPageContainer = styled.div`
   width: 85%; //수정중...
-  min-height: 80vh;
   margin: 0 auto;
 `;
 

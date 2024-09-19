@@ -4,7 +4,7 @@ import styled from "styled-components";
 import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
 function Header({ profilePicture }) {
   return (
-    <HeaderContainer>
+    <HeaderContainer className="HeaderContainer">
       {/* 로고와 메뉴를 포함하는 메뉴박스 */}
       <MenuBox>
         {/* 프로젝트 로고 들어가야함 */}
@@ -39,11 +39,13 @@ const HeaderContainer = styled.header`
   height: 5em;
   background: #ffffff;
   display: flex;
-  justify-content: center; 
   align-items: center;
   margin: 0 auto; /* 가운데 정렬 */
   position: relative;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
 `;
 
 const MenuBox = styled.div`
@@ -88,14 +90,10 @@ const NavLink = styled.a`
 `;
 
 const Profile = styled.div`
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  right: 30px;
+  width: 2.6%;
   border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
 `;
 
 const ProfilePic = styled.img`

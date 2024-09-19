@@ -40,8 +40,7 @@ const SearchInput = styled.input`
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
-  line-height: 16px;
+  font-size: 1.1em;
   color: #919194;
   border: none;
   outline: none;
