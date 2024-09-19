@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
-import TemplateViewing from "./pages/TemplateViewing";
+import TemplateViewingPage from "./pages/TemplateViewingPage";
 
 function App() {
   return (
@@ -26,7 +26,10 @@ function App() {
             }
           />
           <Route path="/MainPage" element={<MainPage />} />
-          <Route path="/TemplateViewing" element={<TemplateViewing />} />
+          <Route
+            path="/TemplateViewingPage"
+            element={<TemplateViewingPage />}
+          />
         </Route>
       </Route>
     </Routes>

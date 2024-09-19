@@ -96,5 +96,5 @@ const Button = styled.button`
 
   &:hover {
     background-color: #092091; /* Darken the button on hover */
-  }
+  }g
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import search from "../assets/icons/Header/search.png";
+import search from "../../assets/icons/Header/search.png";
 
 const SearchBarMini = () => {
   return (

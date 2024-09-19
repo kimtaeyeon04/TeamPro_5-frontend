@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import defaultProfilePicture from "../assets/icons/Header/profileIcon.png"; // 기본 이미지
+import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
 
 const DashBoard = ({ profilePicture, name, nickname }) => {
   return (
