@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Navigate } from "react-router-dom";
+import TemplateCard from "../components/commmon/TemplateCard";
 
 const MainPage = () => {
+    
     return (
         <>
         <MainPageWrapper>
@@ -14,17 +16,32 @@ const MainPage = () => {
                 <Maintext>FolioFrame</Maintext>
             </VideoWrapper1>
 
-            <VideoWrapper2>
+            <SearchInput type="text" placeholder="검색어를 입력해주세요"></SearchInput>
+            <VideoWrapper3>
                 <Sharevideo autoPlay loop muted>
-                        <source src="/videos/Drawvideo.mp4" type="video/mp4" />
+                        <source src="/videos/Sharevideo2.mp4" type="video/mp4" />
                         비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
                 </Sharevideo>
+                <TextWrapper>
+                    <PointText2>내가 만든 <br></br>포토폴리오를<br></br>공유해보세요</PointText2>
+                    <PointText3>자신이 만든 포토폴리오를 공유해서 다른 사람들과 소통해보세요!</PointText3>
+                    <PointText3>가장 인기있는 포토폴리오를 만들어 볼까요?</PointText3>
+                </TextWrapper>
+            </VideoWrapper3>
+
+            <TemplateCard/>
+
+            <VideoWrapper2>
+                <Drawvideo autoPlay loop muted>
+                        <source src="/videos/Drawvideo.mp4" type="video/mp4" />
+                        비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
+                </Drawvideo>
                 <TextWrapper>
                     <PointText1>함께 만드는 <br></br>포토폴리오</PointText1>
                     <StartButton>지금 시작하기</StartButton>
                 </TextWrapper>
             </VideoWrapper2>
-            
+
         </MainPageWrapper>
         
 
@@ -56,27 +73,29 @@ const VideoWrapper2 = styled.div`
     margin-top : 10em;
 `;
 
+const VideoWrapper3 = styled.div`
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    margin-top: 10em;
+    width: 100%; 
+`;
+
 const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    // position: relative;
-
     position: absolute;
-    top: 15em;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    left: 40em; 
+    margin-top : -5em;   
 `;
+
 //css video
 const Mainvideo = styled.video`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width : 66.5em; 
+    width : 68.5em; 
     margin-top : -3em;
 
     //영상 높이
@@ -85,12 +104,21 @@ const Mainvideo = styled.video`
 `;
 
 const Sharevideo = styled.video`
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    width : 30em;
+    height : auto;
+    margin-left : 10em; 
+`;
+
+const Drawvideo = styled.video`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width : 40em; 
-
+    width : 20em; 
 `;
 
 const StartButton = styled.button`
@@ -107,6 +135,21 @@ const StartButton = styled.button`
     margin-top : -3em;
 
 `;
+
+const SearchInput = styled.input`
+    border-radius : 2em;
+    border : 1px solid #D0D1D9;
+    height : 3em;
+    width : 50%;
+    text-indent: 1em; 
+    margin-top : 2em;
+    outline:none;
+    &::placeholder {
+    text-indent: 1em; 
+    }
+
+`;
+
 //css text
 const Maintext = styled.p`
     position: absolute;
@@ -130,4 +173,21 @@ const PointText1 = styled.p`
     font-size : 5em;
     font-weight : 800;
     font-family: "OTF B";
+    color : #0A27A6;
+`;
+
+const PointText2 = styled.p`
+    font-size : 4em;
+    font-weight : 900;
+    font-family: "OTF B";
+    color : #6633cc;
+    margin-bottom : 0.2em;
+`;
+
+const PointText3 = styled.p`
+    font-size : 1em;
+    font-weight : 600;
+    font-family: "OTF R";
+    color : #000;
+    margin-bottom : -1em;
 `;
