@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 import MainCard from "../components/commmon/MainCard";
 import search from "../assets/icons/Header/search.png";
-
+import Logo from "../assets/icons/Logo.png";
 
 const MainPage = () => {
     
@@ -22,7 +22,16 @@ const MainPage = () => {
 
             <SearchInput type="text" placeholder="검색어를 입력해주세요"></SearchInput>
             {/* <SearchIcon src={search} alt="search" /> */}
-  
+            
+        {/* 템플릿, 해커톤, 채용 */}
+        <CardWrapper>
+            <PointText4>
+                <LogoImage src={Logo} alt="Logo" />
+                FolioFrame에는 무엇이 있을까?
+            </PointText4>
+            <MainCard />
+        </CardWrapper>
+
         {/* 공유 비디오 */}
             <VideoWrapper3>
                 <Sharevideo autoPlay loop muted>
@@ -35,8 +44,8 @@ const MainPage = () => {
                     <PointText3>가장 인기있는 포토폴리오를 만들어 볼까요?</PointText3>
                 </TextWrapper>
             </VideoWrapper3>
-        {/* 템플릿, 해커톤, 채용 */}
-            <MainCard/>
+        
+
 
             <VideoWrapper2>
                 <Drawvideo autoPlay loop muted>
@@ -96,6 +105,10 @@ const TextWrapper = styled.div`
     margin-top : -5em;   
 `;
 
+const CardWrapper = styled.div`
+    margin-top : 10em;
+`;
+
 //css video
 const Mainvideo = styled.video`
     display: flex;
@@ -111,13 +124,10 @@ const Mainvideo = styled.video`
 `;
 
 const Sharevideo = styled.video`
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
     width : 30em;
-    height : auto;
     margin-left : 10em; 
+    height: 25em; 
+    object-fit: cover; 
 `;
 
 const Drawvideo = styled.video`
@@ -199,7 +209,21 @@ const PointText3 = styled.p`
     margin-bottom : -1em;
 `;
 
+const PointText4 = styled.p`
+    font-size : 2em;
+    font-weight : 800;
+    font-family: "OTF B";
+    color : #0A27A6;
+    display : flex;
+    
+`;
+
 const SearchIcon = styled.img`
   width: 40%;
   border-radius: 50%;
+`;
+const LogoImage = styled.img`
+    width : 1.2em;
+    margin-top : -0.5em;
+    padding-right : 0.5em;
 `;

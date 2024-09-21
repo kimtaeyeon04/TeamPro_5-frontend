@@ -38,37 +38,45 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   width: 18em;
-  border: 1px solid #ccc;
+  border: 1px solid #D9D9D9;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+  &:hover{
+    border : 2px solid #0A27A6;
+
+   button {
+      background-color: #0A27A6;
+      color: #fff;
+    }
+  }
 `;
 
 const TemplateName = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 10px;
+  font-family: "OTF B";
 `;
 
 const Description = styled.p`
   font-size: 1rem;
   color: #666;
   margin-bottom: 20px;
+
+  font-family: "OTF R";
+
 `;
 
 const ParticiPateButton = styled.button`
     color : #0A27A6;
     font-size : 1em;
     font-weight : 800;
-
+    background-color: #fff;
     border : 1px solid #0A27A6;
     border-radius : 2em;
     height : 2em;
     width : 50%;
     margin-top : -3em;
-
-    &:hover {
-      background-color: #0A27A6;
-      color : #fff;
-    }
 `;
