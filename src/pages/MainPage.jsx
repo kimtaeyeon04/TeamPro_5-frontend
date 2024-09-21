@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+
 import { Navigate } from "react-router-dom";
-import TemplateCard from "../components/commmon/TemplateCard";
+import MainCard from "../components/commmon/MainCard";
+import search from "../assets/icons/Header/search.png";
+
 
 const MainPage = () => {
     
     return (
         <>
+        {/* 메인 비디오  */}
         <MainPageWrapper>
             <VideoWrapper1>
                 <Mainvideo  autoPlay loop muted>
@@ -17,6 +21,9 @@ const MainPage = () => {
             </VideoWrapper1>
 
             <SearchInput type="text" placeholder="검색어를 입력해주세요"></SearchInput>
+            {/* <SearchIcon src={search} alt="search" /> */}
+  
+        {/* 공유 비디오 */}
             <VideoWrapper3>
                 <Sharevideo autoPlay loop muted>
                         <source src="/videos/Sharevideo2.mp4" type="video/mp4" />
@@ -28,8 +35,8 @@ const MainPage = () => {
                     <PointText3>가장 인기있는 포토폴리오를 만들어 볼까요?</PointText3>
                 </TextWrapper>
             </VideoWrapper3>
-
-            <TemplateCard/>
+        {/* 템플릿, 해커톤, 채용 */}
+            <MainCard/>
 
             <VideoWrapper2>
                 <Drawvideo autoPlay loop muted>
@@ -190,4 +197,9 @@ const PointText3 = styled.p`
     font-family: "OTF R";
     color : #000;
     margin-bottom : -1em;
+`;
+
+const SearchIcon = styled.img`
+  width: 40%;
+  border-radius: 50%;
 `;

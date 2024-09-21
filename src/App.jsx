@@ -12,9 +12,13 @@ function App() {
   return (
     <Routes>
       <Route>
+        {/* 기본 로그인 페이지 */}
         <Route path="/LoginPage" element={<LoginPage />} />
 
         <Route element={<LayOut />}>
+        {/* 메인 화면  */}
+          <Route path="/" element={<MainPage />} />
+          {/*마이 페이지  */}
           <Route
             path="/MyPage"
             element={
@@ -25,7 +29,8 @@ function App() {
               />
             }
           />
-          <Route path="/MainPage" element={<MainPage />} />
+
+
           <Route
             path="/TemplateViewingPage"
             element={<TemplateViewingPage />}
