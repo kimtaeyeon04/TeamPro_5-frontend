@@ -45,7 +45,8 @@ const Card = styled.div`
   text-align: center;
 
   &:hover{
-    border : 2px solid #0A27A6;
+    border : 1px solid #0A27A6;
+    
 
    button {
       background-color: #0A27A6;

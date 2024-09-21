@@ -5,6 +5,9 @@ import { Navigate } from "react-router-dom";
 import MainCard from "../components/commmon/MainCard";
 import search from "../assets/icons/Header/search.png";
 import Logo from "../assets/icons/Logo.png";
+import N1 from "../assets/icons/Mainpage/N1.svg";
+import N2 from "../assets/icons/Mainpage/N2.svg";
+import N3 from "../assets/icons/Mainpage/N3.svg";
 
 const MainPage = () => {
     
@@ -27,12 +30,13 @@ const MainPage = () => {
         <CardWrapper>
             <PointText4>
                 <LogoImage src={Logo} alt="Logo" />
-                FolioFrame에는 무엇이 있을까?
+                FolioFrame에는 무엇이 있을까요?
             </PointText4>
             <MainCard />
         </CardWrapper>
 
-        {/* 공유 비디오 */}
+        {/* 템플릿 */}
+            <N1Image src={N1} alt="Number1"/>
             <VideoWrapper3>
                 <Sharevideo autoPlay loop muted>
                         <source src="/videos/Sharevideo2.mp4" type="video/mp4" />
@@ -45,8 +49,8 @@ const MainPage = () => {
                 </TextWrapper>
             </VideoWrapper3>
         
-
-
+        {/* 해커톤 */}
+            <N2Image src={N2} alt="Number2"/>
             <VideoWrapper2>
                 <Drawvideo autoPlay loop muted>
                         <source src="/videos/Drawvideo.mp4" type="video/mp4" />
@@ -57,10 +61,27 @@ const MainPage = () => {
                     <StartButton>지금 시작하기</StartButton>
                 </TextWrapper>
             </VideoWrapper2>
-
-        </MainPageWrapper>
         
-
+        {/* 채용 */}
+            <N3Image src={N3} alt="Number3"/>
+            <VideoWrapper2>
+                <Drawvideo autoPlay loop muted>
+                        <source src="/videos/Drawvideo.mp4" type="video/mp4" />
+                        비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
+                </Drawvideo>
+                <TextWrapper>
+                    <PointText1>함께 만드는 <br></br>포토폴리오</PointText1>
+                    {/* <StartButton>지금 시작하기</StartButton> */}
+                </TextWrapper>
+            </VideoWrapper2>
+        </MainPageWrapper>
+         {/* 마무리 */}
+        <ThanksWrapper>
+            <PointText4>FolioFrame</PointText4>
+            <PointText5>FolioFrame은 팀프로젝트1의 작업물입니다. 우리의 팀명은 "포폴만들조"이며 김태연, 김예은, 조수연, 최현혜가 함께 했습니다.<br></br> 포트폴리오를 만들때 도움을 줄 수 있는 사이트를 만드는 것이 우리의 목표입니다.<br></br>
+                지금보다 더 나은 서비스를 제공할 수 있도록 노력하겠습니다!!!
+            </PointText5>
+        </ThanksWrapper>
         </>
     );
 };
@@ -93,7 +114,6 @@ const VideoWrapper3 = styled.div`
     display: flex;
     align-items: center; 
     justify-content: space-between; 
-    margin-top: 10em;
     width: 100%; 
 `;
 
@@ -106,9 +126,12 @@ const TextWrapper = styled.div`
 `;
 
 const CardWrapper = styled.div`
-    margin-top : 10em;
+    margin-top : 5em;
 `;
 
+const ThanksWrapper = styled.div`
+    margin : 0 6em;
+`;
 //css video
 const Mainvideo = styled.video`
     display: flex;
@@ -138,6 +161,7 @@ const Drawvideo = styled.video`
     width : 20em; 
 `;
 
+//css element
 const StartButton = styled.button`
     color : #fff;
     font-size : 1em;
@@ -159,12 +183,35 @@ const SearchInput = styled.input`
     height : 3em;
     width : 50%;
     text-indent: 1em; 
-    margin-top : 2em;
+    margin-top : 5em;
     outline:none;
     &::placeholder {
-    text-indent: 1em; 
+        text-indent: 1em; 
     }
 
+`;
+
+const LogoImage = styled.img`
+    width : 1em;
+    margin-top : -0.2em;
+    padding-right : 0.5em;
+`;
+
+const N1Image = styled.img`
+    width : 20em;
+    margin-top: 10em;
+    padding-right  : 48em;
+`;
+
+const N2Image = styled.img`
+    width : 20em;
+    margin-top: 10em;
+    padding-left  : 45em;
+`;
+const N3Image = styled.img`
+    width : 20em;
+    margin-top: 10em;
+    padding-right  : 48em;
 `;
 
 //css text
@@ -208,22 +255,17 @@ const PointText3 = styled.p`
     color : #000;
     margin-bottom : -1em;
 `;
-
 const PointText4 = styled.p`
     font-size : 2em;
     font-weight : 800;
     font-family: "OTF B";
     color : #0A27A6;
     display : flex;
-    
 `;
-
-const SearchIcon = styled.img`
-  width: 40%;
-  border-radius: 50%;
-`;
-const LogoImage = styled.img`
-    width : 1.2em;
-    margin-top : -0.5em;
-    padding-right : 0.5em;
+const PointText5 = styled.p`
+    font-size : 0.8em;
+    font-weight : 400;
+    color : #000;
+    font-family: "OTF R";
+    display : flex;
 `;
