@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 import MainCard from "../components/commmon/MainCard";
 
-import search from "../assets/icons/Header/search.png";
+// import search from "../assets/icons/Header/search.png";
 import Logo from "../assets/icons/Logo.png";
 import N1 from "../assets/icons/Mainpage/N1.svg";
 import N2 from "../assets/icons/Mainpage/N2.svg";
