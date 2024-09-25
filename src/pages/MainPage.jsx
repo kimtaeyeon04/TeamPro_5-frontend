@@ -11,6 +11,8 @@ import N2 from "../assets/icons/Mainpage/N2.svg";
 import N3 from "../assets/icons/Mainpage/N3.svg";
 import copyright from "../assets/icons/Mainpage/copyright.png";
 
+//slide 
+import Slide from "../components/MainPage/slide";
 const MainPage = () => {
     
     return (
@@ -28,54 +30,18 @@ const MainPage = () => {
             <SearchInput type="text" placeholder="검색어를 입력해주세요"></SearchInput>
             {/* <SearchIcon src={search} alt="search" /> */}
             
-        {/* 템플릿, 해커톤, 채용 */}
-        <CardWrapper>
-            <PointText4>
-                <LogoImage src={Logo} alt="Logo" />
-                FolioFrame에는 무엇이 있을까요?
-            </PointText4>
-            <MainCard />
-        </CardWrapper>
-
-        {/* 템플릿 */}
-            <N1Image src={N1} alt="Number1"/>
-            <VideoWrapper3>
-                <Sharevideo autoPlay loop muted>
-                        <source src="/videos/Sharevideo2.mp4" type="video/mp4" />
-                        비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
-                </Sharevideo>
-                <TextWrapper>
-                    <PointText2>내가 만든 <br></br>포토폴리오를<br></br>공유해보세요</PointText2>
-                    <PointText3>자신이 만든 포토폴리오를 공유해서 다른 사람들과 소통해보세요!</PointText3>
-                    <PointText3>가장 인기있는 포토폴리오를 만들어 볼까요?</PointText3>
-                </TextWrapper>
-            </VideoWrapper3>
+            {/* 템플릿, 해커톤, 채용 */}
+            <CardWrapper>
+                <PointText4>
+                    <LogoImage src={Logo} alt="Logo" />
+                    FolioFrame에는 무엇이 있을까요?
+                </PointText4>
+                <MainCard />
+            </CardWrapper>
+            
+            {/* 슬라이드 */}
+            <Slide/>
         
-        {/* 해커톤 */}
-            <N2Image src={N2} alt="Number2"/>
-            <VideoWrapper2>
-                <Drawvideo autoPlay loop muted>
-                        <source src="/videos/Drawvideo.mp4" type="video/mp4" />
-                        비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
-                </Drawvideo>
-                <TextWrapper>
-                    <PointText1>함께 만드는 <br></br>포토폴리오</PointText1>
-                    <StartButton>지금 시작하기</StartButton>
-                </TextWrapper>
-            </VideoWrapper2>
-        
-        {/* 채용 */}
-            <N3Image src={N3} alt="Number3"/>
-            <VideoWrapper2>
-                <Drawvideo autoPlay loop muted>
-                        <source src="/videos/Drawvideo.mp4" type="video/mp4" />
-                        비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
-                </Drawvideo>
-                <TextWrapper>
-                    <PointText1>함께 만드는 <br></br>포토폴리오</PointText1>
-                    {/* <StartButton>지금 시작하기</StartButton> */}
-                </TextWrapper>
-            </VideoWrapper2>
         </MainPageWrapper>
         
          {/* 마무리 */}
@@ -98,8 +64,7 @@ const MainPage = () => {
                 <PointText5>손으로 그린 리소그래프 요소 컬렉션의 모션 그래픽_preview</PointText5>
                 <PointText5>https://kr.freepik.com/free-video/motion-graphic-hand-drawn-risograph-element-collection_3295172#fromView=search&page=1&position=8&uuid=2e65e734-07c3-4cfe-84c9-25c84cf5ea0a</PointText5>
                 {/* 폰트 저작권 */}
-                <PointText5>폰트</PointText5>
-                <PointText5>https://copyright.keris.or.kr/wft/fntDwnldView?fntGrpId=GFT202408200000000000003</PointText5>
+                <PointText5>폰트 https://copyright.keris.or.kr/wft/fntDwnldView?fntGrpId=GFT202408200000000000003</PointText5>
             </CopyWrapper>
         </ThanksWrapper>
         </>
