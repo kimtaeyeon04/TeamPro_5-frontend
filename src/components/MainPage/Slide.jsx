@@ -11,6 +11,7 @@ import 'swiper/css/pagination';
 import N1 from "../../assets/icons/Mainpage/N1.svg";
 import N2 from "../../assets/icons/Mainpage/N2.svg";
 import N3 from "../../assets/icons/Mainpage/N3.svg";
+import job from "../../assets/images/Mainpage/JOB.png";
 
 export default () => {
     const [swiperIndex, setSwiperIndex] = useState(0); // -> 페이지네이션용
@@ -50,6 +51,23 @@ export default () => {
                     <PointText3>가장 인기있는 포토폴리오를 만들어 볼까요?</PointText3>
                 </TextWrapper>
             </VideoWrapper3>
+      </SwiperSlide>
+    {/* 채용 */}
+      <SwiperSlide>
+            <N3Image src={N3} alt="Number2"/>
+
+            <VideoWrapper3>
+                <JOBImage src={job} alt="채용"/>
+            <Sharevideo autoPlay loop muted>
+                    <source src="/videos/Sharevideo3.mp4" type="video/mp4" />
+                    비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
+            </Sharevideo>
+            <TextWrapper>
+                {/* <PointText2>내가 만든 <br></br>포토폴리오를<br></br>공유해보세요</PointText2> */}
+                <PointText3>나와 맞는 채용자에게 내 포트폴리오를 보여줄 수 있어요!</PointText3>
+                <PointText3>가장 인기있는 포토폴리오를 만들어 볼까요?</PointText3>
+            </TextWrapper>
+        </VideoWrapper3>
       </SwiperSlide>
 
       <SwiperSlide>
@@ -180,6 +198,12 @@ const N3Image = styled.img`
     margin-top: 10em;
     padding-right  : 48em;
 `;
+const JOBImage = styled.img`
+    width : 20em;
+    margin-top: 10em;
+    padding-right  : 48em;
+`;
+
 
 //css text
 const PointText1 = styled.p`
