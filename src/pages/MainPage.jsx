@@ -6,9 +6,6 @@ import MainCard from "../components/commmon/MainCard";
 
 // import search from "../assets/icons/Header/search.png";
 import Logo from "../assets/icons/Logo.png";
-import N1 from "../assets/icons/Mainpage/N1.svg";
-import N2 from "../assets/icons/Mainpage/N2.svg";
-import N3 from "../assets/icons/Mainpage/N3.svg";
 import copyright from "../assets/icons/Mainpage/copyright.png";
 
 //slide 
@@ -116,6 +113,7 @@ const CardWrapper = styled.div`
 
 const ThanksWrapper = styled.div`
     margin : 0 6em;
+    margin-top : 6em;
 `;
 
 const CopyWrapper = styled.div`
