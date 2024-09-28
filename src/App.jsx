@@ -7,6 +7,7 @@ import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
 import TemplatePage from "./pages/TemplatePage";
+import ProfileEditPage from "./pages/ProfileEditPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           />
 
           <Route path="/TemplatePage" element={<TemplatePage />} />
+          <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
         </Route>
       </Route>
     </Routes>
