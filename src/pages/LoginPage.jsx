@@ -131,6 +131,7 @@ const MainText = styled.p`
     color : #0A27A6;
     font-size: 3em;
     font-weight: 700;
+    font-family: "OTF B";
 `;
 
 const Text = styled.p`
