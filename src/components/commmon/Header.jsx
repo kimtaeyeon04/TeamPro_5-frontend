@@ -18,7 +18,13 @@ function Header({ profilePicture }) {
 
       {/* 프로필 사진, props로 받아서 넣어야 함 */}
       <Profile>
-        <ProfilePic src={profilePicture} alt="profile" />
+        <ProfilePic
+          onClick={() => {
+            console.log("프로필 사진 클릭");
+          }}
+          src={profilePicture}
+          alt="profile"
+        />
       </Profile>
     </HeaderContainer>
   );
@@ -100,4 +106,5 @@ const ProfilePic = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  cursor: pointer;
 `;

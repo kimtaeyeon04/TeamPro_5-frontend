@@ -3,6 +3,8 @@ import styled from "styled-components";
 import DashBoard from "../components/MyPage/DashBoard";
 import SelectBox from "../components/commmon/SelectBox";
 import SearchBarMini from "../components/MyPage/SearchBarMini";
+import TemplateCard from "../components/commmon/TemplateCard";
+import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import합니다.
 
 function MyPage({ profilePicture, name, nickname }) {
   return (
@@ -22,6 +24,16 @@ function MyPage({ profilePicture, name, nickname }) {
           <SearchBarMini />
         </MyTemplateMenuContainer>
         <Line></Line>
+        <TemplateGrid>
+          {dummydata.map((data, index) => (
+            <TemplateCard
+              key={index}
+              templateName={data.postTitle}
+              description={data.postContent}
+              templateThumnail={data.postBackgroundImg}
+            />
+          ))}
+        </TemplateGrid>
       </MyTemplateContainer>
     </MyPageContainer>
   );
@@ -35,7 +47,7 @@ const MyPageContainer = styled.div`
 `;
 
 const DashBoardContainer = styled.div`
-  margin-left : -1em; 
+  margin-left: -1em;
 `;
 
 const MyTemplateContainer = styled.div`
@@ -44,17 +56,17 @@ const MyTemplateContainer = styled.div`
 `;
 
 const MyTemplateTitle = styled.div`
- height: 2.625em;
-  top: 11.375em; 
+  height: 2.625em;
+  top: 11.375em;
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.875em; 
-  line-height: 2.25em; 
+  font-size: 1.875em;
+  line-height: 2.25em;
   display: flex;
   align-items: center;
   text-align: center;
-  letter-spacing: -0.025em; 
+  letter-spacing: -0.025em;
   color: #000000;
 `;
 
@@ -64,7 +76,16 @@ const MyTemplateMenuContainer = styled.div`
   justify-content: space-between;
 `;
 
+const TemplateGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  margin-top: 2em;
+  width: 100%;
+  max-width: 80em;
+`;
+
 const Line = styled.hr`
-  margin: 0.625em 0; 
+  margin: 0.625em 0;
   border: 1px solid #d0d1d9;
 `;
