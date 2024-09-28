@@ -7,7 +7,9 @@ import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
 import TemplatePage from "./pages/TemplatePage";
+import ProfileEditPage from "./pages/ProfileEditPage";
 import HackathonPage from "./pages/HackathonPage";
+
 function App() {
   return (
     <Routes>
@@ -33,6 +35,7 @@ function App() {
           />
 
           <Route path="/TemplatePage" element={<TemplatePage />} />
+          <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
         </Route>
       </Route>
     </Routes>

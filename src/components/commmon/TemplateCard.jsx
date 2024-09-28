@@ -34,7 +34,8 @@ export default TemplateCard;
 
 const Card = styled.div`
   position: relative;
-  height: 20em; // 원래 17.625em
+  width: 20vw;
+  height: 35vh; // 원래 17.625em
   background-color: #ffffff;
   border: 0.125em solid #d0d1d9;
   border-radius: 0.3125em;
@@ -47,7 +48,7 @@ const Card = styled.div`
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 16.56em;
+  width: 18vw;
   height: 26vh; // 원래 8.855em
   background-color: #f9f9f9;
   border: 0.0625em solid #d0d1d9;
@@ -81,12 +82,17 @@ const Description = styled.div`
   line-height: 1.0625em;
   text-align: center;
   color: #d0d1d9;
-  width: 100%;
+  width: 18vw;
   overflow: scroll;
+
+  /* 스크롤바 숨기기 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Button = styled.button`
-  margin-top: auto;
+  margin-top: 1vh;
   width: 11.523em;
   height: 4.5vh;
   background-color: #0a27a6;
