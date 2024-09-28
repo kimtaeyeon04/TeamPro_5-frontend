@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
-import TemplateViewingPage from "./pages/TemplateViewingPage";
+import TemplatePage from "./pages/TemplatePage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/LoginPage" element={<LoginPage />} />
 
         <Route element={<LayOut />}>
-        {/* 메인 화면  */}
+          {/* 메인 화면  */}
           <Route path="/" element={<MainPage />} />
           {/*마이 페이지  */}
           <Route
@@ -30,11 +30,7 @@ function App() {
             }
           />
 
-
-          <Route
-            path="/TemplateViewingPage"
-            element={<TemplateViewingPage />}
-          />
+          <Route path="/TemplatePage" element={<TemplatePage />} />
         </Route>
       </Route>
     </Routes>

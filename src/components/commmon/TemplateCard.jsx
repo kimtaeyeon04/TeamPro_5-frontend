@@ -12,7 +12,13 @@ const TemplateCard = ({ templateName, description, templateThumnail }) => {
       </ImageContainer>
       <TemplateName>{templateName}</TemplateName>
       <Description>{description}</Description>
-      <Button>보기</Button>
+      <Button
+        onClick={() => {
+          console.log("보기 버튼 클릭");
+        }}
+      >
+        보기
+      </Button>
     </Card>
   );
 };
@@ -28,73 +34,73 @@ export default TemplateCard;
 
 const Card = styled.div`
   position: relative;
-  width: 17.625em; 
-  height: 17.625em; 
+  height: 20em; // 원래 17.625em
   background-color: #ffffff;
-  border: 0.125em solid #d0d1d9; 
+  border: 0.125em solid #d0d1d9;
   border-radius: 0.3125em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em; 
+  padding: 1em;
   box-sizing: border-box;
 `;
 
 const ImageContainer = styled.div`
   position: relative;
   width: 16.56em;
-  height: 8.855em;
+  height: 26vh; // 원래 8.855em
   background-color: #f9f9f9;
   border: 0.0625em solid #d0d1d9;
-  border-radius: 0.625em; 
+  border-radius: 0.625em;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const Image = styled.img`
-  width: 3.36em;
-  height: 2.58em; 
+  width: 100%; // 원래 3.36em
+  height: 2.58em;
   object-fit: contain;
 `;
 
 const TemplateName = styled.h3`
-  margin-top: 1.25em; 
+  margin-top: 0.5em; // 원래 1.25em
+  margin-bottom: 0.5em;
   font-family: "Inria Sans", sans-serif;
   font-weight: 700;
-  font-size: 1em; 
-  line-height: 1.1875em; 
+  font-size: 1.2vw;
+  line-height: 1.1875em;
   text-align: center;
   color: #000000;
 `;
 
-const Description = styled.p`
-  margin-top: 0.625em; 
+const Description = styled.div`
   font-family: "Inria Sans", sans-serif;
   font-weight: 300;
-  font-size: 0.875em; 
-  line-height: 1.0625em; 
+  font-size: 0.9vw;
+  line-height: 1.0625em;
   text-align: center;
   color: #d0d1d9;
-  width: 15.257em; 
+  width: 100%;
+  overflow: scroll;
 `;
 
 const Button = styled.button`
   margin-top: auto;
-  width: 11.523em; 
-  height: 1.871em; 
+  width: 11.523em;
+  height: 4.5vh;
   background-color: #0a27a6;
-  border-radius: 62.5em; 
+  border-radius: 62.5em;
   border: none;
   color: #ffffff;
   font-family: "Inria Sans", sans-serif;
   font-weight: 700;
-  font-size: 1em; 
-  line-height: 1.1875em; 
+  font-size: 1em;
+  line-height: 1.1875em;
   text-align: center;
   cursor: pointer;
 
   &:hover {
-    background-color: #092091; 
+    background-color: #092091;
   }
 `;
