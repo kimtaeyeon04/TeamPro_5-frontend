@@ -4,6 +4,7 @@ import styled from "styled-components";
 import SearchBar from "../components/commmon/SearchBar";
 import SelectBox from "../components/commmon/SelectBox";
 import TemplateCard from "../components/commmon/TemplateCard";
+import StyledButton from "../components/commmon/StyledButton";
 import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import합니다.
 
 const TemplatePage = () => {
@@ -12,9 +13,10 @@ const TemplatePage = () => {
       <SearchBar />
       <SelectBoxWrapper>
         <SelectBox />
-        <ApplyButton onClick={() => console.log("적용 버튼 클릭")}>
-          적용
-        </ApplyButton>
+        <StyledButton
+          text={"적용"}
+          onClick={() => console.log("적용버튼 클릭")}
+        />
       </SelectBoxWrapper>
       <Line></Line>
       <TemplateGrid>
@@ -42,22 +44,6 @@ const SelectBoxWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10vh;
-`;
-
-const ApplyButton = styled.button`
-  margin-top: 0.625em;
-  padding: 0.5em 1.5em;
-  width: 5vw;
-  background-color: #0a27a6;
-  color: white;
-  border: none;
-  border-radius: 0.5em;
-  font-size: 1vw;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #092091;
-  }
 `;
 
 const TemplateGrid = styled.div`

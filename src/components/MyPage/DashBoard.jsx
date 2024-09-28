@@ -66,16 +66,6 @@ const DashboardTitle = styled.div`
   color: #000000;
 `;
 
-// const DashboardCard = styled.div`
-//   position: relative;
-//   height: 12.5em;
-//   border: 0.0625em solid #d9d9d9;
-//   box-shadow: 0em 0.25em 0.25em rgba(0, 0, 0, 0.25);
-//   border-radius: 0.625em;
-//   padding: 1.5em;
-//   margin-top: 0.625em;
-// `;
-
 const DashboardCard = styled.div`
   position: relative;
   display: grid;
