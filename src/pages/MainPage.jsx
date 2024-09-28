@@ -87,26 +87,6 @@ const VideoWrapper1 = styled.div`
     position: relative;
 `;
 
-const VideoWrapper2 = styled.div`
-    display: flex;
-    margin-top : 10em;
-`;
-
-const VideoWrapper3 = styled.div`
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
-`;
-
-const TextWrapper = styled.div`
-    // display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 40em; 
-    margin-top : -5em;   
-`;
-
 const CardWrapper = styled.div`
     margin-top : 5em;
 `;
@@ -134,36 +114,9 @@ const Mainvideo = styled.video`
     object-fit: cover; 
 `;
 
-const Sharevideo = styled.video`
-    width : 30em;
-    margin-left : 10em; 
-    height: 25em; 
-    object-fit: cover; 
-`;
 
-const Drawvideo = styled.video`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width : 20em; 
-`;
 
 //css element
-const StartButton = styled.button`
-    color : #fff;
-    font-size : 1em;
-    font-weight : 800;
-
-    border-radius : 2em;
-    border : none;
-    background-color : #0A27A6;
-    height : 3em;
-    width : 20%;
-
-    margin-top : -3em;
-
-`;
 
 const SearchInput = styled.input`
     border-radius : 2em;
@@ -183,23 +136,6 @@ const LogoImage = styled.img`
     width : 1em;
     margin-top : -0.2em;
     padding-right : 0.5em;
-`;
-
-const N1Image = styled.img`
-    width : 20em;
-    margin-top: 10em;
-    padding-right  : 48em;
-`;
-
-const N2Image = styled.img`
-    width : 20em;
-    margin-top: 10em;
-    padding-left  : 45em;
-`;
-const N3Image = styled.img`
-    width : 20em;
-    margin-top: 10em;
-    padding-right  : 48em;
 `;
 
 const CopyrightImage = styled.img`
@@ -232,28 +168,6 @@ const Maintext = styled.p`
     font-family: "OTF B";
 `;
 
-const PointText1 = styled.p`
-    font-size : 5em;
-    font-weight : 800;
-    font-family: "OTF B";
-    color : #0A27A6;
-`;
-
-const PointText2 = styled.p`
-    font-size : 4em;
-    font-weight : 900;
-    font-family: "OTF B";
-    color : #6633cc;
-    margin-bottom : 0.2em;
-`;
-
-const PointText3 = styled.p`
-    font-size : 1em;
-    font-weight : 600;
-    font-family: "OTF R";
-    color : #000;
-    margin-bottom : -1em;
-`;
 const PointText4 = styled.p`
     font-size : 2em;
     font-weight : 800;
