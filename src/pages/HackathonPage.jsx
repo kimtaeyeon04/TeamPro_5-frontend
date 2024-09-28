@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import TemplateCard from "../components/commmon/TemplateCard.jsx";
-import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import합니다.
+import { dummydata } from "../components/commmon/dummydata/dummydata"; 
 import SelectBox from "../components/commmon/SelectBox";
 import SearchBarMini from "../components/MyPage/SearchBarMini";
 
