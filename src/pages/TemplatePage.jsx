@@ -19,16 +19,19 @@ const TemplatePage = () => {
         />
       </SelectBoxWrapper>
       <Line></Line>
-      <TemplateGrid>
-        {dummydata.map((data, index) => (
-          <TemplateCard
-            key={index}
-            templateName={data.postTitle}
-            description={data.postContent}
-            templateThumnail={data.postBackgroundImg}
-          />
-        ))}
-      </TemplateGrid>
+
+      <TemplateGridWrapper>
+        <TemplateGrid>
+          {dummydata.map((data, index) => (
+            <TemplateCard
+              key={index}
+              templateName={data.postTitle}
+              description={data.postContent}
+              templateThumnail={data.postBackgroundImg}
+            />
+          ))}
+        </TemplateGrid>
+      </TemplateGridWrapper>
     </TemplatePageContainer>
   );
 };
@@ -46,12 +49,18 @@ const SelectBoxWrapper = styled.div`
   margin-top: 10vh;
 `;
 
+const TemplateGridWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const TemplateGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1em;
+  place-content: center center;
+  gap: 3vw 1vw;
   margin-top: 2em;
-  width: 100%;
   max-width: 80em;
 `;
 

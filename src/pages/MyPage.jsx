@@ -30,18 +30,24 @@ function MyPage({ profilePicture, name, nickname }) {
           </SelectBoxWrapper>
           <SearchBarMini />
         </MyTemplateMenuContainer>
+
         <Line></Line>
-        <TemplateGrid>
-          {dummydata.map((data, index) => (
-            <TemplateCard
-              key={index}
-              templateName={data.postTitle}
-              description={data.postContent}
-              templateThumnail={data.postBackgroundImg}
-            />
-          ))}
-        </TemplateGrid>
+
+        <TemplateGridWrapper>
+          <TemplateGrid>
+            {dummydata.map((data, index) => (
+              <TemplateCard
+                key={index}
+                templateName={data.postTitle}
+                description={data.postContent}
+                templateThumnail={data.postBackgroundImg}
+              />
+            ))}
+          </TemplateGrid>
+        </TemplateGridWrapper>
+
         <Line></Line>
+
         <ButtonWrapper>
           <StyledButton
             text={"공유"}
@@ -65,7 +71,7 @@ const DashBoardContainer = styled.div`
 `;
 
 const MyTemplateContainer = styled.div`
-  position: relative;
+  //position: relative;
   top: 5em;
 `;
 
@@ -95,13 +101,18 @@ const SelectBoxWrapper = styled.div`
   align-items: center;
 `;
 
+const TemplateGridWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const TemplateGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1em;
+  place-content: center center;
+  gap: 3vw 1vw;
   margin-top: 2em;
-  margin-bottom: 2em;
-  width: 100%;
   max-width: 80em;
 `;
 

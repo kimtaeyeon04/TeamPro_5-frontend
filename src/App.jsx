@@ -8,6 +8,7 @@ import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
 import TemplatePage from "./pages/TemplatePage";
 import ProfileEditPage from "./pages/ProfileEditPage";
+import HackathonPage from "./pages/HackathonPage";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route element={<LayOut />}>
           {/* 메인 화면  */}
           <Route path="/" element={<MainPage />} />
+          {/* 해커톤 화면  */}
+          <Route path="/HackathonPage" element={<HackathonPage />} />
           {/*마이 페이지  */}
           <Route
             path="/MyPage"
