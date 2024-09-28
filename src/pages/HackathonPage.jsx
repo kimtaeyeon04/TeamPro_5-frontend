@@ -21,21 +21,24 @@ const HackathonPage = () => {
                 <SearchInput type="text" placeholder="검색어를 입력해주세요" />
             </PageCategoryWrapper>
 
-            <MyTemplateMenuWrapper>
-                <SelectBox />
-                <SearchBarMini />
-            </MyTemplateMenuWrapper>
-            {/* 12개의 카드를 그리드 형태로 출력 */}
-            <TemplateGrid>
-                {cards.map((data, index) => (
-                    <TemplateCard
-                        key={index}
-                        templateName={data.postTitle || '빈 제목'}
-                        description={data.postContent || '빈 설명'}
-                        templateThumnail={data.postBackgroundImg || 'default-image.png'}
-                    />
-                ))}
-            </TemplateGrid>
+            <MainWrapper>
+                <MyTemplateMenuWrapper>
+                    <SelectBox />
+                    <SearchBarMini />
+                </MyTemplateMenuWrapper>
+                {/* 12개의 카드를 그리드 형태로 출력 */}
+                <TemplateGrid>
+                    {cards.map((data, index) => (
+                        <TemplateCard
+                            key={index}
+                            templateName={data.postTitle || '빈 제목'}
+                            description={data.postContent || '빈 설명'}
+                            templateThumnail={data.postBackgroundImg || 'default-image.png'}
+                        />
+                    ))}
+                </TemplateGrid>
+            </MainWrapper>
+           
         </>
     );
 };
@@ -43,6 +46,11 @@ const HackathonPage = () => {
 export default HackathonPage;
 
 //css Wrapper
+
+const MainWrapper = styled.div`
+    width: 85%; //수정중...
+    margin: 0 auto;
+`;
 const PageCategoryWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -57,6 +65,7 @@ const MyTemplateMenuWrapper = styled.div`
   justify-content: space-between;
   margin-top : 5em;
 `;
+
 
 //css element
 const SearchInput = styled.input`
@@ -79,6 +88,7 @@ const TemplateGrid = styled.div`
   margin-top: 2em;
   width: 100%;
   max-width: 80em;
+
 `;
 
 const LogoImage = styled.img`
