@@ -21,15 +21,7 @@ function MyPage({ profilePicture, name, nickname }) {
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">내 템플릿</MyTemplateTitle>
         <MyTemplateMenuContainer>
-          <SelectBoxWrapper>
-            <SelectBox />
-            <StyledButtonWrapper>
-              <StyledButton
-                text={"적용"}
-                onClick={() => console.log("적용 버튼클릭")}
-              />
-            </StyledButtonWrapper>
-          </SelectBoxWrapper>
+          <SelectBox />
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
             onClick={() => console.log("검색 버튼 클릭")}
@@ -77,7 +69,7 @@ const DashBoardContainer = styled.div`
 
 const MyTemplateContainer = styled.div`
   //position: relative;
-  top: 5em;
+  margin-top: 10vh;
 `;
 
 const MyTemplateTitle = styled.div`
@@ -101,16 +93,6 @@ const MyTemplateMenuContainer = styled.div`
   justify-content: space-between;
 `;
 
-const SelectBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledButtonWrapper = styled.div`
-  display: inline-block;
-  width: 5vw;
-`;
-
 const TemplateGridWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -127,7 +109,7 @@ const TemplateGrid = styled.div`
 `;
 
 const Line = styled.hr`
-  margin: 0.625em 0;
+  margin: 1.5vh 0;
   border: 1px solid #d0d1d9;
 `;
 
