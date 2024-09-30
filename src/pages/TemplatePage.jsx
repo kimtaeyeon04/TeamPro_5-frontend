@@ -15,7 +15,7 @@ const TemplatePage = () => {
       {/* 각 페이지별 상단 -> 나중에 쉽게 모든 페이지에 적용할 수 있는 방법으로 수정 */}
       <PageCategoryWrapper>
         <LogoImage src={Logo} alt="로고" />
-        <HeaderText>Hackathon</HeaderText>
+        <HeaderText>Template</HeaderText>
       </PageCategoryWrapper>
       <SearchBar />
 
