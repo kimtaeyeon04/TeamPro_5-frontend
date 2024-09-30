@@ -33,8 +33,9 @@ function App() {
               />
             }
           />
-
+          {/* 템플릿 열람 화면*/}
           <Route path="/TemplatePage" element={<TemplatePage />} />
+          {/*프로필 편집 화면*/}
           <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
         </Route>
       </Route>
