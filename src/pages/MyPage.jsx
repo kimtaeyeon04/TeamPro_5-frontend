@@ -23,12 +23,17 @@ function MyPage({ profilePicture, name, nickname }) {
         <MyTemplateMenuContainer>
           <SelectBoxWrapper>
             <SelectBox />
-            <StyledButton
-              text={"적용"}
-              onClick={() => console.log("적용 버튼클릭")}
-            />
+            <StyledButtonWrapper>
+              <StyledButton
+                text={"적용"}
+                onClick={() => console.log("적용 버튼클릭")}
+              />
+            </StyledButtonWrapper>
           </SelectBoxWrapper>
-          <SearchBarMini />
+          <SearchBarMini
+            onChange={(e) => console.log(e.target.value)}
+            onClick={() => console.log("검색 버튼 클릭")}
+          />
         </MyTemplateMenuContainer>
 
         <Line></Line>
@@ -101,6 +106,11 @@ const SelectBoxWrapper = styled.div`
   align-items: center;
 `;
 
+const StyledButtonWrapper = styled.div`
+  display: inline-block;
+  width: 5vw;
+`;
+
 const TemplateGridWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -124,22 +134,5 @@ const Line = styled.hr`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-`;
-
-const ShareButton = styled.button`
-  margin-top: 0.625em;
-  padding: 0.5em 1.5em;
   width: 5vw;
-
-  background-color: #0a27a6;
-  color: white;
-  border: none;
-  border-radius: 0.5em;
-  font-size: 1vw;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: #092091;
-  }
 `;

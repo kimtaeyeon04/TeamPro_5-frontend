@@ -139,6 +139,7 @@ const SelectContainer = styled.div`
   font-weight: 700;
   flex-direction: row;
   position: relative;
+  width: 30vw;
 `;
 
 const SelectWrapper = styled.div`
