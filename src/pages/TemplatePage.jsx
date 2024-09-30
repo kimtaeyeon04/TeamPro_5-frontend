@@ -17,7 +17,10 @@ const TemplatePage = () => {
         <LogoImage src={Logo} alt="로고" />
         <HeaderText>Template</HeaderText>
       </PageCategoryWrapper>
-      <SearchBar />
+      <SearchBar
+        onChange={(e) => console.log(e.target.value)}
+        onClick={() => console.log("검색 버튼 클릭")}
+      />
 
       <SelectBoxWrapper>
         <SelectBox />

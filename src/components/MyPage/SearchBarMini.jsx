@@ -2,14 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import search from "../../assets/icons/Header/search.png";
 
-const SearchBarMini = () => {
+const SearchBarMini = ({ onChange, onClick }) => {
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
-        <SearchInput placeholder="제목, 공유자 이름 검색" spellCheck="false" />
+        <SearchInput
+          onChange={onChange}
+          placeholder="제목, 공유자 이름 검색"
+          spellCheck="false"
+        />
         <SearchIconWrapper>
-          {/* onClick넣으면 됨. */}
-          <SearchIcon src={search} alt="search" />
+          <SearchIcon onClick={onClick} src={search} alt="search" />
         </SearchIconWrapper>
       </SearchBarWrapper>
     </SearchBarContainer>
@@ -24,14 +27,14 @@ const SearchBarContainer = styled.div`
 `;
 const SearchBarWrapper = styled.div`
   width: 50%;
-  height: 2.5em; 
-  border: 0.0625em solid #c8c8c8; 
+  height: 2.5em;
+  border: 0.0625em solid #c8c8c8;
   box-shadow: 0em 0.0625em 0.25em rgba(12, 12, 13, 0.1),
-  0em 0.0625em 0.25em rgba(12, 12, 13, 0.05); 
+    0em 0.0625em 0.25em rgba(12, 12, 13, 0.05);
   border-radius: 62.5em;
   display: flex;
   align-items: center;
-  padding-left: 0.625em; 
+  padding-left: 0.625em;
   float: right;
 `;
 
@@ -40,8 +43,8 @@ const SearchInput = styled.input`
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 0.8125em; 
-  line-height: 1em; 
+  font-size: 0.8125em;
+  line-height: 1em;
   color: #919194;
   border: none;
   outline: none;

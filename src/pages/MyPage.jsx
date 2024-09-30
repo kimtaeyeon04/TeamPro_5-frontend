@@ -28,7 +28,10 @@ function MyPage({ profilePicture, name, nickname }) {
               onClick={() => console.log("적용 버튼클릭")}
             />
           </SelectBoxWrapper>
-          <SearchBarMini />
+          <SearchBarMini
+            onChange={(e) => console.log(e.target.value)}
+            onClick={() => console.log("검색 버튼 클릭")}
+          />
         </MyTemplateMenuContainer>
 
         <Line></Line>
