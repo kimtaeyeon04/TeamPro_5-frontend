@@ -39,17 +39,19 @@ const Card = styled.div`
   background-color: #ffffff;
   border: 0.125em solid #d0d1d9;
   border-radius: 0.3125em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  display: grid;
+  grid-template-rows: 6fr 1.5fr 3fr 1.5fr;
   padding: 1em;
   box-sizing: border-box;
 `;
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 18vw;
-  height: 26vh; // 원래 8.855em
+  //width: 18vw;
+  //height: 26vh; // 원래 8.855em
   background-color: #f9f9f9;
   border: 0.0625em solid #d0d1d9;
   border-radius: 0.625em;
@@ -93,8 +95,8 @@ const Description = styled.div`
 
 const Button = styled.button`
   margin-top: 1vh;
-  width: 11.523em;
-  height: 4.5vh;
+  //width: 11.523em;
+  //height: 4.5vh;
   background-color: #0a27a6;
   border-radius: 62.5em;
   border: none;
