@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
+
 function Header({ profilePicture }) {
   return (
     <HeaderContainer className="HeaderContainer">
@@ -25,6 +26,8 @@ function Header({ profilePicture }) {
           src={profilePicture}
           alt="profile"
         />
+        {/* 로그인 전에 나와야 한다. -> JSP */}
+        <LoginButton>로그인</LoginButton>
       </Profile>
     </HeaderContainer>
   );
@@ -107,4 +110,18 @@ const ProfilePic = styled.img`
   height: 100%;
   border-radius: 50%;
   cursor: pointer;
+`;
+
+const LoginButton = styled.button`
+    color : #fff;
+    font-size : 1em;
+    font-weight : 800;
+
+    border-radius : 2em;
+    border : none;
+    background-color : #0A27A6;
+    height : 3em;
+    width : 20%;
+
+    margin : 2em 0;
 `;
