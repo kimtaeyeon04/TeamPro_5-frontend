@@ -12,7 +12,7 @@ import Logo from "../assets/icons/Logo.png";
 const HackathonPage = () => {
     // 데이터가 12개 미만일 경우 빈 카드를 추가하는 배열 생성
     const cards = [...dummydata, ...Array(12 - dummydata.length).fill({})];
-
+    
     return (
         <>
             {/* 각 페이지별 상단 -> 나중에 쉽게 모든 페이지에 적용할 수 있는 방법으로 수정 */}

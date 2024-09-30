@@ -1,35 +1,31 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import Eye from "../assets/icons/Login/Eye.png";
-import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 
 const SignUpPage = () => {
-
-    const [eyeVisible, seteyeVisible] = useState(false);
-    
-    const toggleeyeVisible = () =>{
-        seteyeVisible(!eyeVisible);
-    }
 
     return(
         <LoginWrapper>
             <MainText>FolioFrame</MainText>
             <JoinWrapper>
-                <IDinput placeholder="ddddddd이메일 주소 또는 아이디"></IDinput>
-                <PassWrapper>
-                    <PASSinput type={eyeVisible ? "text" : "password"} placeholder="비밀번호"></PASSinput>
-                    <EyeIcon 
-                        src={eyeVisible ? Eyeoff : Eye} 
-                        alt="eye" 
-                        onClick={toggleeyeVisible}/>
-                </PassWrapper>
+                <ColumnWrapper1>
+                    <NameInput placeholder="이름" type="text"></NameInput>
+                    <ColumnWrapper2>
+                        <CalendarText>생년월일</CalendarText>
+                        <CalendarInput type="date"></CalendarInput>
+                    </ColumnWrapper2>
+                </ColumnWrapper1>
                 
-                {/* <EyeIcon></EyeIcon> */}
+                <TelInput placeholder="전화번호" type="tel" ></TelInput>
+                <CertificInput placeholder="회사인증" type="email" ></CertificInput>
+                <CheckBoxWrapper>
+                    <CheckBoxInput type="checkbox" id="Join" />
+                    <label for="Join">가입 기본약관</label>
+                </CheckBoxWrapper>
             </JoinWrapper>
-            <LoginButton>로그인</LoginButton>
+            <LoginButton>시작하기</LoginButton>
             <MemberWrapper>
-                <Text>회원이 아니신가요? |</Text>
-                <JoinButton>회원가입</JoinButton>
+                <Text>이미 회원이신가요? |</Text>
+                <JoinButton>로그인</JoinButton>
             </MemberWrapper>
         </LoginWrapper>
     );
@@ -60,37 +56,78 @@ const MemberWrapper = styled.div`
     margin-top : -2em;
 `;
 
-const PassWrapper = styled.div`
-    position: relative;
-    display: inline-block;
-    width: 200%; 
-    margin-bottom: -1.25em;
+const ColumnWrapper1 = styled.div`
+    display : flex;
+    gap : 1em;
+`;
+
+const ColumnWrapper2 = styled.div`
+    display : flex;
+    gap : 0.5em;
+`;
+
+const CheckBoxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left : -12em;
 `;
 
 //css input
-const IDinput = styled.input`
+const NameInput = styled.input`
     border-radius : 2em;
     border : 1px solid #D0D1D9;
     height : 3em;
-    width : 200%;
+    width : 40%;
     text-indent: 1em; 
-
+    outline : none;
     &::placeholder {
-    text-indent: 1em; 
+        text-indent: 1em; 
+        color : #D0D1D9;
     }
 
 `;
 
-const PASSinput = styled.input`
+const TelInput = styled.input`
     border-radius : 2em;
     border : 1px solid #D0D1D9;
     height : 3em;
     width : 100%;
     text-indent: 1em; 
-
+    outline : none;
     &::placeholder {
     text-indent: 1em; 
+    color : #D0D1D9;
     }
+
+`;
+
+const CertificInput = styled.input`
+    border-radius : 2em;
+    border : 1px solid #D0D1D9;
+    height : 3em;
+    width : 100%;
+    text-indent: 1em; 
+    outline : none;
+    &::placeholder {
+    text-indent: 1em;
+    color : #D0D1D9;
+    }
+
+`;
+const CalendarInput = styled.input`
+    border: none;
+    outline: none;
+    height: 2em;
+    padding: 0.5em;
+    font-size: 1em;
+    color: #D0D1D9;
+    border: 1px solid #D0D1D9;
+    border-radius: 4px;
+    margin-right : -2em;
+`;
+
+const CheckBoxInput = styled.input`
+    border: 1px solid #D0D1D9;
 `;
 
 //css button
@@ -116,15 +153,6 @@ const JoinButton = styled.button`
     background-color : transparent;
 `;
 
-const EyeIcon = styled.img`
-    position: absolute;
-    right: 1em; 
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width : 1.2em;
-    height : 1.2em;
-`;
 
 //css text
 const MainText = styled.p`
@@ -138,4 +166,11 @@ const Text = styled.p`
     color : #D0D1D9;
     font-size: 1em;
     font-weight: 500;
+`;
+
+const CalendarText =  styled.p`
+    color : #D0D1D9;
+    font-size: .8em;
+    font-weight: 500;
+    margin-top : 1em;
 `;
