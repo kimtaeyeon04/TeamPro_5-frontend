@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import arrow from "../../assets/icons/SelectBox/arrow.png";
+import StyledButton from "./StyledButton";
 
 const categories = ["프론트엔드", "백엔드", "디자인"];
 const sortOptions = ["인기순", "추천수", "최신순"];
@@ -46,9 +47,9 @@ const SelectBox = () => {
   };
 
   return (
-    <SelectContainer>
+    <SelectContainer className="SelectContiner">
       {/* 카테고리 */}
-      <SelectWrapper>
+      <SelectWrapper className="SelectWrapper">
         <SelectButton
           // 카테고리 버튼 누르면..
           onClick={() => {
@@ -127,6 +128,11 @@ const SelectBox = () => {
           )}
         </SelectMenu>
       </SelectWrapper>
+
+      <StyledButton
+        text={"적용"}
+        onClick={() => console.log("적용 버튼 클릭")}
+      />
     </SelectContainer>
   );
 };
@@ -135,19 +141,19 @@ export default SelectBox;
 
 const SelectContainer = styled.div`
   display: flex;
-  margin-top: 0.625em;
+  margin-top: 0.8vh;
   font-weight: 700;
   flex-direction: row;
   position: relative;
-  width: 30vw;
+  width: 35vw;
 `;
 
 const SelectWrapper = styled.div`
   position: relative;
   display: inline-block;
+  margin-top: 0.8vh;
   text-align: center;
-  width: 11em;
-  margin-right: -0.625em;
+  width: 100%;
 `;
 
 const SelectButton = styled.button`
@@ -155,17 +161,19 @@ const SelectButton = styled.button`
   border: 0.125em solid #d0d1d9;
   border-radius: 0.75em;
   padding: 0.625em 0em;
-  font-size: 0.8em;
+
+  font-size: 1vw;
   color: #d0d1d9;
   cursor: pointer;
   text-align: center;
+
   width: 80%;
   float: left;
 `;
 
 const ArrowImg = styled.img`
-  width: 1.2em;
-  margin-left: 1.875em;
+  width: 1vw;
+  margin-left: 1vw;
 `;
 
 const SelectMenu = styled.div`
