@@ -100,7 +100,7 @@ const NavLink = styled.a`
 `;
 
 const Profile = styled.div`
-  width: 2.6%;
+  width: 6vw;
   border-radius: 50%;
   display: flex;
   align-items: center;
