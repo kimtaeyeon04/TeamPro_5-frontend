@@ -7,10 +7,18 @@ import TemplateCard from "../components/commmon/TemplateCard";
 import StyledButton from "../components/commmon/StyledButton";
 import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import합니다.
 
+import Logo from "../assets/icons/Logo.png";
+
 const TemplatePage = () => {
   return (
     <TemplatePageContainer>
+      {/* 각 페이지별 상단 -> 나중에 쉽게 모든 페이지에 적용할 수 있는 방법으로 수정 */}
+      <PageCategoryWrapper>
+        <LogoImage src={Logo} alt="로고" />
+        <HeaderText>Hackathon</HeaderText>
+      </PageCategoryWrapper>
       <SearchBar />
+
       <SelectBoxWrapper>
         <SelectBox />
         <StyledButton
@@ -41,6 +49,27 @@ export default TemplatePage;
 const TemplatePageContainer = styled.div`
   width: 85%; //수정중...
   margin: 0 auto;
+`;
+
+const PageCategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const LogoImage = styled.img`
+  widht: 5em;
+  height: 5em;
+  margin-bottom: -2em;
+`;
+
+const HeaderText = styled.p`
+  color: #0a27a6;
+  font-size: 2em;
+  font-weight: 800;
+  font-family: "OTF B";
 `;
 
 const SelectBoxWrapper = styled.div`
