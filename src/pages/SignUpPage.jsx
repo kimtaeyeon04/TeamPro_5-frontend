@@ -1,21 +1,12 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import { Navigate, useNavigate } from "react-router-dom";
-
-
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 
-const LoginPage = () => {
+const SignUpPage = () => {
 
     const [eyeVisible, seteyeVisible] = useState(false);
     
-    // 회원가입 페이지로 이동
-    const navigate = useNavigate();
-
-    const onClickImg = () => {
-        navigate("./SignUpPage");
-    }
     const toggleeyeVisible = () =>{
         seteyeVisible(!eyeVisible);
     }
@@ -24,7 +15,7 @@ const LoginPage = () => {
         <LoginWrapper>
             <MainText>FolioFrame</MainText>
             <JoinWrapper>
-                <IDinput placeholder="이메일 주소 또는 아이디"></IDinput>
+                <IDinput placeholder="ddddddd이메일 주소 또는 아이디"></IDinput>
                 <PassWrapper>
                     <PASSinput type={eyeVisible ? "text" : "password"} placeholder="비밀번호"></PASSinput>
                     <EyeIcon 
@@ -38,13 +29,13 @@ const LoginPage = () => {
             <LoginButton>로그인</LoginButton>
             <MemberWrapper>
                 <Text>회원이 아니신가요? |</Text>
-                <JoinButton onClick={onClickImg}>회원가입</JoinButton>
+                <JoinButton>회원가입</JoinButton>
             </MemberWrapper>
         </LoginWrapper>
     );
 };
 
-export default LoginPage;
+export default SignUpPage;
 
 //css Wrapper
 const LoginWrapper = styled.div`

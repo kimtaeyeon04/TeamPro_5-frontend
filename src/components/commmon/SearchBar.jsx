@@ -24,7 +24,7 @@ const SearchBarContainer = styled.div`
 
 const SearchBarWrapper = styled.div`
   width: 50%;
-  height: 3.5em; 
+  height : 3em;
   border: 0.0625em solid #c8c8c8; 
   box-shadow: 0em 0.125em 0.125em rgba(12, 12, 13, 0.1),
     0em 0.25em 0.25em rgba(12, 12, 13, 0.05); 
@@ -46,6 +46,11 @@ const SearchInput = styled.input`
   border: none;
   outline: none;
   background: none;
+  
+  &::placeholder {
+        font-size: 0.8em;
+        text-indent: 0.2em; 
+    }
 `;
 
 const SearchIconWrapper = styled.div`
@@ -57,6 +62,6 @@ const SearchIconWrapper = styled.div`
 `;
 
 const SearchIcon = styled.img`
-  width: 40%;
+  width: 25%;
   border-radius: 50%;
 `;

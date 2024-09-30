@@ -4,7 +4,8 @@ import styled from "styled-components";
 import TemplateCard from "../components/commmon/TemplateCard.jsx";
 import { dummydata } from "../components/commmon/dummydata/dummydata"; 
 import SelectBox from "../components/commmon/SelectBox";
-import SearchBarMini from "../components/MyPage/SearchBarMini";
+import SearchBar from "../components/commmon/SearchBar";
+import StyledButton from "../components/commmon/StyledButton";
 
 import Logo from "../assets/icons/Logo.png";
 
@@ -18,14 +19,20 @@ const HackathonPage = () => {
             <PageCategoryWrapper>
                 <LogoImage src={Logo} alt="로고" />
                 <HeaderText>Hackathon</HeaderText>
-                <SearchInput type="text" placeholder="검색어를 입력해주세요" />
+                {/* <SearchInput type="text" placeholder="검색어를 입력해주세요" /> */}
             </PageCategoryWrapper>
+            <SearchBar/>
 
             <MainWrapper>
                 <MyTemplateMenuWrapper>
-                    <SelectBox />
-                    <SearchBarMini />
+                <SelectBox />
+                <StyledButton
+                text={"적용"}
+                onClick={() => console.log("적용버튼 클릭")}
+                />
                 </MyTemplateMenuWrapper>
+                <Line></Line>
+
                 {/* 12개의 카드를 그리드 형태로 출력 */}
                 <TemplateGrid>
                     {cards.map((data, index) => (
@@ -60,10 +67,9 @@ const PageCategoryWrapper = styled.div`
 `;
 
 const MyTemplateMenuWrapper = styled.div`
-  display: flex;
+ display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top : 5em;
+  margin-top: 10vh;
 `;
 
 
@@ -97,7 +103,10 @@ const LogoImage = styled.img`
     margin-bottom : -2em;
 `;
 
-
+const Line = styled.hr`
+  margin: 0.625em 0;
+  border: 1px solid #d0d1d9;
+`;
 //css Text
 const HeaderText = styled.p`
     color: #0A27A6; 
