@@ -5,7 +5,7 @@ import SearchBar from "../components/commmon/SearchBar";
 import SelectBox from "../components/commmon/SelectBox";
 import TemplateCard from "../components/commmon/TemplateCard";
 import StyledButton from "../components/commmon/StyledButton";
-import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import합니다.
+import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import
 
 import Logo from "../assets/icons/Logo.png";
 
@@ -17,7 +17,10 @@ const TemplatePage = () => {
         <LogoImage src={Logo} alt="로고" />
         <HeaderText>Template</HeaderText>
       </PageCategoryWrapper>
-      <SearchBar />
+      <SearchBar
+        onChange={(e) => console.log(e.target.value)}
+        onClick={() => console.log("검색 버튼 클릭")}
+      />
 
       <SelectBoxWrapper>
         <SelectBox />
@@ -33,9 +36,9 @@ const TemplatePage = () => {
           {dummydata.map((data, index) => (
             <TemplateCard
               key={index}
-              templateName={data.postTitle}
-              description={data.postContent}
-              templateThumnail={data.postBackgroundImg}
+              templateName={data.postTitle || "빈 제목"}
+              description={data.postContent || "빈 설명"}
+              templateThumnail={data.postBackgroundImg || "default-image.png"}
             />
           ))}
         </TemplateGrid>
