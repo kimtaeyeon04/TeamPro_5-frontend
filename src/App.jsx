@@ -17,11 +17,13 @@ function App() {
       <Route>
         {/* 기본 로그인 페이지 */}
         <Route path="/LoginPage" element={<LoginPage />} />
+        
         {/* 회원가입 페이지 */}
         <Route path="/LoginPage/SignUpPage" element={<SignUpPage />} />
         <Route element={<LayOut />}>
           {/* 메인 화면  */}
           <Route path="/" element={<MainPage />} />
+          <Route path="/LoginPage/MainPage" element={<MainPage />} />
           {/* 해커톤 화면  */}
           <Route path="/HackathonPage" element={<HackathonPage />} />
           {/*마이 페이지  */}

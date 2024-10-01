@@ -1,6 +1,7 @@
 export const userInfo = [
   {
     Id: 1,
+    password: 100,
     name: "홍길동",
     nickname: "길동이",
     email: "example@example.com",

@@ -22,8 +22,8 @@ const SearchBarMini = ({ onChange, onClick }) => {
 export default SearchBarMini;
 
 const SearchBarContainer = styled.div`
-  margin-top: 10px;
-  width: 50%;
+  margin-top: 0.8vh;
+  width: 30vw;
 `;
 const SearchBarWrapper = styled.div`
   width: 25vw;

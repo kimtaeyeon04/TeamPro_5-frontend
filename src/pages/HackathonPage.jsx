@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import TemplateCard from "../components/commmon/TemplateCard.jsx";
 import { dummydata } from "../components/commmon/dummydata/dummydata";
-import SelectBox from "../components/commmon/SelectBox";
+import SelectBox from "../components/commmon/SelectBox.jsx";
 import SearchBar from "../components/commmon/SearchBar";
 import StyledButton from "../components/commmon/StyledButton";
 
