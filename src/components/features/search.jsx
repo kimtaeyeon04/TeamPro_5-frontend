@@ -1,22 +1,27 @@
-import {LinkedList} from './linkedList.jsx';
+import {LinkedList} from '../DataStructure/linkedList.jsx';
+import dummyData from '../commmon/dummydata/dummydata.jsx'
 
 let input; // 사용자가 입력한 string
-let templates; // DB 내의 모든 템플릿
+// let templates; // DB 내의 모든 템플릿
 
-const search = (input, templates) => {
+const search = (input, dummyData) => {
     if (!input) {
         return;
     }
 
     let searchedTemplates = new LinkedList(); // 검색 결과를 저장할 linked list, 초기화하여 이전 검색 결과를 지움
 
-    templates.forEach((template) => {
+    dummyData.forEach((post) => {
         // 템플릿 이름, 템플릿 내용으로 검색
-        const isItTarget = template.postTitle.toLowerCase().includes(input) || template.postContent.toLowerCase().includes(input);
+        const isItTarget = post.postTitle.toLowerCase().includes(input) || post.postContent.toLowerCase().includes(input);
         if (isItTarget) {
-            searchedTemplates.append(template);
+            searchedTemplates.append(post);
         }
     });
 
+    console.log(searchedTemplates);
     return searchedTemplates;
 }
+
+input = '제목';
+search(input, dummyData);
