@@ -43,7 +43,7 @@ function Header({  }) {
       {/* 로고와 메뉴를 포함하는 메뉴박스 */}
       <MenuBox>
         {/* 프로젝트 로고 들어가야함 */}
-        <Logo>FolioFrame</Logo>
+        <Logo onClick={() => navigate('./')}>FolioFrame</Logo>
         {/* 네비게이션바에 있는 메뉴들 */}
         <TextWrapper>
           <Text onClick={() => navigate('../TemplatePage')}>템플릿</Text>
