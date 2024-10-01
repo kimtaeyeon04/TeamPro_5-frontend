@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
-function Header({ profilePicture }) {
+import StyledButton from "./StyledButton";
+
+function Header({ profilePicture, isLoggedIn, onLoginClick, onProfileClick }) {
   return (
     <HeaderContainer className="HeaderContainer">
       {/* 로고와 메뉴를 포함하는 메뉴박스 */}
@@ -16,9 +18,17 @@ function Header({ profilePicture }) {
         </Nav>
       </MenuBox>
 
-      {/* 프로필 사진, props로 받아서 넣어야 함 */}
+      {/* 로그인 여부에 따라 프로필 이미지 또는 로그인 버튼 렌더링 */}
       <Profile>
-        <ProfilePic src={profilePicture} alt="profile" />
+        {isLoggedIn ? (
+          <ProfilePic
+            onClick={onProfileClick}
+            src={profilePicture}
+            alt="profile"
+          />
+        ) : (
+          <StyledButton text="로그인" onClick={onLoginClick} />
+        )}
       </Profile>
     </HeaderContainer>
   );
@@ -90,7 +100,7 @@ const NavLink = styled.a`
 `;
 
 const Profile = styled.div`
-  width: 2.6%;
+  width: 6vw;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -100,4 +110,19 @@ const ProfilePic = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  cursor: pointer;
+`;
+
+const LoginButton = styled.button`
+  color: #fff;
+  font-size: 1em;
+  font-weight: 800;
+
+  border-radius: 2em;
+  border: none;
+  background-color: #0a27a6;
+  height: 3em;
+  width: 20%;
+
+  margin: 2em 0;
 `;

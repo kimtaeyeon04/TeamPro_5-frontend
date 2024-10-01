@@ -2,13 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import search from "../../assets/icons/Header/search.png";
 
-const SearchBar = () => {
+const SearchBar = ({ onChange, onClick }) => {
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
-        <SearchInput placeholder="제목, 공유자 이름 검색" spellCheck="false" />
-        <SearchIconWrapper onClick={() => console.log("검색버튼 누름")}>
-          <SearchIcon src={search} alt="search" />
+        <SearchInput
+          onChange={onChange}
+          placeholder="제목, 공유자 이름 검색"
+          spellCheck="false"
+        />
+        <SearchIconWrapper>
+          <SearchIcon onClick={onClick} src={search} alt="search" />
         </SearchIconWrapper>
       </SearchBarWrapper>
     </SearchBarContainer>
@@ -24,17 +28,16 @@ const SearchBarContainer = styled.div`
 
 const SearchBarWrapper = styled.div`
   width: 50%;
-  height: 3.5em; 
-  border: 0.0625em solid #c8c8c8; 
+  height: 3em;
+  border: 0.0625em solid #c8c8c8;
   box-shadow: 0em 0.125em 0.125em rgba(12, 12, 13, 0.1),
-    0em 0.25em 0.25em rgba(12, 12, 13, 0.05); 
-  border-radius: 62.5em; 
+    0em 0.25em 0.25em rgba(12, 12, 13, 0.05);
+  border-radius: 62.5em;
   display: flex;
   align-items: center;
-  padding-left: 1.25em; 
+  padding-left: 1.25em;
   float: right;
 `;
-
 
 const SearchInput = styled.input`
   width: 85%;
@@ -46,6 +49,11 @@ const SearchInput = styled.input`
   border: none;
   outline: none;
   background: none;
+
+  &::placeholder {
+    font-size: 0.8em;
+    text-indent: 0.2em;
+  }
 `;
 
 const SearchIconWrapper = styled.div`
@@ -57,6 +65,6 @@ const SearchIconWrapper = styled.div`
 `;
 
 const SearchIcon = styled.img`
-  width: 40%;
+  width: 25%;
   border-radius: 50%;
 `;
