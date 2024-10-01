@@ -118,6 +118,7 @@ const Logo = styled.div`
   position: absolute;
   left: 0;
   top: calc(50% - 48px / 2);
+  cursor : pointer; 
 `;
 
 const TextWrapper = styled.nav`
@@ -135,6 +136,7 @@ const Text = styled.a`
   color: #919194;
   text-decoration: none;
   margin-left: 20px;
+  cursor : pointer; 
 
   &:hover {
     color: #0a27a6;
