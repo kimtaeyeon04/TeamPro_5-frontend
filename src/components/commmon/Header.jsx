@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
 import StyledButton from "./StyledButton";
+import { useNavigate } from 'react-router-dom';
 
 function Header({ profilePicture, isLoggedIn, onLoginClick, onProfileClick }) {
+  const navigate = useNavigate();
+
+  
   return (
     <HeaderContainer className="HeaderContainer">
       {/* 로고와 메뉴를 포함하는 메뉴박스 */}
