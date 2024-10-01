@@ -6,36 +6,71 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 
-const LoginPage = () => {
+import { userInfo } from "../components/commmon/dummydata/userInfo.jsx"; 
 
+const LoginPage = () => {
     const [eyeVisible, seteyeVisible] = useState(false);
-    
-    // 회원가입 페이지로 이동
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     const navigate = useNavigate();
 
     const onClickImg = () => {
         navigate("./SignUpPage");
-    }
-    const toggleeyeVisible = () =>{
-        seteyeVisible(!eyeVisible);
-    }
+    };
 
-    return(
+    const toggleeyeVisible = () => {
+        seteyeVisible(!eyeVisible);
+    };
+
+    const handleLogin = () => {
+        const trimmedEmail = email.trim();
+        const trimmedPassword = password.trim();
+
+        console.log("입력된 이메일 (공백 제거):", trimmedEmail);
+        console.log("입력된 비밀번호 (공백 제거):", trimmedPassword);
+        console.log("더미 데이터:", userInfo);
+
+        const user = userInfo.find(
+            (user) => user.email.toLowerCase() === trimmedEmail.toLowerCase() && user.password.toString() === trimmedPassword // 비밀번호를 문자열로 비교
+        );
+
+        if (user) {
+            console.log("로그인 성공, MainPage로 이동");
+
+            // 로그인 성공 시 accessToken 저장
+            localStorage.setItem('accessToken', 'yourAccessTokenHere'); // 실제 accessToken 사용
+
+            navigate("./MainPage");
+        } else {
+            console.log("로그인 실패 - 입력값이 더미 데이터와 일치하지 않음");
+        }
+    };
+
+    return (
         <LoginWrapper>
             <MainText>FolioFrame</MainText>
             <JoinWrapper>
-                <IDinput placeholder="이메일 주소 또는 아이디"></IDinput>
+                <IDinput
+                    placeholder="이메일 주소 또는 아이디"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
                 <PassWrapper>
-                    <PASSinput type={eyeVisible ? "text" : "password"} placeholder="비밀번호"></PASSinput>
-                    <EyeIcon 
-                        src={eyeVisible ? Eyeoff : Eye} 
-                        alt="eye" 
-                        onClick={toggleeyeVisible}/>
+                    <PASSinput
+                        type={eyeVisible ? "text" : "password"}
+                        placeholder="비밀번호"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <EyeIcon
+                        src={eyeVisible ? Eyeoff : Eye}
+                        alt="eye"
+                        onClick={toggleeyeVisible}
+                    />
                 </PassWrapper>
-                
-                {/* <EyeIcon></EyeIcon> */}
             </JoinWrapper>
-            <LoginButton>로그인</LoginButton>
+            <LoginButton onClick={handleLogin}>로그인</LoginButton>
             <MemberWrapper>
                 <Text>회원이 아니신가요? |</Text>
                 <JoinButton onClick={onClickImg}>회원가입</JoinButton>
@@ -45,6 +80,7 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
 
 //css Wrapper
 const LoginWrapper = styled.div`
