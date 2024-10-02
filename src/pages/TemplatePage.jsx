@@ -35,6 +35,7 @@ const TemplatePage = () => {
               templateName={data.postTitle || "빈 제목"}
               description={data.postContent || "빈 설명"}
               templateThumnail={data.postBackgroundImg || "default-image.png"}
+              templateButton={"보기"}
             />
           ))}
         </TemplateGrid>
