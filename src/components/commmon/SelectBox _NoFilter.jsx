@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import arrow from "../../assets/icons/SelectBox/arrow.png";
 import StyledButton from "./StyledButton";
+//sort 함수 import
 
 const categories = ["프론트엔드", "백엔드", "디자인"];
 const sortOptions = ["인기순", "댓글순", "최신순"];
@@ -19,8 +20,7 @@ const filterOptions = [
   "박사",
 ];
 
-//기능구현으로부터 sort 함수 받음.
-const SelectBox_NoFilter = ({ sort }) => {
+const SelectBox_NoFilter = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
 
@@ -96,7 +96,7 @@ const SelectBox_NoFilter = ({ sort }) => {
         onClick={() => {
           console.log(selectedCategory, selectedSort);
           // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
-          sort(selectedCategory, selectedSort);
+          //sort(selectedCategory, selectedSort);
         }}
       />
     </SelectContainer>
