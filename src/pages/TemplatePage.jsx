@@ -24,10 +24,6 @@ const TemplatePage = () => {
 
       <SelectBoxWrapper>
         <SelectBox />
-        <StyledButton
-          text={"적용"}
-          onClick={() => console.log("적용버튼 클릭")}
-        />
       </SelectBoxWrapper>
       <Line></Line>
 

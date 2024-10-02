@@ -12,20 +12,25 @@ const StyledButton = ({ text, onClick }) => {
 export default StyledButton;
 
 const StyledButtonWrapper = styled.div`
-  margin-top: 0.8vh;
   display: inline-block;
+  text-align: center;
   width: 100%;
 `;
 
 const Button = styled.button`
   padding: 0.625em 0em;
   width: 80%;
+
   background-color: #0a27a6;
   color: white;
   border: none;
-  border-radius: 0.5em;
+  border-radius: 0.75em;
   font-size: 1vw;
   cursor: pointer;
+  text-align: center;
+
+  width: 80%;
+  float: left;
 
   &:hover {
     background-color: #092091;
