@@ -55,10 +55,7 @@ function App() {
           />
           {/*프로필 편집 화면*/}
           <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
-          <Route
-            path="/LoginPage/MainPage/ProfileEditPage"
-            element={<ProfileEditPage />}
-          />
+          <Route path="/MyPage/ProfileEditPage" element={<ProfileEditPage />} />
         </Route>
       </Route>
     </Routes>

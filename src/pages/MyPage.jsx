@@ -62,6 +62,7 @@ function MyPage({ profilePicture, name, nickname }) {
                 templateName={data.postTitle}
                 description={data.postContent}
                 templateThumnail={data.postBackgroundImg}
+                templateButton={"보기"}
               />
             ))}
           </TemplateGrid>

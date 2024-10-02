@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Logo from "../../assets/icons/Logo.png";
 // 템플릿 카드 1개
-//templateName, description, templateThumnail을 props로!
+//templateName, description, templateThumnail, templateButton을 props로!
 const TemplateCard = ({
   templateName,
   description,
