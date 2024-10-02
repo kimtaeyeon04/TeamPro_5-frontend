@@ -137,7 +137,7 @@ const SelectBox = ({ sort }) => {
         onClick={() => {
           console.log(selectedCategory, selectedSort, selectedFilters);
           // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
-          //sort(selectedCategory, selectedSort, selectedFilters);
+          sort(selectedCategory, selectedSort, selectedFilters);
         }}
       />
     </SelectContainer>
