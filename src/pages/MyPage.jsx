@@ -25,15 +25,31 @@ function MyPage({ profilePicture, name, nickname }) {
         />
       </DashBoardContainer>
 
+      <MyPortFolioContainer>
+        <MyPortFolioTiltle>내 포트폴리오</MyPortFolioTiltle>
+        <MyProtFolioMenuBarWrapper>
+          <SearchBarMini
+            onChange={(e) => console.log(e.target.value)}
+            onClick={() => onSearchClick}
+          />
+        </MyProtFolioMenuBarWrapper>
+
+        <Line></Line>
+
+        <TemplateGridWrapper>
+          <TemplateGrid>{/* 기능구현으로부터 함수 받아서 구현 */}</TemplateGrid>
+        </TemplateGridWrapper>
+      </MyPortFolioContainer>
+
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">내 템플릿</MyTemplateTitle>
-        <MyTemplateMenuContainer>
+        <MyTemplateMenuWrapper>
           <SelectBox />
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
-            onClick={onProfileEidtClick}
+            onClick={() => onSearchClick}
           />
-        </MyTemplateMenuContainer>
+        </MyTemplateMenuWrapper>
 
         <Line></Line>
 
@@ -75,8 +91,31 @@ const DashBoardContainer = styled.div`
   margin-left: -1em;
 `;
 
+const MyPortFolioContainer = styled.div`
+  margin-top: 10vh;
+`;
+
+const MyPortFolioTiltle = styled.div`
+  height: 2.625em;
+  top: 11.375em;
+  font-family: "Inria Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.875em;
+  line-height: 2.25em;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.025em;
+  color: #000000;
+`;
+
+const MyProtFolioMenuBarWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const MyTemplateContainer = styled.div`
-  //position: relative;
   margin-top: 10vh;
 `;
 
@@ -95,7 +134,7 @@ const MyTemplateTitle = styled.div`
   color: #000000;
 `;
 
-const MyTemplateMenuContainer = styled.div`
+const MyTemplateMenuWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
