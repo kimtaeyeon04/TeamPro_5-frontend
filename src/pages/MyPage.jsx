@@ -26,7 +26,7 @@ function MyPage({ profilePicture, name, nickname }) {
       </DashBoardContainer>
 
       <MyPortFolioContainer>
-        <MyPortFolioTiltle>내 포트폴리오</MyPortFolioTiltle>
+        <MyPortFolioTiltle>내가 만든 포트폴리오</MyPortFolioTiltle>
         <MyProtFolioMenuBarWrapper>
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
@@ -42,7 +42,9 @@ function MyPage({ profilePicture, name, nickname }) {
       </MyPortFolioContainer>
 
       <MyTemplateContainer className="MyTempalteContainer">
-        <MyTemplateTitle className="MyTemplateTitle">내 템플릿</MyTemplateTitle>
+        <MyTemplateTitle className="MyTemplateTitle">
+          내 템플릿 찾아보기
+        </MyTemplateTitle>
         <MyTemplateMenuWrapper>
           <SelectBox />
           <SearchBarMini
