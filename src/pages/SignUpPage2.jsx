@@ -2,10 +2,18 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import { Navigate, useNavigate } from "react-router-dom";
 import Consent from "../components/Consent/Consent.jsx";
+import Eye from "../assets/icons/Login/Eye.png";
+import Eyeoff from "../assets/icons/Login/Eyeoff.png";
+
 
 const SignUpPage = () => {
     const navigate = useNavigate();
+    const [eyeVisible, setEyeVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false); 
+
+    const toggleEyeVisible = () => {
+        setEyeVisible(!eyeVisible);
+    };
 
     const handleCheckBoxClick = () => {
         setIsModalOpen(true); // 체크박스 클릭 시 팝업 열기
@@ -25,13 +33,20 @@ const SignUpPage = () => {
                         <CalendarInput type="date"></CalendarInput>
                     </ColumnWrapper2>
                 </ColumnWrapper1>
-                
+                <IdInput placeholder="아이디 및 이메일" type="text"></IdInput>
+                <PassWrapper>
+                    <PassInput
+                        type={eyeVisible ? "text" : "password"}
+                        placeholder="비밀번호"
+                    />
+                    <EyeIcon
+                        src={eyeVisible ? Eyeoff : Eye}
+                        alt="eye"
+                        onClick={toggleEyeVisible}
+                    />
+                </PassWrapper>
                 <TelInput placeholder="전화번호" type="tel"></TelInput>
-                <CertificInput placeholder="회사인증" type="email"></CertificInput>
-                <CheckBoxWrapper>
-                    <CheckBoxInput type="checkbox" id="Join" onClick={handleCheckBoxClick} />
-                    <label htmlFor="Join">가입 기본약관</label>
-                </CheckBoxWrapper>
+                
             </JoinWrapper>
             <LoginButton>시작하기</LoginButton>
             <MemberWrapper>
@@ -60,7 +75,7 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 90px;
+    padding: 50px;
 `;
 
 const JoinWrapper = styled.div`
@@ -87,10 +102,11 @@ const ColumnWrapper2 = styled.div`
     gap : 0.5em;
 `;
 
-const CheckBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left : -12em;
+
+const PassWrapper = styled.div`
+    position: relative;
+    width: 100%;
+   
 `;
 
 //css input
@@ -122,19 +138,6 @@ const TelInput = styled.input`
 
 `;
 
-const CertificInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-    outline : none;
-    &::placeholder {
-    text-indent: 1em;
-    color : #D0D1D9;
-    }
-
-`;
 const CalendarInput = styled.input`
     border: none;
     outline: none;
@@ -146,9 +149,32 @@ const CalendarInput = styled.input`
     border-radius: 4px;
     margin-right : -2em;
 `;
+const PassInput = styled.input`
+    border-radius : 2em;
+    border : 1px solid #D0D1D9;
+    height : 3em;
+    width : 90%;  
+    text-indent: 1em; 
+    padding-right: 2.5em; 
+    outline : none;
+    &::placeholder {
+        text-indent: 1em; 
+        color : #D0D1D9;
+    }
 
-const CheckBoxInput = styled.input`
-    border: 1px solid #D0D1D9;
+`;
+const IdInput = styled.input`
+    border-radius : 2em;
+    border : 1px solid #D0D1D9;
+    height : 3em;
+    width : 100%;
+    text-indent: 1em; 
+    outline : none;
+    &::placeholder {
+    text-indent: 1em;
+    color : #D0D1D9;
+    }
+
 `;
 
 //css button
@@ -230,4 +256,13 @@ const CloseButton = styled.button`
     &:hover {
         background: #0056b3;
     }
+`;
+const EyeIcon = styled.img`
+    position: absolute;
+    right: 1em; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width : 1.2em;
+    height : 1.2em;
 `;

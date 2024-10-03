@@ -18,7 +18,7 @@ const LoginPage = () => {
 
     // 회원가입 페이지 이동
     const onClickImg = () => {
-        navigate("./SignUpPage");
+        navigate("/SignUpPage");
     };
 
     // 비밀번호 눈
