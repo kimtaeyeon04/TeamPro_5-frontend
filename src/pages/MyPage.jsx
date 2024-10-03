@@ -43,7 +43,7 @@ function MyPage({ profilePicture, name, nickname }) {
 
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">
-          내 템플릿 찾아보기
+          내가 만든 템플릿
         </MyTemplateTitle>
         <MyTemplateMenuWrapper>
           <SelectBox />
@@ -58,7 +58,7 @@ function MyPage({ profilePicture, name, nickname }) {
         <TemplateGridWrapper>
           <TemplateGrid>
             {/* 기능구현으로부터 필터 기능 탑재된 filterData를 넣기 */}
-            {dummydata.map((data, index) => (
+            {/* {dummydata.map((data, index) => (
               <TemplateCard
                 key={index}
                 templateName={data.postTitle}
@@ -66,7 +66,8 @@ function MyPage({ profilePicture, name, nickname }) {
                 templateThumnail={data.postBackgroundImg}
                 templateButton={"보기"}
               />
-            ))}
+            ))} */}
+            비어있음. {/* 기능 구현이 어려움으로 일단 이렇게 해둠. */}
           </TemplateGrid>
         </TemplateGridWrapper>
 
@@ -166,5 +167,5 @@ const Line = styled.hr`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 5vw;
+  width: 100%;
 `;
