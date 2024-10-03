@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import profileIcon from "./assets/icons/Header/profileIcon.png";
 import LoginPage from "./pages/LoginPage";
+import MemberSelectionPage from "./pages/MemberSelectionPage";
 import SignUpPage from "./pages/SignUpPage";
 import SignUpPage2 from "./pages/SignUpPage2";
 import LayOut from "./components/commmon/LayOut";
@@ -19,6 +20,7 @@ function App() {
         {/* 기본 로그인 페이지 */}
         <Route path="/LoginPage" element={<LoginPage />} />
 
+        <Route path="/MemberSelectionPage" element={<MemberSelectionPage />} />
         {/* 기업회원 회원가입 페이지 */}
         <Route path="/SignUpPage" element={<SignUpPage />} />
         {/* 일반회원 회원가입 페이지 */}
