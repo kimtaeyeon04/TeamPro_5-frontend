@@ -5,8 +5,10 @@ import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; /
 import StyledButton from "./StyledButton";
 import { Navigate, useNavigate } from "react-router-dom";
 import HackathonPage from "../../pages/HackathonPage";
+
 function Header({}) {
   const navigate = useNavigate();
+
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("accessToken")
   );
@@ -58,12 +60,15 @@ function Header({}) {
       <Profile>
         {accessToken ? (
           <>
-            {/* <ProfilePic
-              onClick={onProfileClick}
-              src={profilePicture}
-              alt="profile"
-            /> */}
-            <StyledButton text="로그아웃" onClick={handleLogout} />
+          <ProfileWrapper>
+            <ProfilePic
+                onClick={() => navigate("../MyPage")}
+                src={defaultProfilePicture}
+                alt="profile"
+              />
+              <LoginButton onClick={handleLogout}>로그아웃</LoginButton>
+          </ProfileWrapper>
+           
           </>
         ) : (
           <StyledButton
@@ -100,6 +105,12 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
 `;
 
+const ProfileWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5em; 
+  margin-left: -5em; 
+`;
 const MenuBox = styled.div`
   display: flex;
   align-items: center;
@@ -148,25 +159,31 @@ const Profile = styled.div`
   border-radius: 50%;
   display: flex;
   align-items: center;
+
 `;
 
 const ProfilePic = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 25%;
+  height: 25%;
   border-radius: 50%;
   cursor: pointer;
 `;
 
 const LoginButton = styled.button`
-  color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-
-  border-radius: 2em;
-  border: none;
+  // padding: 0.625em 0em;
+  // width: 80%;
+  height : 2em;
+  width : 10em;
   background-color: #0a27a6;
-  height: 3em;
-  width: 20%;
+  color: white;
+  border: none;
+  border-radius: 0.75em;
+  font-size: 1vw;
+  cursor: pointer;
+  text-align: center;
+  float: left;
 
-  margin: 2em 0;
+  &:hover {
+    background-color: #092091;
+  }
 `;
