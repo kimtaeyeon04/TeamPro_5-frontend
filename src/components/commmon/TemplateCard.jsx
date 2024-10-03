@@ -3,8 +3,13 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Logo from "../../assets/icons/Logo.png";
 // 템플릿 카드 1개
-//templateName, description, templateThumnail을 props로!
-const TemplateCard = ({ templateName, description, templateThumnail }) => {
+//templateName, description, templateThumnail, templateButton을 props로!
+const TemplateCard = ({
+  templateName,
+  description,
+  templateThumnail,
+  templateButton,
+}) => {
   return (
     <Card>
       <ImageContainer>
@@ -17,7 +22,7 @@ const TemplateCard = ({ templateName, description, templateThumnail }) => {
           console.log("보기 버튼 클릭");
         }}
       >
-        보기
+        {templateButton}
       </Button>
     </Card>
   );

@@ -17,7 +17,7 @@ function App() {
       <Route>
         {/* 기본 로그인 페이지 */}
         <Route path="/LoginPage" element={<LoginPage />} />
-        
+
         {/* 회원가입 페이지 */}
         <Route path="/LoginPage/SignUpPage" element={<SignUpPage />} />
         <Route element={<LayOut />}>
@@ -37,10 +37,25 @@ function App() {
               />
             }
           />
+          <Route
+            path="/LoginPage/MainPage/MyPage"
+            element={
+              <MyPage
+                profileIcon={profileIcon}
+                name={"포폴만들조"}
+                nickname={"폴리오프레임"}
+              />
+            }
+          />
           {/* 템플릿 열람 화면*/}
           <Route path="/TemplatePage" element={<TemplatePage />} />
+          <Route
+            path="/Login/MainPage/TemplatePage"
+            element={<TemplatePage />}
+          />
           {/*프로필 편집 화면*/}
           <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
+          <Route path="/MyPage/ProfileEditPage" element={<ProfileEditPage />} />
         </Route>
       </Route>
     </Routes>

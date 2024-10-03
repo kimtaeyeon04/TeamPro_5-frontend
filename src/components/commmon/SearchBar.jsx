@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import search from "../../assets/icons/Header/search.png";
+import searchImg from "../../assets/icons/Header/search.png";
+//import search from "./features/search.jsx";
 
-const SearchBar = ({ onChange, onClick }) => {
+const SearchBar = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (e) => {
+    const newValue = e.target.value;
+    setInputValue(newValue); // 입력 값을 상태에 저장
+  };
+
+  const handleSearchClick = () => {
+    console.log(inputValue);
+    //search(inputValue);
+  };
+
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
         <SearchInput
-          onChange={onChange}
+          value={inputValue} // 입력 필드가 상태와 동기화
+          onChange={handleInputChange}
           placeholder="제목, 공유자 이름 검색"
           spellCheck="false"
         />
         <SearchIconWrapper>
-          <SearchIcon onClick={onClick} src={search} alt="search" />
+          <SearchIcon
+            onClick={handleSearchClick}
+            src={searchImg}
+            alt="search"
+          />
         </SearchIconWrapper>
       </SearchBarWrapper>
     </SearchBarContainer>

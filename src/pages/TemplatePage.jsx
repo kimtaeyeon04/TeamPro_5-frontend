@@ -24,10 +24,6 @@ const TemplatePage = () => {
 
       <SelectBoxWrapper>
         <SelectBox />
-        <StyledButton
-          text={"적용"}
-          onClick={() => console.log("적용버튼 클릭")}
-        />
       </SelectBoxWrapper>
       <Line></Line>
 
@@ -39,6 +35,7 @@ const TemplatePage = () => {
               templateName={data.postTitle || "빈 제목"}
               description={data.postContent || "빈 설명"}
               templateThumnail={data.postBackgroundImg || "default-image.png"}
+              templateButton={"보기"}
             />
           ))}
         </TemplateGrid>
