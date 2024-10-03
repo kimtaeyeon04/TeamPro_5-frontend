@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import StyledButton from "../components/commmon/StyledButton";
-// import defaultProfileImg from "../assets/icons/profileIcon.svg";
+//기능구현에서 만든 저장, 변경, 삭제 함수 import 하기.
 
-const ProfileEditUI = ({
-  handleSave, //기능구현에서 만들어줄 함수.
-  handleEmailChange, //기능구현에서 만들어줄 함수.
-  handleDeleteAccount, //기능구현에서 만들어줄 함수.
-}) => {
+const ProfileEditUI = ({}) => {
   const [name, setName] = useState(null);
   const [nickname, setNickname] = useState(null);
   const [email, setEmail] = useState(null);
-  // const [profileImage, setProfileImage] = useState(null);
   const [deleteChecked, setDeleteChecked] = useState(false);
 
   return (
@@ -49,7 +44,8 @@ const ProfileEditUI = ({
           <StyledButtonContainer>
             <StyledButton
               text={"저장"}
-              onClick={() => handleSave(name, nickname)} // <-- 기능구현에서 만들어줄 함수!! 바꿀 이름이랑 닉네임을 handleSave함수로 보내면 바꿔주깅~
+              onClick={() => console.log(name, nickname)}
+              // handleSave(name, nickname) <-- 기능구현에서 만들어줄 함수!! 바꿀 이름이랑 닉네임을 handleSave함수로 보내면 바꿔주깅~
             />
           </StyledButtonContainer>
         </InputButtonContainer>
@@ -77,35 +73,14 @@ const ProfileEditUI = ({
           <StyledButtonContainer>
             <StyledButton
               text={"변경"}
-              onClick={() => handleEmailChange(email)} // <-- 기능구현에서 만들어줄 함수!! 바꿀 이메일을 handleEmailChane함수로 보내면 바꿔주깅~
+              onClick={() => console.log(email)}
+              //handleEmailChange(email) <-- 기능구현에서 만들어줄 함수!! 바꿀 이메일을 handleEmailChane함수로 보내면 바꿔주깅~
             />
           </StyledButtonContainer>
         </InputButtonContainer>
       </Section>
 
       <Line></Line>
-
-      {/* <Section>
-        <LabelWrapper>
-          <Label>프로필</Label>
-        </LabelWrapper>
-
-        <InputButtonContainer>
-          <ProfileInputContainer>
-            <Text>프로필</Text>
-            <ProfileInputWrapper>
-              <ProfileInput type="file" onChange={() => handleProfileUpload} />
-              <ProfileButton>사진 업로드</ProfileButton>
-            </ProfileInputWrapper>
-          </ProfileInputContainer>
-
-          <StyledButtonContainer>
-            <StyledButton text={"저장"} />
-          </StyledButtonContainer>
-        </InputButtonContainer>
-      </Section>
-
-      <Line></Line> */}
 
       <Section>
         <LabelWrapper>
@@ -131,7 +106,8 @@ const ProfileEditUI = ({
             </DeleteDiscription>
             <DeleteButton
               disabled={!deleteChecked} // deleteChecked가 false일 때 버튼은 눌리지 않도록 설정
-              onClick={() => handleDeleteAccount} // <-- 기능구현에서 만들어줄 함수!! 삭제할 계정을 handleDeleteAccount함수로 보내면 삭제해주깅~
+              onClick={() => console.log(deleteChecked)}
+              //handleDeleteAccount <-- 기능구현에서 만들어줄 함수!! 삭제할 계정을 handleDeleteAccount함수로 보내면 삭제해주깅~
             >
               계정 삭제
             </DeleteButton>
@@ -228,27 +204,6 @@ const EmailInputContainer = styled.div`
   grid-template-rows: 1fr 1fr;
 
   margin-left: 0.5vw;
-`;
-
-const ProfileInputContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-`;
-
-const ProfileInputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ProfileInput = styled.input`
-  margin-right: 10px;
-`;
-
-const ProfileButton = styled.button`
-  padding: 10px;
-  border: 1px solid #d0d1d9;
-  background: #ffffff;
-  border-radius: 5px;
 `;
 
 const DeleteLabel = styled(Label)`
