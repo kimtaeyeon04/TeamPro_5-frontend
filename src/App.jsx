@@ -19,7 +19,7 @@ function App() {
         <Route path="/LoginPage" element={<LoginPage />} />
 
         {/* 회원가입 페이지 */}
-        <Route path="/LoginPage/SignUpPage" element={<SignUpPage />} />
+        <Route path="/SignUpPage" element={<SignUpPage />} />
         <Route element={<LayOut />}>
           {/* 메인 화면  */}
           <Route path="/" element={<MainPage />} />
