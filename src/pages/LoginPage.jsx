@@ -9,35 +9,39 @@ import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 import { userInfo } from "../components/commmon/dummydata/userInfo.jsx"; 
 
 const LoginPage = () => {
-    const [eyeVisible, seteyeVisible] = useState(false);
+    const [eyeVisible, setEyeVisible] = useState(false);
     const [email, setEmail] = useState("");
+    const [Id, setId] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
 
+    // 회원가입 페이지 이동
     const onClickImg = () => {
         navigate("./SignUpPage");
     };
 
-    const toggleeyeVisible = () => {
-        seteyeVisible(!eyeVisible);
+    // 비밀번호 눈
+    const toggleEyeVisible = () => {
+        setEyeVisible(!eyeVisible);
     };
 
     const handleLogin = () => {
         const trimmedEmail = email.trim();
+        const trimmedId = Id.trim();
         const trimmedPassword = password.trim();
 
-        console.log("입력된 이메일 (공백 제거):", trimmedEmail);
-        console.log("입력된 비밀번호 (공백 제거):", trimmedPassword);
+        console.log("입력된 이메일 및 아이디 :", trimmedEmail, trimmedId);
+        console.log("입력된 비밀번호 : ", trimmedPassword);
         console.log("더미 데이터:", userInfo);
 
         const user = userInfo.find(
-            (user) => user.email.toLowerCase() === trimmedEmail.toLowerCase() && user.password.toString() === trimmedPassword // 비밀번호를 문자열로 비교
+            (user) => 
+                (user.email.toLowerCase() === trimmedEmail.toLowerCase() || user.Id.toString() === trimmedId) &&
+                user.password.toString() === trimmedPassword
         );
 
         if (user) {
-            console.log("로그인 성공, MainPage로 이동");
-
             // 로그인 성공 시 accessToken 저장
             localStorage.setItem('accessToken', 'yourAccessTokenHere'); // 실제 accessToken 사용
 
@@ -53,8 +57,14 @@ const LoginPage = () => {
             <JoinWrapper>
                 <IDinput
                     placeholder="이메일 주소 또는 아이디"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={email || Id}
+                    onChange={(e) => {
+                        if (e.target.value.includes('@')) {
+                            setEmail(e.target.value);
+                        } else {
+                            setId(e.target.value);
+                        }
+                    }}
                 />
                 <PassWrapper>
                     <PASSinput
@@ -66,7 +76,7 @@ const LoginPage = () => {
                     <EyeIcon
                         src={eyeVisible ? Eyeoff : Eye}
                         alt="eye"
-                        onClick={toggleeyeVisible}
+                        onClick={toggleEyeVisible}
                     />
                 </PassWrapper>
             </JoinWrapper>
