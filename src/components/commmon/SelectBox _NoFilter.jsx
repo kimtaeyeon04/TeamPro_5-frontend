@@ -127,7 +127,7 @@ const SelectButton = styled.button`
   border-radius: 0.75em;
   padding: 0.625em 0em;
 
-  font-size: 1vw;
+  font-size: 0.95vw;
   color: #d0d1d9;
   cursor: pointer;
   text-align: center;
