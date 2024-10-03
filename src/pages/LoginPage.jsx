@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+import { Navigate, useNavigate } from "react-router-dom";
+
+
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 
@@ -7,6 +10,12 @@ const LoginPage = () => {
 
     const [eyeVisible, seteyeVisible] = useState(false);
     
+    // 회원가입 페이지로 이동
+    const navigate = useNavigate();
+
+    const onClickImg = () => {
+        navigate("./SignUpPage");
+    }
     const toggleeyeVisible = () =>{
         seteyeVisible(!eyeVisible);
     }
@@ -29,7 +38,7 @@ const LoginPage = () => {
             <LoginButton>로그인</LoginButton>
             <MemberWrapper>
                 <Text>회원이 아니신가요? |</Text>
-                <JoinButton>회원가입</JoinButton>
+                <JoinButton onClick={onClickImg}>회원가입</JoinButton>
             </MemberWrapper>
         </LoginWrapper>
     );
@@ -131,6 +140,7 @@ const MainText = styled.p`
     color : #0A27A6;
     font-size: 3em;
     font-weight: 700;
+    font-family: "OTF B";
 `;
 
 const Text = styled.p`

@@ -3,8 +3,18 @@ import styled from "styled-components";
 import DashBoard from "../components/MyPage/DashBoard";
 import SelectBox from "../components/commmon/SelectBox";
 import SearchBarMini from "../components/MyPage/SearchBarMini";
+import TemplateCard from "../components/commmon/TemplateCard";
+import StyledButton from "../components/commmon/StyledButton";
+import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import합니다.
+import { Navigate, useNavigate } from "react-router-dom";
 
 function MyPage({ profilePicture, name, nickname }) {
+  const navigate = useNavigate();
+
+  const onProfileEidtClick = () => {
+    navigate("./ProfileEditPage");
+  };
+
   return (
     <MyPageContainer className="MyPageContainer">
       <DashBoardContainer>
@@ -19,9 +29,36 @@ function MyPage({ profilePicture, name, nickname }) {
         <MyTemplateTitle className="MyTemplateTitle">내 템플릿</MyTemplateTitle>
         <MyTemplateMenuContainer>
           <SelectBox />
-          <SearchBarMini />
+          <SearchBarMini
+            onChange={(e) => console.log(e.target.value)}
+            onClick={onProfileEidtClick}
+          />
         </MyTemplateMenuContainer>
+
         <Line></Line>
+
+        <TemplateGridWrapper>
+          <TemplateGrid>
+            {/* 기능구현으로부터 필터 기능 탑재된 filterData를 넣기 */}
+            {dummydata.map((data, index) => (
+              <TemplateCard
+                key={index}
+                templateName={data.postTitle}
+                description={data.postContent}
+                templateThumnail={data.postBackgroundImg}
+              />
+            ))}
+          </TemplateGrid>
+        </TemplateGridWrapper>
+
+        <Line></Line>
+
+        <ButtonWrapper>
+          <StyledButton
+            text={"공유"}
+            onClick={() => console.log("공유 버튼 클릭")} // navigate 만들기.
+          />
+        </ButtonWrapper>
       </MyTemplateContainer>
     </MyPageContainer>
   );
@@ -35,26 +72,26 @@ const MyPageContainer = styled.div`
 `;
 
 const DashBoardContainer = styled.div`
-  margin-left : -1em; 
+  margin-left: -1em;
 `;
 
 const MyTemplateContainer = styled.div`
-  position: relative;
-  top: 5em;
+  //position: relative;
+  margin-top: 10vh;
 `;
 
 const MyTemplateTitle = styled.div`
- height: 2.625em;
-  top: 11.375em; 
+  height: 2.625em;
+  top: 11.375em;
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.875em; 
-  line-height: 2.25em; 
+  font-size: 1.875em;
+  line-height: 2.25em;
   display: flex;
   align-items: center;
   text-align: center;
-  letter-spacing: -0.025em; 
+  letter-spacing: -0.025em;
   color: #000000;
 `;
 
@@ -64,7 +101,28 @@ const MyTemplateMenuContainer = styled.div`
   justify-content: space-between;
 `;
 
+const TemplateGridWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TemplateGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-content: center center;
+  gap: 3vw 1vw;
+  margin-top: 2em;
+  max-width: 80em;
+`;
+
 const Line = styled.hr`
-  margin: 0.625em 0; 
+  margin: 1.5vh 0;
   border: 1px solid #d0d1d9;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 5vw;
 `;

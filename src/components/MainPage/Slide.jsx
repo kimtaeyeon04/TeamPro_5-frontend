@@ -217,6 +217,7 @@ const HackathonImage = styled.img`
     margin-top: 0em;
     padding-right  : 50em;
 `;
+
 //css text
 const PointText1 = styled.p`
     font-size : 5em;
