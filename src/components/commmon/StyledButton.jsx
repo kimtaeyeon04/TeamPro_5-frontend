@@ -12,9 +12,8 @@ const StyledButton = ({ text, onClick }) => {
 export default StyledButton;
 
 const StyledButtonWrapper = styled.div`
-  display: inline-block;
   text-align: center;
-  width: 100%;
+  width: 5vw;
 `;
 
 const Button = styled.button`

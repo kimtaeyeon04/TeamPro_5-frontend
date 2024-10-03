@@ -134,14 +134,16 @@ const SelectBox = () => {
         </SelectMenu>
       </SelectWrapper>
 
-      <StyledButton
-        text={"적용"}
-        onClick={() => {
-          console.log(selectedCategory, selectedSort, selectedFilters);
-          // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
-          //sort(selectedCategory, selectedSort, selectedFilters);
-        }}
-      />
+      <StyledButtonContainer>
+        <StyledButton
+          text={"적용"}
+          onClick={() => {
+            console.log(selectedCategory, selectedSort, selectedFilters);
+            // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
+            //sort(selectedCategory, selectedSort, selectedFilters);
+          }}
+        />
+      </StyledButtonContainer>
     </SelectContainer>
   );
 };
@@ -234,4 +236,8 @@ const SelectItem = styled.div`
     padding: 0.75em;
     font-weight: bold;
   }
+`;
+
+const StyledButtonContainer = styled.div`
+  width: 100%;
 `;

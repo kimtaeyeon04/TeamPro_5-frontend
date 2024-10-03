@@ -167,5 +167,5 @@ const Line = styled.hr`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 5vw;
+  width: 100%;
 `;

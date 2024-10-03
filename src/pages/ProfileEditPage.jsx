@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import StyledButton from "../components/commmon/StyledButton";
-import defaultProfileImg from "../assets/icons/profileIcon.svg";
+// import defaultProfileImg from "../assets/icons/profileIcon.svg";
 
 const ProfileEditUI = ({
-  profileImg,
   handleSave, //기능구현에서 만들어줄 함수.
   handleEmailChange, //기능구현에서 만들어줄 함수.
   handleDeleteAccount, //기능구현에서 만들어줄 함수.
@@ -47,12 +46,12 @@ const ProfileEditUI = ({
             </TextInputWrapper>
           </NameInputContainer>
 
-          <ButtonWrapper>
+          <StyledButtonContainer>
             <StyledButton
               text={"저장"}
               onClick={() => handleSave(name, nickname)} // <-- 기능구현에서 만들어줄 함수!! 바꿀 이름이랑 닉네임을 handleSave함수로 보내면 바꿔주깅~
             />
-          </ButtonWrapper>
+          </StyledButtonContainer>
         </InputButtonContainer>
       </Section>
 
@@ -75,12 +74,12 @@ const ProfileEditUI = ({
             </InputWrapper>
           </EmailInputContainer>
 
-          <ButtonWrapper>
+          <StyledButtonContainer>
             <StyledButton
               text={"변경"}
               onClick={() => handleEmailChange(email)} // <-- 기능구현에서 만들어줄 함수!! 바꿀 이메일을 handleEmailChane함수로 보내면 바꿔주깅~
             />
-          </ButtonWrapper>
+          </StyledButtonContainer>
         </InputButtonContainer>
       </Section>
 
@@ -100,9 +99,9 @@ const ProfileEditUI = ({
             </ProfileInputWrapper>
           </ProfileInputContainer>
 
-          <ButtonWrapper>
+          <StyledButtonContainer>
             <StyledButton text={"저장"} />
-          </ButtonWrapper>
+          </StyledButtonContainer>
         </InputButtonContainer>
       </Section>
 
@@ -155,7 +154,7 @@ const ProfileEditContainer = styled.div`
 `;
 
 const Section = styled.div`
-  height: 20vh;
+  //height: 20vh;
 
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -168,25 +167,30 @@ const Label = styled.h3`
 `;
 
 const InputButtonContainer = styled.div`
-  display: grid;
-  grid-template-rows: 2fr 1fr;
+  display: flex;
+  flex-direction: column;
+
   border: 1px solid #c8c8c8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 `;
 
+const NameInputContainer = styled.div`
+  display: grid;
+  //flex-direction: column;
+  grid-template-columns: 1fr 1fr;
+  margin: 1vw 0;
+`;
+
 const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const NameInputContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin-top: 1vw;
 `;
 
 const TextInputWrapper = styled.div`
   display: grid;
+  //flex-direction: column;
   grid-template-rows: 1fr 1fr;
 
   margin-left: 0.5vw;
@@ -210,12 +214,11 @@ const Input = styled.input`
   width: 22vw;
 `;
 
-const ButtonWrapper = styled.div`
+const StyledButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
-  margin-right: 0.5vw;
+  // width: 5vw;
 `;
 
 const EmailInputContainer = styled.div`
