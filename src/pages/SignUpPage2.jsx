@@ -46,11 +46,7 @@ const SignUpPage = () => {
                     />
                 </PassWrapper>
                 <TelInput placeholder="전화번호" type="tel"></TelInput>
-                <CertificInput placeholder="회사인증" type="email"></CertificInput>
-                <CheckBoxWrapper>
-                    <CheckBoxInput type="checkbox" id="Join" onClick={handleCheckBoxClick} />
-                    <label htmlFor="Join">가입 기본약관</label>
-                </CheckBoxWrapper>
+                
             </JoinWrapper>
             <LoginButton>시작하기</LoginButton>
             <MemberWrapper>
@@ -79,7 +75,7 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 50px;
 `;
 
 const JoinWrapper = styled.div`
@@ -106,11 +102,7 @@ const ColumnWrapper2 = styled.div`
     gap : 0.5em;
 `;
 
-const CheckBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left : -12em;
-`;
+
 const PassWrapper = styled.div`
     position: relative;
     width: 100%;
@@ -146,19 +138,6 @@ const TelInput = styled.input`
 
 `;
 
-const CertificInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-    outline : none;
-    &::placeholder {
-    text-indent: 1em;
-    color : #D0D1D9;
-    }
-
-`;
 const CalendarInput = styled.input`
     border: none;
     outline: none;
@@ -196,9 +175,6 @@ const IdInput = styled.input`
     color : #D0D1D9;
     }
 
-`;
-const CheckBoxInput = styled.input`
-    border: 1px solid #D0D1D9;
 `;
 
 //css button

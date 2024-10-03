@@ -7,6 +7,7 @@ import MainCard from "../components/commmon/MainCard";
 // import search from "../assets/icons/Header/search.png";
 import Logo from "../assets/icons/Logo.png";
 import copyright from "../assets/icons/Mainpage/copyright.png";
+import searchImg from "../assets/icons/Header/search.png";
 
 //slide 
 import Slide from "../components/MainPage/slide";
@@ -24,8 +25,16 @@ const MainPage = () => {
                 <Maintext>FolioFrame</Maintext>
             </VideoWrapper1>
 
-            <SearchInput type="text" placeholder="검색어를 입력해주세요"></SearchInput>
-            {/* <SearchIcon src={search} alt="search" /> */}
+            <SearchContainer>
+                <SearchInput type="text" placeholder="검색어를 입력해주세요" />
+                <SearchIconWrapper>
+                    <SearchIcon
+                    // onClick={handleSearchClick}
+                    src={searchImg}
+                    alt="search"
+                    />
+                </SearchIconWrapper>
+            </SearchContainer>
             
             {/* 템플릿, 해커톤, 채용 */}
             <CardWrapper>
@@ -79,6 +88,14 @@ const MainPageWrapper = styled.div`
     position: relative;
 `;
 
+const SearchIconWrapper = styled.div`
+  position: absolute; 
+  right: -2em; 
+  top: 55%; 
+  transform: translateY(-50%); 
+  cursor: pointer;
+`;
+
 const VideoWrapper1 = styled.div`
     display: flex;
     flex-direction: column;
@@ -100,6 +117,13 @@ const CopyWrapper = styled.div`
     // display : flex;
 `;
 
+const SearchContainer = styled.div`
+  position: relative; 
+  width: 50%; 
+  margin-top: 5em; 
+`;
+
+
 //css video
 const Mainvideo = styled.video`
     display: flex;
@@ -119,17 +143,16 @@ const Mainvideo = styled.video`
 //css element
 
 const SearchInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 50%;
-    text-indent: 1em; 
-    margin-top : 5em;
-    outline:none;
-    &::placeholder {
-        text-indent: 1em; 
-    }
+  border-radius: 2em;
+  border: 1px solid #D0D1D9;
+  height: 3em;
+  width: 100%; 
+  padding-right: 3em; 
+  outline: none;
 
+  &::placeholder {
+    text-indent: 1em; 
+  }
 `;
 
 const LogoImage = styled.img`
@@ -142,6 +165,11 @@ const CopyrightImage = styled.img`
     width : 1em;
     height : 1em;
     margin-top : 1em;
+`;
+
+const SearchIcon = styled.img`
+  width: 50%; // 아이콘 크기
+    
 `;
 
 const Bar = styled.div`
@@ -182,3 +210,9 @@ const PointText5 = styled.p`
     font-family: "OTF R";
     display : flex;
 `;
+
+
+
+
+
+
