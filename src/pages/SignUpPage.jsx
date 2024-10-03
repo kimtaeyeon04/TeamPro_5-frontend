@@ -1,9 +1,20 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+import { Navigate, useNavigate } from "react-router-dom";
+import Consent from "../components/Consent/Consent.jsx";
 
 const SignUpPage = () => {
+    const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false); // 팝업 상태 관리
 
-    return(
+    const handleCheckBoxClick = () => {
+        setIsModalOpen(true); // 체크박스 클릭 시 팝업 열기
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false); // 팝업 닫기
+    };
+    return (
         <LoginWrapper>
             <MainText>FolioFrame</MainText>
             <JoinWrapper>
@@ -15,18 +26,28 @@ const SignUpPage = () => {
                     </ColumnWrapper2>
                 </ColumnWrapper1>
                 
-                <TelInput placeholder="전화번호" type="tel" ></TelInput>
-                <CertificInput placeholder="회사인증" type="email" ></CertificInput>
+                <TelInput placeholder="전화번호" type="tel"></TelInput>
+                <CertificInput placeholder="회사인증" type="email"></CertificInput>
                 <CheckBoxWrapper>
-                    <CheckBoxInput type="checkbox" id="Join" />
-                    <label for="Join">가입 기본약관</label>
+                    <CheckBoxInput type="checkbox" id="Join" onClick={handleCheckBoxClick} />
+                    <label htmlFor="Join">가입 기본약관</label>
                 </CheckBoxWrapper>
             </JoinWrapper>
             <LoginButton>시작하기</LoginButton>
             <MemberWrapper>
                 <Text>이미 회원이신가요? |</Text>
-                <JoinButton>로그인</JoinButton>
+                <JoinButton onClick={() => navigate("../LoginPage")}>로그인</JoinButton>
             </MemberWrapper>
+
+            {/* 팝업창 */}
+            {isModalOpen && (
+                <ModalOverlay>
+                    <ModalContent>
+                       <Consent/>
+                        <CloseButton onClick={closeModal}>닫기</CloseButton>
+                    </ModalContent>
+                </ModalOverlay>
+            )}
         </LoginWrapper>
     );
 };
@@ -173,4 +194,40 @@ const CalendarText =  styled.p`
     font-size: .8em;
     font-weight: 500;
     margin-top : 1em;
+`;
+
+
+const ModalOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ModalContent = styled.div`
+    background: white;
+    padding: 2em;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+`;
+
+const CloseButton = styled.button`
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background: #0056b3;
+    }
 `;
