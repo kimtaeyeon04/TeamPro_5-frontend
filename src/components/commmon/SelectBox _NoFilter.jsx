@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import arrow from "../../assets/icons/SelectBox/arrow.png";
 import StyledButton from "./StyledButton";
-//sort 함수 imort 받아야함.
+//sort 함수 import
 
 const categories = ["프론트엔드", "백엔드", "디자인"];
 const sortOptions = ["인기순", "댓글순", "최신순"];
@@ -20,15 +20,12 @@ const filterOptions = [
   "박사",
 ];
 
-//기능구현으로부터 sort 함수 받음.
-const SelectBox = () => {
+const SelectBox_NoFilter = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSort, setSelectedSort] = useState(null);
-  const [selectedFilters, setSelectedFilters] = useState([]);
 
   const handleCategoryClick = (option) => {
     selectedCategory === option //selectedCagory 와 item 비교
@@ -42,15 +39,6 @@ const SelectBox = () => {
     setIsSortOpen(false);
   };
 
-  const handleFilterClick = (option) => {
-    setSelectedFilters((prevSelected) =>
-      prevSelected.includes(option)
-        ? prevSelected.filter((item) => item !== option)
-        : [...prevSelected, option]
-    );
-    setIsFilterOpen(false);
-  };
-
   return (
     <SelectContainer className="SelectContiner">
       {/* 카테고리 */}
@@ -60,7 +48,6 @@ const SelectBox = () => {
           onClick={() => {
             setIsCategoryOpen(!isCategoryOpen); // isCategoryOpen 토글, true -> false, false -> true
             setIsSortOpen(false); //isSortOpen = false로, 카테고리 버튼 누르면 정렬 메뉴는 닫힌다.
-            setIsFilterOpen(false); //isFilterOpen = false로, 카테고리 버튼 누르면 필터 메뉴는 닫힌다.
           }}
         >
           {selectedCategory ? selectedCategory : "카테고리"}
@@ -86,7 +73,6 @@ const SelectBox = () => {
           onClick={() => {
             setIsSortOpen(!isSortOpen);
             setIsCategoryOpen(false);
-            setIsFilterOpen(false);
           }}
         >
           {selectedSort ? selectedSort : "정렬"}
@@ -105,50 +91,19 @@ const SelectBox = () => {
         </SelectMenu>
       </SelectWrapper>
 
-      {/* 필터 */}
-      <SelectWrapper>
-        <SelectButton
-          onClick={() => {
-            setIsFilterOpen(!isFilterOpen);
-            setIsCategoryOpen(false);
-            setIsSortOpen(false);
-          }}
-        >
-          {"필터"}
-          <ArrowImg src={arrow} alt="arrow" />
-        </SelectButton>
-        <SelectMenu isOpen={isFilterOpen}>
-          {filterOptions.map((item, index) =>
-            item === "경력" || item === "언어" || item === "학력" ? (
-              <SelectFilterMenu key={index}>{item}</SelectFilterMenu>
-            ) : (
-              <SelectItem
-                key={index}
-                className={selectedFilters.includes(item) ? "highlight" : ""}
-                onClick={() => handleFilterClick(item)}
-              >
-                {item}
-              </SelectItem>
-            )
-          )}
-        </SelectMenu>
-      </SelectWrapper>
-
-      <StyledButtonContainer>
-        <StyledButton
-          text={"적용"}
-          onClick={() => {
-            console.log(selectedCategory, selectedSort, selectedFilters);
-            // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
-            //sort(selectedCategory, selectedSort, selectedFilters);
-          }}
-        />
-      </StyledButtonContainer>
+      <StyledButton
+        text={"적용"}
+        onClick={() => {
+          console.log(selectedCategory, selectedSort);
+          // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
+          //sort(selectedCategory, selectedSort);
+        }}
+      />
     </SelectContainer>
   );
 };
 
-export default SelectBox;
+export default SelectBox_NoFilter;
 
 const SelectContainer = styled.div`
   display: flex;
@@ -236,8 +191,4 @@ const SelectItem = styled.div`
     padding: 0.75em;
     font-weight: bold;
   }
-`;
-
-const StyledButtonContainer = styled.div`
-  width: 100%;
 `;

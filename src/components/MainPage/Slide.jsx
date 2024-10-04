@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from "styled-components";
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { useState } from 'react';
+import { Navigate, useNavigate} from "react-router-dom";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -26,6 +27,7 @@ export default () => {
     // const handleNext = () => {
     //   swiper?.slideNext()
     // }
+    const navigate = useNavigate();
 
   return (
     <StyledSwiper
@@ -62,7 +64,7 @@ export default () => {
                 <VideoWrapper2>
                     <HackathonImage src={hackathon} alt="해커톤"/>
                 <TextWrapper>
-                    <HackathonText>함께 <br></br>프로젝트해볼까요?</HackathonText>
+                    <HackathonText>함께 경험을<br></br> 쌓아볼까요?</HackathonText>
                 </TextWrapper>
             </VideoWrapper2>
         </SwiperSlide>
@@ -73,9 +75,9 @@ export default () => {
                 <N3Image src={N3} alt="Number2"/>
                 <VideoWrapper3>
                     <JOBImage src={job} alt="채용"/>
-                <TextWrapper>
+                <JobTextWrapper>
                     <JobText>채용자에게 <br></br>내 포트폴리오를 <br></br>보여줄 수 있어요</JobText>
-                </TextWrapper>
+                </JobTextWrapper>
             </VideoWrapper3>
         </SwiperSlide>
 
@@ -89,7 +91,7 @@ export default () => {
                     </Drawvideo>
                     <TextWrapper2>
                         <PointText1>함께 만드는 <br></br>포토폴리오</PointText1>
-                        <StartButton>지금 시작하기</StartButton>
+                        <StartButton onClick={() => navigate("/LoginPage")}>지금 시작하기</StartButton>
                     </TextWrapper2>
                 </VideoWrapper4>
         </SwiperSlide>
@@ -97,10 +99,11 @@ export default () => {
   );
 };
 
-const StyledSwiper = styled(Swiper)`
-  width: 80%;    
+const StyledSwiper = styled(Swiper)`   
   height: 40em;  
-  
+  width : 85%;
+  padding: 40px 40px;
+  margin: 0 auto; 
   .swiper-pagination-bullet {
     background-color: #0A27A6;
   }
@@ -110,7 +113,7 @@ const StyledSwiper = styled(Swiper)`
 //     color: #0A27A6; 
 //   }
 
-  padding : 0 40px;
+//   padding : 0 40px;
 `;
 
 //css VideoWrapper 
@@ -124,7 +127,7 @@ const VideoWrapper2 = styled.div`
     display: flex;
     align-items: center; 
     justify-content: space-between; 
-    width: 100%; 
+    width: 80%; 
 `;
 const VideoWrapper3 = styled.div`
     display: flex;
@@ -135,29 +138,38 @@ const VideoWrapper3 = styled.div`
 const VideoWrapper4 = styled.div`
     display: flex;
     margin-top : 18m;
-    width : 100%;
-    margin-left : 3em;
+    // width : 100%;
+    // margin-left : 3em;
 `;
 
 const TextWrapper = styled.div`
     // display: flex;
     flex-direction: column;
     position: absolute;
-    left: 40em; 
+    left: 30em; 
     margin-top : -5em;   
 `;
+
+const JobTextWrapper = styled.div`
+    flex-direction: column;
+    position: absolute;
+    left: 40em; 
+    margin-top : -5em; 
+    margin-left : -7em;
+`;
+   
 const TextWrapper2 = styled.div`
     // display: flex;
     flex-direction: column;
     position: absolute;
-    left : 20em;
+    left : 17em;
     margin-top : 0em;   
 `;
 
 // css video
 const Sharevideo = styled.video`
     width : 30em;
-    margin-left : 10em; 
+    // margin-left : 10em; 
     height: 25em; 
     object-fit: cover; 
 `;
@@ -167,7 +179,8 @@ const Drawvideo = styled.video`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width : 60em; 
+    width : 80%; 
+    margin-left : 8em;
 `;
 
 //css element
@@ -256,5 +269,5 @@ const HackathonText = styled.p`
     font-family: "OTF B";
     color : #6633cc;
     margin-bottom : 0.2em;
-    margin-left : -1em;
+    margin-left : 2.5em;
 `;

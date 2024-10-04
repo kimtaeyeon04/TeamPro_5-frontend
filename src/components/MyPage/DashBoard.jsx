@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { Navigate, useNavigate } from "react-router-dom";
+import Logo from "../../assets/icons/Logo.png";
 import defaultProfilePicture from "../../assets/icons/profileIcon.svg"; // 기본 이미지
 
 const DashBoard = ({ profilePicture, name, nickname }) => {
+  const navigate = useNavigate();
+
   return (
     <DashboardContainer className="DashBoardContainer">
       <DashboardTitle>대시보드</DashboardTitle>
       <DashboardCard className="DashBoardCard">
         <Profile className="Profile">
-          <ProfilePic
-            src={profilePicture}
-            alt="profilePic"
-            className="ProfilePic"
-          />
+          <LogoImg src={Logo} alt="logoImg" className="LogoImg" />
         </Profile>
 
         <Info className="Info">
@@ -23,7 +23,7 @@ const DashBoard = ({ profilePicture, name, nickname }) => {
           <UserNickname className="UserNickname">{nickname}</UserNickname>
         </Info>
         <Button className="Button">
-          <ProfileButton onClick={() => console.log("프로필 편집 클릭")}>
+          <ProfileButton onClick={() => navigate("./ProfileEditPage")}>
             프로필 편집
           </ProfileButton>
         </Button>
@@ -83,9 +83,9 @@ const Profile = styled.div`
   border-radius: 6.25em;
 `;
 
-const ProfilePic = styled.img`
+const LogoImg = styled.img`
   width: 10vw;
-  height: 7.8125em;
+  height: 19vh;
   background: #ffffff;
   border-radius: 50%;
 `;

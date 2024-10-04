@@ -1,22 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Logo from "../../assets/icons/Logo.png";
+import { Navigate, useNavigate } from "react-router-dom";
+
 // 템플릿 카드 1개
 //templateName, description, templateThumnail을 props로!
 const TemplateCard = () => {
+  const navigate = useNavigate();
   const templateName = ["템플릿", "해커톤", "채용"];
-  const description = ["나만의 포토폴리오 만들기","함께 경험쌓는 프로젝트", "나에게 맞는 채용정보" ];
+  const description = ["나만의 포토폴리오 만들기", "함께 경험 쌓는 프로젝트", "나에게 맞는 채용 정보"];
+  const pages = ["/TemplatePage","/HackathonPage", "/MyPage"];
+  const handleButtonClick = (index) => {
+    navigate(pages[index]); // 해당 인덱스에 맞는 페이지로 이동
+  };
+
   return (
     <CardContainer>
-    {templateName.map((name, index) => (
-      <Card key={index}>
-        <TemplateName>{name}</TemplateName>
-        <Description>{description[index]}</Description>
-        <ParticiPateButton>참여하기</ParticiPateButton>
-      </Card>
-    ))}
-  </CardContainer>
+      {templateName.map((name, index) => (
+        <Card key={index}>
+          <TemplateName>{name}</TemplateName>
+          <Description>{description[index]}</Description>
+          <ParticiPateButton onClick={() => handleButtonClick(index)}>참여하기</ParticiPateButton>
+        </Card>
+      ))}
+    </CardContainer>
   );
 };
 

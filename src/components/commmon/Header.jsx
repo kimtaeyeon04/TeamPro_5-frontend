@@ -1,43 +1,80 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
 import StyledButton from "./StyledButton";
 import { Navigate, useNavigate } from "react-router-dom";
-function Header({ profilePicture, isLoggedIn }) {
+import HackathonPage from "../../pages/HackathonPage";
+
+function Header({}) {
   const navigate = useNavigate();
 
-  const onLoginClick = () => {
-    navigate("./LoginPage");
+  const [accessToken, setAccessToken] = useState(
+    localStorage.getItem("accessToken")
+  );
+
+  // useEffect로 컴포넌트가 처음 렌더링될 때 accessToken 업데이트
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setAccessToken(localStorage.getItem("accessToken"));
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // 컴포넌트가 언마운트 될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("Id");
+    setAccessToken(null); // 로그아웃 시 상태 초기화
+    navigate("./");
   };
 
-  const onProfileClick = () => {
-    navigate("./MyPage");
-  };
+  // const onProfileClick = () => {
+  //   navigate("./MyPage");
+  // };
 
   return (
     <HeaderContainer className="HeaderContainer">
       {/* 로고와 메뉴를 포함하는 메뉴박스 */}
       <MenuBox>
         {/* 프로젝트 로고 들어가야함 */}
-        <Logo>FolioFrame</Logo>
+        <Logo onClick={() => navigate("./")}>FolioFrame</Logo>
         {/* 네비게이션바에 있는 메뉴들 */}
-        <Nav>
+        <TextWrapper>
+          <Text onClick={() => navigate("../TemplatePage")}>템플릿</Text>
+          <Text onClick={() => navigate("../HackathonPage")}>해커톤</Text>
+        </TextWrapper>
+
+        {/* <Nav>
           <NavLink href="#templates">템플릿</NavLink>
           <NavLink href="#hackathon">해커톤</NavLink>
-        </Nav>
+        </Nav> */}
       </MenuBox>
 
-      {/* 로그인 여부에 따라 프로필 이미지 또는 로그인 버튼 렌더링 */}
+      {/* 로그인 여부에 따라 프로필 이미지 또는 로그인/로그아웃 버튼 렌더링 */}
       <Profile>
-        {isLoggedIn ? (
-          <ProfilePic
-            onClick={onProfileClick}
-            src={profilePicture}
-            alt="profile"
-          />
+        {accessToken ? (
+          <>
+          <ProfileWrapper>
+            <ProfilePic
+                onClick={() => navigate("../MyPage")}
+                src={defaultProfilePicture}
+                alt="profile"
+              />
+              <LoginButton onClick={handleLogout}>로그아웃</LoginButton>
+          </ProfileWrapper>
+           
+          </>
         ) : (
-          <StyledButton text="로그인" onClick={onLoginClick} />
+          <StyledButton
+            text="로그인"
+            onClick={() => navigate("../LoginPage")}
+          />
         )}
       </Profile>
     </HeaderContainer>
@@ -68,6 +105,12 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
 `;
 
+const ProfileWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5em; 
+  margin-left: -5em; 
+`;
 const MenuBox = styled.div`
   display: flex;
   align-items: center;
@@ -77,7 +120,7 @@ const MenuBox = styled.div`
 `;
 
 const Logo = styled.div`
-  font-family: "Inria Sans", sans-serif;
+  font-family: "OTF B";
   font-style: normal;
   font-weight: 700;
   font-size: 2.2em;
@@ -86,15 +129,16 @@ const Logo = styled.div`
   position: absolute;
   left: 0;
   top: calc(50% - 48px / 2);
+  cursor: pointer;
 `;
 
-const Nav = styled.nav`
+const TextWrapper = styled.nav`
   display: flex;
   align-items: center;
   margin-left: 200px;
 `;
 
-const NavLink = styled.a`
+const Text = styled.a`
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -103,6 +147,7 @@ const NavLink = styled.a`
   color: #919194;
   text-decoration: none;
   margin-left: 20px;
+  cursor: pointer;
 
   &:hover {
     color: #0a27a6;
@@ -114,25 +159,31 @@ const Profile = styled.div`
   border-radius: 50%;
   display: flex;
   align-items: center;
+
 `;
 
 const ProfilePic = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 25%;
+  height: 25%;
   border-radius: 50%;
   cursor: pointer;
 `;
 
 const LoginButton = styled.button`
-  color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-
-  border-radius: 2em;
-  border: none;
+  // padding: 0.625em 0em;
+  // width: 80%;
+  height : 2em;
+  width : 10em;
   background-color: #0a27a6;
-  height: 3em;
-  width: 20%;
+  color: white;
+  border: none;
+  border-radius: 0.75em;
+  font-size: 1vw;
+  cursor: pointer;
+  text-align: center;
+  float: left;
 
-  margin: 2em 0;
+  &:hover {
+    background-color: #092091;
+  }
 `;
