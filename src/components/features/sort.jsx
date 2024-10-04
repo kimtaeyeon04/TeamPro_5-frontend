@@ -95,5 +95,7 @@ export const sort = ( category, sortOption, filterOption ) => {
         }
     }
 
+    sortedPortfolios.print();
+
     return sortedPortfolios;
 }
