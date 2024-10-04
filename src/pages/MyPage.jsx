@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DashBoard from "../components/MyPage/DashBoard";
-import SelectBox from "../components/commmon/SelectBox";
+import SelectBox_NoFilter from "../components/commmon/SelectBox _NoFilter";
 import SearchBarMini from "../components/MyPage/SearchBarMini";
 import TemplateCard from "../components/commmon/TemplateCard";
 import StyledButton from "../components/commmon/StyledButton";
@@ -24,7 +24,7 @@ function MyPage({ profilePicture, name, nickname }) {
       <MyPortFolioContainer>
         <MyPortFolioTiltle>내가 만든 포트폴리오</MyPortFolioTiltle>
         <MyProtFolioMenuBarWrapper>
-          <SelectBox />
+          <SelectBox_NoFilter />
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
             onClick={() => onSearchClick}
