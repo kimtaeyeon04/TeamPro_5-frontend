@@ -45,7 +45,7 @@ const ProfileEditUI = ({}) => {
             <StyledButton
               text={"저장"}
               onClick={() => console.log(name, nickname)}
-              // handleSave(name, nickname) <-- 기능구현에서 만들어줄 함수!! 바꿀 이름이랑 닉네임을 handleSave함수로 보내면 바꿔주깅~
+              // handleSave(name, nickname) <-- 기능구현에서 만들어줄 함수!! 이름과 닉네임을 변경하는 함수. 필요한 파라메터는 알려주면 수정 예정
             />
           </StyledButtonContainer>
         </InputButtonContainer>
@@ -74,7 +74,7 @@ const ProfileEditUI = ({}) => {
             <StyledButton
               text={"변경"}
               onClick={() => console.log(email)}
-              //handleEmailChange(email) <-- 기능구현에서 만들어줄 함수!! 바꿀 이메일을 handleEmailChane함수로 보내면 바꿔주깅~
+              //handleEmailChange(email) <-- 기능구현에서 만들어줄 함수!! 이메일을 변경하는 함수. 필요한 파라메터는 알려주면 수정 예정
             />
           </StyledButtonContainer>
         </InputButtonContainer>
@@ -107,7 +107,7 @@ const ProfileEditUI = ({}) => {
             <DeleteButton
               disabled={!deleteChecked} // deleteChecked가 false일 때 버튼은 눌리지 않도록 설정
               onClick={() => console.log(deleteChecked)}
-              //handleDeleteAccount <-- 기능구현에서 만들어줄 함수!! 삭제할 계정을 handleDeleteAccount함수로 보내면 삭제해주깅~
+              //handleDeleteAccount <-- 기능구현에서 만들어줄 함수!! 계정을 삭제하는 함수. 필요한 파라메터는 알려주면 수정 예정
             >
               계정 삭제
             </DeleteButton>

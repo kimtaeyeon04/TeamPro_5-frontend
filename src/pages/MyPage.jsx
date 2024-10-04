@@ -11,10 +11,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 function MyPage({ profilePicture, name, nickname }) {
   const navigate = useNavigate();
 
-  const onProfileEidtClick = () => {
-    navigate("./ProfileEditPage");
-  };
-
   return (
     <MyPageContainer className="MyPageContainer">
       <DashBoardContainer>
@@ -40,6 +36,14 @@ function MyPage({ profilePicture, name, nickname }) {
           <TemplateGrid>{/* 기능구현으로부터 함수 받아서 구현 */}</TemplateGrid>
         </TemplateGridWrapper>
       </MyPortFolioContainer>
+
+      <Line></Line>
+      <StyledButtonWrapper>
+        <StyledButton
+          text={"추가"}
+          onClick={() => console.log("추가 버튼 클릭")} //navigate 넣으면 된다요
+        />
+      </StyledButtonWrapper>
 
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">
@@ -72,13 +76,6 @@ function MyPage({ profilePicture, name, nickname }) {
         </TemplateGridWrapper>
 
         <Line></Line>
-
-        <ButtonWrapper>
-          <StyledButton
-            text={"공유"}
-            onClick={() => console.log("공유 버튼 클릭")} // navigate 만들기.
-          />
-        </ButtonWrapper>
       </MyTemplateContainer>
     </MyPageContainer>
   );
@@ -164,7 +161,7 @@ const Line = styled.hr`
   border: 1px solid #d0d1d9;
 `;
 
-const ButtonWrapper = styled.div`
+const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
