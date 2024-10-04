@@ -120,7 +120,7 @@ const MenuBox = styled.div`
 `;
 
 const Logo = styled.div`
-  font-family: "Inria Sans", sans-serif;
+  font-family: "OTF B";
   font-style: normal;
   font-weight: 700;
   font-size: 2.2em;

@@ -12,7 +12,7 @@ import MainPage from "./pages/MainPage";
 import TemplatePage from "./pages/TemplatePage";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import HackathonPage from "./pages/HackathonPage";
-
+import CreatePortfolioPage from "./pages/CreatePortfolioPage";
 function App() {
   return (
     <Routes>
@@ -32,6 +32,9 @@ function App() {
           <Route path="/LoginPage/MainPage" element={<MainPage />} />
           {/* 해커톤 화면  */}
           <Route path="/HackathonPage" element={<HackathonPage />} />
+          {/* 포트폴리오 제작 화면  */}
+          <Route path="/CreatePortfolioPage" element={<CreatePortfolioPage />} />
+
           {/*마이 페이지  */}
           <Route
             path="/MyPage"
