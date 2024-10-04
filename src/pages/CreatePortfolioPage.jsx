@@ -1,0 +1,103 @@
+import React from "react";
+import styled from "styled-components";
+import Logo from "../assets/icons/Logo.png";
+
+const CreatePortfolioPage = () => {
+    return(
+    <>
+      <PageCategoryWrapper>
+        <LogoImage src={Logo} alt="로고" />
+        <HeaderText>Portfolio</HeaderText>
+        {/* <SearchInput type="text" placeholder="검색어를 입력해주세요" /> */}
+      </PageCategoryWrapper>
+
+      <MainWrapper>
+        <NameWrapper>
+            <MainText>포트폴리오 이름</MainText>
+            <NameInput type="text"></NameInput>
+        </NameWrapper>
+       
+        <NameWrapper>
+            <MainText>참여 기간</MainText>
+            <NameInput type="text"></NameInput>
+        </NameWrapper>
+
+        <NameWrapper>
+            <MainText>문제해결</MainText>
+            <NameInput type="text"></NameInput>
+        </NameWrapper>
+
+        <NameWrapper>
+            <MainText>사용한 언어</MainText>
+            <NameInput type="text"></NameInput>
+        </NameWrapper>
+
+        <NameWrapper>
+            <MainText>배운점</MainText>
+            <NameInput type="text"></NameInput>
+        </NameWrapper>
+
+        <NameWrapper>
+            <MainText>링크</MainText>
+            <NameInput type="text"></NameInput>
+        </NameWrapper>
+
+        <NameWrapper>
+            <MainText>데모 비디오</MainText>
+            <NameInput type="text"></NameInput>
+        </NameWrapper>
+      </MainWrapper>
+    </>
+    );
+};
+
+export default CreatePortfolioPage;
+
+//css Wrapper
+const PageCategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+const MainWrapper = styled.div`
+    width : 85%;
+    padding: 40px 40px;
+    margin: 0 auto; 
+`;
+const NameWrapper = styled.div`
+    display : flex;
+    flex-direction : column;
+`;
+//css input
+const NameInput = styled.input`
+    border : none;
+    background-color : #f9f9f9;
+    outline : none;
+    height : 2em;
+    margin-top : -1em;
+`;
+
+//css Image
+const LogoImage = styled.img`
+  widht: 5em;
+  height: 5em;
+  margin-bottom: -2em;
+`;
+
+
+//css Text
+const HeaderText = styled.p`
+  color: #0a27a6;
+  font-size: 2em;
+  font-weight: 800;
+  font-family: "OTF B";
+`;
+
+const MainText = styled.p`
+    font-size : 1.5em;
+    font-weight : 800;
+    color : #0A27A6;
+    display : flex;
+`;
