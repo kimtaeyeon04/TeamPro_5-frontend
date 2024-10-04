@@ -1,27 +1,23 @@
 import {LinkedList} from '../DataStructure/linkedList.jsx';
-import dummyData from '../commmon/dummydata/dummydata.jsx'
+import { oriPortfolios, oriUsers } from '../domain/startProgram.js';
 
-let input; // 사용자가 입력한 string
-// let templates; // DB 내의 모든 템플릿
-
-const search = (input, dummyData) => {
+const search = (input) => {
     if (!input) {
         return;
     }
 
-    let searchedTemplates = new LinkedList(); // 검색 결과를 저장할 linked list, 초기화하여 이전 검색 결과를 지움
+    let searchedPortfolios = new LinkedList(); // 검색 결과를 저장할 linked list, 초기화하여 이전 검색 결과를 지움
 
-    dummyData.forEach((post) => {
-        // 템플릿 이름, 템플릿 내용으로 검색
-        const isItTarget = post.postTitle.toLowerCase().includes(input) || post.postContent.toLowerCase().includes(input);
+    oriPortfolios.forEach((pofol) => {
+        // 포트폴리오 이름, 포트폴리오 공유자의 닉네임으로 검색
+        const isItTarget = pofol.title.toLowerCase().includes(input) || oriUsers.get(pofol.owner).nickname.toLowerCase().includes(input);
         if (isItTarget) {
-            searchedTemplates.append(post);
+            searchedPortfolios.append(pofol);
         }
     });
 
-    console.log(searchedTemplates);
-    return searchedTemplates;
+    searchedPortfolios.print();
+    return searchedPortfolios;
 }
 
-input = '제목';
-search(input, dummyData);
+export default search;

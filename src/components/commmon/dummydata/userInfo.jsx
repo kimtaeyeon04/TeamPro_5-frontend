@@ -57,7 +57,7 @@ export const userInfo = [
   {
     id: 6,
     name: "홍길동",
-    nickname: "길동이",
+    nickname: "흰둥이",
     email: "example@example.com",
     birthdate: "1990-01-01",
     phone: "010-1234-5678",
@@ -68,7 +68,7 @@ export const userInfo = [
   {
     id: 7,
     name: "홍길동",
-    nickname: "길동이",
+    nickname: "honghong",
     email: "example@example.com",
     birthdate: "1990-01-01",
     phone: "010-1234-5678",

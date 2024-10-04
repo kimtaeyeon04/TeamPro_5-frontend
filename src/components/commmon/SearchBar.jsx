@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import searchImg from "../../assets/icons/Header/search.png";
-//import search from "./features/search.jsx";
+import search from "../features/search.jsx";
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
@@ -13,7 +13,7 @@ const SearchBar = () => {
 
   const handleSearchClick = () => {
     console.log(inputValue);
-    //search(inputValue);
+    search(inputValue);
   };
 
   return (

@@ -1,7 +1,7 @@
 import { oriUsers, oriPortfolios, oriProjects } from "../domain/startProgram.js";
 import { LinkedList } from "../DataStructure/linkedList.jsx"
 
-export const sort = ( category, sortOption, filterOption ) => {
+const sort = ( category, sortOption, filterOption ) => {
     // 카테고리, 정렬옵션, 필터옵션이 모두 null이면 종료한다.
     //
     // 이 부분은 filterOprion의 배열을 쪼개는 방법이 추가되어야 한다.
@@ -99,3 +99,5 @@ export const sort = ( category, sortOption, filterOption ) => {
 
     return sortedPortfolios;
 }
+
+export default sort;
