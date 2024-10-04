@@ -24,6 +24,7 @@ function MyPage({ profilePicture, name, nickname }) {
       <MyPortFolioContainer>
         <MyPortFolioTiltle>내가 만든 포트폴리오</MyPortFolioTiltle>
         <MyProtFolioMenuBarWrapper>
+          <SelectBox />
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
             onClick={() => onSearchClick}
@@ -50,7 +51,7 @@ function MyPage({ profilePicture, name, nickname }) {
           내가 만든 템플릿
         </MyTemplateTitle>
         <MyTemplateMenuWrapper>
-          <SelectBox />
+          {/* <SelectBox /> */}
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
             onClick={() => onSearchClick}
@@ -113,7 +114,7 @@ const MyPortFolioTiltle = styled.div`
 
 const MyProtFolioMenuBarWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 const MyTemplateContainer = styled.div`
@@ -138,7 +139,7 @@ const MyTemplateTitle = styled.div`
 const MyTemplateMenuWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 `;
 
 const TemplateGridWrapper = styled.div`
