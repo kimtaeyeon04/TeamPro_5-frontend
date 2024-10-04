@@ -77,6 +77,13 @@ function MyPage({ profilePicture, name, nickname }) {
         </TemplateGridWrapper>
 
         <Line></Line>
+
+        <StyledButtonWrapper>
+          <StyledButton
+            text={"추가"}
+            onClick={() => console.log("추가 버튼 클릭")} // 내가 만든 템플릿을 추가할 수 있는 버튼..
+          />
+        </StyledButtonWrapper>
       </MyTemplateContainer>
     </MyPageContainer>
   );
