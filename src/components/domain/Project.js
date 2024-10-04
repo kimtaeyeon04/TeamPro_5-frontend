@@ -1,4 +1,4 @@
-export class Project {
+class Project {
     constructor(projectId, startDate = null, endDate = null, mainFeature = null, role = null, stack = null) {
         this.projectId = projectId;
         this.startDate = startDate;
@@ -8,3 +8,5 @@ export class Project {
         this.stack = stack;
     }
 }
+
+export default Project;

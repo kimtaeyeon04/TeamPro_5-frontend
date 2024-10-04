@@ -1,4 +1,4 @@
-export class Portfolio {
+class Portfolio {
     // 일반적으로 처음 포트폴리오를 작성할 떄
     constructor(portfolioId, userId, setTemplate, title, explanation = null, share = false, projects = null, category = null, comments = null, likes = null){
         this.portfolioId = portfolioId;
@@ -13,3 +13,5 @@ export class Portfolio {
         this.likes = likes;
     }
 }
+
+export default Portfolio;

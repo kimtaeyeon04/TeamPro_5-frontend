@@ -15,7 +15,10 @@ import Project from "./Project.js";
 import { portfolioInfo } from "../commmon/dummydata/portfolioInfo.jsx"; // 저장된 모든 포트폴리오 정보
 import { projectInfo } from "../commmon/dummydata/projectInfo.jsx";
 import { userInfo } from "../commmon/dummydata/userInfo.jsx"; // 저장된 모든 유저 정보
-import { sort } from "../features/sort.jsx";
+
+export const oriUsers = new Map();
+export const oriPortfolios = new Map();
+export const oriProjects = new Map();
 
 // 유저에게 공유되는 템플릿들
 /* let oriTemplates = new Map();
@@ -24,20 +27,34 @@ templateInfo.forEach((data) => {
     oriTemplates.set(data.templateId, template);
 }); */
 
-export const oriUsers = new Map();
-userInfo.forEach((data) => {
-    let user = new User(data.id, data.id, data.name, data.email, data.nickname, null, data.career, data.education);
-    oriUsers.set(data.id, user);
-});
+export const initializeData = () => {
+    userInfo.forEach((data) => {
+        let user = new User(data.id, data.id, data.name, data.email, data.nickname, null, data.career, data.education);
+        oriUsers.set(data.id, user);
+    });
 
-export const oriPortfolios = new Map();
-portfolioInfo.forEach((data) => {
-    let portfolio = new Portfolio(data.portfolioId, data.owner, data.setTemplate, data.title, data.explanation, data.share, data.projects, data.category, data.comments, data.likes);
-    oriPortfolios.set(data.portfolioId, portfolio);
-});
 
-export const oriProjects = new Map();
-projectInfo.forEach((data) => {
-    let project = new Project(data.projectId, null, null, null, null, data.stack);
-    oriProjects.set(data.projectId, project);
-});
+    portfolioInfo.forEach((data) => {
+        let portfolio = new Portfolio(data.portfolioId, data.owner, data.setTemplate, data.title, data.explanation, data.share, data.projects, data.category, data.comments, data.likes);
+        oriPortfolios.set(data.portfolioId, portfolio);
+    });
+
+
+    projectInfo.forEach((data) => {
+        let project = new Project(data.projectId, null, null, null, null, data.stack);
+        oriProjects.set(data.projectId, project);
+    });
+
+    /* oriUsers.forEach((value, key) => {
+        console.log(value.id);
+    });
+    console.log("저장된 유저 아이디 확인 출력 끝");
+    oriPortfolios.forEach((value, key) => {
+        console.log(value.portfolioId);
+    });
+    console.log("저장된 포폴 아이디 확인 출력 끝");
+    oriProjects.forEach((value, key) => {
+        console.log(value.projectId);
+    });
+    console.log("저장된 프젝 아이디 확인 출력 끝"); */
+};

@@ -11,7 +11,15 @@ import TemplatePage from "./pages/TemplatePage";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import HackathonPage from "./pages/HackathonPage";
 
+// 프로그램 시작시 정보 저장 초기화
+import { useEffect } from "react";
+import { initializeData } from "./components/domain/startProgram";
+
 function App() {
+  useEffect(() => {
+    initializeData();
+  }, []);
+
   return (
     <Routes>
       <Route>

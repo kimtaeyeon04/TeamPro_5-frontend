@@ -30,10 +30,10 @@ export const sort = ( category, sortOption, filterOption ) => {
         case null: // null이면 아무 초기 설정 그대로 간다.
             break;
         case "인기순": // 인기순, 최신순 둘 중 하나면 각 옵션에 맞게 정렬된다.
-            sortedPortfolios.quickSort("comments");
-            break;
-        case "추천순":
             sortedPortfolios.quickSort("likes");
+            break;
+        case "댓글순":
+            sortedPortfolios.quickSort("comments");
             break;
         case "최신순": // 최신순이면 리스트가 리버스된다.(애초 데이터가 생성된 순서로 저장되므로)
             sortedPortfolios.reverse(); // 함수 구현하기
