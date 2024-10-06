@@ -13,13 +13,13 @@ function MyPage({ profilePicture, name, nickname }) {
 
   return (
     <MyPageContainer className="MyPageContainer">
-      <DashBoardContainer>
+      {/* <DashBoardContainer>
         <DashBoard
           profilePicture={profilePicture}
           name={name}
           nickname={nickname}
         />
-      </DashBoardContainer>
+      </DashBoardContainer> */}
 
       <MyPortFolioContainer>
         <MyPortFolioTiltle>내가 만든 포트폴리오</MyPortFolioTiltle>
