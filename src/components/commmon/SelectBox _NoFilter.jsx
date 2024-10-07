@@ -6,19 +6,6 @@ import StyledButton from "./StyledButton";
 
 const categories = ["프론트엔드", "백엔드", "디자인"];
 const sortOptions = ["인기순", "댓글순", "최신순"];
-const filterOptions = [
-  "경력",
-  "있음",
-  "없음",
-  "언어",
-  "Java",
-  "Python",
-  "JavaScript",
-  "학력",
-  "학사",
-  "석사",
-  "박사",
-];
 
 const SelectBox_NoFilter = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
