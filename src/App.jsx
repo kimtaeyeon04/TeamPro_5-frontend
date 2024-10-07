@@ -13,13 +13,14 @@ import TemplatePage from "./pages/TemplatePage";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import HackathonPage from "./pages/HackathonPage";
 import CreatePortfolioPage from "./pages/CreatePortfolioPage";
+
 function App() {
   return (
     <Routes>
       <Route>
         {/* 기본 로그인 페이지 */}
         <Route path="/LoginPage" element={<LoginPage />} />
-
+        {/* 회원 선택 페이지 */}
         <Route path="/MemberSelectionPage" element={<MemberSelectionPage />} />
         {/* 기업회원 회원가입 페이지 */}
         <Route path="/SignUpPage" element={<SignUpPage />} />
