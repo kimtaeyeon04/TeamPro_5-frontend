@@ -1,31 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+import PageHeader from "../components/commmon/PageHeader.jsx";
 import TemplateCard from "../components/commmon/TemplateCard.jsx";
 import { dummydata } from "../components/commmon/dummydata/dummydata";
 import SelectBox from "../components/commmon/SelectBox.jsx";
 import SearchBar from "../components/commmon/SearchBar";
 import StyledButton from "../components/commmon/StyledButton";
 
-import Logo from "../assets/icons/Logo.png";
-
 const HackathonPage = () => {
-  //   // 데이터가 12개 미만일 경우 빈 카드를 추가하는 배열 생성
-  //   const cards = [...dummydata, ...Array(12 - dummydata.length).fill({})];
 
   return (
     <>
-      {/* 각 페이지별 상단 -> 나중에 쉽게 모든 페이지에 적용할 수 있는 방법으로 수정 */}
-      <PageCategoryWrapper>
-        <LogoImage src={Logo} alt="로고" />
-        <HeaderText>Hackathon</HeaderText>
-        {/* <SearchInput type="text" placeholder="검색어를 입력해주세요" /> */}
-      </PageCategoryWrapper>
-      <SearchBar
-        onChange={(e) => console.log(e.target.value)}
-        onClick={() => console.log("검색 버튼 클릭")}
+      <PageHeader
+          pageTitle="Hackathon"
       />
-
       <MainWrapper>
         <MyTemplateMenuWrapper>
           <SelectBox />
