@@ -72,8 +72,9 @@ function MyPage({ profilePicture, name, nickname }) {
                 templateButton={"보기"}
               />
             ))} */}
-            비어있음. {/* 기능 구현이 어려움으로 일단 이렇게 해둠. */}
+            {/* 기능 구현이 어려움으로 일단 이렇게 해둠. */}
           </TemplateGrid>
+          <Text>비어있음.</Text>
         </TemplateGridWrapper>
 
         <Line></Line>
@@ -156,10 +157,10 @@ const TemplateGridWrapper = styled.div`
 `;
 
 const TemplateGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  place-content: center center;
-  gap: 3vw 1vw;
+  //display: grid;
+  //grid-template-columns: repeat(4, 1fr);
+  //place-content: center center;
+  //gap: 3vw 1vw;
   margin-top: 2em;
   max-width: 80em;
 `;
@@ -173,4 +174,10 @@ const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
+`;
+
+const Text = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 1vw;
 `;
