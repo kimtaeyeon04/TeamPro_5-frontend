@@ -73,7 +73,7 @@ function Header({}) {
         ) : (
           <StyledButton
             text="로그인"
-            onClick={() => navigate("/MemberSelectionPage")}
+            onClick={() => navigate("/LoginPage")}
           />
         )}
       </Profile>
