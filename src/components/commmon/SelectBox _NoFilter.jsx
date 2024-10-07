@@ -129,7 +129,7 @@ const SelectButton = styled.button`
   border-radius: 0.75em;
   padding: 0.625em 0em;
 
-  font-size: 0.95vw;
+  font-size: 0.85vw;
   color: #d0d1d9;
   cursor: pointer;
   text-align: center;
@@ -151,25 +151,14 @@ const SelectMenu = styled.div`
   border-radius: 0.625em;
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
-`;
-
-const SelectFilterMenu = styled.div`
-  margin: 0.625em;
-  padding: 0.625em;
-  color: white;
-  font-size: 0.8em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #d0d1d9;
-  border-radius: 0.625em;
+  fonst-size: 0.85vw;
 `;
 
 const SelectItem = styled.div`
   margin: 0.625em;
   padding: 0.625em;
   color: white;
-  font-size: 0.8em;
+  font-size: 0.85vw;
   cursor: pointer;
   display: flex;
   justify-content: center;
