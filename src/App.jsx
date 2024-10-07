@@ -33,7 +33,10 @@ function App() {
           {/* 해커톤 화면  */}
           <Route path="/HackathonPage" element={<HackathonPage />} />
           {/* 포트폴리오 제작 화면  */}
-          <Route path="/CreatePortfolioPage" element={<CreatePortfolioPage />} />
+          <Route
+            path="/CreatePortfolioPage"
+            element={<CreatePortfolioPage />}
+          />
 
           {/*마이 페이지  */}
           <Route
@@ -47,7 +50,7 @@ function App() {
             }
           />
           <Route
-            path="/LoginPage/MainPage/MyPage"
+            path="/MyPage"
             element={
               <MyPage
                 profileIcon={profileIcon}
@@ -58,13 +61,9 @@ function App() {
           />
           {/* 템플릿 열람 화면*/}
           <Route path="/TemplatePage" element={<TemplatePage />} />
-          <Route
-            path="/Login/MainPage/TemplatePage"
-            element={<TemplatePage />}
-          />
+
           {/*프로필 편집 화면*/}
           <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
-          <Route path="/MyPage/ProfileEditPage" element={<ProfileEditPage />} />
         </Route>
       </Route>
     </Routes>
