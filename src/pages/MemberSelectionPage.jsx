@@ -8,14 +8,18 @@ import { Navigate, useNavigate} from "react-router-dom";
 const MemberSelectionPage = () => {
     const navigate = useNavigate();
     return (
+        <>
+        <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
         <MainWrapper>
-            <MainText>FolioFrame</MainText>
+            
 
             {/* 일반회원 */}
             <MemberButton image={General} altText="일반회원" title="일반회원"  onClick={() => navigate("/SignUpPage2")}/>
             {/* 기업회원 */}
             <MemberButton image={Business} altText="기업회원" title="기업회원" onClick={() => navigate("/SignUpPage")}/>
         </MainWrapper>
+        </>
+
     );
 };
 
@@ -47,12 +51,11 @@ const MainWrapper = styled.div`
     gap: 2em;
     align-items: center;
     justify-content: center;
-    padding: 10em 15em;
-    // background-color: #15243E;
-    height: 100%;
+    // padding: 10em 15em;
+    // height: 100%;
     width: 100%;
     box-sizing: border-box;
-    margin : 2em 0;
+    // margin : 6em 0;
     
 `;
 
@@ -79,7 +82,7 @@ const Button = styled.button`
 
 // CSS Images
 const Image = styled.img`
-    width: 100%;
+    width: 85%;
     height: auto;
     border-radius: 1em;
 `;
@@ -104,9 +107,9 @@ const MainText = styled.p`
     font-weight: 700;
     font-size: 3em;
     color: #0a27a6;
-    position: absolute;
-    margin-top : -9em;
-;
+    text-align: center;
+    margin-top : 2em;
+    cursor : pointer;
 `;
 const Title = styled.p`
     font-size: 1.5em;

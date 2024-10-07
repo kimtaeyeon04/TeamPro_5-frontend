@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../assets/icons/Logo.png";
+import PageHeader from "../components/commmon/PageHeader";
+
 
 const CreatePortfolioPage = () => {
     return(
     <>
-      <PageCategoryWrapper>
-        <LogoImage src={Logo} alt="로고" />
-        <HeaderText>Portfolio</HeaderText>
-        {/* <SearchInput type="text" placeholder="검색어를 입력해주세요" /> */}
-      </PageCategoryWrapper>
+      <PageHeader
+        pageTitle="Portfolio"
+      /> 
 
       <MainWrapper>
         <NameWrapper>
