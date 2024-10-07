@@ -13,6 +13,8 @@ function Header({}) {
     localStorage.getItem("accessToken")
   );
 
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
   // useEffect로 컴포넌트가 처음 렌더링될 때 accessToken 업데이트
   useEffect(() => {
     const handleStorageChange = () => {
@@ -32,6 +34,17 @@ function Header({}) {
     localStorage.removeItem("Id");
     setAccessToken(null); // 로그아웃 시 상태 초기화
     navigate("./");
+  };
+
+  const handleMenuClick = (option) => {
+    if (option === "마이페이지") {
+      navigate("/MyPage");
+    } else if (option === "프로필 편집") {
+      navigate("/ProfileEdit");
+    } else if (option === "로그아웃") {
+      handleLogout();
+    }
+    setIsProfileMenuOpen(false); // Close menu after selection
   };
 
   // const onProfileClick = () => {
@@ -60,15 +73,14 @@ function Header({}) {
       <Profile>
         {accessToken ? (
           <>
-          <ProfileWrapper>
-            <ProfilePic
-                onClick={() => navigate("/MyPage")}
+            <ProfileWrapper>
+              <ProfilePic
+                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                 src={defaultProfilePicture}
                 alt="profile"
               />
               <LoginButton onClick={handleLogout}>로그아웃</LoginButton>
-          </ProfileWrapper>
-           
+            </ProfileWrapper>
           </>
         ) : (
           <StyledButton
@@ -108,8 +120,8 @@ const HeaderContainer = styled.header`
 const ProfileWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5em; 
-  margin-left: -5em; 
+  gap: 0.5em;
+  margin-left: -5em;
 `;
 const MenuBox = styled.div`
   display: flex;
@@ -159,7 +171,6 @@ const Profile = styled.div`
   border-radius: 50%;
   display: flex;
   align-items: center;
-
 `;
 
 const ProfilePic = styled.img`
@@ -172,8 +183,8 @@ const ProfilePic = styled.img`
 const LoginButton = styled.button`
   // padding: 0.625em 0em;
   // width: 80%;
-  height : 2em;
-  width : 10em;
+  height: 2em;
+  width: 10em;
   background-color: #0a27a6;
   color: white;
   border: none;
