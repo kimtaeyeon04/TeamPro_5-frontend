@@ -46,8 +46,8 @@ function Header({}) {
         <Logo onClick={() => navigate("./")}>FolioFrame</Logo>
         {/* 네비게이션바에 있는 메뉴들 */}
         <TextWrapper>
-          <Text onClick={() => navigate("../TemplatePage")}>템플릿</Text>
-          <Text onClick={() => navigate("../HackathonPage")}>해커톤</Text>
+          <Text onClick={() => navigate("/TemplatePage")}>템플릿</Text>
+          <Text onClick={() => navigate("/HackathonPage")}>해커톤</Text>
         </TextWrapper>
 
         {/* <Nav>
@@ -62,7 +62,7 @@ function Header({}) {
           <>
           <ProfileWrapper>
             <ProfilePic
-                onClick={() => navigate("../MyPage")}
+                onClick={() => navigate("/MyPage")}
                 src={defaultProfilePicture}
                 alt="profile"
               />
@@ -73,7 +73,7 @@ function Header({}) {
         ) : (
           <StyledButton
             text="로그인"
-            onClick={() => navigate("../LoginPage")}
+            onClick={() => navigate("/MemberSelectionPage")}
           />
         )}
       </Profile>

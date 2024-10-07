@@ -3,20 +3,24 @@ import styled from "styled-components";
 
 import Business from "../assets/images/MemberSelectionPage/Business.png";
 import General from "../assets/images/MemberSelectionPage/General.png";
+import { Navigate, useNavigate} from "react-router-dom";
 
 const MemberSelectionPage = () => {
+    const navigate = useNavigate();
     return (
         <MainWrapper>
+            <MainText>FolioFrame</MainText>
+
             {/* 일반회원 */}
-            <MemberButton image={General} altText="일반회원" title="일반회원" />
+            <MemberButton image={General} altText="일반회원" title="일반회원"  onClick={() => navigate("/SignUpPage2")}/>
             {/* 기업회원 */}
-            <MemberButton image={Business} altText="기업회원" title="기업회원" />
+            <MemberButton image={Business} altText="기업회원" title="기업회원" onClick={() => navigate("/SignUpPage")}/>
         </MainWrapper>
     );
 };
 
-const MemberButton = ({ image, altText, title }) => (
-    <Button>
+const MemberButton = ({ image, altText, title, onClick }) => (
+    <Button onClick={onClick}>
         <ImageWrapper>
             <Image src={image} alt={altText} />
             <TextOverlay>
@@ -28,7 +32,7 @@ const MemberButton = ({ image, altText, title }) => (
                     설명설명설명설명설명설명설명설명
                     설명설명설명설명설명설명설명설명
                     설명설명설명설명설명설명설명설명
-                    설명설명설명설명설
+                    설명설명설명설명설명설명설명설명
                 </ExplainText>
             </TextOverlay>
         </ImageWrapper>
@@ -43,11 +47,12 @@ const MainWrapper = styled.div`
     gap: 2em;
     align-items: center;
     justify-content: center;
-    padding: 9em 15em;
-    background-color: #15243E;
+    padding: 10em 15em;
+    // background-color: #15243E;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    margin : 2em 0;
     
 `;
 
@@ -58,17 +63,18 @@ const ImageWrapper = styled.div`
 `;
 
 // CSS Buttons
+
 const Button = styled.button`
+    // margin-top : 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 1em;
-    background-color: #15243E;
-    border: none;
+    border: 2px solid #0A27A6;
+    background-color : #fff;
     cursor: pointer;
     width: 30em; 
     height: 27em;
-    border: 2px solid #fff; 
 `;
 
 // CSS Images
@@ -93,18 +99,28 @@ const TextOverlay = styled.div`
     text-align: center;
 `;
 
+const MainText = styled.p`
+    font-family: "OTF B";
+    font-weight: 700;
+    font-size: 3em;
+    color: #0a27a6;
+    position: absolute;
+    margin-top : -9em;
+;
+`;
 const Title = styled.p`
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 0.5em;
-    border: 0.2em solid #fff; 
+    border: 0.1em solid #0A27A6; 
     border-radius: 0.5em;
     padding: 0.5em 2em;
+    color :  #0A27A6; 
 `;
 
 const ExplainText = styled.p`
     font-size: 1em;
-    color: white;
+    color: #0A27A6;
     margin-bottom: 0.5em;
     padding: 2em;
 `;
