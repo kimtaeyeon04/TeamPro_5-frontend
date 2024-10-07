@@ -48,7 +48,7 @@ const SelectBox = () => {
         ? prevSelected.filter((item) => item !== option)
         : [...prevSelected, option]
     );
-    setIsFilterOpen(false);
+    //setIsFilterOpen(false);
   };
 
   return (
