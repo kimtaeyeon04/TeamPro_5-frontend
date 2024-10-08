@@ -24,7 +24,7 @@ const SignUpPage = () => {
     };
     return (
         <LoginWrapper>
-            <MainText>FolioFrame</MainText>
+            <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
             <JoinWrapper>
                 <ColumnWrapper1>
                     <NameInput placeholder="이름" type="text"></NameInput>
@@ -63,7 +63,6 @@ const SignUpPage = () => {
                 <ModalOverlay>
                     <ModalContent>
                        <Consent/>
-                        <CloseButton onClick={closeModal}>닫기</CloseButton>
                     </ModalContent>
                 </ModalOverlay>
             )}
@@ -231,6 +230,7 @@ const MainText = styled.p`
     font-size: 3em;
     font-weight: 700;
     font-family: "OTF B";
+    cursor : pointer;
 `;
 
 const Text = styled.p`

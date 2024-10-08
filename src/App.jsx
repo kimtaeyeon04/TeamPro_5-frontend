@@ -9,7 +9,7 @@ import SignUpPage2 from "./pages/SignUpPage2";
 import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
-import TemplatePage from "./pages/TemplatePage";
+import PortfolioPage from "./pages/PortfolioPage";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import HackathonPage from "./pages/HackathonPage";
 import CreatePortfolioPage from "./pages/CreatePortfolioPage";
@@ -60,8 +60,8 @@ function App() {
               />
             }
           />
-          {/* 템플릿 열람 화면*/}
-          <Route path="/TemplatePage" element={<TemplatePage />} />
+          {/* 포폴 열람 화면*/}
+          <Route path="/PortfolioPage" element={<PortfolioPage />} />
 
           {/*프로필 편집 화면*/}
           <Route path="/ProfileEditPage" element={<ProfileEditPage />} />

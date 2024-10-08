@@ -91,7 +91,7 @@ export default () => {
                     </Drawvideo>
                     <TextWrapper2>
                         <PointText1>함께 만드는 <br></br>포토폴리오</PointText1>
-                        <StartButton onClick={() => navigate("/MemberSelectionPage")}>지금 시작하기</StartButton>
+                        <StartButton onClick={() => navigate("/LoginPage")}>지금 시작하기</StartButton>
                     </TextWrapper2>
                 </VideoWrapper4>
         </SwiperSlide>

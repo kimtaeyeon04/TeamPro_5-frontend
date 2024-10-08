@@ -9,12 +9,12 @@ import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummyd
 
 import PageHeader from "../components/commmon/PageHeader";
 
-const TemplatePage = () => {
+const PortfolioPage = () => {
   return (
     <TemplatePageContainer>
       {/* 각 페이지별 상단 -> 나중에 쉽게 모든 페이지에 적용할 수 있는 방법으로 수정 */}
       <PageHeader
-        pageTitle="Template"
+        pageTitle="Portfolio"
       />    
 
       <SelectBoxWrapper>
@@ -39,7 +39,7 @@ const TemplatePage = () => {
   );
 };
 
-export default TemplatePage;
+export default PortfolioPage;
 
 const TemplatePageContainer = styled.div`
   width: 85%; //수정중...
