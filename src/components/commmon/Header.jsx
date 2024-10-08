@@ -49,7 +49,7 @@ function Header({}) {
     if (option === "마이페이지") {
       navigate("/MyPage");
     } else if (option === "프로필 편집") {
-      navigate("/ProfileEdit");
+      navigate("/ProfileEditPage");
     } else if (option === "로그아웃") {
       handleLogout();
     }
@@ -178,7 +178,7 @@ const MenuItemIcon = styled.div`
 
 const ProfilePicMenuItems = styled.div`
   margin: 0.625em;
-  padding: 0.625em 0;
+  padding: 0.625em;
   color: white;
   font-size: 0.85vw;
   cursor: pointer;
@@ -191,7 +191,7 @@ const ProfilePicMenuItems = styled.div`
 
   &:hover {
     border-radius: 0.625em;
-    border: 0.2em solid #fff;
+    border: 0.1vw solid #fff;
   }
 
   &:last-child {
