@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DashBoard from "../components/MyPage/DashBoard";
-import SelectBox from "../components/commmon/SelectBox";
+import SelectBox_NoFilter from "../components/commmon/SelectBox _NoFilter";
 import SearchBarMini from "../components/MyPage/SearchBarMini";
 import TemplateCard from "../components/commmon/TemplateCard";
 import StyledButton from "../components/commmon/StyledButton";
@@ -11,23 +11,20 @@ import { Navigate, useNavigate } from "react-router-dom";
 function MyPage({ profilePicture, name, nickname }) {
   const navigate = useNavigate();
 
-  const onProfileEidtClick = () => {
-    navigate("./ProfileEditPage");
-  };
-
   return (
     <MyPageContainer className="MyPageContainer">
-      <DashBoardContainer>
+      {/* <DashBoardContainer>
         <DashBoard
           profilePicture={profilePicture}
           name={name}
           nickname={nickname}
         />
-      </DashBoardContainer>
+      </DashBoardContainer> */}
 
       <MyPortFolioContainer>
         <MyPortFolioTiltle>내가 만든 포트폴리오</MyPortFolioTiltle>
         <MyProtFolioMenuBarWrapper>
+          <SelectBox_NoFilter />
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
             onClick={() => onSearchClick}
@@ -41,12 +38,20 @@ function MyPage({ profilePicture, name, nickname }) {
         </TemplateGridWrapper>
       </MyPortFolioContainer>
 
+      <Line></Line>
+      <StyledButtonWrapper>
+        <StyledButton
+          text={"추가"}
+          onClick={() => console.log("추가 버튼 클릭")} //navigate 넣으면 된다요
+        />
+      </StyledButtonWrapper>
+
       <MyTemplateContainer className="MyTempalteContainer">
         <MyTemplateTitle className="MyTemplateTitle">
           내가 만든 템플릿
         </MyTemplateTitle>
         <MyTemplateMenuWrapper>
-          <SelectBox />
+          {/* <SelectBox /> */}
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
             onClick={() => onSearchClick}
@@ -67,18 +72,19 @@ function MyPage({ profilePicture, name, nickname }) {
                 templateButton={"보기"}
               />
             ))} */}
-            비어있음. {/* 기능 구현이 어려움으로 일단 이렇게 해둠. */}
+            {/* 기능 구현이 어려움으로 일단 이렇게 해둠. */}
           </TemplateGrid>
+          <Text>비어있음.</Text>
         </TemplateGridWrapper>
 
         <Line></Line>
 
-        <ButtonWrapper>
+        <StyledButtonWrapper>
           <StyledButton
-            text={"공유"}
-            onClick={() => console.log("공유 버튼 클릭")} // navigate 만들기.
+            text={"추가"}
+            onClick={() => console.log("추가 버튼 클릭")} // 내가 만든 템플릿을 추가할 수 있는 버튼..
           />
-        </ButtonWrapper>
+        </StyledButtonWrapper>
       </MyTemplateContainer>
     </MyPageContainer>
   );
@@ -116,7 +122,7 @@ const MyPortFolioTiltle = styled.div`
 
 const MyProtFolioMenuBarWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 const MyTemplateContainer = styled.div`
@@ -141,7 +147,7 @@ const MyTemplateTitle = styled.div`
 const MyTemplateMenuWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 `;
 
 const TemplateGridWrapper = styled.div`
@@ -151,10 +157,10 @@ const TemplateGridWrapper = styled.div`
 `;
 
 const TemplateGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  place-content: center center;
-  gap: 3vw 1vw;
+  //display: grid;
+  //grid-template-columns: repeat(4, 1fr);
+  //place-content: center center;
+  //gap: 3vw 1vw;
   margin-top: 2em;
   max-width: 80em;
 `;
@@ -164,8 +170,14 @@ const Line = styled.hr`
   border: 1px solid #d0d1d9;
 `;
 
-const ButtonWrapper = styled.div`
+const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
+`;
+
+const Text = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 1vw;
 `;

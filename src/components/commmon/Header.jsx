@@ -6,12 +6,23 @@ import StyledButton from "./StyledButton";
 import { Navigate, useNavigate } from "react-router-dom";
 import HackathonPage from "../../pages/HackathonPage";
 
+import { SiPagekit } from "react-icons/si";
+import { LuPen, LuLogOut } from "react-icons/lu";
+import { TbTriangleFilled } from "react-icons/tb";
+
+const profileMenuItems = [
+  { label: "마이페이지", icon: <SiPagekit /> },
+  { label: "프로필 편집", icon: <LuPen /> },
+  { label: "로그아웃", icon: <LuLogOut /> },
+];
 function Header({}) {
   const navigate = useNavigate();
 
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("accessToken")
   );
+
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   // useEffect로 컴포넌트가 처음 렌더링될 때 accessToken 업데이트
   useEffect(() => {
@@ -34,6 +45,17 @@ function Header({}) {
     navigate("./");
   };
 
+  const handleMenuClick = (option) => {
+    if (option === "마이페이지") {
+      navigate("/MyPage");
+    } else if (option === "프로필 편집") {
+      navigate("/ProfileEdit");
+    } else if (option === "로그아웃") {
+      handleLogout();
+    }
+    setIsProfileMenuOpen(false); // Close menu after selection
+  };
+
   // const onProfileClick = () => {
   //   navigate("./MyPage");
   // };
@@ -46,8 +68,8 @@ function Header({}) {
         <Logo onClick={() => navigate("./")}>FolioFrame</Logo>
         {/* 네비게이션바에 있는 메뉴들 */}
         <TextWrapper>
-          <Text onClick={() => navigate("../TemplatePage")}>템플릿</Text>
-          <Text onClick={() => navigate("../HackathonPage")}>해커톤</Text>
+          <Text onClick={() => navigate("/PortfolioPage")}>포트폴리오</Text>
+          <Text onClick={() => navigate("/HackathonPage")}>해커톤</Text>
         </TextWrapper>
 
         {/* <Nav>
@@ -57,24 +79,39 @@ function Header({}) {
       </MenuBox>
 
       {/* 로그인 여부에 따라 프로필 이미지 또는 로그인/로그아웃 버튼 렌더링 */}
-      <Profile>
+      <Profile className="Profile">
         {accessToken ? (
           <>
-          <ProfileWrapper>
-            <ProfilePic
-                onClick={() => navigate("../MyPage")}
+            <ProfileWrapper className="ProfileWrapper">
+              <ProfilePic
+                className="ProfilePic"
+                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                 src={defaultProfilePicture}
                 alt="profile"
               />
-              <LoginButton onClick={handleLogout}>로그아웃</LoginButton>
-          </ProfileWrapper>
-           
+              {isProfileMenuOpen && (
+                <>
+                  <TriangleIcon>
+                    <TbTriangleFilled />
+                  </TriangleIcon>
+                  <ProfilePicMenu isOpen={isProfileMenuOpen}>
+                    {profileMenuItems.map((item, index) => (
+                      <ProfilePicMenuItems
+                        key={index}
+                        onClick={() => handleMenuClick(item.label)}
+                      >
+                        <MenuItemIcon>{item.icon}</MenuItemIcon>
+                        {item.label}
+                      </ProfilePicMenuItems>
+                    ))}
+                  </ProfilePicMenu>
+                </>
+              )}
+              {/* <LoginButton onClick={handleLogout}>로그아웃</LoginButton> */}
+            </ProfileWrapper>
           </>
         ) : (
-          <StyledButton
-            text="로그인"
-            onClick={() => navigate("../LoginPage")}
-          />
+          <StyledButton text="로그인" onClick={() => navigate("/LoginPage")} />
         )}
       </Profile>
     </HeaderContainer>
@@ -106,11 +143,69 @@ const HeaderContainer = styled.header`
 `;
 
 const ProfileWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.5em; 
-  margin-left: -5em; 
+  justify-content: center;
+  //gap: 0.5em;
+  //margin-left: -5em;
+  width: 100%;
 `;
+
+const TriangleIcon = styled.div`
+  position: absolute;
+  top: 100%;
+
+  color: #15243e80;
+`;
+
+const ProfilePicMenu = styled.div`
+  position: absolute;
+  top: 135%;
+  width: 7vw;
+  //background-color: #91919490;
+  background-color: #15243e80;
+  border-radius: 0.625em;
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  z-index: 1;
+  font-size: 0.85vw;
+`;
+
+const MenuItemIcon = styled.div`
+  margin-right: 0.2vw;
+  font-size: 0.85vw;
+`;
+
+const ProfilePicMenuItems = styled.div`
+  margin: 0.625em;
+  padding: 0.625em 0;
+  color: white;
+  font-size: 0.85vw;
+  cursor: pointer;
+  display: flex;
+  //justify-content: space-between;
+  align-items: center;
+  border: 0.2em solid transparent;
+  border-radius: 0.625em;
+  box-sizing: border-box;
+
+  &:hover {
+    border-radius: 0.625em;
+    border: 0.2em solid #fff;
+  }
+
+  &:last-child {
+    // border-bottom: none;
+  }
+
+  &.highlight {
+    border: 0.0625em solid white;
+    border-radius: 0.5em;
+    padding: 0.75em;
+    font-weight: bold;
+  }
+`;
+
 const MenuBox = styled.div`
   display: flex;
   align-items: center;
@@ -155,6 +250,7 @@ const Text = styled.a`
 `;
 
 const Profile = styled.div`
+  position: relative;
   width: 6vw;
   border-radius: 50%;
   display: flex;
@@ -163,8 +259,8 @@ const Profile = styled.div`
 `;
 
 const ProfilePic = styled.img`
-  width: 25%;
-  height: 25%;
+  //width: 25%;
+  //height: 25%;
   border-radius: 50%;
   cursor: pointer;
 `;
@@ -172,8 +268,8 @@ const ProfilePic = styled.img`
 const LoginButton = styled.button`
   // padding: 0.625em 0em;
   // width: 80%;
-  height : 2em;
-  width : 10em;
+  height: 2em;
+  width: 10em;
   background-color: #0a27a6;
   color: white;
   border: none;

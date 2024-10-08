@@ -7,20 +7,15 @@ import TemplateCard from "../components/commmon/TemplateCard";
 import StyledButton from "../components/commmon/StyledButton";
 import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import
 
-import Logo from "../assets/icons/Logo.png";
+import PageHeader from "../components/commmon/PageHeader";
 
-const TemplatePage = () => {
+const PortfolioPage = () => {
   return (
     <TemplatePageContainer>
       {/* 각 페이지별 상단 -> 나중에 쉽게 모든 페이지에 적용할 수 있는 방법으로 수정 */}
-      <PageCategoryWrapper>
-        <LogoImage src={Logo} alt="로고" />
-        <HeaderText>Template</HeaderText>
-      </PageCategoryWrapper>
-      <SearchBar
-        onChange={(e) => console.log(e.target.value)}
-        onClick={() => console.log("검색 버튼 클릭")}
-      />
+      <PageHeader
+        pageTitle="Portfolio"
+      />    
 
       <SelectBoxWrapper>
         <SelectBox />
@@ -44,7 +39,7 @@ const TemplatePage = () => {
   );
 };
 
-export default TemplatePage;
+export default PortfolioPage;
 
 const TemplatePageContainer = styled.div`
   width: 85%; //수정중...

@@ -23,7 +23,7 @@ const DashBoard = ({ profilePicture, name, nickname }) => {
           <UserNickname className="UserNickname">{nickname}</UserNickname>
         </Info>
         <Button className="Button">
-          <ProfileButton onClick={() => navigate("./ProfileEditPage")}>
+          <ProfileButton onClick={() => navigate("../ProfileEditPage")}>
             프로필 편집
           </ProfileButton>
         </Button>

@@ -6,19 +6,6 @@ import StyledButton from "./StyledButton";
 
 const categories = ["프론트엔드", "백엔드", "디자인"];
 const sortOptions = ["인기순", "댓글순", "최신순"];
-const filterOptions = [
-  "경력",
-  "있음",
-  "없음",
-  "언어",
-  "Java",
-  "Python",
-  "JavaScript",
-  "학력",
-  "학사",
-  "석사",
-  "박사",
-];
 
 const SelectBox_NoFilter = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -91,14 +78,16 @@ const SelectBox_NoFilter = () => {
         </SelectMenu>
       </SelectWrapper>
 
-      <StyledButton
-        text={"적용"}
-        onClick={() => {
-          console.log(selectedCategory, selectedSort);
-          // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
-          //sort(selectedCategory, selectedSort);
-        }}
-      />
+      <StyledButtonContainer>
+        <StyledButton
+          text={"적용"}
+          onClick={() => {
+            console.log(selectedCategory, selectedSort);
+            // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
+            //sort(selectedCategory, selectedSort);
+          }}
+        />
+      </StyledButtonContainer>
     </SelectContainer>
   );
 };
@@ -127,7 +116,7 @@ const SelectButton = styled.button`
   border-radius: 0.75em;
   padding: 0.625em 0em;
 
-  font-size: 0.95vw;
+  font-size: 0.85vw;
   color: #d0d1d9;
   cursor: pointer;
   text-align: center;
@@ -149,25 +138,14 @@ const SelectMenu = styled.div`
   border-radius: 0.625em;
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
-`;
-
-const SelectFilterMenu = styled.div`
-  margin: 0.625em;
-  padding: 0.625em;
-  color: white;
-  font-size: 0.8em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #d0d1d9;
-  border-radius: 0.625em;
+  fonst-size: 0.85vw;
 `;
 
 const SelectItem = styled.div`
   margin: 0.625em;
   padding: 0.625em;
   color: white;
-  font-size: 0.8em;
+  font-size: 0.85vw;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -191,4 +169,8 @@ const SelectItem = styled.div`
     padding: 0.75em;
     font-weight: bold;
   }
+`;
+
+const StyledButtonContainer = styled.div`
+  width: 100%;
 `;

@@ -4,12 +4,14 @@ import "./App.css";
 import profileIcon from "./assets/icons/Header/profileIcon.png";
 import LoginPage from "./pages/LoginPage";
 import MemberSelectionPage from "./pages/MemberSelectionPage";
+import MemberSelectionPage from "./pages/MemberSelectionPage";
 import SignUpPage from "./pages/SignUpPage";
+import SignUpPage2 from "./pages/SignUpPage2";
 import SignUpPage2 from "./pages/SignUpPage2";
 import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
 import MainPage from "./pages/MainPage";
-import TemplatePage from "./pages/TemplatePage";
+import PortfolioPage from "./pages/PortfolioPage";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import HackathonPage from "./pages/HackathonPage";
 import CreatePortfolioPage from "./pages/CreatePortfolioPage";
@@ -36,6 +38,7 @@ function App() {
         <Route element={<LayOut />}>
           {/* 메인 화면  */}
           <Route path="/" element={<MainPage />} />
+          <Route path="/LoginPage/MainPage" element={<MainPage />} />
           <Route path="/LoginPage/MainPage" element={<MainPage />} />
           {/* 해커톤 화면  */}
           <Route path="/HackathonPage" element={<HackathonPage />} />

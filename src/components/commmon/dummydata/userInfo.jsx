@@ -1,50 +1,7 @@
 export const userInfo = [
   {
-    id: 1,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "학사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 2,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "석사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 3,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "없음",
-    education: "학사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 4,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "없음",
-    education: "석사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 5,
+    Id: 1,
+    password: 100,
     name: "홍길동",
     nickname: "길동이",
     email: "example@example.com",
