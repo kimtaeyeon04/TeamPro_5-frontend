@@ -31,6 +31,11 @@ const SearchBar = () => {
             src={searchImg}
             alt="search"
           />
+          <SearchIcon
+            onClick={handleSearchClick}
+            src={searchImg}
+            alt="search"
+          />
         </SearchIconWrapper>
       </SearchBarWrapper>
     </SearchBarContainer>

@@ -22,6 +22,7 @@ const SignUpPage = () => {
     const closeModal = () => {
         setIsModalOpen(false); // 팝업 닫기
     };
+
     return (
         <LoginWrapper>
             <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
@@ -47,7 +48,23 @@ const SignUpPage = () => {
                 </PassWrapper>
                 <TelInput placeholder="전화번호" type="tel"></TelInput>
                 <CertificInput placeholder="회사인증" type="email"></CertificInput>
+                <IdInput placeholder="아이디 및 이메일" type="text"></IdInput>
+                <PassWrapper>
+                    <PassInput
+                        type={eyeVisible ? "text" : "password"}
+                        placeholder="비밀번호"
+                    />
+                    <EyeIcon
+                        src={eyeVisible ? Eyeoff : Eye}
+                        alt="eye"
+                        onClick={toggleEyeVisible}
+                    />
+                </PassWrapper>
+                <TelInput placeholder="전화번호" type="tel"></TelInput>
+                <CertificInput placeholder="회사인증" type="email"></CertificInput>
                 <CheckBoxWrapper>
+                    <CheckBoxInput type="checkbox" id="Join" onClick={handleCheckBoxClick} />
+                    <label htmlFor="Join">가입 기본약관</label>
                     <CheckBoxInput type="checkbox" id="Join" onClick={handleCheckBoxClick} />
                     <label htmlFor="Join">가입 기본약관</label>
                 </CheckBoxWrapper>
@@ -55,6 +72,7 @@ const SignUpPage = () => {
             <LoginButton>시작하기</LoginButton>
             <MemberWrapper>
                 <Text>이미 회원이신가요? |</Text>
+                <JoinButton onClick={() => navigate("../LoginPage")}>로그인</JoinButton>
                 <JoinButton onClick={() => navigate("../LoginPage")}>로그인</JoinButton>
             </MemberWrapper>
 
@@ -78,6 +96,7 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 10px;
     padding: 10px;
 `;
 
@@ -109,11 +128,6 @@ const CheckBoxWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-left : -12em;
-`;
-const PassWrapper = styled.div`
-    position: relative;
-    width: 100%;
-   
 `;
 
 //css input
@@ -169,33 +183,7 @@ const CalendarInput = styled.input`
     border-radius: 4px;
     margin-right : -2em;
 `;
-const PassInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 90%;  
-    text-indent: 1em; 
-    padding-right: 2.5em; 
-    outline : none;
-    &::placeholder {
-        text-indent: 1em; 
-        color : #D0D1D9;
-    }
 
-`;
-const IdInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-    outline : none;
-    &::placeholder {
-    text-indent: 1em;
-    color : #D0D1D9;
-    }
-
-`;
 const CheckBoxInput = styled.input`
     border: 1px solid #D0D1D9;
 `;
@@ -246,47 +234,3 @@ const CalendarText =  styled.p`
     margin-top : 1em;
 `;
 
-
-const ModalOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const ModalContent = styled.div`
-    background: white;
-    padding: 2em;
-    border-radius: 8px;
-    text-align: center;
-    width: 80%;
-    max-width: 500px;
-`;
-
-const CloseButton = styled.button`
-    margin-top: 1em;
-    padding: 0.5em 1em;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &:hover {
-        background: #0056b3;
-    }
-`;
-const EyeIcon = styled.img`
-    position: absolute;
-    right: 1em; 
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width : 1.2em;
-    height : 1.2em;
-`;

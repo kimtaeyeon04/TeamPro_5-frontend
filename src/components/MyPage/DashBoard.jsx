@@ -8,11 +8,13 @@ import defaultProfilePicture from "../../assets/icons/profileIcon.svg"; // 기�
 const DashBoard = ({ profilePicture, name, nickname }) => {
   const navigate = useNavigate();
 
+
   return (
     <DashboardContainer className="DashBoardContainer">
       <DashboardTitle>대시보드</DashboardTitle>
       <DashboardCard className="DashBoardCard">
         <Profile className="Profile">
+          <LogoImg src={Logo} alt="logoImg" className="LogoImg" />
           <LogoImg src={Logo} alt="logoImg" className="LogoImg" />
         </Profile>
 
@@ -85,6 +87,7 @@ const Profile = styled.div`
 
 const LogoImg = styled.img`
   width: 10vw;
+  height: 19vh;
   height: 19vh;
   background: #ffffff;
   border-radius: 50%;
