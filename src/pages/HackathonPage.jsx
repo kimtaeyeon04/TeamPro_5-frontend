@@ -26,17 +26,20 @@ const HackathonPage = () => {
         <Line></Line>
 
         {/* 12개의 카드를 그리드 형태로 출력 */}
-        <TemplateGrid>
-          {dummydata.map((data, index) => (
-            <TemplateCard
-              key={index}
-              templateName={data.postTitle || "빈 제목"}
-              description={data.postContent || "빈 설명"}
-              templateThumnail={data.postBackgroundImg || "default-image.png"}
-              templateButton={"보기"}
-            />
-          ))}
-        </TemplateGrid>
+        <HackathonGridWrapper>
+            <TemplateGrid>
+            {dummydata.map((data, index) => (
+              <TemplateCard
+                key={index}
+                templateName={data.postTitle || "빈 제목"}
+                description={data.postContent || "빈 설명"}
+                templateThumnail={data.postBackgroundImg || "default-image.png"}
+                templateButton={"보기"}
+              />
+            ))}
+          </TemplateGrid>
+        </HackathonGridWrapper>
+       
       </MainWrapper>
     </>
   );
@@ -64,6 +67,11 @@ const MyTemplateMenuWrapper = styled.div`
   margin-top: 10vh;
 `;
 
+const HackathonGridWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 //css element
 const SearchInput = styled.input`
   border-radius: 2em;
@@ -80,17 +88,12 @@ const SearchInput = styled.input`
 const TemplateGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1em;
+  place-content: center center;
+  gap: 3vw 1vw;
   margin-top: 2em;
-  width: 100%;
   max-width: 80em;
 `;
 
-const LogoImage = styled.img`
-  widht: 5em;
-  height: 5em;
-  margin-bottom: -2em;
-`;
 
 const Line = styled.hr`
   margin: 0.625em 0;

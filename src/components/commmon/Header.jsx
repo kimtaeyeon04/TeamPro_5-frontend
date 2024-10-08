@@ -68,7 +68,7 @@ function Header({}) {
         <Logo onClick={() => navigate("./")}>FolioFrame</Logo>
         {/* 네비게이션바에 있는 메뉴들 */}
         <TextWrapper>
-          <Text onClick={() => navigate("/TemplatePage")}>템플릿</Text>
+          <Text onClick={() => navigate("/PortfolioPage")}>포트폴리오</Text>
           <Text onClick={() => navigate("/HackathonPage")}>해커톤</Text>
         </TextWrapper>
 

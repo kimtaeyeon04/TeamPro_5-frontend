@@ -18,7 +18,7 @@ const LoginPage = () => {
 
     // 회원가입 페이지 이동
     const onClickImg = () => {
-        navigate("/SignUpPage");
+        navigate("/MemberSelectionPage");
     };
 
     // 비밀번호 눈
@@ -53,7 +53,7 @@ const LoginPage = () => {
 
     return (
         <LoginWrapper>
-            <MainText>FolioFrame</MainText>
+            <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
             <JoinWrapper>
                 <IDinput
                     placeholder="이메일 주소 또는 아이디"
@@ -187,6 +187,7 @@ const MainText = styled.p`
     font-size: 3em;
     font-weight: 700;
     font-family: "OTF B";
+    cursor : pointer;
 `;
 
 const Text = styled.p`

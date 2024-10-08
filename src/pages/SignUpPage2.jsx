@@ -19,12 +19,9 @@ const SignUpPage = () => {
         setIsModalOpen(true); // 체크박스 클릭 시 팝업 열기
     };
 
-    const closeModal = () => {
-        setIsModalOpen(false); // 팝업 닫기
-    };
     return (
         <LoginWrapper>
-            <MainText>FolioFrame</MainText>
+            <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
             <JoinWrapper>
                 <ColumnWrapper1>
                     <NameInput placeholder="이름" type="text"></NameInput>
@@ -59,7 +56,6 @@ const SignUpPage = () => {
                 <ModalOverlay>
                     <ModalContent>
                        <Consent/>
-                        <CloseButton onClick={closeModal}>닫기</CloseButton>
                     </ModalContent>
                 </ModalOverlay>
             )}
@@ -207,6 +203,7 @@ const MainText = styled.p`
     font-size: 3em;
     font-weight: 700;
     font-family: "OTF B";
+    cursor : pointer;
 `;
 
 const Text = styled.p`
@@ -244,19 +241,7 @@ const ModalContent = styled.div`
     max-width: 500px;
 `;
 
-const CloseButton = styled.button`
-    margin-top: 1em;
-    padding: 0.5em 1em;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 
-    &:hover {
-        background: #0056b3;
-    }
-`;
 const EyeIcon = styled.img`
     position: absolute;
     right: 1em; 

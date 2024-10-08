@@ -155,7 +155,7 @@ const SearchInput = styled.input`
   width: 100%; 
   padding-right: 3em; 
   outline: none;
-
+  text-indent: 1em; 
   &::placeholder {
     text-indent: 1em; 
   }
@@ -174,7 +174,7 @@ const CopyrightImage = styled.img`
 `;
 
 const SearchIcon = styled.img`
-  width: 50%; // 아이콘 크기
+  width: 50%; 
     
 `;
 
