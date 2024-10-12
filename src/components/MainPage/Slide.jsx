@@ -42,6 +42,9 @@ export default () => {
     //   navigation // < > 표시하고 싶다면 주석 X
       pagination={{ clickable: true }}
     >
+        <SlideWrapper>
+
+
         {/* 슬라이드 1 */}
         <SwiperSlide> 
                 <N1Image src={N1} alt="Number1"/>
@@ -95,179 +98,182 @@ export default () => {
                     </TextWrapper2>
                 </VideoWrapper4>
         </SwiperSlide>
+        </SlideWrapper>
     </StyledSwiper>
   );
 };
 
 const StyledSwiper = styled(Swiper)`   
-  height: 40em;  
-  width : 85%;
-  padding: 40px 40px;
-  margin: 0 auto; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40em;
+  width: 100%;
+  max-width: 85%;
+  padding: 40px 0;
+  margin: 0 auto;
+  
   .swiper-pagination-bullet {
     background-color: #0A27A6;
   }
-
-//   .swiper-button-next,
-//   .swiper-button-prev {
-//     color: #0A27A6; 
-//   }
-
-//   padding : 0 40px;
 `;
 
-//css VideoWrapper 
+const SlideWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  margin-top: 2em;
+`;
+
 const VideoWrapper1 = styled.div`
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+  position: relative;
 `; 
+
 const VideoWrapper2 = styled.div`
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    width: 80%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+  position: relative;
 `;
+
 const VideoWrapper3 = styled.div`
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+  position: relative;
 `;
+
 const VideoWrapper4 = styled.div`
-    display: flex;
-    margin-top : 18m;
-    // width : 100%;
-    // margin-left : 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+  position: relative;
 `;
 
 const TextWrapper = styled.div`
-    // display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 30em; 
-    margin-top : -5em;   
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 2em;
+  margin-top: -5em;
 `;
 
 const JobTextWrapper = styled.div`
-    flex-direction: column;
-    position: absolute;
-    left: 40em; 
-    margin-top : -5em; 
-    margin-left : -7em;
-`;
-   
-const TextWrapper2 = styled.div`
-    // display: flex;
-    flex-direction: column;
-    position: absolute;
-    left : 17em;
-    margin-top : 0em;   
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 2em;
+  margin-top: -5em;
 `;
 
-// css video
+const TextWrapper2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 2em;
+  margin-top: 0em;
+`;
+
 const Sharevideo = styled.video`
-    width : 30em;
-    // margin-left : 10em; 
-    height: 25em; 
-    object-fit: cover; 
+  width: 30em;
+  height: 25em;
+  object-fit: cover;
 `;
 
 const Drawvideo = styled.video`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width : 80%; 
-    margin-left : 8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%; 
 `;
 
-//css element
 const StartButton = styled.button`
-    color : #fff;
-    font-size : 1em;
-    font-weight : 800;
-
-    border-radius : 2em;
-    border : none;
-    background-color : #0A27A6;
-    height : 3em;
-    width : 50%;
-    margin-left : 5em;
-    // margin-top : -5em;
-
+  color: #fff;
+  font-size: 1em;
+  font-weight: 800;
+  border-radius: 2em;
+  border: none;
+  background-color: #0A27A6;
+  height: 3em;
+  width: 50%;
+  margin-top: 1em;
 `;
 
 const N1Image = styled.img`
-    width : 20em;
-    margin-top: 10em;
-    padding-right  : 48em;
+  width: 20em;
+  margin-top: 10em;
+  margin-right: auto;
 `;
 
 const N2Image = styled.img`
-    width : 20em;
-    margin-top: 10em;
-    padding-right  : 48em;
-`;
-const N3Image = styled.img`
-    width : 20em;
-    margin-top: 10em;
-    padding-right  : 48em;
-`;
-const N4Image = styled.img`
-    width : 20em;
-    margin-top: 10em;
-    padding-right  : 48em;
-`;
-const JOBImage = styled.img`
-    width : 40em;
-    margin-top: 0em;
-    padding-right  : 50em;
-`;
-const HackathonImage = styled.img`
-    width : 38em;
-    margin-top: 0em;
-    padding-right  : 50em;
+  width: 20em;
+  margin-top: 10em;
+  margin-right: auto;
 `;
 
-//css text
+const N3Image = styled.img`
+  width: 20em;
+  margin-top: 10em;
+  margin-right: auto;
+`;
+
+const N4Image = styled.img`
+  width: 20em;
+  margin-top: 10em;
+  margin-right: auto;
+`;
+
+const JOBImage = styled.img`
+  width: 40em;
+`;
+
+const HackathonImage = styled.img`
+  width: 38em;
+`;
+
 const PointText1 = styled.p`
-    font-size : 5em;
-    font-weight : 800;
-    font-family: "OTF B";
-    color : #0A27A6;
+  font-size: 5em;
+  font-weight: 800;
+  color: #0A27A6;
 `;
 
 const PointText2 = styled.p`
-    font-size : 4em;
-    font-weight : 900;
-    font-family: "OTF B";
-    color : #6633cc;
-    margin-bottom : 0.2em;
+  font-size: 4em;
+  font-weight: 900;
+  color: #6633cc;
+  margin-bottom: 0.2em;
 `;
 
 const PointText3 = styled.p`
-    font-size : 1em;
-    font-weight : 600;
-    font-family: "OTF R";
-    color : #000;
-    margin-bottom : -1em;
+  font-size: 1em;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: -1em;
 `;
 
 const JobText = styled.p`
-    font-size : 3.2em;
-    font-weight : 900;
-    font-family: "OTF B";
-    color : #6633cc;
-    margin-bottom : 0.2em;
+  font-size: 3.2em;
+  font-weight: 900;
+  color: #6633cc;
+  margin-bottom: 0.2em;
 `;
 
 const HackathonText = styled.p`
-    font-size : 3.2em;
-    font-weight : 900;
-    font-family: "OTF B";
-    color : #6633cc;
-    margin-bottom : 0.2em;
-    margin-left : 2.5em;
+  font-size: 3.2em;
+  font-weight: 900;
+  color: #6633cc;
+  margin-bottom: 0.2em;
+  margin-left: 2.5em;
 `;

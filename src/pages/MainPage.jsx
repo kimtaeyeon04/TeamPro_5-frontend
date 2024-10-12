@@ -46,8 +46,10 @@ const MainPage = () => {
                 </CardWrapper>
                 
                 {/* 슬라이드 */}
-                <Slide/>
-            
+                <SlideWrapper>
+                    <Slide />
+                </SlideWrapper>
+
             </MainPageWrapper>
             
             {/* 마무리 */}
@@ -127,6 +129,13 @@ const SearchContainer = styled.div`
   position: relative; 
   width: 50%; 
   margin-top: 5em; 
+`;
+const SlideWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2em; 
 `;
 
 
