@@ -173,8 +173,10 @@ const ProfilePicMenu = styled.div`
 `;
 
 const MenuItemIcon = styled.div`
+  display: inline-block;
   margin-right: 0.2vw;
   font-size: 0.85vw;
+  cursor: pointer;
 `;
 
 const ProfilePicMenuItems = styled.div`
@@ -184,7 +186,7 @@ const ProfilePicMenuItems = styled.div`
   color: white;
   //font-size: 0.85vw;
   font-weight: bold;a
-  cursor: pointer;
+ 
 
   display: flex;
   //justify-content: space-between;
@@ -198,6 +200,7 @@ const ProfilePicMenuItems = styled.div`
     //border-radius: 0.625em;
     //border: 0.15vw solid #fff;
     background-color: #15243e60;
+     cursor: pointer;
   }
 
   &:last-child {
@@ -268,6 +271,8 @@ const ProfilePic = styled.img`
   //height: 25%;
   border-radius: 50%;
   cursor: pointer;
+
+  width: 2.8vw;
 `;
 
 const LoginButton = styled.button`
