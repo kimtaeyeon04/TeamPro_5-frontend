@@ -162,13 +162,14 @@ const TriangleIcon = styled.div`
 const ProfilePicMenu = styled.div`
   position: absolute;
   top: 135%;
-  width: 7vw;
-  //background-color: #91919490;
+  width: 10vw;
   background-color: #15243e80;
   border-radius: 0.625em;
+
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
-  font-size: 0.85vw;
+
+  font-size: 1vw;
 `;
 
 const MenuItemIcon = styled.div`
@@ -178,20 +179,25 @@ const MenuItemIcon = styled.div`
 
 const ProfilePicMenuItems = styled.div`
   margin: 0.625em;
-  padding: 0.625em;
+  padding: 0.25vw;
+
   color: white;
-  font-size: 0.85vw;
+  //font-size: 0.85vw;
+  font-weight: bold;a
   cursor: pointer;
+
   display: flex;
   //justify-content: space-between;
   align-items: center;
+
   border: 0.2em solid transparent;
   border-radius: 0.625em;
   box-sizing: border-box;
 
   &:hover {
-    border-radius: 0.625em;
-    border: 0.1vw solid #fff;
+    //border-radius: 0.625em;
+    //border: 0.15vw solid #fff;
+    background-color: #15243e60;
   }
 
   &:last-child {
