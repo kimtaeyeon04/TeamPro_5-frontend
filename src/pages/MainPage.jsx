@@ -10,7 +10,8 @@ import copyright from "../assets/icons/Mainpage/copyright.png";
 import searchImg from "../assets/icons/Header/search.png";
 
 //slide 
-import Slide from "../components/MainPage/slide";
+import Slide from "../components/MainPage/Slide";
+
 const MainPage = () => {
     
     return (

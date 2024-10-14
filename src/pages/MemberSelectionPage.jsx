@@ -51,11 +51,10 @@ const MainWrapper = styled.div`
     gap: 2em;
     align-items: center;
     justify-content: center;
-    // padding: 10em 15em;
-    // height: 100%;
-    width: 100%;
     box-sizing: border-box;
-    // margin : 6em 0;
+    width : 85%;
+    padding: 40px 40px;
+    margin: 0 auto; 
     
 `;
 
@@ -108,7 +107,7 @@ const MainText = styled.p`
     font-size: 3em;
     color: #0a27a6;
     text-align: center;
-    margin-top : 2em;
+    margin-top : 1em;
     cursor : pointer;
 `;
 const Title = styled.p`
