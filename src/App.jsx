@@ -4,9 +4,7 @@ import "./App.css";
 import profileIcon from "./assets/icons/Header/profileIcon.png";
 import LoginPage from "./pages/LoginPage";
 import MemberSelectionPage from "./pages/MemberSelectionPage";
-import MemberSelectionPage from "./pages/MemberSelectionPage";
 import SignUpPage from "./pages/SignUpPage";
-import SignUpPage2 from "./pages/SignUpPage2";
 import SignUpPage2 from "./pages/SignUpPage2";
 import LayOut from "./components/commmon/LayOut";
 import MyPage from "./pages/MyPage";
@@ -15,20 +13,14 @@ import PortfolioPage from "./pages/PortfolioPage";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import HackathonPage from "./pages/HackathonPage";
 import CreatePortfolioPage from "./pages/CreatePortfolioPage";
-// 프로그램 시작시 정보 저장 초기화
-import { useEffect } from "react";
-import { initializeData } from "./components/domain/startProgram";
 
 function App() {
-  useEffect(() => {
-    initializeData();
-  }, []);
   return (
     <Routes>
       <Route>
         {/* 기본 로그인 페이지 */}
         <Route path="/LoginPage" element={<LoginPage />} />
-
+        {/* 회원 선택 페이지 */}
         <Route path="/MemberSelectionPage" element={<MemberSelectionPage />} />
         {/* 기업회원 회원가입 페이지 */}
         <Route path="/SignUpPage" element={<SignUpPage />} />
@@ -39,11 +31,13 @@ function App() {
           {/* 메인 화면  */}
           <Route path="/" element={<MainPage />} />
           <Route path="/LoginPage/MainPage" element={<MainPage />} />
-          <Route path="/LoginPage/MainPage" element={<MainPage />} />
           {/* 해커톤 화면  */}
           <Route path="/HackathonPage" element={<HackathonPage />} />
           {/* 포트폴리오 제작 화면  */}
-          <Route path="/CreatePortfolioPage" element={<CreatePortfolioPage />} />
+          <Route
+            path="/CreatePortfolioPage"
+            element={<CreatePortfolioPage />}
+          />
 
           {/*마이 페이지  */}
           <Route
@@ -57,7 +51,7 @@ function App() {
             }
           />
           <Route
-            path="/LoginPage/MainPage/MyPage"
+            path="/MyPage"
             element={
               <MyPage
                 profileIcon={profileIcon}
@@ -66,15 +60,11 @@ function App() {
               />
             }
           />
-          {/* 템플릿 열람 화면*/}
-          <Route path="/TemplatePage" element={<TemplatePage />} />
-          <Route
-            path="/Login/MainPage/TemplatePage"
-            element={<TemplatePage />}
-          />
+          {/* 포폴 열람 화면*/}
+          <Route path="/PortfolioPage" element={<PortfolioPage />} />
+
           {/*프로필 편집 화면*/}
           <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
-          <Route path="/MyPage/ProfileEditPage" element={<ProfileEditPage />} />
         </Route>
       </Route>
     </Routes>

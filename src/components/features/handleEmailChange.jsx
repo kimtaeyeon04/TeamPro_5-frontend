@@ -18,3 +18,5 @@ const handleEmailChange = (userId, email) => {
         oriUsers.set(userId, user); // 새로운 정보로 맵 업데이트
     }
 }
+
+export default handleEmailChange;
