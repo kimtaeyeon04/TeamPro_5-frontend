@@ -18,10 +18,10 @@ const HackathonPage = () => {
       <MainWrapper>
         <MyTemplateMenuWrapper>
           <SelectBox />
-          <StyledButton
+          {/* <StyledButton
             text={"적용"}
             onClick={() => console.log("적용버튼 클릭")}
-          />
+          /> */}
         </MyTemplateMenuWrapper>
         <Line></Line>
 
