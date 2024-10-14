@@ -49,7 +49,7 @@ function Header({}) {
     if (option === "마이페이지") {
       navigate("/MyPage");
     } else if (option === "프로필 편집") {
-      navigate("/ProfileEdit");
+      navigate("/ProfileEditPage");
     } else if (option === "로그아웃") {
       handleLogout();
     }
@@ -162,36 +162,45 @@ const TriangleIcon = styled.div`
 const ProfilePicMenu = styled.div`
   position: absolute;
   top: 135%;
-  width: 7vw;
-  //background-color: #91919490;
+  width: 10vw;
   background-color: #15243e80;
   border-radius: 0.625em;
+
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
-  font-size: 0.85vw;
+
+  font-size: 1vw;
 `;
 
 const MenuItemIcon = styled.div`
+  display: inline-block;
   margin-right: 0.2vw;
   font-size: 0.85vw;
+  cursor: pointer;
 `;
 
 const ProfilePicMenuItems = styled.div`
   margin: 0.625em;
-  padding: 0.625em 0;
+  padding: 0.25vw;
+
   color: white;
-  font-size: 0.85vw;
-  cursor: pointer;
+  //font-size: 0.85vw;
+  font-weight: bold;a
+ 
+
   display: flex;
   //justify-content: space-between;
   align-items: center;
+
   border: 0.2em solid transparent;
   border-radius: 0.625em;
   box-sizing: border-box;
 
   &:hover {
-    border-radius: 0.625em;
-    border: 0.2em solid #fff;
+    //border-radius: 0.625em;
+    //border: 0.15vw solid #fff;
+    background-color: #15243e60;
+     cursor: pointer;
   }
 
   &:last-child {
@@ -262,6 +271,8 @@ const ProfilePic = styled.img`
   //height: 25%;
   border-radius: 50%;
   cursor: pointer;
+
+  width: 2.8vw;
 `;
 
 const LoginButton = styled.button`

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
 import searchImg from "../../assets/icons/Header/search.png";
-//import search from "./features/search.jsx";
+import { ImCancelCircle } from "react-icons/im";
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
@@ -16,6 +17,12 @@ const SearchBar = () => {
     //search(inputValue);
   };
 
+  const handleCancelClick = () => {
+    setInputValue("");
+    console.log("검색어 초기화");
+    //search(inputValue);
+  };
+
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
@@ -25,13 +32,18 @@ const SearchBar = () => {
           placeholder="제목, 공유자 이름 검색"
           spellCheck="false"
         />
-        <SearchIconWrapper>
+        <IconWrapper>
+          {inputValue && (
+            <CancelIconWrapper onClick={handleCancelClick}>
+              <ImCancelCircle />
+            </CancelIconWrapper>
+          )}
           <SearchIcon
             onClick={handleSearchClick}
             src={searchImg}
             alt="search"
           />
-        </SearchIconWrapper>
+        </IconWrapper>
       </SearchBarWrapper>
     </SearchBarContainer>
   );
@@ -45,26 +57,28 @@ const SearchBarContainer = styled.div`
 `;
 
 const SearchBarWrapper = styled.div`
-  // width: 100%;
-  width : 30em;
-  height: 3em;
+  width: 40vw;
+  height: 4.8vh;
+
   border: 0.0625em solid #c8c8c8;
   box-shadow: 0em 0.125em 0.125em rgba(12, 12, 13, 0.1),
     0em 0.25em 0.25em rgba(12, 12, 13, 0.05);
   border-radius: 62.5em;
+
   display: flex;
   align-items: center;
-  padding-left: 1.25em;
-  float: right;
+  padding: 0 1.25em;
 `;
 
 const SearchInput = styled.input`
   width: 85%;
+
   font-family: "Inria Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.1em;
+  font-size: 1.25vw;
   color: #919194;
+
   border: none;
   outline: none;
   background: none;
@@ -75,15 +89,22 @@ const SearchInput = styled.input`
   }
 `;
 
-const SearchIconWrapper = styled.div`
+const IconWrapper = styled.div`
   width: 15%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  cursor: pointer;
+`;
+
+const CancelIconWrapper = styled.div`
+  width: 1.9vw;
+  color: #d0d1d9;
+
   cursor: pointer;
 `;
 
 const SearchIcon = styled.img`
-  width: 25%;
+  width: 2vw;
   border-radius: 50%;
 `;

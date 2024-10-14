@@ -8,4 +8,13 @@ export const userInfo = [
     birthdate: "1990-01-01",
     phone: "010-1234-5678",
   },
+  {
+    Id: 2,
+    password: 200,
+    name: "김예은",
+    nickname: "예으니",
+    email: "nabinabi1110@gmail.com",
+    birthdate: "1990-01-01",
+    phone: "010-1111-2222",
+  },
 ];

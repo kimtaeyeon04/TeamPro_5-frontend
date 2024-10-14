@@ -9,25 +9,18 @@ import SearchBar from "../components/commmon/SearchBar";
 import StyledButton from "../components/commmon/StyledButton";
 
 const HackathonPage = () => {
-
   return (
     <>
-      <PageHeader
-          pageTitle="Hackathon"
-      />
+      <PageHeader pageTitle="Hackathon" />
       <MainWrapper>
         <MyTemplateMenuWrapper>
           <SelectBox />
-          <StyledButton
-            text={"적용"}
-            onClick={() => console.log("적용버튼 클릭")}
-          />
         </MyTemplateMenuWrapper>
         <Line></Line>
 
         {/* 12개의 카드를 그리드 형태로 출력 */}
         <HackathonGridWrapper>
-            <TemplateGrid>
+          <TemplateGrid>
             {dummydata.map((data, index) => (
               <TemplateCard
                 key={index}
@@ -39,7 +32,6 @@ const HackathonPage = () => {
             ))}
           </TemplateGrid>
         </HackathonGridWrapper>
-       
       </MainWrapper>
     </>
   );
@@ -93,7 +85,6 @@ const TemplateGrid = styled.div`
   margin-top: 2em;
   max-width: 80em;
 `;
-
 
 const Line = styled.hr`
   margin: 0.625em 0;
