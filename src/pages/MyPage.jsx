@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DashBoard from "../components/MyPage/DashBoard";
-import SelectBox_NoFilter from "../components/commmon/SelectBox _NoFilter";
+import SelectBox from "../components/commmon/SelectBox";
 import SearchBarMini from "../components/MyPage/SearchBarMini";
 import TemplateCard from "../components/commmon/TemplateCard";
 import StyledButton from "../components/commmon/StyledButton";
@@ -13,18 +13,10 @@ function MyPage({ profilePicture, name, nickname }) {
 
   return (
     <MyPageContainer className="MyPageContainer">
-      {/* <DashBoardContainer>
-        <DashBoard
-          profilePicture={profilePicture}
-          name={name}
-          nickname={nickname}
-        />
-      </DashBoardContainer> */}
-
-      <MyPortFolioContainer>
-        <MyPortFolioTiltle>내가 만든 포트폴리오</MyPortFolioTiltle>
+      <MyContainer>
+        <MyTitle>내가 만든 프로젝트</MyTitle>
         <MyProtFolioMenuBarWrapper>
-          <SelectBox_NoFilter />
+          <SelectBox />
           <SearchBarMini
             onChange={(e) => console.log(e.target.value)}
             onClick={() => onSearchClick}
@@ -36,7 +28,7 @@ function MyPage({ profilePicture, name, nickname }) {
         <TemplateGridWrapper>
           <TemplateGrid>{/* 기능구현으로부터 함수 받아서 구현 */}</TemplateGrid>
         </TemplateGridWrapper>
-      </MyPortFolioContainer>
+      </MyContainer>
 
       <Line></Line>
       <StyledButtonWrapper>
@@ -46,10 +38,33 @@ function MyPage({ profilePicture, name, nickname }) {
         />
       </StyledButtonWrapper>
 
-      <MyTemplateContainer className="MyTempalteContainer">
-        <MyTemplateTitle className="MyTemplateTitle">
-          내가 만든 템플릿
-        </MyTemplateTitle>
+      <MyContainer>
+        <MyTitle>내가 만든 포트폴리오</MyTitle>
+        <MyProtFolioMenuBarWrapper>
+          <SelectBox />
+          <SearchBarMini
+            onChange={(e) => console.log(e.target.value)}
+            onClick={() => onSearchClick}
+          />
+        </MyProtFolioMenuBarWrapper>
+
+        <Line></Line>
+
+        <TemplateGridWrapper>
+          <TemplateGrid>{/* 기능구현으로부터 함수 받아서 구현 */}</TemplateGrid>
+        </TemplateGridWrapper>
+      </MyContainer>
+
+      <Line></Line>
+      <StyledButtonWrapper>
+        <StyledButton
+          text={"추가"}
+          onClick={() => console.log("추가 버튼 클릭")} //navigate 넣으면 된다요
+        />
+      </StyledButtonWrapper>
+
+      <MyContainer className="MyTempalteContainer">
+        <MyTitle className="MyTemplateTitle">내가 만든 템플릿</MyTitle>
         <MyTemplateMenuWrapper>
           {/* <SelectBox /> */}
           <SearchBarMini
@@ -88,7 +103,7 @@ function MyPage({ profilePicture, name, nickname }) {
             onClick={() => console.log("추가 버튼 클릭")} // 내가 만든 템플릿을 추가할 수 있는 버튼..
           />
         </StyledButtonWrapper>
-      </MyTemplateContainer>
+      </MyContainer>
     </MyPageContainer>
   );
 }
@@ -100,15 +115,11 @@ const MyPageContainer = styled.div`
   margin: 0 auto;
 `;
 
-const DashBoardContainer = styled.div`
-  margin-left: -1em;
-`;
-
-const MyPortFolioContainer = styled.div`
+const MyContainer = styled.div`
   margin-top: 10vh;
 `;
 
-const MyPortFolioTiltle = styled.div`
+const MyTitle = styled.div`
   height: 2.625em;
   top: 11.375em;
   font-family: "Inria Sans", sans-serif;
@@ -126,25 +137,6 @@ const MyPortFolioTiltle = styled.div`
 const MyProtFolioMenuBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-const MyTemplateContainer = styled.div`
-  margin-top: 10vh;
-`;
-
-const MyTemplateTitle = styled.div`
-  height: 2.625em;
-  top: 11.375em;
-  font-family: "Inria Sans", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.875em;
-  line-height: 2.25em;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: -0.025em;
-  color: #000000;
 `;
 
 const MyTemplateMenuWrapper = styled.div`

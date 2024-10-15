@@ -4,12 +4,14 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Consent from "../components/Consent/Consent.jsx";
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
-
+import { userInfo } from "../components/commmon/dummydata/userInfo.jsx";
 
 const SignUpPage = () => {
     const navigate = useNavigate();
     const [eyeVisible, setEyeVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false); 
+    const [isIdChecked, setIsIdChecked] = useState(false); // 아이디 중복 체크 활성화 상태
+    const [idInput, setIdInput] = useState(''); // 입력된 아이디 상태
 
     const toggleEyeVisible = () => {
         setEyeVisible(!eyeVisible);
@@ -22,7 +24,25 @@ const SignUpPage = () => {
     const closeModal = () => {
         setIsModalOpen(false); // 팝업 닫기
     };
+<<<<<<< HEAD
 
+=======
+    // 아디이 중복 부분
+    const handleIdInputChange = (e) => {
+        setIdInput(e.target.value); // 입력된 아이디 값 업데이트
+    };
+
+    const handleIdCheck = () => {
+      
+        const isDuplicate = userInfo.some((user) => user.Id === parseInt(idInput));
+        if (!isDuplicate) {
+            setIsIdChecked(true); 
+        } else {
+            alert("이미 존재하는 아이디입니다."); 
+            setIsIdChecked(false); 
+        }
+    };
+>>>>>>> deb579cabeb201180ad30baf58970c2785728b85
     return (
         <LoginWrapper>
             <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
@@ -34,7 +54,23 @@ const SignUpPage = () => {
                         <CalendarInput type="date"></CalendarInput>
                     </ColumnWrapper2>
                 </ColumnWrapper1>
-                <IdInput placeholder="아이디 및 이메일" type="text"></IdInput>
+                <ColumnWrapper1>
+                    <IdInput 
+                        placeholder="아이디" 
+                        type="text" 
+                        value={idInput} 
+                        onChange={handleIdInputChange} 
+                    />
+                    <IDcheckWrapper>
+                        <IDcheckInput 
+                            type="checkbox" 
+                            id="IDcheck" 
+                            onClick={handleIdCheck}
+                            checked={isIdChecked} 
+                        />
+                        <label htmlFor="IDcheck">중복확인</label>
+                    </IDcheckWrapper>
+                </ColumnWrapper1>
                 <PassWrapper>
                     <PassInput
                         type={eyeVisible ? "text" : "password"}
@@ -96,8 +132,15 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
     padding: 10px;
     padding: 10px;
+=======
+
+    width : 85%;
+    padding: 40px 40px;
+    margin: 0 auto; 
+>>>>>>> deb579cabeb201180ad30baf58970c2785728b85
 `;
 
 const JoinWrapper = styled.div`
@@ -129,6 +172,20 @@ const CheckBoxWrapper = styled.div`
   align-items: center;
   margin-left : -12em;
 `;
+<<<<<<< HEAD
+=======
+
+const IDcheckWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left : 4em;
+`;
+const PassWrapper = styled.div`
+    position: relative;
+    width: 100%;
+   
+`;
+>>>>>>> deb579cabeb201180ad30baf58970c2785728b85
 
 //css input
 const NameInput = styled.input`
@@ -184,7 +241,27 @@ const CalendarInput = styled.input`
     margin-right : -2em;
 `;
 
+<<<<<<< HEAD
+=======
+`;
+const IdInput = styled.input`
+    border-radius : 2em;
+    border : 1px solid #D0D1D9;
+    height : 3em;
+    width : 40%;
+    text-indent: 1em; 
+    outline : none;
+    &::placeholder {
+        text-indent: 1em; 
+        color : #D0D1D9;
+    }
+
+`;
+>>>>>>> deb579cabeb201180ad30baf58970c2785728b85
 const CheckBoxInput = styled.input`
+    border: 1px solid #D0D1D9;
+`;
+const IDcheckInput = styled.input`
     border: 1px solid #D0D1D9;
 `;
 
