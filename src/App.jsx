@@ -64,10 +64,10 @@ function App() {
             }
           />
           {/* 템플릿 열람 화면*/}
-          <Route path="/TemplatePage" element={<TemplatePage />} />
+          <Route path="/PortfolioPage" element={<PortfolioPage />} />
           <Route
-            path="/Login/MainPage/TemplatePage"
-            element={<TemplatePage />}
+            path="/Login/MainPage/PortfolioPage"
+            element={<PortfolioPage />}
           />
           {/*프로필 편집 화면*/}
           <Route path="/ProfileEditPage" element={<ProfileEditPage />} />
