@@ -6,11 +6,17 @@ import SelectBox from "../components/commmon/SelectBox";
 import TemplateCard from "../components/commmon/TemplateCard";
 import StyledButton from "../components/commmon/StyledButton";
 import { dummydata } from "../components/commmon/dummydata/dummydata"; // dummydata 파일을 import
+import { Navigate, useNavigate} from "react-router-dom";
 
 import PageHeader from "../components/commmon/PageHeader";
 
 const PortfolioPage = () => {
+
+  const navigate = useNavigate();
+
+
   return (
+
     <TemplatePageContainer>
       {/* 각 페이지별 상단 -> 나중에 쉽게 모든 페이지에 적용할 수 있는 방법으로 수정 */}
       <PageHeader
@@ -35,7 +41,12 @@ const PortfolioPage = () => {
           ))}
         </TemplateGrid>
       </TemplateGridWrapper>
+       <ButtonWrapper>
+         {/* 포트폴리오 제작 페이지로 넘어갈 수 있는 버튼 추가 */}
+        <StartButton onClick={() => navigate("/CreatePortfolioPage")}>포트폴리오 제작하기</StartButton>
+       </ButtonWrapper>
     </TemplatePageContainer>
+
   );
 };
 
@@ -44,27 +55,7 @@ export default PortfolioPage;
 const TemplatePageContainer = styled.div`
   width: 85%; //수정중...
   margin: 0 auto;
-`;
 
-const PageCategoryWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-
-const LogoImage = styled.img`
-  widht: 5em;
-  height: 5em;
-  margin-bottom: -2em;
-`;
-
-const HeaderText = styled.p`
-  color: #0a27a6;
-  font-size: 2em;
-  font-weight: 800;
-  font-family: "OTF B";
 `;
 
 const SelectBoxWrapper = styled.div`
@@ -77,6 +68,11 @@ const TemplateGridWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center; 
+  margin-top: 2em;
 `;
 
 const TemplateGrid = styled.div`
@@ -91,4 +87,23 @@ const TemplateGrid = styled.div`
 const Line = styled.hr`
   margin: 0.625em 0;
   border: 1px solid #d0d1d9;
+`;
+
+const StartButton = styled.button`
+  color: #fff;
+  font-size: 1em;
+  font-weight: 800;
+  border-radius: 2em;
+  border: none;
+  background-color: #0A27A6;
+  height: 3em;
+  width: 20%;
+  margin-top: 2em;
+  font-family: "OTF R";
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
 `;

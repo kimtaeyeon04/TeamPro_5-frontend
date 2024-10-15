@@ -11,7 +11,8 @@ const CreatePortfolioPage = () => {
       /> 
 
       <MainWrapper>
-        <NameWrapper>
+      <ColumnWrapper1>
+       <NameWrapper>
             <MainText>포트폴리오 이름</MainText>
             <NameInput type="text"></NameInput>
         </NameWrapper>
@@ -20,6 +21,8 @@ const CreatePortfolioPage = () => {
             <MainText>참여 기간</MainText>
             <NameInput type="text"></NameInput>
         </NameWrapper>
+      </ColumnWrapper1>
+       
 
         <NameWrapper>
             <MainText>문제해결</MainText>
@@ -69,10 +72,21 @@ const NameWrapper = styled.div`
     display : flex;
     flex-direction : column;
 `;
+const ColumnWrapper1 = styled.div`
+    display : flex;
+    gap : 30em;
+`;
+
 //css input
 const NameInput = styled.input`
-    border : none;
-    background-color : #f9f9f9;
+
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: #d0d1d9; 
+
     outline : none;
     height : 2em;
     margin-top : -1em;
