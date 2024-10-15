@@ -264,6 +264,7 @@ const Profile = styled.div`
   border-radius: 50%;
   display: flex;
   align-items: center;
+
 `;
 
 const ProfilePic = styled.img`
