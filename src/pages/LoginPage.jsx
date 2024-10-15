@@ -1,8 +1,5 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import { Navigate, useNavigate } from "react-router-dom";
-
-
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 
@@ -83,7 +80,7 @@ const LoginPage = () => {
             <LoginButton onClick={handleLogin}>로그인</LoginButton>
             <MemberWrapper>
                 <Text>회원이 아니신가요? |</Text>
-                <JoinButton onClick={onClickImg}>회원가입</JoinButton>
+                <JoinButton>회원가입</JoinButton>
             </MemberWrapper>
         </LoginWrapper>
     );

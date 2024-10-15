@@ -155,7 +155,7 @@ const Text = styled.a`
 `;
 
 const Profile = styled.div`
-  width: 6vw;
+  width: 2.6%;
   border-radius: 50%;
   display: flex;
   align-items: center;
