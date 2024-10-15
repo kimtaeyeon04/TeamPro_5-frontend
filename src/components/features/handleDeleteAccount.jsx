@@ -11,3 +11,5 @@ const handleDeleteAccount = (userId) => {
     }
 
 }
+
+export default handleDeleteAccount;

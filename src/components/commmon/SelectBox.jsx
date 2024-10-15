@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import arrow from "../../assets/icons/SelectBox/arrow.png";
-import StyledButton from "./StyledButton";
-//sort 함수 imort 받아야함.
 
 const categories = ["프론트엔드", "백엔드", "디자인"];
 const sortOptions = ["인기순", "추천수", "최신순"];
@@ -20,15 +18,13 @@ const filterOptions = [
   "박사",
 ];
 
-//기능구현으로부터 sort 함수 받음.
 const SelectBox = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSort, setSelectedSort] = useState(null);
-  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState(null);
 
   const handleCategoryClick = (option) => {
     selectedCategory === option
@@ -112,7 +108,7 @@ const SelectBox = () => {
             setIsSortOpen(false);
           }}
         >
-          {"필터"}
+          {selectedFilter ? selectedFilter : "필터"}
           <ArrowImg src={arrow} alt="arrow" />
         </SelectButton>
         <SelectMenu isOpen={isFilterOpen}>
@@ -122,7 +118,7 @@ const SelectBox = () => {
             ) : (
               <SelectItem
                 key={index}
-                className={selectedFilters.includes(item) ? "highlight" : ""}
+                className={selectedFilter === item ? "highlight" : ""}
                 onClick={() => handleFilterClick(item)}
               >
                 {item}
@@ -131,17 +127,6 @@ const SelectBox = () => {
           )}
         </SelectMenu>
       </SelectWrapper>
-
-      <StyledButtonContainer>
-        <StyledButton
-          text={"적용"}
-          onClick={() => {
-            console.log(selectedCategory, selectedSort, selectedFilters);
-            // 기능구현으로 선택된 카테고리, 정렬, 필터 보냄.
-            //sort(selectedCategory, selectedSort, selectedFilters);
-          }}
-        />
-      </StyledButtonContainer>
     </SelectContainer>
   );
 };
@@ -233,8 +218,4 @@ const SelectItem = styled.div`
     padding: 0.75em;
     font-weight: bold;
   }
-`;
-
-const StyledButtonContainer = styled.div`
-  width: 100%;
 `;

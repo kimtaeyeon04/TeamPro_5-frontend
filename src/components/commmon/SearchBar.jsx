@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import searchImg from "../../assets/icons/Header/search.png";
 import search from "../features/search.jsx";
-
+import { useState } from "react";
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
 
@@ -19,18 +19,9 @@ const SearchBar = () => {
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
-        <SearchInput
-          value={inputValue} // 입력 필드가 상태와 동기화
-          onChange={handleInputChange}
-          placeholder="제목, 공유자 이름 검색"
-          spellCheck="false"
-        />
-        <SearchIconWrapper>
-          <SearchIcon
-            onClick={handleSearchClick}
-            src={searchImg}
-            alt="search"
-          />
+        <SearchInput placeholder="제목, 공유자 이름 검색" spellCheck="false" />
+        <SearchIconWrapper onClick={() => console.log("검색버튼 누름")}>
+          <SearchIcon src={search} alt="search" />
         </SearchIconWrapper>
       </SearchBarWrapper>
     </SearchBarContainer>

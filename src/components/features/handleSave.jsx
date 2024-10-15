@@ -39,3 +39,5 @@ const handleSave = (userId, name, nickname) => {
         }
     }
 };
+
+export default handleSave;

@@ -3,8 +3,6 @@ import styled from "styled-components";
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
 
-import { userInfo } from "../components/commmon/dummydata/userInfo.jsx"; 
-
 const LoginPage = () => {
     const [eyeVisible, setEyeVisible] = useState(false);
     const [email, setEmail] = useState("");
@@ -23,61 +21,22 @@ const LoginPage = () => {
         setEyeVisible(!eyeVisible);
     };
 
-    const handleLogin = () => {
-        const trimmedEmail = email.trim();
-        const trimmedId = Id.trim();
-        const trimmedPassword = password.trim();
-
-        console.log("입력된 이메일 및 아이디 :", trimmedEmail, trimmedId);
-        console.log("입력된 비밀번호 : ", trimmedPassword);
-        console.log("더미 데이터:", userInfo);
-
-        const user = userInfo.find(
-            (user) => 
-                (user.email.toLowerCase() === trimmedEmail.toLowerCase() || user.Id.toString() === trimmedId) &&
-                user.password.toString() === trimmedPassword
-        );
-
-        if (user) {
-            // 로그인 성공 시 accessToken 저장
-            localStorage.setItem('accessToken', 'yourAccessTokenHere'); // 실제 accessToken 사용
-
-            navigate("./MainPage");
-        } else {
-            console.log("로그인 실패 - 입력값이 더미 데이터와 일치하지 않음");
-        }
-    };
-
-    return (
+    return(
         <LoginWrapper>
             <MainText>FolioFrame</MainText>
             <JoinWrapper>
-                <IDinput
-                    placeholder="이메일 주소 또는 아이디"
-                    value={email || Id}
-                    onChange={(e) => {
-                        if (e.target.value.includes('@')) {
-                            setEmail(e.target.value);
-                        } else {
-                            setId(e.target.value);
-                        }
-                    }}
-                />
+                <IDinput placeholder="이메일 주소 또는 아이디"></IDinput>
                 <PassWrapper>
-                    <PASSinput
-                        type={eyeVisible ? "text" : "password"}
-                        placeholder="비밀번호"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <EyeIcon
-                        src={eyeVisible ? Eyeoff : Eye}
-                        alt="eye"
-                        onClick={toggleEyeVisible}
-                    />
+                    <PASSinput type={eyeVisible ? "text" : "password"} placeholder="비밀번호"></PASSinput>
+                    <EyeIcon 
+                        src={eyeVisible ? Eyeoff : Eye} 
+                        alt="eye" 
+                        onClick={toggleeyeVisible}/>
                 </PassWrapper>
+                
+                {/* <EyeIcon></EyeIcon> */}
             </JoinWrapper>
-            <LoginButton onClick={handleLogin}>로그인</LoginButton>
+            <LoginButton>로그인</LoginButton>
             <MemberWrapper>
                 <Text>회원이 아니신가요? |</Text>
                 <JoinButton>회원가입</JoinButton>
@@ -87,7 +46,6 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
 
 //css Wrapper
 const LoginWrapper = styled.div`
