@@ -1,98 +1,20 @@
 export const userInfo = [
   {
-    id: 1,
+    Id: 1,
     password: 100,
     name: "홍길동",
     nickname: "길동이",
     email: "example@example.com",
     birthdate: "1990-01-01",
     phone: "010-1234-5678",
-    career: "있음",
-    education: "박사"
-    // 가지고 있는 포트폴리오Id 등 ...
   },
   {
-    id: 2,
-    password: 100,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
+    Id: 2,
+    password: 200,
+    name: "김예은",
+    nickname: "예으니",
+    email: "nabinabi1110@gmail.com",
     birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "박사"
-    // 가지고 있는 포트폴리오Id 등 ...
+    phone: "010-1111-2222",
   },
-  {
-    id: 3,
-    password: 100,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "박사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 4,
-    password: 100,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "박사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 5,
-    password: 100,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "박사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 6,
-    password: 100,
-    name: "홍길동",
-    nickname: "흰둥이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "석사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 7,
-    password: 100,
-    name: "홍길동",
-    nickname: "honghong",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "없음",
-    education: "박사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  },
-  {
-    id: 8,
-    password: 100,
-    name: "홍길동",
-    nickname: "길동이",
-    email: "example@example.com",
-    birthdate: "1990-01-01",
-    phone: "010-1234-5678",
-    career: "있음",
-    education: "석사"
-    // 가지고 있는 포트폴리오Id 등 ...
-  }
 ];
