@@ -1,7 +1,7 @@
 class User {
-    constructor(id, pageId, name, email, nickname=null, link=null, career=null, education=null) {
+    constructor(id, password, name, email, nickname=null, link=null, career=null, education=null) {
         this.id = id; // pk
-        this.pageId = pageId; // fk to MyPage
+        this.password = password;
         this.name = name;
         this.email = email;
         this.nickname = nickname;

@@ -29,7 +29,7 @@ templateInfo.forEach((data) => {
 
 export const initializeData = () => {
     userInfo.forEach((data) => {
-        let user = new User(data.id, data.id, data.name, data.email, data.nickname, null, data.career, data.education);
+        let user = new User(data.id, data.password, data.name, data.email, data.nickname, null, data.career, data.education);
         oriUsers.set(data.id, user);
     });
 
