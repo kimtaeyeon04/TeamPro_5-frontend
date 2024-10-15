@@ -24,9 +24,6 @@ const SignUpPage = () => {
     const closeModal = () => {
         setIsModalOpen(false); // 팝업 닫기
     };
-<<<<<<< HEAD
-
-=======
     // 아디이 중복 부분
     const handleIdInputChange = (e) => {
         setIdInput(e.target.value); // 입력된 아이디 값 업데이트
@@ -42,7 +39,6 @@ const SignUpPage = () => {
             setIsIdChecked(false); 
         }
     };
->>>>>>> deb579cabeb201180ad30baf58970c2785728b85
     return (
         <LoginWrapper>
             <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
@@ -84,23 +80,7 @@ const SignUpPage = () => {
                 </PassWrapper>
                 <TelInput placeholder="전화번호" type="tel"></TelInput>
                 <CertificInput placeholder="회사인증" type="email"></CertificInput>
-                <IdInput placeholder="아이디 및 이메일" type="text"></IdInput>
-                <PassWrapper>
-                    <PassInput
-                        type={eyeVisible ? "text" : "password"}
-                        placeholder="비밀번호"
-                    />
-                    <EyeIcon
-                        src={eyeVisible ? Eyeoff : Eye}
-                        alt="eye"
-                        onClick={toggleEyeVisible}
-                    />
-                </PassWrapper>
-                <TelInput placeholder="전화번호" type="tel"></TelInput>
-                <CertificInput placeholder="회사인증" type="email"></CertificInput>
                 <CheckBoxWrapper>
-                    <CheckBoxInput type="checkbox" id="Join" onClick={handleCheckBoxClick} />
-                    <label htmlFor="Join">가입 기본약관</label>
                     <CheckBoxInput type="checkbox" id="Join" onClick={handleCheckBoxClick} />
                     <label htmlFor="Join">가입 기본약관</label>
                 </CheckBoxWrapper>
@@ -108,7 +88,6 @@ const SignUpPage = () => {
             <LoginButton>시작하기</LoginButton>
             <MemberWrapper>
                 <Text>이미 회원이신가요? |</Text>
-                <JoinButton onClick={() => navigate("../LoginPage")}>로그인</JoinButton>
                 <JoinButton onClick={() => navigate("../LoginPage")}>로그인</JoinButton>
             </MemberWrapper>
 
@@ -132,15 +111,10 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
-    padding: 10px;
-    padding: 10px;
-=======
 
     width : 85%;
     padding: 40px 40px;
     margin: 0 auto; 
->>>>>>> deb579cabeb201180ad30baf58970c2785728b85
 `;
 
 const JoinWrapper = styled.div`
@@ -172,8 +146,6 @@ const CheckBoxWrapper = styled.div`
   align-items: center;
   margin-left : -12em;
 `;
-<<<<<<< HEAD
-=======
 
 const IDcheckWrapper = styled.div`
   display: flex;
@@ -185,7 +157,6 @@ const PassWrapper = styled.div`
     width: 100%;
    
 `;
->>>>>>> deb579cabeb201180ad30baf58970c2785728b85
 
 //css input
 const NameInput = styled.input`
@@ -240,9 +211,23 @@ const CalendarInput = styled.input`
     border-radius: 4px;
     margin-right : -2em;
 `;
+const PassInput = styled.input`
+    border-radius : 2em;
+    border : 1px solid #D0D1D9;
+    height : 3em;
+    width : 90%;  
+    text-indent: 1em; 
+    padding-right: 2.5em; 
+    outline : none;
+    &::placeholder {
+        text-indent: 1em; 
+        color : #D0D1D9;
+    }
+    &::-ms-reveal {
+        display: none;
+    }
+}
 
-<<<<<<< HEAD
-=======
 `;
 const IdInput = styled.input`
     border-radius : 2em;
@@ -257,7 +242,6 @@ const IdInput = styled.input`
     }
 
 `;
->>>>>>> deb579cabeb201180ad30baf58970c2785728b85
 const CheckBoxInput = styled.input`
     border: 1px solid #D0D1D9;
 `;
@@ -311,3 +295,47 @@ const CalendarText =  styled.p`
     margin-top : 1em;
 `;
 
+
+const ModalOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ModalContent = styled.div`
+    background: white;
+    padding: 2em;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+`;
+
+const CloseButton = styled.button`
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background: #0056b3;
+    }
+`;
+const EyeIcon = styled.img`
+    position: absolute;
+    right: 1em; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width : 1.2em;
+    height : 1.2em;
+`;
