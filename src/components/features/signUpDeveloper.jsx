@@ -39,7 +39,7 @@ const idSignUpDeveloper = (name, birthday, id, password, rePassword, phoneNumber
     appendStringToFile(filePath, `,${string}\n];`);
 }
 
-const emailSighUpDeveloper = (name, birthday, email, password, rePassword, phoneNumber) => {
+const emailSignUpDeveloper = (name, birthday, email, password, rePassword, phoneNumber) => {
     if (!isEmailChecked()) reutrn;
     if (!isPassword(password, rePassword)) return;
 
@@ -210,3 +210,14 @@ const getRandomId = () => {
     const length = Math.floor(Math.random() * (20 - 6 + 1)) + 6;
     return generateRandomString(length);
 }
+
+
+// 아이디로 회원가입 버튼 눌렀을 때: idSignUpDeveloper
+//      아이디 중복확인 눌렀을 때: isIDExists
+// 이메일로 회원가입 버튼 눌렀을 때: emailSignUpDeveloper
+//      이메일 중복확인 눌렀을 때: isEmailExists
+// 공통 전화번호 중복확인 눌렀을 때: isPhoneNumExists
+//
+// 아이디 변경됐을 때: changedId
+// 전화번호 변경됐을 때: changedPhoneNumber
+export { idSignUpDeveloper, emailSignUpDeveloper, isIdExists, isEmailExists, isPhoneNumExists, changedId, changedPhoneNumber };
