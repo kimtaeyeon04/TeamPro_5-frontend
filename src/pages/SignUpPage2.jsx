@@ -197,6 +197,9 @@ const PassInput = styled.input`
         text-indent: 1em; 
         color : #D0D1D9;
     }
+    &::-ms-reveal {
+        display: none;
+    }
 
 `;
 const IdInput = styled.input`

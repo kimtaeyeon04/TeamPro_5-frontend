@@ -150,6 +150,9 @@ const PASSinput = styled.input`
     &::placeholder {
     text-indent: 1em; 
     }
+    &::-ms-reveal {
+        display: none;
+    }
 `;
 
 //css button
