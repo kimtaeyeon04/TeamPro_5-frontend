@@ -138,25 +138,29 @@ const SelectMenu = styled.div`
   border-radius: 0.625em;
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   z-index: 1;
-  fonst-size: 0.85vw;
+  font-size: 0.85vw;
 `;
 
 const SelectItem = styled.div`
   margin: 0.625em;
   padding: 0.625em;
+
   color: white;
-  font-size: 0.85vw;
+  //font-size: 0.85vw;
   cursor: pointer;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   border: 0.2em solid transparent;
   border-radius: 0.625em;
   box-sizing: border-box;
 
   &:hover {
-    border-radius: 0.625em;
-    border: 0.2em solid #fff;
+    //border-radius: 0.625em;
+    //border: 0.15vw solid #fff;
+    background-color: #15243e60;
   }
 
   &:last-child {

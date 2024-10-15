@@ -98,7 +98,11 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 90px;
+    // padding: 90px;
+
+    width : 85%;
+    padding: 40px 40px;
+    margin: 0 auto; 
 `;
 
 const JoinWrapper = styled.div`
@@ -145,6 +149,9 @@ const PASSinput = styled.input`
 
     &::placeholder {
     text-indent: 1em; 
+    }
+    &::-ms-reveal {
+        display: none;
     }
 `;
 
