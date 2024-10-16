@@ -23,6 +23,7 @@ const idSignUpDeveloper = (name, birthday, id, password, rePassword, phoneNumber
         alert('모든 항목을 입력하세요.');
     }
     if (!isIdChecked()) return;
+    if (!isPhoneNumberChecked()) return;
     if (!isPassword(password, rePassword)) return;
 
     // oriUsers 링크드 리스트와 userInfo.jsx에 유저 추가
@@ -58,7 +59,8 @@ const emailSignUpDeveloper = (name, birthday, email, password, rePassword, phone
     if (name === null || birthday === null || phoneNumber.length === 0){
         alert('모든 항목을 입력하세요.');
     }
-    if (!isEmailChecked()) reutrn;
+    if (!isEmailChecked()) return;
+    if (!isPhoneNumberChecked()) return;
     if (!isPassword(password, rePassword)) return;
 
     // oriUsers 링크드 리스트와 userInfo.jsx에 유저 추가
@@ -174,10 +176,6 @@ const isIdChecked = () => {
         alert('아이디 중복 체크를 해야합니다.');
         return 0
     }
-    if (phoneNumCheck === false) {
-        alert('전화번호 중복 체크를 해야 합니다.');
-        return 0;
-    }
     return 1;
 }
 
@@ -186,6 +184,10 @@ const isEmailChecked = () => {
         alert('이메일 중복 체크를 해야 합니다.');
         return 0;
     }
+    return 1;
+}
+
+const isPhoneNumberChecked = () => {
     if (phoneNumCheck === false) {
         alert('전화번호 중복 체크를 해야 합니다.');
         return 0;
