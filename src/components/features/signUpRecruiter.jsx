@@ -175,8 +175,9 @@ const setCompany = () => {
     companyCheck = true;
 }
 
-// 아이디나 전화번호 중복 체크 후에 입력값이 변하면 다시 체크해야 하므로
+// 아이디나 이메일, 전화번호 중복 체크 후에 입력값이 변하면 다시 체크해야 하므로
 const changedId = () => idCheck = false;
+const changedEmail = () => emailCheck = false;
 const changedPhoneNumber = () => phoneNumCheck = false;
 
 // 중복 체크가 되어 있지 않으면 실행지 않는다
@@ -249,4 +250,4 @@ const getRandomId = () => {
 //
 // 아이디 변경됐을 때: changedId
 // 전화번호 변경됐을 때: changedPhoneNumber
-export { idSignUpRecruiter, emailSignUpRecruiter, setId, setEmail, setPhoneNumber, changedId, changedPhoneNumber };
+export { idSignUpRecruiter, emailSignUpRecruiter, setId, setEmail, setPhoneNumber, changedId, changedEmail, changedPhoneNumber };
