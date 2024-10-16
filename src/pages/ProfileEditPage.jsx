@@ -45,7 +45,7 @@ const ProfileEditUI = ({}) => {
             <StyledButton
               text={"저장"}
               onClick={() => console.log(name, nickname)}
-              // handleSave(name, nickname) <-- 기능구현에서 만들어줄 함수!! 바꿀 이름이랑 닉네임을 handleSave함수로 보내면 바꿔주깅~
+              // handleSave(name, nickname) <-- 기능구현에서 만들어줄 함수!! 이름과 닉네임을 변경하는 함수. 필요한 파라메터는 알려주면 수정 예정
             />
           </StyledButtonContainer>
         </InputButtonContainer>
@@ -74,7 +74,7 @@ const ProfileEditUI = ({}) => {
             <StyledButton
               text={"변경"}
               onClick={() => console.log(email)}
-              //handleEmailChange(email) <-- 기능구현에서 만들어줄 함수!! 바꿀 이메일을 handleEmailChane함수로 보내면 바꿔주깅~
+              //handleEmailChange(email) <-- 기능구현에서 만들어줄 함수!! 이메일을 변경하는 함수. 필요한 파라메터는 알려주면 수정 예정
             />
           </StyledButtonContainer>
         </InputButtonContainer>
@@ -91,7 +91,7 @@ const ProfileEditUI = ({}) => {
           <DiscriptionWrapper>
             <DeleteDiscription>
               이는 영구적인 조치이며 되돌릴 수 없습니다. <br /> 계정을 삭제한
-              후에는 아무도 계정을 복구할 수 없습니다.
+              후에는 계정을 복구할 수 없습니다.
             </DeleteDiscription>
           </DiscriptionWrapper>
           <DeleteAgreeWrapper>
@@ -100,17 +100,16 @@ const ProfileEditUI = ({}) => {
               checked={deleteChecked} // deleteChecked가 true이면 체크가 되어 있고, false이면 체크가 해제
               onChange={() => setDeleteChecked(!deleteChecked)} // 체크박스 클릭 시, 원래 상태의 반대로 토글. true -> false, false -> true
             />
-            <DeleteDiscription>
-              이 조치는 영구적이며 되돌릴 수 없습니다. 계정을 삭제한 후에는
-              아무도 계정을 복구할 수 없습니다.
-            </DeleteDiscription>
-            <DeleteButton
-              disabled={!deleteChecked} // deleteChecked가 false일 때 버튼은 눌리지 않도록 설정
-              onClick={() => console.log(deleteChecked)}
-              //handleDeleteAccount <-- 기능구현에서 만들어줄 함수!! 삭제할 계정을 handleDeleteAccount함수로 보내면 삭제해주깅~
-            >
-              계정 삭제
-            </DeleteButton>
+            <DeleteDiscription>이에 동의합니다.</DeleteDiscription>
+            <DeleteButtonWrapper>
+              <DeleteButton
+                disabled={!deleteChecked} // deleteChecked가 false일 때 버튼은 눌리지 않도록 설정
+                onClick={() => console.log(deleteChecked)}
+                //handleDeleteAccount <-- 기능구현에서 만들어줄 함수!! 계정을 삭제하는 함수. 필요한 파라메터는 알려주면 수정 예정
+              >
+                계정 삭제
+              </DeleteButton>
+            </DeleteButtonWrapper>
           </DeleteAgreeWrapper>
         </InputButtonContainer>
       </Section>
@@ -233,13 +232,21 @@ const DeleteDiscription = styled.p`
   font-size: 1vw;
 `;
 
+const DeleteButtonWrapper = styled.div`
+  display: inline-block;
+  width: 5vw;
+`;
+
 const DeleteButton = styled.button`
-  padding: 10px 15px;
+  padding: 0.625em 0em;
   background-color: ${({ disabled }) => (disabled ? "#ccc" : "#e72525")};
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.4em;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  width: 100%;
+
+  font-size: 1vw;
 `;
 
 const Line = styled.hr`

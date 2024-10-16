@@ -1,7 +1,12 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+import { Navigate, useNavigate } from "react-router-dom";
+
+
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
+
+import { userInfo } from "../components/commmon/dummydata/userInfo.jsx"; 
 
 const LoginPage = () => {
     const [eyeVisible, setEyeVisible] = useState(false);
@@ -13,7 +18,7 @@ const LoginPage = () => {
 
     // 회원가입 페이지 이동
     const onClickImg = () => {
-        navigate("/SignUpPage");
+        navigate("/MemberSelectionPage");
     };
 
     // 비밀번호 눈
@@ -21,25 +26,64 @@ const LoginPage = () => {
         setEyeVisible(!eyeVisible);
     };
 
-    return(
+    const handleLogin = () => {
+        const trimmedEmail = email.trim();
+        const trimmedId = Id.trim();
+        const trimmedPassword = password.trim();
+
+        console.log("입력된 이메일 및 아이디 :", trimmedEmail, trimmedId);
+        console.log("입력된 비밀번호 : ", trimmedPassword);
+        console.log("더미 데이터:", userInfo);
+
+        const user = userInfo.find(
+            (user) => 
+                (user.email.toLowerCase() === trimmedEmail.toLowerCase() || user.Id.toString() === trimmedId) &&
+                user.password.toString() === trimmedPassword
+        );
+
+        if (user) {
+            // 로그인 성공 시 accessToken 저장
+            localStorage.setItem('accessToken', 'yourAccessTokenHere'); // 실제 accessToken 사용
+
+            navigate("./MainPage");
+        } else {
+            console.log("로그인 실패 - 입력값이 더미 데이터와 일치하지 않음");
+        }
+    };
+
+    return (
         <LoginWrapper>
-            <MainText>FolioFrame</MainText>
+            <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
             <JoinWrapper>
-                <IDinput placeholder="이메일 주소 또는 아이디"></IDinput>
+                <IDinput
+                    placeholder="이메일 주소 또는 아이디"
+                    value={email || Id}
+                    onChange={(e) => {
+                        if (e.target.value.includes('@')) {
+                            setEmail(e.target.value);
+                        } else {
+                            setId(e.target.value);
+                        }
+                    }}
+                />
                 <PassWrapper>
-                    <PASSinput type={eyeVisible ? "text" : "password"} placeholder="비밀번호"></PASSinput>
-                    <EyeIcon 
-                        src={eyeVisible ? Eyeoff : Eye} 
-                        alt="eye" 
-                        onClick={toggleeyeVisible}/>
+                    <PASSinput
+                        type={eyeVisible ? "text" : "password"}
+                        placeholder="비밀번호"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <EyeIcon
+                        src={eyeVisible ? Eyeoff : Eye}
+                        alt="eye"
+                        onClick={toggleEyeVisible}
+                    />
                 </PassWrapper>
-                
-                {/* <EyeIcon></EyeIcon> */}
             </JoinWrapper>
-            <LoginButton>로그인</LoginButton>
+            <LoginButton onClick={handleLogin}>로그인</LoginButton>
             <MemberWrapper>
                 <Text>회원이 아니신가요? |</Text>
-                <JoinButton>회원가입</JoinButton>
+                <JoinButton onClick={onClickImg}>회원가입</JoinButton>
             </MemberWrapper>
         </LoginWrapper>
     );
@@ -47,13 +91,18 @@ const LoginPage = () => {
 
 export default LoginPage;
 
+
 //css Wrapper
 const LoginWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 90px;
+    // padding: 90px;
+
+    width : 85%;
+    padding: 40px 40px;
+    margin: 0 auto; 
 `;
 
 const JoinWrapper = styled.div`
@@ -101,6 +150,9 @@ const PASSinput = styled.input`
     &::placeholder {
     text-indent: 1em; 
     }
+    &::-ms-reveal {
+        display: none;
+    }
 `;
 
 //css button
@@ -142,6 +194,7 @@ const MainText = styled.p`
     font-size: 3em;
     font-weight: 700;
     font-family: "OTF B";
+    cursor : pointer;
 `;
 
 const Text = styled.p`

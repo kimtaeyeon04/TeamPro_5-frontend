@@ -1,26 +1,40 @@
+
+
+
+
+// 정상작동하는지 확인되지 않음
+// 프론트와 연결 후 확인 필요
+
+
+
+
+
+
 import { oriUsers } from "../domain/startProgram";
 import { User } from "../domain/User";
-import { appendStringToFile, removeFromFileEnd } from "../features/fileIO";
+import { appendStringToFile, truncateFile, readNumberFromFile, removeFromFileEnd } from "../features/fileIO";
 
 let idCheck = false;
 let emailCheck = false;
 let phoneNumCheck = false;
 
 const idSignUpDeveloper = (name, birthday, id, password, rePassword, phoneNumber) => {
+    if (name === null || birthday === null || phoneNumber.length === 0){
+        alert('모든 항목을 입력하세요.');
+    }
     if (!isIdChecked()) return;
     if (!isPassword(password, rePassword)) return;
 
     // oriUsers 링크드 리스트와 userInfo.jsx에 유저 추가
-    // oriUsers의 마지막 유저로부터 pageId를 얻기 위해
-    const lastId = Array.from(oriUsers.key()).pop();
-    const lastUser = oriUsers.get(lastId);
-    // user의 Id는 본인이 설정한 것, MyPage 연결로의 id는 숫자로 부여한다.
-    pageId = (lastUser.pageId) + 1;
+    let filePath = '../commmon/dummydata/nextPageId.jsx';
+    const pageId = readNumberFromFile(filePath);
+    truncateFile(filePath);
+    appendStringToFile(String(pageId+1));
     const user = new User(id, pageId, password, name, phoneNumber, birthday);
     oriUsers.set(id, user);
 
     // userInfo.jsx에 해당 유저를 추가한다.
-    const filePath = path.join(__dirname, '..', 'commmon', 'dummydata', 'userInfo.jsx');
+    filePath = '../commmon/dummydata/userInfo.jsx';
     const string = `
         {
             id: "${id}",
@@ -29,6 +43,7 @@ const idSignUpDeveloper = (name, birthday, id, password, rePassword, phoneNumber
             name: "${name}",
             phoneNumber: "${phoneNumber}",
             birthday: "${birthday[0]}-${birthday[1]}-${birthday[2]}",
+            recruiter: false,
             email: "",
             nickname: "",
             link: "",
@@ -40,26 +55,28 @@ const idSignUpDeveloper = (name, birthday, id, password, rePassword, phoneNumber
 }
 
 const emailSignUpDeveloper = (name, birthday, email, password, rePassword, phoneNumber) => {
+    if (name === null || birthday === null || phoneNumber.length === 0){
+        alert('모든 항목을 입력하세요.');
+    }
     if (!isEmailChecked()) reutrn;
     if (!isPassword(password, rePassword)) return;
 
     // oriUsers 링크드 리스트와 userInfo.jsx에 유저 추가
-    // oriUsers의 마지막 유저로부터 pageId를 얻기 위해
-    const lastId = Array.from(oriUsers.key()).pop();
-    const lastUser = oriUsers.get(lastId);
-    // user의 Id는 본인이 설정한 것, MyPage 연결로의 id는 숫자로 부여한다.
-    pageId = (lastUser.pageId) + 1;
+    let filePath = '../commmon/dummydata/nextPageId.jsx';
+    const pageId = readNumberFromFile(filePath);
+    truncateFile(filePath);
+    appendStringToFile(String(pageId+1));
 
     // 아이디를 생성하지 않았으므로 랜덤 문자열 생성
     // 기존 아이디와 비교하여 존재하지 않는 경우에만 설정
     let randomId = getRandomId();
-    while (onlyIsIdExists(randomId)) randomId = getRandomId();
+    while (isIdExists(randomId)) randomId = getRandomId();
 
     const user = new User(randomId, pageId, password, name, phoneNumber, birthday, email);
     oriUsers.set(randomId, user);
 
     // userInfo.jsx에 해당 유저를 추가한다.
-    const filePath = path.join(__dirname, '..', 'commmon', 'dummydata', 'userInfo.jsx');
+    filePath = '../commmon/dummydata/userInfo.jsx';
     const string = `
         {
             id: "${randomId}",
@@ -68,6 +85,7 @@ const emailSignUpDeveloper = (name, birthday, email, password, rePassword, phone
             name: "${name}",
             phoneNumber: "${phoneNumber}",
             birthday: "${birthday[0]}-${birthday[1]}-${birthday[2]}",
+            recruiter: false,
             email: "${email}",
             nickname: "",
             link: "",
@@ -78,7 +96,7 @@ const emailSignUpDeveloper = (name, birthday, email, password, rePassword, phone
     appendStringToFile(filePath, `,${string}\n];`);
 }
 
-const isIdExists = (id) => {
+const setId = (id) => {
     // 유저 DB에 이미 해당 아이디가 존재하면 true 반환, 없으면 false
     oriUsers.forEach((value, key) => {
         if (key === id) {
@@ -99,7 +117,7 @@ const isIdExists = (id) => {
     idCheck = true;
 }
 
-const isEmailExists = (email) => {
+const setEmail = (email) => {
     // 유저 DB에 이미 해당 이메일이 존재하면 true 반환, 없으면 false
     oriUsers.forEach((value, key) => {
         if (value.email === email) {
@@ -112,7 +130,7 @@ const isEmailExists = (email) => {
     emailCheck = true;
 }
 
-const isPhoneNumExists = (phoneNumber) => {
+const setPhoneNumber = (phoneNumber) => {
     // 유저 DB에 이미 해당 핸드폰 번호가 존재하면 true 반환, 없으면 false
     oriUsers.forEach((value, key) => {
         if (value.phoneNumber === phoneNumber) {
@@ -136,7 +154,7 @@ const isPhoneNumExists = (phoneNumber) => {
     phoneNumCheck = true;
 }
 
-const onlyIsIdExists = (id) => {
+const isIdExists = (id) => {
     oriUsers.forEach((value, key) => {
         if (key === id) {
             return true;
@@ -213,11 +231,11 @@ const getRandomId = () => {
 
 
 // 아이디로 회원가입 버튼 눌렀을 때: idSignUpDeveloper
-//      아이디 중복확인 눌렀을 때: isIDExists
+//      아이디 중복확인 눌렀을 때: setId
 // 이메일로 회원가입 버튼 눌렀을 때: emailSignUpDeveloper
-//      이메일 중복확인 눌렀을 때: isEmailExists
-// 공통 전화번호 중복확인 눌렀을 때: isPhoneNumExists
+//      이메일 중복확인 눌렀을 때: setEmail
+// 공통 전화번호 중복확인 눌렀을 때: setPhoneNumber
 //
 // 아이디 변경됐을 때: changedId
 // 전화번호 변경됐을 때: changedPhoneNumber
-export { idSignUpDeveloper, emailSignUpDeveloper, isIdExists, isEmailExists, isPhoneNumExists, changedId, changedPhoneNumber };
+export { idSignUpDeveloper, emailSignUpDeveloper, setId, setEmail, setPhoneNumber, changedId, changedPhoneNumber };

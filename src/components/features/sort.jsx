@@ -57,17 +57,6 @@ const sort = ( category, sortOption, filterOption, isSearched, searchedList=null
     // case 1과 2: 각 '있음', '없음'
     // case 3과 4와 5: 각 '자바'...
     // case 6과 7과 8: 각 학력으로 한다.
-
-    //
-    //
-    //
-    //
-    // 기업회원만 제공
-    // -> X 일단 해당 필터 기능은 모든 유저에게 공유한다.
-    //
-    //
-    //
-
     for(const element of filterOption){
         switch(element){
             case "있음":
@@ -91,7 +80,7 @@ const sort = ( category, sortOption, filterOption, isSearched, searchedList=null
                     pofol.projects.forEach(project => {
                         // 각 포폴의 progects 배열을 순회하면 progectId를 얻음
                         // project는 각 포폴 속 프로젝트아이디의 '스트링' 배열
-                        if(oriProjects.get(Number(project)).stack != element){
+                        if(oriProjects.get(Number(project)).stack != element){      // !=이 논리상 맞는데 why??? 
                             nonFilterCount++;
                         }
                     });

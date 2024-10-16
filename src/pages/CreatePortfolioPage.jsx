@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../assets/icons/Logo.png";
+import PageHeader from "../components/commmon/PageHeader";
+
 
 const CreatePortfolioPage = () => {
     return(
     <>
-      <PageCategoryWrapper>
-        <LogoImage src={Logo} alt="로고" />
-        <HeaderText>Portfolio</HeaderText>
-        {/* <SearchInput type="text" placeholder="검색어를 입력해주세요" /> */}
-      </PageCategoryWrapper>
+      <PageHeader
+        pageTitle="Portfolio"
+      /> 
 
       <MainWrapper>
-        <NameWrapper>
+      <ColumnWrapper1>
+       <NameWrapper>
             <MainText>포트폴리오 이름</MainText>
             <NameInput type="text"></NameInput>
         </NameWrapper>
@@ -21,17 +21,20 @@ const CreatePortfolioPage = () => {
             <MainText>참여 기간</MainText>
             <NameInput type="text"></NameInput>
         </NameWrapper>
-
+      </ColumnWrapper1>
+       
+      <ColumnWrapper1>
         <NameWrapper>
-            <MainText>문제해결</MainText>
-            <NameInput type="text"></NameInput>
-        </NameWrapper>
+              <MainText>문제해결</MainText>
+              <NameInput type="text"></NameInput>
+          </NameWrapper>
 
-        <NameWrapper>
-            <MainText>사용한 언어</MainText>
-            <NameInput type="text"></NameInput>
-        </NameWrapper>
-
+          <NameWrapper>
+              <MainText>사용한 언어</MainText>
+              <NameInput type="text"></NameInput>
+          </NameWrapper>
+      </ColumnWrapper1>
+        
         <NameWrapper>
             <MainText>배운점</MainText>
             <NameInput type="text"></NameInput>
@@ -70,10 +73,21 @@ const NameWrapper = styled.div`
     display : flex;
     flex-direction : column;
 `;
+const ColumnWrapper1 = styled.div`
+    display : flex;
+    gap : 30em;
+`;
+
 //css input
 const NameInput = styled.input`
-    border : none;
-    background-color : #f9f9f9;
+
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: #d0d1d9; 
+
     outline : none;
     height : 2em;
     margin-top : -1em;

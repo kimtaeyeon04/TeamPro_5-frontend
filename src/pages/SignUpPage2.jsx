@@ -4,12 +4,15 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Consent from "../components/Consent/Consent.jsx";
 import Eye from "../assets/icons/Login/Eye.png";
 import Eyeoff from "../assets/icons/Login/Eyeoff.png";
+import { userInfo } from "../components/commmon/dummydata/userInfo.jsx";
 
 
 const SignUpPage = () => {
     const navigate = useNavigate();
     const [eyeVisible, setEyeVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false); 
+    const [isIdChecked, setIsIdChecked] = useState(false); // 아이디 중복 체크 활성화 상태
+    const [idInput, setIdInput] = useState(''); // 입력된 아이디 상태
 
     const toggleEyeVisible = () => {
         setEyeVisible(!eyeVisible);
@@ -18,13 +21,24 @@ const SignUpPage = () => {
     const handleCheckBoxClick = () => {
         setIsModalOpen(true); // 체크박스 클릭 시 팝업 열기
     };
+    // 아디이 중복 부분
+    const handleIdInputChange = (e) => {
+        setIdInput(e.target.value); // 입력된 아이디 값 업데이트
+    };
 
-    const closeModal = () => {
-        setIsModalOpen(false); // 팝업 닫기
+    const handleIdCheck = () => {
+    
+        const isDuplicate = userInfo.some((user) => user.Id === parseInt(idInput));
+        if (!isDuplicate) {
+            setIsIdChecked(true); 
+        } else {
+            alert("이미 존재하는 아이디입니다."); 
+            setIsIdChecked(false); 
+        }
     };
     return (
         <LoginWrapper>
-            <MainText>FolioFrame</MainText>
+            <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
             <JoinWrapper>
                 <ColumnWrapper1>
                     <NameInput placeholder="이름" type="text"></NameInput>
@@ -33,7 +47,23 @@ const SignUpPage = () => {
                         <CalendarInput type="date"></CalendarInput>
                     </ColumnWrapper2>
                 </ColumnWrapper1>
-                <IdInput placeholder="아이디 및 이메일" type="text"></IdInput>
+                <ColumnWrapper1>
+                    <IdInput 
+                        placeholder="아이디" 
+                        type="text" 
+                        value={idInput} 
+                        onChange={handleIdInputChange} 
+                    />
+                    <IDcheckWrapper>
+                        <IDcheckInput 
+                            type="checkbox" 
+                            id="IDcheck" 
+                            onClick={handleIdCheck}
+                            checked={isIdChecked} 
+                        />
+                        <label htmlFor="IDcheck">중복확인</label>
+                    </IDcheckWrapper>
+                </ColumnWrapper1>
                 <PassWrapper>
                     <PassInput
                         type={eyeVisible ? "text" : "password"}
@@ -59,7 +89,6 @@ const SignUpPage = () => {
                 <ModalOverlay>
                     <ModalContent>
                        <Consent/>
-                        <CloseButton onClick={closeModal}>닫기</CloseButton>
                     </ModalContent>
                 </ModalOverlay>
             )}
@@ -75,7 +104,9 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 50px;
+    width : 85%;
+    padding: 40px 40px;
+    margin: 0 auto; 
 `;
 
 const JoinWrapper = styled.div`
@@ -102,6 +133,11 @@ const ColumnWrapper2 = styled.div`
     gap : 0.5em;
 `;
 
+const IDcheckWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left : 4em;
+`;
 
 const PassWrapper = styled.div`
     position: relative;
@@ -161,13 +197,16 @@ const PassInput = styled.input`
         text-indent: 1em; 
         color : #D0D1D9;
     }
+    &::-ms-reveal {
+        display: none;
+    }
 
 `;
 const IdInput = styled.input`
     border-radius : 2em;
     border : 1px solid #D0D1D9;
     height : 3em;
-    width : 100%;
+    width : 40%;
     text-indent: 1em; 
     outline : none;
     &::placeholder {
@@ -176,7 +215,9 @@ const IdInput = styled.input`
     }
 
 `;
-
+const IDcheckInput = styled.input`
+    border: 1px solid #D0D1D9;
+`;
 //css button
 const LoginButton = styled.button`
     color : #fff;
@@ -207,6 +248,7 @@ const MainText = styled.p`
     font-size: 3em;
     font-weight: 700;
     font-family: "OTF B";
+    cursor : pointer;
 `;
 
 const Text = styled.p`
@@ -244,19 +286,7 @@ const ModalContent = styled.div`
     max-width: 500px;
 `;
 
-const CloseButton = styled.button`
-    margin-top: 1em;
-    padding: 0.5em 1em;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 
-    &:hover {
-        background: #0056b3;
-    }
-`;
 const EyeIcon = styled.img`
     position: absolute;
     right: 1em; 

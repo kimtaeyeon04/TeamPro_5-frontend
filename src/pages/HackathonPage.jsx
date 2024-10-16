@@ -1,197 +1,99 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
-import { Navigate, useNavigate } from "react-router-dom";
 
+import PageHeader from "../components/commmon/PageHeader.jsx";
+import TemplateCard from "../components/commmon/TemplateCard.jsx";
+import { dummydata } from "../components/commmon/dummydata/dummydata";
+import SelectBox from "../components/commmon/SelectBox.jsx";
+import SearchBar from "../components/commmon/SearchBar";
+import StyledButton from "../components/commmon/StyledButton";
 
-import Eye from "../assets/icons/Login/Eye.png";
-import Eyeoff from "../assets/icons/Login/Eyeoff.png";
+const HackathonPage = () => {
+  return (
+    <>
+      <PageHeader pageTitle="Hackathon" />
+      <MainWrapper>
+        <MyTemplateMenuWrapper>
+          <SelectBox />
+        </MyTemplateMenuWrapper>
+        <Line></Line>
 
-import { userInfo } from "../components/commmon/dummydata/userInfo.jsx"; 
-
-const LoginPage = () => {
-    const [eyeVisible, setEyeVisible] = useState(false);
-    const [email, setEmail] = useState("");
-    const [Id, setId] = useState("");
-    const [password, setPassword] = useState("");
-
-    const navigate = useNavigate();
-
-    // 회원가입 페이지 이동
-    const onClickImg = () => {
-        navigate("/MemberSelectionPage");
-    };
-
-    // 비밀번호 눈
-    const toggleEyeVisible = () => {
-        setEyeVisible(!eyeVisible);
-    };
-
-    const handleLogin = () => {
-        const trimmedEmail = email.trim();
-        const trimmedId = Id.trim();
-        const trimmedPassword = password.trim();
-
-        console.log("입력된 이메일 및 아이디 :", trimmedEmail, trimmedId);
-        console.log("입력된 비밀번호 : ", trimmedPassword);
-        console.log("더미 데이터:", userInfo);
-
-        const user = userInfo.find(
-            (user) => 
-                (user.email.toLowerCase() === trimmedEmail.toLowerCase() || user.Id.toString() === trimmedId) &&
-                user.password.toString() === trimmedPassword
-        );
-
-        if (user) {
-            // 로그인 성공 시 accessToken 저장
-            localStorage.setItem('accessToken', 'yourAccessTokenHere'); // 실제 accessToken 사용
-
-            navigate("./MainPage");
-        } else {
-            console.log("로그인 실패 - 입력값이 더미 데이터와 일치하지 않음");
-        }
-    };
-
-    return (
-        <LoginWrapper>
-            <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
-            <JoinWrapper>
-                <IDinput
-                    placeholder="이메일 주소 또는 아이디"
-                    value={email || Id}
-                    onChange={(e) => {
-                        if (e.target.value.includes('@')) {
-                            setEmail(e.target.value);
-                        } else {
-                            setId(e.target.value);
-                        }
-                    }}
-                />
-                <PassWrapper>
-                    <PASSinput
-                        type={eyeVisible ? "text" : "password"}
-                        placeholder="비밀번호"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <EyeIcon
-                        src={eyeVisible ? Eyeoff : Eye}
-                        alt="eye"
-                        onClick={toggleEyeVisible}
-                    />
-                </PassWrapper>
-            </JoinWrapper>
-            <LoginButton onClick={handleLogin}>로그인</LoginButton>
-            <MemberWrapper>
-                <Text>회원이 아니신가요? |</Text>
-                <JoinButton onClick={onClickImg}>회원가입</JoinButton>
-            </MemberWrapper>
-        </LoginWrapper>
-    );
+        {/* 12개의 카드를 그리드 형태로 출력 */}
+        <HackathonGridWrapper>
+          <TemplateGrid>
+            {dummydata.map((data, index) => (
+              <TemplateCard
+                key={index}
+                templateName={data.postTitle || "빈 제목"}
+                description={data.postContent || "빈 설명"}
+                templateThumnail={data.postBackgroundImg || "default-image.png"}
+                templateButton={"보기"}
+              />
+            ))}
+          </TemplateGrid>
+        </HackathonGridWrapper>
+      </MainWrapper>
+    </>
+  );
 };
 
-export default LoginPage;
-
+export default HackathonPage;
 
 //css Wrapper
-const LoginWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 90px;
+
+const MainWrapper = styled.div`
+  width: 85%; //수정중...
+  margin: 0 auto;
+`;
+const PageCategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 `;
 
-const JoinWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap : 1em;
+const MyTemplateMenuWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10vh;
 `;
 
-const MemberWrapper = styled.div`
-    display: flex;
-    gap : 1em;
-    margin-top : -2em;
+const HackathonGridWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+//css element
+const SearchInput = styled.input`
+  border-radius: 2em;
+  border: 1px solid #d0d1d9;
+  height: 3em;
+  width: 50%;
+  text-indent: 1em;
+  outline: none;
+  &::placeholder {
+    text-indent: 1em;
+  }
 `;
 
-const PassWrapper = styled.div`
-    position: relative;
-    display: inline-block;
-    width: 200%; 
-    margin-bottom: -1.25em;
+const TemplateGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-content: center center;
+  gap: 3vw 1vw;
+  margin-top: 2em;
+  max-width: 80em;
 `;
 
-//css input
-const IDinput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 200%;
-    text-indent: 1em; 
-
-    &::placeholder {
-    text-indent: 1em; 
-    }
-
+const Line = styled.hr`
+  margin: 0.625em 0;
+  border: 1px solid #d0d1d9;
 `;
-
-const PASSinput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-
-    &::placeholder {
-    text-indent: 1em; 
-    }
-`;
-
-//css button
-const LoginButton = styled.button`
-    color : #fff;
-    font-size : 1em;
-    font-weight : 800;
-
-    border-radius : 2em;
-    border : none;
-    background-color : #0A27A6;
-    height : 3em;
-    width : 20%;
-
-    margin : 2em 0;
-`;
-
-const JoinButton = styled.button`
-    color : #D0D1D9;
-    font-size: 1em;
-    font-weight: 500;
-    border : none;
-    background-color : transparent;
-`;
-
-const EyeIcon = styled.img`
-    position: absolute;
-    right: 1em; 
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width : 1.2em;
-    height : 1.2em;
-`;
-
-//css text
-const MainText = styled.p`
-    color : #0A27A6;
-    font-size: 3em;
-    font-weight: 700;
-    font-family: "OTF B";
-    cursor : pointer;
-`;
-
-const Text = styled.p`
-    color : #D0D1D9;
-    font-size: 1em;
-    font-weight: 500;
+//css Text
+const HeaderText = styled.p`
+  color: #0a27a6;
+  font-size: 2em;
+  font-weight: 800;
+  font-family: "OTF B";
 `;
