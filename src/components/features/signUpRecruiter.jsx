@@ -173,6 +173,7 @@ const setCompany = () => {
 const changedId = () => idCheck = false;
 const changedEmail = () => emailCheck = false;
 const changedPhoneNumber = () => phoneNumCheck = false;
+const changedCompany = () => companyCheck = false;
 
 // 중복 체크가 되어 있지 않으면 실행지 않는다
 const isIdChecked = () => {
@@ -249,7 +250,9 @@ const getRandomId = () => {
 // 이메일로 회원가입 버튼 눌렀을 때: emailSignUpRecruiter
 //      이메일 중복확인 눌렀을 때: setEmail
 // 공통 전화번호 중복확인 눌렀을 때: setPhoneNumber
+// 공통 회사 인증하기 눌렀을 때: setCompany
 //
 // 아이디 변경됐을 때: changedId
 // 전화번호 변경됐을 때: changedPhoneNumber
-export { idSignUpRecruiter, emailSignUpRecruiter, setId, setEmail, setPhoneNumber, setCompany, changedId, changedEmail, changedPhoneNumber };
+// 회사 변경됐을 때: changedCompany
+export { idSignUpRecruiter, emailSignUpRecruiter, setId, setEmail, setPhoneNumber, setCompany, changedId, changedEmail, changedPhoneNumber, changedCompany };
