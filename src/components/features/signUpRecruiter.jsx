@@ -25,10 +25,7 @@ const idSignUpRecruiter = (name, birthday, id, password, rePassword, phoneNumber
     }
     if (!isIdChecked()) return;
     if (!isPhoneNumberChecked()) return;
-    if (!setCompany){
-        alert('회사인증을 진행하세요.');
-        return;
-    }
+    if (!isCompanyChecked()) return;
     if (!isPassword(password, rePassword)) return;
 
     // oriUsers, oriRecruiters 링크드 리스트와 userInfo.jsx에 유저(기업회원) 추가
@@ -63,10 +60,7 @@ const emailSignUpRecruiter = (name, birthday, email, password, rePassword, phone
     }
     if (!isEmailChecked()) return;
     if (!isPhoneNumberChecked()) return;
-    if (!setCompany) {
-        alert('회사인증을 진행하세요.');
-        return;
-    }
+    if (!isCompanyChecked()) return;
     if (!isPassword(password, rePassword)) return;
 
     // oriUsers, oriRecruiters 링크드 리스트와 userInfo.jsx에 유저(기업회원) 추가
@@ -205,6 +199,14 @@ const isPhoneNumberChecked = () => {
     return 1;
 }
 
+const isCompanyChecked = () => {
+    if (companyCheck === false) {
+        alert('회사 인증을 해야 합니다.');
+        return 0;
+    }
+    return 1;
+}
+
 const isPassword = (password, rePassword) => {
     // 비밀번호와 비밀번호 확인란이 동일한가
     if (password !== rePassword) {
@@ -250,4 +252,4 @@ const getRandomId = () => {
 //
 // 아이디 변경됐을 때: changedId
 // 전화번호 변경됐을 때: changedPhoneNumber
-export { idSignUpRecruiter, emailSignUpRecruiter, setId, setEmail, setPhoneNumber, changedId, changedEmail, changedPhoneNumber };
+export { idSignUpRecruiter, emailSignUpRecruiter, setId, setEmail, setPhoneNumber, setCompany, changedId, changedEmail, changedPhoneNumber };
