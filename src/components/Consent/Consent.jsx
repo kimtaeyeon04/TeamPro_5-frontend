@@ -41,6 +41,14 @@ const FormComponent = () => {
           <CheckBoxTextarea readOnly>여러분을 환영합니다...</CheckBoxTextarea>
         </CheckBox>
 
+        {/* <CheckBox>
+          <ul className="clearfix">
+            <CheckBoxText>이벤트 등 프로모션 알림 메일 수신(선택)</CheckBoxText>
+            <CheckBoxButton>
+              <CheckboxInput type="checkbox" name="chk" />
+            </CheckBoxButton>
+          </ul>
+        </CheckBox> */}
       </JoinBox>
 
       <FootBtWrap>
@@ -51,13 +59,11 @@ const FormComponent = () => {
           <Button agree>동의</Button>
         </ButtonItem>
       </FootBtWrap>
-      
     </JoinForm>
   );
 };
 
 export default FormComponent;
-
 const JoinForm = styled.form`
   width: 460px;
   margin: 0 auto;

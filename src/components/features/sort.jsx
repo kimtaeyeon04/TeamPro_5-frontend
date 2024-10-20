@@ -73,7 +73,7 @@ const sort = ( category, sortOption, filterOption, searchedList=null ) => {
                     pofol.projects.forEach(project => {
                         // 각 포폴의 progects 배열을 순회하면 progectId를 얻음
                         // project는 각 포폴 속 프로젝트아이디의 '스트링' 배열
-                        if(oriProjects.get(Number(project)).stack != element){
+                        if(oriProjects.get(Number(project)).stack != element){      // !=이 논리상 맞는데 why??? 
                             nonFilterCount++;
                         }
                     });

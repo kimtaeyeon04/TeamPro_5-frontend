@@ -229,9 +229,3 @@ const PointText5 = styled.p`
     font-family: "OTF R";
     display : flex;
 `;
-
-
-
-
-
-
