@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import styled from "styled-components";
 import { dataList } from "../features/dataList"; // dataList를 import 할 경로 지정
 import { searchSortManager } from "../domain/startProgram";
 
@@ -120,12 +119,12 @@ const SearchBar = ({ onSearch, onCancelSearch }) => {
   }, []);
 
   return (
-    <SearchBarContainer ref={searchBarRef}>
-      <SearchBarWrapper
-        expanded={suggestions.length > 0}
-        className="SearchBarWrapper"
+    <div className="flex flex-col items-center w-[40vw] relative" ref={searchBarRef}>
+      <div
+        className={`h-[6.8vh] w-full relative flex items-center px-[1.25em] SearchBarWrapper ${suggestions.length > 0 ? "shadow-[0px_-4px_8px_rgba(0,0,0,0.1)] rounded-[15px_15px_0_0]" : "shadow-[0px_4px_8px_rgba(0,0,0,0.1),0px_-4px_8px_rgba(0,0,0,0.1)] rounded-[62.5em]"}`}
       >
-        <SearchInput
+        <input
+          className="w-[85%] font-['Inria_Sans',sans-serif] font-[400] text-[1.2vw] text-[#919194] border-none outline-none bg-transparent placeholder:text-[0.8em] placeholder:indent-[0.1em]"
           value={inputValue} // 입력 필드가 상태와 동기화
           onChange={handleInputChange}
           ref={inputRef}
@@ -134,25 +133,26 @@ const SearchBar = ({ onSearch, onCancelSearch }) => {
           placeholder="포트폴리오 이름 검색"
           spellCheck="false"
         />
-        <IconWrapper>
+        <div className="w-[15%] flex items-center justify-end cursor-pointer">
           {inputValue && (
-            <CancelIconWrapper onClick={handleCancelClick}>
+            <div className="w-[1.9vw] text-[#d0d1d9] cursor-pointer" onClick={handleCancelClick}>
               <ImCancelCircle />
-            </CancelIconWrapper>
+            </div>
           )}
-          <SearchIcon
+          <img
+            className="w-[2vw] rounded-full"
             onClick={handleSearchClick}
             src={searchImg}
             alt="search"
           />
-        </IconWrapper>
-      </SearchBarWrapper>
+        </div>
+      </div>
       {suggestions.length > 0 && (
-        <AutoCompleteContainer className="AutoCompleteContainer">
+        <div className="absolute top-full w-[40vw] flex flex-col items-center px-[1.25em] bg-[#fff] text-[#919194] shadow-[0px_4px_8px_rgba(0,0,0,0.1)] rounded-[0_0_15px_15px] mt-[0] z-10 AutoCompleteContainer">
           {suggestions.map((suggestion, index) => (
-            <SuggestionItem
+            <div
               key={index}
-              className={index === nowIndex ? "active" : ""}
+              className={`py-[0.2rem] px-[0.6rem] cursor-pointer w-full block indent-[0.1em] hover:bg-[#e0e5f6] last:mb-[0.5em] ${index === nowIndex ? "bg-[#e0e5f6] text-[#000]" : ""}`}
               onMouseDown={() => {
                 setInputValue(suggestion);
                 setSuggestions([]);
@@ -166,118 +166,17 @@ const SearchBar = ({ onSearch, onCancelSearch }) => {
                 .split(new RegExp(`(${inputValue})`, "g"))
                 .map((part, i) =>
                   part.toLowerCase() === inputValue.toLowerCase() ? (
-                    <HighlightedText key={i}>{part}</HighlightedText>
+                    <span className="font-bold text-[#0a27a6]" key={i}>{part}</span>
                   ) : (
                     part
                   )
                 )}
-            </SuggestionItem>
+            </div>
           ))}
-        </AutoCompleteContainer>
+        </div>
       )}
-    </SearchBarContainer>
+    </div>
   );
 };
 
 export default SearchBar;
-
-const SearchBarContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40vw;
-`;
-
-const SearchBarWrapper = styled.div`
-  height: 6.8vh;
-  width: 100%;
-  box-shadow: ${(props) =>
-    props.expanded
-      ? "0px -4px 8px rgba(0, 0, 0, 0.1)"
-      : "0px 4px 8px rgba(0, 0, 0, 0.1), 0px -4px 8px rgba(0, 0, 0, 0.1)"};
-  border-radius: ${(props) => (props.expanded ? "15px 15px 0 0" : "62.5em")};
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0 1.25em;
-`;
-
-const AutoCompleteContainer = styled.div`
-  position: absolute;
-  top: 100%;
-  width: 40vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 1.25em;
-  background: #fff;
-  color: #919194;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 15px 15px;
-  margin-top: -0.5rem;
-`;
-
-const SuggestionItem = styled.div`
-  padding: 0.2rem 0.6rem;
-  cursor: pointer;
-  width: 100%;
-  display: block;
-  text-indent: 0.1em;
-
-  &.active {
-    background: #e0e5f6;
-    color: #000;
-  }
-
-  &:last-child {
-    margin-bottom: 0.5em;
-  }
-
-  &:hover {
-    background: #e0e5f6;
-  }
-`;
-
-const SearchInput = styled.input`
-  width: 85%;
-
-  font-family: "Inria Sans", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.2vw;
-  color: #919194;
-
-  border: none;
-  outline: none;
-  background: none;
-
-  &::placeholder {
-    font-size: 0.8em;
-    text-indent: 0.1em;
-  }
-`;
-
-const IconWrapper = styled.div`
-  width: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  cursor: pointer;
-`;
-
-const CancelIconWrapper = styled.div`
-  width: 1.9vw;
-  color: #d0d1d9;
-
-  cursor: pointer;
-`;
-
-const SearchIcon = styled.img`
-  width: 2vw;
-  border-radius: 50%;
-`;
-
-const HighlightedText = styled.span`
-  font-weight: bold;
-  color: #0a27a6;
-`;

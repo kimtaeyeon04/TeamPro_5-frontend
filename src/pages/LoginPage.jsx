@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { Navigate, useNavigate } from "react-router-dom";
 import {
   setCurrentUser,
@@ -84,10 +83,11 @@ const LoginPage = () => {
   };
   
   return (
-    <LoginWrapper>
-      <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
-      <JoinWrapper>
-      <IDinput
+    <div className="flex flex-col items-center justify-center w-[85%] py-[8%] px-[40px] mx-auto">
+      <p className="text-[#0a27a6] text-[3em] font-bold font-['OTF_B'] cursor-pointer" onClick={() => navigate("/")}>FolioFrame</p>
+      <div className="flex flex-col items-center justify-center gap-[1em]">
+      <input
+        className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-[200%] indent-[1em] outline-none placeholder:indent-[1em]"
         placeholder="이메일 주소 또는 아이디"
         value={emailOrId}
         onChange={(e) => {
@@ -103,138 +103,30 @@ const LoginPage = () => {
         }}
         onKeyDown={handleKeyDown}
       />
-        <PassWrapper>
-          <PASSinput
+        <div className="relative inline-block w-[200%] mb-[-1.25em]">
+          <input
+            className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-full indent-[1em] outline-none placeholder:indent-[1em] [&::-ms-reveal]:hidden"
             type={eyeVisible ? "text" : "password"}
             placeholder="비밀번호"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <EyeIcon
+          <img
+            className="absolute right-[1em] top-1/2 -translate-y-1/2 cursor-pointer w-[1.2em] h-[1.2em]"
             src={eyeVisible ? Eyeoff : Eye}
             alt="eye"
             onClick={toggleEyeVisible}
           />
-        </PassWrapper>
-      </JoinWrapper>
-      <LoginButton onClick={handleLogin}>로그인</LoginButton>
-      <MemberWrapper>
-        <Text>회원이 아니신가요? |</Text>
-        <JoinButton onClick={onClickImg}>회원가입</JoinButton>
-      </MemberWrapper>
-    </LoginWrapper>
+        </div>
+      </div>
+      <button className="text-white text-[1em] font-extrabold rounded-[2em] border-none bg-[#0a27a6] h-[3em] w-[15em] my-[2em]" onClick={handleLogin}>로그인</button>
+      <div className="flex gap-[1em] mt-[-2em]">
+        <p className="text-[#d0d1d9] text-[1em] font-medium">회원이 아니신가요? |</p>
+        <button className="text-[#d0d1d9] text-[1em] font-medium border-none bg-transparent cursor-pointer" onClick={onClickImg}>회원가입</button>
+      </div>
+    </div>
   );
   };
   
   export default LoginPage;
-  
-//css Wrapper
-const LoginWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  // padding: 90px;
-  width: 85%;
-  padding: 8% 40px;
-  margin: 0 auto;
-`;
-
-const JoinWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1em;
-`;
-
-const MemberWrapper = styled.div`
-  display: flex;
-  gap: 1em;
-  margin-top: -2em;
-`;
-
-const PassWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 200%;
-  margin-bottom: -1.25em;
-`;
-
-//css input
-const IDinput = styled.input`
-  border-radius: 2em;
-  border: 1px solid #d0d1d9;
-  height: 3em;
-  width: 200%;
-  text-indent: 1em;
-  outline: none;
-
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-
-const PASSinput = styled.input`
-  border-radius: 2em;
-  border: 1px solid #d0d1d9;
-  height: 3em;
-  width: 100%;
-  text-indent: 1em;
-  outline: none;
-
-  &::placeholder {
-    text-indent: 1em;
-  }
-  &::-ms-reveal {
-    display: none;
-  }
-`;
-
-//css button
-const LoginButton = styled.button`
-  color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-  border-radius: 2em;
-  border: none;
-  background-color: #0a27a6;
-  height: 3em;
-  width: 15em;
-
-  margin: 2em 0;
-`;
-
-const JoinButton = styled.button`
-  color: #d0d1d9;
-  font-size: 1em;
-  font-weight: 500;
-  border: none;
-  background-color: transparent;
-`;
-
-const EyeIcon = styled.img`
-  position: absolute;
-  right: 1em;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  width: 1.2em;
-  height: 1.2em;
-`;
-
-//css text
-const MainText = styled.p`
-  color: #0a27a6;
-  font-size: 3em;
-  font-weight: 700;
-  font-family: "OTF B";
-  cursor: pointer;
-`;
-
-const Text = styled.p`
-  color: #d0d1d9;
-  font-size: 1em;
-  font-weight: 500;
-`;

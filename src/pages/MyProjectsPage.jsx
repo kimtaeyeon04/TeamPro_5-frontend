@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { oriPortfolios, oriProjects } from "../components/domain/startProgram";
 import { getCurrentUser } from "../components/features/currentUser";
@@ -48,76 +47,76 @@ const MyProjectsPage = () => {
     if (currentUser.recruiter && showContactInfo) {
       return (
         <>
-          <Info>{userPortfolios.ownerName || "이름 없음.."}</Info>
-          <Info>{userPortfolios.ownerEmail || "이메일 없음.."}</Info>
+          <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[80%]">{userPortfolios.ownerName || "이름 없음.."}</div>
+          <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[80%]">{userPortfolios.ownerEmail || "이메일 없음.."}</div>
         </>
       );
     } else if (currentUser.recruiter) {
       return (
-        <ButtonWrapper>
-          <Button onClick={handleContactClick}>연락</Button>
-        </ButtonWrapper>
+        <div className="flex justify-center">
+          <button className="bg-[#0a27a6] text-white py-2 px-4 rounded" onClick={handleContactClick}>연락</button>
+        </div>
       );
     } else {
       return (
         <>
-          <Info>개발자</Info>
-          <Info>example@example.com</Info>
+          <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[80%]">개발자</div>
+          <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[80%]">example@example.com</div>
         </>
       );
     }
   };
 
   return (
-    <PageContainer>
-      <Title>{userPortfolios.portfolioName}</Title>
+    <div className="w-[85%] mx-auto">
+      <h1 className="text-[2vw] text-center mb-[2vh] font-['OTF_B'] font-bold not-italic">{userPortfolios.portfolioName}</h1>
 
-      {/* <DescriptionSection>
-        <Section>
-          <Field>사용한 스택</Field>
-          <Text>{userPortfolios.usedLanguage || "해결한 문제 없음"}</Text>
-        </Section>
-      </DescriptionSection> */}
-      <DetailContainer>
-        <InfoSection>
-          <InfoWrapper1>
-            <InfoField>개발자</InfoField>
-            <Info>{renderDeveloperInfo()}</Info>
-          </InfoWrapper1>
+      {/* <div className="mb-[20px]">
+        <div className="flex flex-col m-[2vw_1vw] font-['OTF_R']">
+          <div className="text-[2vw] font-bold">사용한 스택</div>
+          <div className="rounded-[0.3125em] shadow-[0_0.5em_1em_rgba(0,0,0,0.1)] bg-white p-[1vw] mt-[2vw] min-w-[80%]">{userPortfolios.usedLanguage || "해결한 문제 없음"}</div>
+        </div>
+      </div> */}
+      <div className="p-[2vh] mb-[4vh] bg-[#f5f7f7]">
+        <div className="grid grid-cols-2 mb-[5vh]">
+          <div className="flex flex-col items-center mb-[2vh] font-[Impact]">
+            <div className="text-[2vw] font-bold font-['OTF_R']">개발자</div>
+            <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[80%]">{renderDeveloperInfo()}</div>
+          </div>
 
-          <InfoWrapper2>
-            <InfoWrapper3>
-              <InfoField>사용한 스택</InfoField>
-            </InfoWrapper3>
+          <div className="flex flex-col mb-[2vh]">
+            <div className="flex justify-center">
+              <div className="text-[2vw] font-bold font-['OTF_R']">사용한 스택</div>
+            </div>
 
-            <InfoWrapper4>
-              <Info2>언어</Info2>
-              <Info3>{userPortfolios.usedLanguage || ""}</Info3>
-            </InfoWrapper4>
-            <InfoWrapper4>
-              <Info2>프론트엔드</Info2>
-              <Info3>{userPortfolios.frontend || ""}</Info3>
-            </InfoWrapper4>
-            <InfoWrapper4>
-              <Info2>백엔드</Info2>
-              <Info3>{userPortfolios.backend || ""}</Info3>
-            </InfoWrapper4>
-          </InfoWrapper2>
-        </InfoSection>
+            <div className="flex flex-row justify-between">
+              <div className="p-[1vw] m-[1vw] font-['OTF_R'] text-[1vw]">언어</div>
+              <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[70%] font-[Impact]">{userPortfolios.usedLanguage || ""}</div>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div className="p-[1vw] m-[1vw] font-['OTF_R'] text-[1vw]">프론트엔드</div>
+              <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[70%] font-[Impact]">{userPortfolios.frontend || ""}</div>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div className="p-[1vw] m-[1vw] font-['OTF_R'] text-[1vw]">백엔드</div>
+              <div className="rounded-[0.3125em] bg-white p-[1vw] m-[1vw] min-w-[70%] font-[Impact]">{userPortfolios.backend || ""}</div>
+            </div>
+          </div>
+        </div>
 
         {showModal && (
-          <ModalOverlay className="ModalOverlay">
-            <ModalContainer>
+          <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-[1000] ModalOverlay">
+            <div className="bg-white text-[1.3vw] font-bold p-[1vw] w-[25vw] rounded-[0.3125em] text-center shadow-[0_4px_6px_rgba(0,0,0,0.1)] z-[1001] [&>button]:mt-[1.5vw] [&>button]:px-[1vw] [&>button]:py-[0.5vw] [&>button]:bg-[#0a27a6] [&>button]:text-white [&>button]:border-none [&>button]:rounded-[0.3125em] [&>button]:cursor-pointer hover:[&>button]:bg-[#0056b3]">
               <p>{modalMessage}</p>
               <button onClick={() => setShowModal(false)}>확인</button>
-            </ModalContainer>
-          </ModalOverlay>
+            </div>
+          </div>
         )}
 
-        <Section>
-          <Field>프로젝트</Field>
-          <TemplateGridWrapper>
-            <TemplateGrid>
+        <div className="flex flex-col m-[2vw_1vw] font-['OTF_R']">
+          <div className="text-[2vw] font-bold">프로젝트</div>
+          <div className="flex justify-center items-center">
+            <div className="grid grid-cols-4 gap-y-[3vw] gap-x-[1vw] mt-[2em] w-full">
               {userProjects.map((project) => (
                 <TemplateCard
                   key={project.projectId}
@@ -125,213 +124,12 @@ const MyProjectsPage = () => {
                   templateButton="자세히 보기"
                 />
               ))}
-            </TemplateGrid>
-          </TemplateGridWrapper>
-        </Section>
-      </DetailContainer>
-    </PageContainer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
 export default MyProjectsPage;
-
-const PageContainer = styled.div`
-  width: 85%;
-  margin: 0 auto;
-`;
-
-const DetailContainer = styled.div`
-  // padding: 20px;
-  // max-width: 800px;
-  padding: 2vh;
-  margin-bottom: 4vh;
-
-  background-color: rgb(245, 247, 247);
-`;
-
-const Title = styled.h1`
-  font-size: 2vw;
-  text-align: center;
-  margin-bottom: 2vh;
-  font-family: "OTF B";
-
-  font-style: normal;
-  font-weight: 700;
-
-  //   height: 2.625em;
-  //   top: 11.375em;
-  //   font-family: "OTF B";
-
-  //   font-style: normal;
-  //   font-weight: 700;
-  //   font-size: 1.875em;
-  //   line-height: 2.25em;
-  //   display: flex;
-  //   align-items: center;
-  //   text-align: center;
-  //   letter-spacing: -0.025em;
-  //   color: #000000;
-`;
-
-const DescriptionSection = styled.div`
-  margin-bottom: 20px;
-`;
-
-const InfoSection = styled.div`
-  // display: flex;
-  // justify-content: space-around;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin-bottom: 5vh;
-`;
-
-const InfoWrapper1 = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  margin-bottom: 2vh;
-
-  font-family: Impact;
-`;
-const InfoWrapper2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  //justify-content: space-between;
-
-  margin-bottom: 2vh;
-`;
-const InfoWrapper3 = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const InfoWrapper4 = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  justify-content: space-between;
-`;
-
-const InfoField = styled.div`
-  font-size: 2vw;
-  font-weight: bold;
-
-  font-family: "OTF R";
-`;
-
-const Info = styled.div`
-  border-radius: 0.3125em;
-
-  background-color: white;
-
-  padding: 1vw;
-  margin: 1vw;
-  min-width: 80%;
-`;
-const Info2 = styled.div`
-  padding: 1vw;
-  margin: 1vw;
-
-  font-family: "OTF R";
-  font-size: 1vw;
-`;
-const Info3 = styled.div`
-  border-radius: 0.3125em;
-
-  background-color: white;
-
-  padding: 1vw;
-  margin: 1vw;
-  min-width: 70%;
-
-  font-family: Impact;
-`;
-
-//
-const Section = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 2vw 1vw;
-
-  font-family: "OTF R";
-`;
-
-const Field = styled.div`
-  font-size: 2vw;
-  font-weight: bold;
-`;
-
-const Text = styled.div`
-  border-radius: 0.3125em;
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
-
-  background-color: white;
-
-  padding: 1vw;
-  margin-top: 2vw;
-
-  min-width: 80%;
-`;
-
-const TemplateSection = styled.div``;
-
-const TemplateGridWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TemplateGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  //place-content: center center;
-  //justify-content: center;
-  gap: 3vw 1vw;
-
-  margin-top: 2em;
-  width: 100%;
-`;
-
-//모달
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-const ModalContainer = styled.div`
-  background: white;
-  font-size: 1.3vw;
-  font-weight: bold;
-  padding: 1vw;
-  width: 25vw;
-
-  border-radius: 0.3125em;
-
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-
-  button {
-    margin-top: 1.5vw;
-    padding: 0.5vw 1vw;
-    background: #0a27a6;
-    color: white;
-    border: none;
-    border-radius: 0.3125em;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #0056b3;
-  }
-`;

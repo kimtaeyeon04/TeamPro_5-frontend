@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import styled from "styled-components";
 import { Navigate, useNavigate } from "react-router-dom";
 import Consent from "../components/Consent/Consent.jsx";
 import Eye from "../assets/icons/Login/Eye.png";
@@ -189,36 +188,39 @@ const SignUpRecruiterEmailPage= () => {
     
     
     return (
-        <LoginWrapper>
-            <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
-            <JoinWrapper>
-                <ColumnWrapper1>
-                    <NameInput placeholder="이름" type="text" onChange={(e) => setName(e.target.value)} />
-                <ColumnWrapper2>
-                        <CalendarText>생년월일</CalendarText>
-                        <CalendarInput type="date" onChange={(e) => setBirthday(e.target.value.split('-'))} />
-                    </ColumnWrapper2>
-                </ColumnWrapper1>
-                <RowWrapper>
-                    <EmailInput 
+        <div className="flex flex-col items-center justify-center w-[85%] py-[40px] px-[40px] mx-auto">
+            <p className="text-[#0a27a6] text-[3em] font-bold font-['OTF_B'] cursor-pointer" onClick={() => navigate("/")}>FolioFrame</p>
+            <div className="flex flex-col justify-center gap-[1em]">
+                <div className="flex gap-[1em]">
+                    <input className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-[40%] indent-[1em] outline-none placeholder:indent-[1em] placeholder:text-[#d0d1d9]" placeholder="이름" type="text" onChange={(e) => setName(e.target.value)} />
+                <div className="flex gap-[0.5em]">
+                        <p className="text-[#d0d1d9] text-[0.8em] font-medium mt-[1em]">생년월일</p>
+                        <input className="border border-[#d0d1d9] outline-none h-[2em] p-[0.5em] text-[1em] text-[#d0d1d9] rounded-[4px] mr-[-2em]" type="date" onChange={(e) => setBirthday(e.target.value.split('-'))} />
+                    </div>
+                </div>
+                <div className="flex flex-col w-full gap-[0.5em]">
+                    <input 
+                         className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-full indent-[1em] outline-none placeholder:indent-[1em] placeholder:text-[#d0d1d9]"
                          placeholder="이메일을 입력해주세요" 
                          type="email" 
                          value={emailInput} 
                          onChange={handleEmailInputChange} 
                     />
-                    <EmailcheckWrapper>
-                        <EmailcheckInput 
+                    <div className="flex items-center">
+                        <input 
+                             className="border border-[#d0d1d9]"
                              type="checkbox" 
                              id="IDcheck" 
                              onClick={handleEmailCheck}
                              checked={emailCheck} 
                         />
                         <label htmlFor="IDcheck">중복확인</label>
-                    </EmailcheckWrapper>
-                </RowWrapper>
+                    </div>
+                </div>
 
-                <PassWrapper>
-                    <PassInput
+                <div className="relative w-full">
+                    <input
+                        className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-full indent-[1em] pr-[2.5em] outline-none placeholder:indent-[1em] placeholder:text-[#d0d1d9] [&::-ms-reveal]:hidden"
                         type={eyeVisible ? "text" : "password"}
                         placeholder="비밀번호 : 영문+특문+숫자로 12~20자"
                         value={password}
@@ -226,14 +228,16 @@ const SignUpRecruiterEmailPage= () => {
                         onBlur={handlePassValidation}
                         onKeyDown={(e) => e.key === 'Enter' && handlePassValidation()}
                     />
-                   <EyeIcon
+                   <img
+                        className="absolute right-[1em] top-1/2 -translate-y-1/2 cursor-pointer w-[1.2em] h-[1.2em]"
                         src={eyeVisible ? Eyeoff : Eye}
                         alt="eye"
                         onClick={toggleEyeVisible}
                     />
-                </PassWrapper>
-                <PassWrapper>
-                    <PassInput
+                </div>
+                <div className="relative w-full">
+                    <input
+                        className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-full indent-[1em] pr-[2.5em] outline-none placeholder:indent-[1em] placeholder:text-[#d0d1d9] [&::-ms-reveal]:hidden"
                         type={eyeVisibleConfirm  ? "text" : "password"}
                         placeholder="비밀번호 확인"
                         value={repassword}
@@ -248,14 +252,16 @@ const SignUpRecruiterEmailPage= () => {
                         // onKeyDown={(e) => e.key === 'Enter' && passwordCheck()}
                         disabled={!isRePasswordEnabled} 
                     />
-                    <EyeIcon
+                    <img
+                        className="absolute right-[1em] top-1/2 -translate-y-1/2 cursor-pointer w-[1.2em] h-[1.2em]"
                         src={eyeVisibleConfirm ? Eyeoff : Eye}
                         alt="eye"
                         onClick={toggleEyeVisibleConfirm}
                     />
-                </PassWrapper>
-                <RowWrapper>
-                    <TelInput 
+                </div>
+                <div className="flex flex-col w-full gap-[0.5em]">
+                    <input 
+                            className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-full indent-[1em] outline-none placeholder:indent-[1em] placeholder:text-[#d0d1d9]"
                             type="tel"
                             maxLength="13"
                             value={phone}
@@ -265,28 +271,31 @@ const SignUpRecruiterEmailPage= () => {
                             autoComplete="off"
                             name="users_phone"
                     />
-                    <PhonecheckWrapper>
-                        <PhonecheckInput 
+                    <div className="flex items-center">
+                        <input 
+                                className="border border-[#d0d1d9]"
                                 type="checkbox" 
                                 id="Phonecheck" 
                                 onClick={handlePhoneCheck} 
                                 checked={phoneChecked} 
                             />
                             <label htmlFor="Phonecheck">중복확인</label>
-                        </PhonecheckWrapper>
-                </RowWrapper>
+                        </div>
+                </div>
 
             {/* 회사인증 */}
-            <RowWrapper>
-                    <CertificInput 
+            <div className="flex flex-col w-full gap-[0.5em]">
+                    <input 
+                        className="rounded-[2em] border border-[#d0d1d9] h-[3em] w-full indent-[1em] outline-none placeholder:indent-[1em] placeholder:text-[#d0d1d9]"
                         placeholder="회사인증" 
                         type="Comemail" 
                         value={Comemail} 
                         onChange={handleEmailChange} 
                     />
-                </RowWrapper>
-            <CheckBoxWrapper>
-                    <CompanyCheckInput 
+                </div>
+            <div className="flex items-center mt-[-0.5em]">
+                    <input 
+                       className="border border-[#d0d1d9]"
                        type="checkbox" 
                        id="company" 
                        checked={isCompanyChecked} 
@@ -294,29 +303,30 @@ const SignUpRecruiterEmailPage= () => {
                        disabled={!Comemail}  
                     />
                     <label htmlFor="company">회사인증</label>
-                    <CheckBoxInput 
+                    <input 
                         // type="checkbox" 
                         // id="Join" 
+                        className="border border-[#d0d1d9] ml-[2em]"
                         onClick={handleCheckBoxClick}
                         type="checkbox"
                         id="Join"
                         checked={agree} 
                     />
                     <label htmlFor="Join">가입 기본약관</label>
-                </CheckBoxWrapper>
-            </JoinWrapper>
+                </div>
+            </div>
 
-            <LoginButton onClick={handleSignUp} >시작하기</LoginButton>
-            <MemberWrapper>
-                <Text>이미 회원이신가요? |</Text>
-                <JoinButton onClick={() => navigate("../LoginPage")}>로그인</JoinButton>
-            </MemberWrapper>
-            <JoinButton onClick={() => navigate("/SignUpRecruiterPage")}>아이디로 회원가입하기</JoinButton>
+            <button className="text-white text-[1em] font-extrabold rounded-[2em] border-none bg-[#0a27a6] h-[3em] w-[15em] my-[2em]" onClick={handleSignUp} >시작하기</button>
+            <div className="flex gap-[1em] mt-[-2em]">
+                <p className="text-[#d0d1d9] text-[1em] font-medium">이미 회원이신가요? |</p>
+                <button className="text-[#d0d1d9] text-[1em] font-medium border-none bg-transparent cursor-pointer" onClick={() => navigate("../LoginPage")}>로그인</button>
+            </div>
+            <button className="text-[#d0d1d9] text-[1em] font-medium border-none bg-transparent cursor-pointer" onClick={() => navigate("/SignUpRecruiterPage")}>아이디로 회원가입하기</button>
 
            {/* 팝업창 */}
            {isModalOpen && (
-                <ModalOverlay>
-                    <ModalContent>
+                <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
+                    <div className="bg-white p-[2em] rounded-[8px] text-center w-[80%] max-w-[500px]">
                        <Consent 
                          checkStates={checkStates}
                          setCheckStates={setCheckStates}
@@ -324,262 +334,11 @@ const SignUpRecruiterEmailPage= () => {
                          onAgree={handleAgree} 
                          onDisagree={handleDisagree}
                         />
-                    </ModalContent>
-                </ModalOverlay>
+                    </div>
+                </div>
             )}
-        </LoginWrapper>
+        </div>
     );
 };
 
 export default SignUpRecruiterEmailPage;
-
-//css Wrapper
-const LoginWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width : 85%;
-    padding: 40px 40px;
-    margin: 0 auto; 
-`;
-
-const JoinWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
-    justify-content: center;
-    gap : 1em;
-`;
-
-const MemberWrapper = styled.div`
-    display: flex;
-    gap : 1em;
-    margin-top : -2em;
-`;
-
-const ColumnWrapper1 = styled.div`
-    display : flex;
-    gap : 1em;
-`;
-const ColumnWrapper2 = styled.div`
-    display : flex;
-    gap : 0.5em;
-`;
-
-const RowWrapper = styled.div`
-    display: flex;
-    flex-direction: column;  
-    width : 100%;
-    gap: 0.5em;   
-`;
-
-const CheckBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top:-0.5em;
-`;
-
-const EmailcheckWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const PhonecheckWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const PassWrapper = styled.div`
-    position: relative;
-    width: 100%;
-   
-`;
-
-//css input
-const NameInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 40%;
-    text-indent: 1em; 
-    outline : none;
-    &::placeholder {
-        text-indent: 1em; 
-        color : #D0D1D9;
-    }
-
-`;
-
-const TelInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-    outline : none;
-    &::placeholder {
-        text-indent: 1em; 
-        color : #D0D1D9;
-    }
-
-`;
-
-const CertificInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-    outline : none;
-    &::placeholder {
-    text-indent: 1em;
-    color : #D0D1D9;
-    }
-
-`;
-const CalendarInput = styled.input`
-    border: none;
-    outline: none;
-    height: 2em;
-    padding: 0.5em;
-    font-size: 1em;
-    color: #D0D1D9;
-    border: 1px solid #D0D1D9;
-    border-radius: 4px;
-    margin-right : -2em;
-`;
-const PassInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-    outline : none;
-
-    &::placeholder {
-        text-indent: 1em; 
-        color : #D0D1D9;
-    }
-    &::-ms-reveal {
-        display: none;
-    }
-}
-
-`;
-const EmailInput = styled.input`
-    border-radius : 2em;
-    border : 1px solid #D0D1D9;
-    height : 3em;
-    width : 100%;
-    text-indent: 1em; 
-    outline : none;
-    &::placeholder {
-        text-indent: 1em;
-        color : #D0D1D9;
-    }
-
-`;
-const CheckBoxInput = styled.input`
-    border: 1px solid #D0D1D9;
-    margin-left :2em; 
-`;
-const EmailcheckInput = styled.input`
-    border: 1px solid #D0D1D9;
-`;
-const PhonecheckInput = styled.input`
-    border: 1px solid #D0D1D9;
-`;
-const CompanyCheckInput = styled.input`
-    border: 1px solid #D0D1D9;
-`;
-
-//css button
-const LoginButton = styled.button`
-    color : #fff;
-    font-size : 1em;
-    font-weight : 800;
-
-    border-radius : 2em;
-    border : none;
-    background-color : #0A27A6;
-    height : 3em;
-    width: 15em;
-    margin : 2em 0;
-`;
-
-const JoinButton = styled.button`
-    color : #D0D1D9;
-    font-size: 1em;
-    font-weight: 500;
-    border : none;
-    background-color : transparent;
-`;
-
-
-//css text
-const MainText = styled.p`
-    color : #0A27A6;
-    font-size: 3em;
-    font-weight: 700;
-    font-family: "OTF B";
-    cursor : pointer;
-`;
-
-const Text = styled.p`
-    color : #D0D1D9;
-    font-size: 1em;
-    font-weight: 500;
-`;
-
-const CalendarText =  styled.p`
-    color : #D0D1D9;
-    font-size: .8em;
-    font-weight: 500;
-    margin-top : 1em;
-`;
-
-
-const ModalOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const ModalContent = styled.div`
-    background: white;
-    padding: 2em;
-    border-radius: 8px;
-    text-align: center;
-    width: 80%;
-    max-width: 500px;
-`;
-
-const CloseButton = styled.button`
-    margin-top: 1em;
-    padding: 0.5em 1em;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &:hover {
-        background: #0056b3;
-    }
-`;
-const EyeIcon = styled.img`
-    position: absolute;
-    right: 1em; 
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width : 1.2em;
-    height : 1.2em;
-`;

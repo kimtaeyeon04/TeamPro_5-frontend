@@ -1,9 +1,13 @@
-import styled from 'styled-components';
+import React from 'react';
 
-export const ColorDiv = styled.div`
-    color: #0A27A6;
-`;
+export const ColorDiv = ({ children, className = "", ...props }) => (
+    <div className={`text-[#0A27A6] ${className}`} {...props}>
+        {children}
+    </div>
+);
 
-export const Color = styled.span`
-    color: #0A27A6;
-`;
+export const Color = ({ children, className = "", ...props }) => (
+    <span className={`text-[#0A27A6] ${className}`} {...props}>
+        {children}
+    </span>
+);

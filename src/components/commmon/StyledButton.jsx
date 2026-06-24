@@ -1,40 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 
 const StyledButton = ({ text, onClick }) => {
   return (
-    <StyledButtonWrapper>
-      <Button onClick={onClick}>{text}</Button>
-    </StyledButtonWrapper>
+    <div className="text-center w-[5vw]">
+      <button className="py-[0.625em] px-[0em] w-full h-[2.4em] bg-[#0a27a6] text-white border-none rounded-[0.4em] text-[1vw] font-['OTF_R'] font-[400] cursor-pointer text-center float-left hover:bg-[#092091]" onClick={onClick}>{text}</button>
+    </div>
   );
 };
 
 export default StyledButton;
-
-const StyledButtonWrapper = styled.div`
-  text-align: center;
-  width: 5vw;
-`;
-
-const Button = styled.button`
-  padding: 0.625em 0em;
-  width: 100%;
-  // 적용 버튼 높이 수정함 
-  height : 2.4em;
-  background-color: #0a27a6;
-  color: white;
-  border: none;
-  border-radius: 0.4em;
-
-  font-size: 1vw;
-  font-family: "OTF R";
-  font-weight: 400;
-  cursor: pointer;
-  text-align: center;
-
-  float: left;
-
-  &:hover {
-    background-color: #092091;
-  }
-`;

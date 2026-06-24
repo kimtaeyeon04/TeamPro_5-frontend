@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { Navigate, useNavigate } from "react-router-dom";
 import { getCurrentUser, setCurrentUser } from "../../components/features/currentUser";
 // 템플릿 카드 1개
@@ -29,15 +28,15 @@ const TemplateCard = () => {
     }
   };
   return (
-    <CardContainer>
+    <div className="flex justify-between my-[20px] mx-0 gap-[2em]">
       {templateName.map((name, index) => (
-        <Card key={index}>
-          <TemplateName>{name}</TemplateName>
-          <Description>{description[index]}</Description>
-          <ParticiPateButton onClick={() => handleButtonClick(index)}>참여하기</ParticiPateButton>
-        </Card>
+        <div key={index} className="w-[18em] border border-[#D9D9D9] rounded-[10px] p-[20px] shadow-[0_4px_8px_rgba(0,0,0,0.1)] text-center hover:border-[#0A27A6] [&:hover_button]:bg-[#0A27A6] [&:hover_button]:text-[#fff]">
+          <h3 className="text-[1.5rem] mb-[10px] font-['OTF_B']">{name}</h3>
+          <p className="text-[1rem] text-[#666] mb-[20px] font-['OTF_R']">{description[index]}</p>
+          <button className="text-[#0A27A6] text-[1em] font-[800] bg-[#fff] border border-[#0A27A6] rounded-[2em] h-[2em] w-[50%] -mt-[3em]" onClick={() => handleButtonClick(index)}>참여하기</button>
+        </div>
       ))}
-    </CardContainer>
+    </div>
   );
 };
 
@@ -49,56 +48,3 @@ TemplateCard.propTypes = {
 };
 
 export default TemplateCard;
-
-const CardContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  gap : 2em;
-`;
-
-const Card = styled.div`
-  width: 18em;
-  border: 1px solid #D9D9D9;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-
-  &:hover{
-    border : 1px solid #0A27A6;
-    
-
-   button {
-      background-color: #0A27A6;
-      color: #fff;
-    }
-  }
-`;
-
-const TemplateName = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-family: "OTF B";
-`;
-
-const Description = styled.p`
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 20px;
-
-  font-family: "OTF R";
-
-`;
-
-const ParticiPateButton = styled.button`
-    color : #0A27A6;
-    font-size : 1em;
-    font-weight : 800;
-    background-color: #fff;
-    border : 1px solid #0A27A6;
-    border-radius : 2em;
-    height : 2em;
-    width : 50%;
-    margin-top : -3em;
-`;

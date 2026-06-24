@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import {
   oriProjects,
@@ -148,39 +147,34 @@ const PortfolioDetailPage = () => {
     if (currentUser.recruiter && showContactInfo) {
       return (
         <>
-          <DevInfo>{portfolioData.ownerName}</DevInfo>
-          <DevInfo>{portfolioData.ownerEmail || "이메일 없음"}</DevInfo>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">{portfolioData.ownerName}</div>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">{portfolioData.ownerEmail || "이메일 없음"}</div>
         </>
       );
     } else if (currentUser.recruiter) {
       return (
-        <ButtonWrapper>
-          <Button onClick={handleContactClick}>연락</Button>
-        </ButtonWrapper>
+        <div className="flex justify-center items-center my-[1.2vh]">
+          <button className="bg-[#0a27a6] text-white py-[8px] px-[12px] border-none rounded-[4px] cursor-pointer font-['OTF_B']" onClick={handleContactClick}>연락</button>
+        </div>
       );
     } else {
       return (
         <>
-          <DevInfo>{portfolioData.ownerNickname || "익명"}</DevInfo>
-          <DevInfo>example@example.com</DevInfo>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">{portfolioData.ownerNickname || "익명"}</div>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">example@example.com</div>
         </>
       );
     }
   };
 
   if (!portfolioData) {
-    return <Loading>로딩 중...</Loading>;
+    return <div className="flex justify-center text-[1vw] font-bold">로딩 중...</div>;
   }
   return (
-    <DetailContainer>
-      <TitleSection>
-        <TitleWrapper>
-          {/* {portfolioData.logo && (
-            <Logo>
-              <img src={portfolioData.logo} alt="projectLogo" />
-            </Logo>
-          )} */}
-          <Logo>
+    <div className="w-[85%] mx-auto">
+      <div className="mb-[2.5vw]">
+        <div className="flex justify-center items-center">
+          <div className="w-[6vw] h-[6vw] [&>img]:w-full [&>img]:h-full [&>img]:object-contain">
               {portfolioData.logo ? (
                 <img
                   src={`http://localhost:3000/${portfolioData.logo}`}
@@ -194,108 +188,108 @@ const PortfolioDetailPage = () => {
                 ) : (
                   <img src={logo} alt="projectLogo" />
                 )}
-          </Logo>
-          <ProjectTitle>{portfolioData.projectTitle}</ProjectTitle>
-        </TitleWrapper>
-        <ProjectDescription>{portfolioData.description}</ProjectDescription>
-        <InfoButtons>
-          <Button>조회수 {portfolioData.hits || 0}</Button>
-          <Button>기업 연락 {portfolioData.contacts.length || 0}</Button>
-          <HeartBox onClick={handleLikeClick}>
+          </div>
+          <h1 className="font-bold font-['OTF_B']">{portfolioData.projectTitle}</h1>
+        </div>
+        <p>{portfolioData.description}</p>
+        <div className="flex gap-[1vw]">
+          <button className="bg-[#0a27a6] text-white py-[8px] px-[12px] border-none rounded-[4px] cursor-pointer font-['OTF_B']">조회수 {portfolioData.hits || 0}</button>
+          <button className="bg-[#0a27a6] text-white py-[8px] px-[12px] border-none rounded-[4px] cursor-pointer font-['OTF_B']">기업 연락 {portfolioData.contacts.length || 0}</button>
+          <div className="flex justify-between items-center gap-[0.4vw] w-[2vw] cursor-pointer font-bold [&>img]:w-[1.5vw] [&>img]:h-auto [&>img]:object-contain" onClick={handleLikeClick}>
             <img
               src={isLiked ? heart_fill : heart_none} // 좋아요 상태에 따라 이미지 변경
               alt={isLiked ? "heart-fill" : "heart-none"}
             />
-            <Likes>{portfolioData.likes.length}</Likes>
-          </HeartBox>
-        </InfoButtons>
-      </TitleSection>
+            <div className="font-['OTF_B']">{portfolioData.likes.length}</div>
+          </div>
+        </div>
+      </div>
 
-      <ContentSection>
-        <LinkDevelperSection>
-          <ProjectLinkField>
-            <Project>프로젝트 링크</Project>
-            <ProjectLink>
+      <div className="grid grid-cols-[1fr_3fr] gap-[2vw] mb-[15vh]">
+        <div className="flex flex-col">
+          <div className="mb-[4vh] border-[0.1vw] border-[#d0d1d9] rounded-[0.3125em] shadow-[0em_0.25em_0.25em_rgba(0,0,0,0.25)] flex flex-col">
+            <div className="m-[0.8vw] font-bold text-[1.2vw]">프로젝트 링크</div>
+            <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">
               {portfolioData.projectLink
                 ? portfolioData.projectLink
                 : "프로젝트 링크 없음."}
-            </ProjectLink>{" "}
+            </div>{" "}
             {/*portfolioInfo에 추가해야함 */}
-          </ProjectLinkField>
+          </div>
 
-          <DeveloperField>
-            <Developer>개발자</Developer>
-            <DevContainer>{renderDeveloperInfo()}</DevContainer>
-          </DeveloperField>
-        </LinkDevelperSection>
+          <div className="border-[0.1vw] border-[#d0d1d9] rounded-[0.3125em] shadow-[0em_0.25em_0.25em_rgba(0,0,0,0.25)] flex flex-col">
+            <div className="m-[0.8vw] font-bold text-[1.2vw]">개발자</div>
+            <div>{renderDeveloperInfo()}</div>
+          </div>
+        </div>
 
         {showModal && (
-          <ModalOverlay className="ModalOverlay">
-            <ModalContainer>
+          <div className="fixed top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center z-[1000] ModalOverlay">
+            <div className="bg-white text-[1.3vw] font-bold p-[1vw] w-[25vw] rounded-[0.3125em] text-center shadow-[0_4px_6px_rgba(0,0,0,0.1)] z-[1001] [&>button]:mt-[1.5vw] [&>button]:py-[0.5vw] [&>button]:px-[1vw] [&>button]:bg-[#0a27a6] [&>button]:text-white [&>button]:border-none [&>button]:rounded-[0.3125em] [&>button]:cursor-pointer hover:[&>button]:bg-[#0056b3]">
               <p>{modalMessage}</p>
               <button onClick={() => setShowModal(false)}>확인</button>
-            </ModalContainer>
-          </ModalOverlay>
+            </div>
+          </div>
         )}
 
-        <OtherInfoSection>
-          <PeriodField>
-            <Label>참여 기간</Label>
-            <TextBox>
+        <div className="flex flex-col">
+          <div className="flex flex-col mb-[3vh] [grid-area:participationPeriod]">
+            <label className="font-bolder text-[1.6vw] mb-[8px]">참여 기간</label>
+            <div className="bg-white p-[0.4vw] border border-[#ccc] rounded-[4px]">
               {portfolioData.startDate} - {portfolioData.endDate}
-            </TextBox>
-          </PeriodField>
+            </div>
+          </div>
 
-          <ProblemSolvingField>
-            <Label>해결하는 문제</Label>
-            <TextBox>
+          <div className="flex flex-col mb-[3vh] [grid-area:problemSolving]">
+            <label className="font-bolder text-[1.6vw] mb-[8px]">해결하는 문제</label>
+            <div className="bg-white p-[0.4vw] border border-[#ccc] rounded-[4px]">
               {portfolioData.solving
                 ? portfolioData.solving
                 : "문제 해결 내용 없음."}
-            </TextBox>
+            </div>
             {/*portfolioInfo에 추가해야함*/}
-          </ProblemSolvingField>
+          </div>
 
-          <LearnedField>
-            <Label>내가 마주친 도전</Label>
-            <TextBox>
+          <div className="flex flex-col mb-[3vh] [grid-area:learned]">
+            <label className="font-bolder text-[1.6vw] mb-[8px]">내가 마주친 도전</label>
+            <div className="bg-white p-[0.4vw] border border-[#ccc] rounded-[4px]">
               {portfolioData.challenge
                 ? portfolioData.challenge
                 : "배운 점 없음."}
-            </TextBox>
+            </div>
             {/*portfolioInfo에 추가해야함*/}
-          </LearnedField>
+          </div>
 
-          <LanguagesUsedField>
-            <Label>사용한 프로그램</Label>
-            <TextBox>
+          <div className="flex flex-col mb-[3vh] [grid-area:languagesUsed]">
+            <label className="font-bolder text-[1.6vw] mb-[8px]">사용한 프로그램</label>
+            <div className="bg-white p-[0.4vw] border border-[#ccc] rounded-[4px]">
               {portfolioData.usedLanguage
                 ? portfolioData.usedLanguage
                 : "사용 언어 없음."}
-            </TextBox>
+            </div>
             {/*portfolioInfo에 추가해야함*/}
-          </LanguagesUsedField>
+          </div>
 
-          <DemoVideoField>
-            <Label>데모 비디오</Label>
+          <div className="flex flex-col mb-[3vh] [grid-area:demoVideo]">
+            <label className="font-bolder text-[1.6vw] mb-[8px]">데모 비디오</label>
             {portfolioData.video ? (
-              <VideoBox>
+              <div className="bg-[#f0f0f0] flex items-center justify-center h-[200px] border border-dashed border-[#ccc] text-[1vw]">
                 <video width="100%" height="100%" controls>
                   <source src={portfolioData.video} type="video/mp4" />
                   비디오를 지원하지 않는 브라우저입니다.
                 </video>
-              </VideoBox>
+              </div>
             ) : (
-              <VideoBox>비디오 없음</VideoBox>
+              <div className="bg-[#f0f0f0] flex items-center justify-center h-[200px] border border-dashed border-[#ccc] text-[1vw]">비디오 없음</div>
             )}
-          </DemoVideoField>
+          </div>
 
-          <ImagesField>
-            <Label>사진</Label>
-            <ImageContainer>
+          <div className="flex flex-col mb-[3vh] [grid-area:images]">
+            <label className="font-bolder text-[1.6vw] mb-[8px]">사진</label>
+            <div className="flex gap-[10px]">
                   {portfolioData.images && portfolioData.images.length > 0 ? (
                     portfolioData.images.slice(0, 4).map((image, index) => (
-                      <ImageBox key={index}>
+                      <div className="bg-[#f0f0f0] w-[100px] h-[100px] border border-dashed border-[#ccc] flex items-center justify-center text-[1vw]" key={index}>
                         <img
                           src={`http://localhost:3000/${image}`}
                           alt={`프로젝트 이미지 ${index + 1}`}
@@ -306,422 +300,47 @@ const PortfolioDetailPage = () => {
                             borderRadius: "8px",
                           }}
                         />
-                      </ImageBox>
+                      </div>
                     ))
                   ) : (
-                    <ImageBox>사진 없음</ImageBox>
+                    <div className="bg-[#f0f0f0] w-[100px] h-[100px] border border-dashed border-[#ccc] flex items-center justify-center text-[1vw]">사진 없음</div>
                   )}
-                </ImageContainer>
-          </ImagesField>
-        </OtherInfoSection>
-      </ContentSection>
+                </div>
+          </div>
+        </div>
+      </div>
       {/* 수정 버튼 작성자와 포폴의 아이디가 동일할 경우에만 보이게한다. */}
       {isOwner && (
-        <ButtonWrapper2>
-          <SubmitButton
+        <div className="flex justify-end gap-[1em]">
+          <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#0a27a6] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
             onClick={() => {
               navigate(`/ModifyPortfolioPage/${portfolioId}`);
             }}
           >
             수정
-          </SubmitButton>
-          <SubmitButton
+          </button>
+          <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#0a27a6] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
             onClick={async () => {
               await deleteProject(portfolioId);
               navigate("/Mypage");
             }}
           >
             삭제
-          </SubmitButton>
-        </ButtonWrapper2>
+          </button>
+        </div>
       )}
 
-      <CommentsSection>
-        <CommentsTitle>댓글</CommentsTitle>
+      <div className="mt-[6vh]">
+        <h2 className="font-bold font-['OTF_B']">댓글</h2>
         <WritingBox addComment={addComment} />
         <CommentList
           comments={comments}
           setComments={setComments}
           portfolioId={portfolioId}
         />
-      </CommentsSection>
-    </DetailContainer>
+      </div>
+    </div>
   )
 };
 
 export default PortfolioDetailPage;
-
-// Styled Components
-const Loading = styled.div`
-  display: flex;
-  justify-content: center;
-
-  font-size: 1vw;
-  font-weight: bold;
-`;
-
-const DetailContainer = styled.div`
-  width: 85%;
-  margin: 0 auto;
-`;
-
-const TitleSection = styled.div`
-  margin-bottom: 2.5vw;
-`;
-
-const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Logo = styled.h1`
-  width: 6vw;
-  height: 6vw;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-`;
-
-const ProjectTitle = styled.h1`
-  font-weight: bold;
-  font-family: "OTF B";
-`;
-
-const ProjectDescription = styled.p``;
-
-const InfoButtons = styled.div`
-  display: flex;
-  gap: 1vw;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin: 1.2vh 0;
-`;
-
-const Button = styled.button`
-  background-color: #0a27a6;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: "OTF B";
-`;
-
-const HeartBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.4vw;
-  width: 2vw;
-
-  cursor: pointer;
-
-  font-weight: bold;
-
-  img {
-    width: 1.5vw; /* 하트 크기 조정 */
-    height: auto; /* 비율 유지 */
-    object-fit: contain; /* 이미지를 잘 보이게 */
-  }
-`;
-
-const Likes = styled.div`
-  font-family: "OTF B";
-`;
-
-const ContentSection = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 2vw;
-  margin-bottom: 15vh;
-
-  // grid-template-areas:
-  //   "projectLink participationPeriod"
-  //   "developer   problemSolving"
-  //   "    .       learned"
-  //   "    .       languagesUsed"
-  //   "    .       demoVideo"
-  //   "    .       images";
-`;
-
-const LinkDevelperSection = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const OtherInfoSection = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  margin-bottom: 3vh;
-`;
-
-const Label = styled.label`
-  font-weight: bolder;
-  font-size: 1.6vw;
-  margin-bottom: 8px;
-`;
-
-const ProjectLinkField = styled.div`
-  margin-bottom: 4vh;
-
-  border: 0.1vw solid #d0d1d9;
-  border-radius: 0.3125em;
-  box-shadow: 0em 0.25em 0.25em rgba(0, 0, 0, 0.25);
-
-  display: flex;
-  flex-direction: column;
-`;
-
-const DeveloperField = styled.div`
-  border: 0.1vw solid #d0d1d9;
-  border-radius: 0.3125em;
-  box-shadow: 0em 0.25em 0.25em rgba(0, 0, 0, 0.25);
-
-  display: flex;
-  flex-direction: column;
-`;
-
-const PeriodField = styled(Field)`
-  grid-area: participationPeriod;
-`;
-
-const ProblemSolvingField = styled(Field)`
-  grid-area: problemSolving;
-`;
-
-const LearnedField = styled(Field)`
-  grid-area: learned;
-`;
-
-const LanguagesUsedField = styled(Field)`
-  grid-area: languagesUsed;
-`;
-
-const DemoVideoField = styled(Field)`
-  grid-area: demoVideo;
-`;
-
-const ImagesField = styled(Field)`
-  grid-area: images;
-`;
-
-const TextBox = styled.div`
-  background-color: white;
-  padding: 0.4vw;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-const TextArea = styled.textarea`
-  background-color: #f0f0f0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  height: 100px;
-`;
-
-const Project = styled.div`
-  margin: 0.8vw;
-
-  //font-family: "OTF B";
-  font-weight: bold;
-  font-size: 1.2vw;
-`;
-
-const ProjectLink = styled.div`
-  background-color: #f0f0f0;
-  margin: 0.8vw;
-  padding: 0.4vw;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 80%;
-`;
-
-const Developer = styled.div`
-  margin: 0.8vw;
-
-  //font-family: "OTF B";
-  font-weight: bold;
-  font-size: 1.2vw;
-`;
-const DevContainer = styled.div``;
-
-const DevInfo = styled.div`
-  background-color: #f0f0f0;
-  margin: 0.8vw;
-  padding: 0.4vw;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 80%;
-`;
-
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-const ModalContainer = styled.div`
-  background: white;
-  font-size: 1.3vw;
-  font-weight: bold;
-  padding: 1vw;
-  width: 25vw;
-
-  border-radius: 0.3125em;
-
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-
-  button {
-    margin-top: 1.5vw;
-    padding: 0.5vw 1vw;
-    background: #0a27a6;
-    color: white;
-    border: none;
-    border-radius: 0.3125em;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #0056b3;
-  }
-`;
-
-const VideoBox = styled.div`
-  background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  border: 1px dashed #ccc;
-  font-size: 1vw;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const ImageBox = styled.div`
-  background-color: #f0f0f0;
-  width: 100px;
-  height: 100px;
-  border: 1px dashed #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1vw;
-`;
-
-const CommentsSection = styled.div`
-  margin-top: 6vh;
-`;
-
-const CommentsTitle = styled.h2`
-  font-weight: bold;
-  font-family: "OTF B";
-  //margin-bottom: 20px;
-`;
-
-const CommentInput = styled.textarea`
-  width: 100%;
-  height: 80px;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-const CommentButton = styled.button`
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #0a27a6;
-  color: white;
-  cursor: pointer;
-  margin-top: 5px;
-`;
-
-// const Comment = styled.div`
-//   margin-top: 20px;
-// `;
-
-const CommentHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1vw;
-`;
-
-const CommentUser = styled.span`
-  font-weight: bold;
-`;
-
-const CommentTime = styled.span`
-  color: gray;
-`;
-
-const CommentText = styled.p`
-  margin: 10px 0;
-`;
-
-const CommentActions = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-//css 수정, 삭제 버튼
-const ButtonWrapper2 = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 1em;
-`;
-const SubmitButton = styled.button`
-  border: none;
-  border-radius: 0.4em;
-
-  margin-top: 1vh;
-  width: 9.1em;
-  height: 2.25em;
-
-  float: right;
-
-  background-color: #0a27a6;
-  color: white;
-  font-size: 1.1vw;
-  font-family: "OTF B";
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0.2em 1em rgba(22, 26, 63, 0.2);
-  }
-  transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    width: 7em;
-    height: 2.25em;
-    font-size: 0.8125em;
-  }
-`;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import Logo from "../assets/icons/Logo.png";
 import ModifyHackathonInput from "../components/ModifyHackathonPage/ModifyHackathonInput.jsx";
 import { getCurrentUser } from "../components/features/currentUser";
@@ -102,79 +101,21 @@ const ModifyHackathonPage = () => {
 
   return (
     <>
-      <HeaderWrapper>
-        <LogoImage src={Logo} alt="로고" />
-        <PageHeaderTitle>Hackathon</PageHeaderTitle>
-      </HeaderWrapper>
+      <div className="flex flex-col items-center justify-center gap-[1.5em] mb-[5em]">
+        <img className="w-[5em] h-[5em] mb-[-2em]" src={Logo} alt="로고" />
+        <div className="text-[#0a27a6] text-[2em] font-extrabold font-['OTF_B'] max-md:text-[1.25em] max-md:mt-[0.75em] max-md:mb-[1em]">Hackathon</div>
+      </div>
 
-      <ContentWrapper>
+      <div className="flex flex-col items-center justify-center min-h-[80vh]">
         <ModifyHackathonInput 
           onInputChange={handleInputChange}
           formData={formData}
           onDateChange={handleDateChange}
         />
-        <CreateButton onClick={handleSaveHack}>수정완료</CreateButton>
-      </ContentWrapper>
+        <button className="text-white text-[1em] font-extrabold rounded-[2em] border-none bg-[#0a27a6] h-[3em] w-[20%] mt-[2em] font-['OTF_R'] cursor-pointer flex items-center justify-center relative" onClick={handleSaveHack}>수정완료</button>
+      </div>
     </>
   );
 };
 
 export default ModifyHackathonPage;
-
-//css Wrapper
-const HeaderWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5em;
-  margin-bottom: 5em;
-`;
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-`;
-
-//css Image
-const LogoImage = styled.img`
-  widht: 5em;
-  height: 5em;
-  margin-bottom: -2em;
-`;
-
-//css Text
-const PageHeaderTitle = styled.div`
-  color: #0a27a6;
-  font-size: 2em;
-  font-weight: 800;
-  font-family: "OTF B";
-
-  @media (max-width: 768px) {
-    font-size: 1.25em;
-    margin-top: 0.75em;
-    margin-bottom: 1em;
-  }
-`;
-//css button
-const CreateButton = styled.button`
-  color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-  border-radius: 2em;
-  border: none;
-  background-color: #0a27a6;
-  height: 3em;
-  width: 20%;
-  margin-top: 2em;
-  font-family: "OTF R";
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;

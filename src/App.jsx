@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import profileIcon from "./assets/icons/Header/profileIcon.png";
 import LoginPage from "./pages/LoginPage";
 import MemberSelectionPage from "./pages/MemberSelectionPage";

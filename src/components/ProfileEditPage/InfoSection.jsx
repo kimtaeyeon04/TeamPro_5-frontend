@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 
 const InfoSection = ({
   label,
@@ -39,130 +38,36 @@ const InfoSection = ({
   };
 
   return (
-    <Container>
-      <Label>{label}</Label>
-      <Content>
+    <div className="flex items-start py-[1rem] px-0 border-b border-[#ddd]">
+      <div className="flex-[0_0_140px] text-[1rem] font-bold leading-[2.5rem]">{label}</div>
+      <div className="flex-1">
         {isEditing ? (
-          <EditContainer>
-            <Input
+          <div className="flex flex-col gap-[0.5rem]">
+            <input
+              className="w-full p-[0.5rem] text-[1rem] border border-[#ddd] rounded-[0.5rem]"
               type="text"
               value={inputValue}
               onChange={handleInputChange}
               placeholder="값을 입력해주세요."
             />
-            <ButtonGroup>
-              <CancelButton onClick={handleCancelClick}>취소</CancelButton>
-              <SaveButton onClick={handleSaveClick} disabled={!isModified}>
+            <div className="flex justify-end gap-[0.5rem]">
+              <button className="py-[0.5rem] px-[1rem] text-[0.875rem] bg-[#fff] text-[#555] border border-[#ddd] rounded-[0.5rem] cursor-pointer hover:bg-[#f9f9f9]" onClick={handleCancelClick}>취소</button>
+              <button className={`py-[0.5rem] px-[1rem] text-[0.875rem] rounded-[0.5rem] border ${!isModified ? 'bg-[#ddd] text-[#aaa] border-[#ddd] cursor-not-allowed' : 'bg-[#007bff] text-[#fff] border-[#007bff] cursor-pointer hover:bg-[#0056b3]'}`} onClick={handleSaveClick} disabled={!isModified}>
                 저장
-              </SaveButton>
-            </ButtonGroup>
-          </EditContainer>
+              </button>
+            </div>
+          </div>
         ) : (
-          <DisplayContainer>
-            <Value>{value || "값을 설정해주세요."}</Value>
+          <div className="flex items-center justify-between">
+            <div className="text-[1rem] text-[#aaa] flex-1 text-left leading-[2.5rem]">{value || "값을 설정해주세요."}</div>
             {isButton && (
-              <EditButton onClick={handleEditClick}>{button}</EditButton>
+              <button className="py-[0.5rem] px-[1rem] text-[0.875rem] bg-[#fff] text-[#333] border border-[#ddd] rounded-[0.5rem] cursor-pointer hover:bg-[#f9f9f9]" onClick={handleEditClick}>{button}</button>
             )}
-          </DisplayContainer>
+          </div>
         )}
-      </Content>
-    </Container>
+      </div>
+    </div>
   );
 };
 
 export default InfoSection;
-
-// Styled Components
-const Container = styled.div`
-  display: flex;
-  align-items: flex-start;
-  padding: 1rem 0;
-  border-bottom: 1px solid #ddd;
-`;
-
-const Label = styled.div`
-  flex: 0 0 140px;
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 2.5rem; /* Label과 Input을 수평 정렬 */
-`;
-
-const Content = styled.div`
-  flex: 1;
-`;
-
-const DisplayContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Value = styled.div`
-  font-size: 1rem;
-  color: #aaa;
-  flex: 1;
-  text-align: left;
-  line-height: 2.5rem; /* Label과 Value를 수평 정렬 */
-`;
-
-const EditButton = styled.button`
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f9f9f9;
-  }
-`;
-
-const EditContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-`;
-
-const CancelButton = styled.button`
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  background-color: #fff;
-  color: #555;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f9f9f9;
-  }
-`;
-
-const SaveButton = styled.button`
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  background-color: ${(props) => (props.disabled ? "#ddd" : "#007bff")};
-  color: ${(props) => (props.disabled ? "#aaa" : "#fff")};
-  border: 1px solid ${(props) => (props.disabled ? "#ddd" : "#007bff")};
-  border-radius: 0.5rem;
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-
-  &:hover {
-    background-color: ${(props) => (props.disabled ? "#ddd" : "#0056b3")};
-  }
-`;

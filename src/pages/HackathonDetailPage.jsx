@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import {
   oriHackathons,
@@ -105,7 +104,7 @@ const HackathonDetailPage = () => {
   // console.log(hackId);
   
   if (!HackathonData) {
-    return <Loading>로딩 중...</Loading>;
+    return <div className="flex justify-center text-[1vw] font-bold">로딩 중...</div>;
   }
   // 사진 업로드 핸들러
   const handlePhotosChange = (index) => (e) => {
@@ -150,60 +149,51 @@ const HackathonDetailPage = () => {
   };
 
   if (!HackathonData) {
-    return <Loading>로딩 중...</Loading>;
+    return <div className="flex justify-center text-[1vw] font-bold">로딩 중...</div>;
   }
 
 
   
   return (
     <>
-    <MainWrapper>
+    <div className="w-[85%] mx-auto flex justify-between items-start gap-[2em]">
       {/* 본문 */}
-      <LeftContent>
-        <HackTitle>{HackathonData.hackName}</HackTitle>
-        <Line></Line>
-        <RowWrapper>
-          <Mem>모집인원</Mem>
-          <MemTitle>{HackathonData.maxMemNumber + "명" || "없습니다."}</MemTitle>
-          <Mem>모집파트</Mem>
-          <MemTitle>{HackathonData.part || "없습니다."}</MemTitle>
+      <div className="flex-1">
+        <h1 className="text-[#0a27a6] font-bold font-['OTF_B']">{HackathonData.hackName}</h1>
+        <hr className="my-[1.5vh] border border-[#d0d1d9]"></hr>
+        <div className="flex flex-row gap-[1em]">
+          <p className="w-[4em] h-[1.5em] text-white font-bold font-['OTF_R'] text-[1em] border border-[#ccc] rounded-[0.2em] bg-[#0a27a6] flex items-center justify-center">모집인원</p>
+          <h1 className="font-bold font-['OTF_R'] text-[1em] text-[#000] mt-[1.2em]">{HackathonData.maxMemNumber + "명" || "없습니다."}</h1>
+          <p className="w-[4em] h-[1.5em] text-white font-bold font-['OTF_R'] text-[1em] border border-[#ccc] rounded-[0.2em] bg-[#0a27a6] flex items-center justify-center">모집파트</p>
+          <h1 className="font-bold font-['OTF_R'] text-[1em] text-[#000] mt-[1.2em]">{HackathonData.part || "없습니다."}</h1>
           {/* <Mem2>현재 참여중인 인원</Mem2>
           <MemTitle>{HackathonData.participant.length || "없습니다."}</MemTitle> */}
-        </RowWrapper>
-        <RowWrapper>
-        <LinkWrapper>
-          <LinkIcon src={Link} alt="Link" />
-          <LinkInput value={HackathonData.link || "없습니다."} readOnly />
-        </LinkWrapper>
-        </RowWrapper>
+        </div>
+        <div className="flex flex-row gap-[1em]">
+        <div className="relative inline-block w-[60%]">
+          <img className="absolute left-[10px] top-[50%] -translate-y-[50%] w-[20px] h-[20px]" src={Link} alt="Link" />
+          <input className="border-[1.4px] border-[#0a27a6] rounded-[1em] w-full h-[2em] pl-[35px]" value={HackathonData.link || "없습니다."} readOnly />
+        </div>
+        </div>
       {/* 해커톤 설명 */}
-      <Line></Line>
-      <HackTitle>해커톤 설명</HackTitle>
-      <ContentSection2>
-        <DesTitle>{HackathonData.description || "없습니다"}</DesTitle>
-      </ContentSection2>
-      <Line></Line>
-      <RowWrapper>
+      <hr className="my-[1.5vh] border border-[#d0d1d9]"></hr>
+      <h1 className="text-[#0a27a6] font-bold font-['OTF_B']">해커톤 설명</h1>
+      <div className="w-full h-[100vh] text-[#ccc] rounded-[2em] shadow-[0_4px_8px_rgba(0,0,0,0.2)] mb-[2em] flex flex-col items-center justify-center">
+        <p className="font-bold font-['OTF_R'] text-[1em] text-[#000]">{HackathonData.description || "없습니다"}</p>
+      </div>
+      <hr className="my-[1.5vh] border border-[#d0d1d9]"></hr>
+      <div className="flex flex-row gap-[1em]">
       {/* 사진 */}
-      <HackTitle>사진</HackTitle>
-        <RowWrapper
-          style={{
-            display: "flex",
-            alignItems: "flex-start", 
-            gap: "20px",
-          }}
+      <h1 className="text-[#0a27a6] font-bold font-['OTF_B']">사진</h1>
+        <div
+          className="flex items-start gap-[20px]"
         >
-          <ImageWrapper
-            style={{
-              display: "flex",
-              flexWrap: "wrap", 
-              gap: "10px",
-              flex: "1", 
-            }}
+          <div
+            className="flex flex-wrap gap-[10px] flex-[1] ml-[2em] w-[80%] justify-between"
           >
             {HackathonData.pictures && HackathonData.pictures.length > 0 ? (
               HackathonData.pictures.slice(0, 4).map((image, index) => (
-                <ImageBox
+                <div className="inline-block text-[#d0d1d9] bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center align-middle"
                   key={index}
                   style={{
                     width: "100px",
@@ -221,41 +211,41 @@ const HackathonDetailPage = () => {
                       borderRadius: "8px",
                     }}
                   />
-                </ImageBox>
+                </div>
               ))
             ) : (
-              <ImageBox style={{ width: "100px", height: "100px" }}>+</ImageBox>
+              <div className="inline-block text-[#d0d1d9] bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center align-middle" style={{ width: "100px", height: "100px" }}>+</div>
             )}
-          </ImageWrapper>
-        </RowWrapper>
-        </RowWrapper>
+          </div>
+        </div>
+        </div>
 
-        <ColumnWrapper2>
+        <div className="flex w-full">
           {/* 홍보 비디오 */}
-          <ColWrapper>
-            <HackTitle>홍보 비디오</HackTitle>
+          <div className="flex flex-col">
+            <h1 className="text-[#0a27a6] font-bold font-['OTF_B']">홍보 비디오</h1>
            {!HackathonData.video ? (
-              <ChoiceInput
+              <input className="border border-[#d0d1d9] rounded-[2em] outline-none h-[20em] w-[35em] indent-[1em] placeholder:indent-[1em]"
                 type="url"
                 value={HackathonData.video || ""}
                 placeholder="비디오 URL을 입력하세요"
                 onChange={handleVideoChange}
               />
             ) : (
-              <VideoWrapper>
+              <div>
                 <video controls width="100%">
                   <source src={HackathonData.video} type="video/mp4" />
                   <p>비디오 재생을 지원하지 않는 브라우저입니다.</p>
                 </video>
-              </VideoWrapper>
+              </div>
             )}
               
-          </ColWrapper>
+          </div>
 
           {/* 커버 이미지 */}
-          <ColWrapper>
-            <HackTitle2>커버 이미지</HackTitle2>
-            <ImageWrapper>
+          <div className="flex flex-col">
+            <h1 className="text-[#0a27a6] font-bold font-['OTF_B'] ml-[1em]">커버 이미지</h1>
+            <div className="flex justify-between ml-[2em] w-[80%]">
                {HackathonData.coverImage ? (
             <img
               src={`http://localhost:3000/${HackathonData.coverImage}`}
@@ -272,9 +262,9 @@ const HackathonDetailPage = () => {
             }}
             />
           ) : (
-            <ImageBox>+</ImageBox>
+            <div className="inline-block w-[5em] h-[5em] text-[#d0d1d9] bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center align-middle">+</div>
          )}
-            </ImageWrapper>
+            </div>
             {/* {HackathonData.coverImage ? (
             <img
               src={`http://localhost:3000/${HackathonData.coverImage}`}
@@ -291,13 +281,13 @@ const HackathonDetailPage = () => {
           ) : (
             <ImageBox>+</ImageBox>
          )} */}
-          </ColWrapper>
-        </ColumnWrapper2>
-      </LeftContent>
+          </div>
+        </div>
+      </div>
   
       {/* 오른쪽 사이드 창 */}
-      <ContentSection1>
-        <Logo>
+      <div className="sticky top-0 w-[50vh] h-[50vh] bg-white p-[5px_10px] shadow-[0px_4px_6px_rgba(0,0,0,0.4)] overflow-y-auto rounded-[2em] flex flex-col items-center justify-center">
+        <h1 className="w-[6vw] h-[6vw] mb-[-1em] [&>img]:w-full [&>img]:h-full [&>img]:object-contain">
           {HackathonData.logo ? (
             <img
              src={`http://localhost:3000/${HackathonData.logo}`}
@@ -312,25 +302,25 @@ const HackathonDetailPage = () => {
             <img src={logo} alt="Logo" />
          )}
 
-        </Logo>
-        <HackTitle>{HackathonData.hackName}</HackTitle>
-        <RowWrapper>
-          <TimeWrapper>
-            <RowWrapper>
-              <CalendarImage src={Calendar} alt="달력" />
-              <TimeTitle>
+        </h1>
+        <h1 className="text-[#0a27a6] font-bold font-['OTF_B']">{HackathonData.hackName}</h1>
+        <div className="flex flex-row gap-[1em]">
+          <div>
+            <div className="flex flex-row gap-[1em]">
+              <img className="w-[1.5em] h-[1.4em] mt-[0.4em]" src={Calendar} alt="달력" />
+              <h1 className="font-bold font-['OTF_R'] text-[1em] text-[#000]">
                 모집기간 {HackathonData.startDate} - {HackathonData.endDate}
-              </TimeTitle>
-            </RowWrapper>
-            <RowWrapper>
-              <PersonImage src={person} alt="사람" />
-              <Mem2>현재 참여중인 인원 : </Mem2>
-              <MemTitle>{HackathonData.participant.length || "없습니다."}</MemTitle>
-            </RowWrapper>
+              </h1>
+            </div>
+            <div className="flex flex-row gap-[1em]">
+              <img className="w-[1.5em] h-[1.5em] mt-[1em]" src={person} alt="사람" />
+              <p className="w-[8em] h-[1.5em] text-[#000] font-bold font-['OTF_R'] text-[1em] ml-[-0.1em] flex items-center justify-center">현재 참여중인 인원 : </p>
+              <h1 className="font-bold font-['OTF_R'] text-[1em] text-[#000] mt-[1.2em]">{HackathonData.participant.length || "없습니다."}</h1>
+            </div>
            
-          </TimeWrapper>
-        </RowWrapper>
-        <StartButton
+          </div>
+        </div>
+        <button className={`text-[1em] font-extrabold rounded-[2em] border-none h-[3em] w-[50%] font-['OTF_R'] flex items-center justify-center relative ${isFull ? "bg-[#cccccc] text-[#666666] cursor-not-allowed" : "bg-[#0a27a6] text-[#ffffff] cursor-pointer"}`}
           onClick={() => {
             if (isOwner) {
               console.log("팝업 상태를 토글합니다.");
@@ -341,39 +331,39 @@ const HackathonDetailPage = () => {
           }}
         >
           {isOwner ? "지원현황" : isUserParticipant ? "지원완료" : "지원하기"}
-        </StartButton>
-      </ContentSection1>
+        </button>
+      </div>
 
-    </MainWrapper>
-    <DetailContainer>
+    </div>
+    <div className="w-[85%] mx-auto">
     {/* 수정, 삭제 버튼 */}
     {isOwner && (
-      <ButtonWrapper2>
-        <SubmitButton
+      <div className="flex mr-[2em] justify-end gap-[1em]">
+        <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#0a27a6] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
           onClick={() => {
             navigate(`/ModifyHackathonPage/${hackId}`);
           }}
         >
         수정
-        </SubmitButton>
-        <SubmitButton
+        </button>
+        <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#0a27a6] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
           onClick={async () => {
             // 해커톤 삭제
             await deleteHackathon(hackId);
             // Mypage로 이동
           navigate("/Mypage");
-      }}>삭제</SubmitButton>
-      </ButtonWrapper2>
+      }}>삭제</button>
+      </div>
     )}
 
     {/* 지원현황을 클릭하면 지원자들을 볼 수 있도록 (내가 제작한 해커톤인 경우에만 보이게 ) */}
     {isOwner && isPopupOpen && (
-      <PopupOverlay>
-        <PopupContainer>
-          <CloseButton onClick={handlePopupToggle}>X</CloseButton>
-          <CommentsSection>
-            <CommentsTitle>지원자</CommentsTitle>
-            <ParticipantList>
+      <div className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/50 flex justify-center items-center z-[1000]">
+        <div className="bg-white p-[20px] rounded-[8px] w-[50vw] shadow-[0_4px_6px_rgba(0,0,0,0.1)] relative">
+          <button className="bg-none border-none text-[1.5rem] absolute top-[1em] right-[1em] cursor-pointer text-[#0a27a6]" onClick={handlePopupToggle}>X</button>
+          <div className="mt-[6vh]">
+            <h2 className="font-bold font-['OTF_B'] text-[#0a27a6] text-center">지원자</h2>
+            <p className="text-[#000]">
               {HackathonData.participant && HackathonData.participant.length > 0 ? (
                 HackathonData.participant.map((participant, index) => (
                   <li key={index}>{participant}</li>
@@ -381,14 +371,209 @@ const HackathonDetailPage = () => {
               ) : (
                 <li>지원자가 없습니다.</li>
               )}
-            </ParticipantList>
-          </CommentsSection>
-        </PopupContainer>
-      </PopupOverlay>
+            </p>
+          </div>
+        </div>
+      </div>
     )}
 
 
-    </DetailContainer>
+    </div>
+        
+
+          className="flex items-start gap-[20px]"
+        >
+          <div
+            className="flex flex-wrap gap-[10px] flex-[1] ml-[2em] w-[80%] justify-between"
+          >
+            {HackathonData.pictures && HackathonData.pictures.length > 0 ? (
+              HackathonData.pictures.slice(0, 4).map((image, index) => (
+                <div className="inline-block text-[#d0d1d9] bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center align-middle"
+                  key={index}
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    overflow: "hidden", 
+                  }}
+                >
+                  <img
+                    src={`http://localhost:3000/${image}`}
+                    alt={`프로젝트 이미지 ${index + 1}`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="inline-block text-[#d0d1d9] bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center align-middle" style={{ width: "100px", height: "100px" }}>+</div>
+            )}
+          </div>
+        </div>
+        </div>
+
+        <div className="flex w-full">
+          {/* 홍보 비디오 */}
+          <div className="flex flex-col">
+            <h1 className="text-[#0a27a6] font-bold font-['OTF_B']">홍보 비디오</h1>
+           {!HackathonData.video ? (
+              <input className="border border-[#d0d1d9] rounded-[2em] outline-none h-[20em] w-[35em] indent-[1em] placeholder:indent-[1em]"
+                type="url"
+                value={HackathonData.video || ""}
+                placeholder="비디오 URL을 입력하세요"
+                onChange={handleVideoChange}
+              />
+            ) : (
+              <div>
+                <video controls width="100%">
+                  <source src={HackathonData.video} type="video/mp4" />
+                  <p>비디오 재생을 지원하지 않는 브라우저입니다.</p>
+                </video>
+              </div>
+            )}
+              
+          </div>
+
+          {/* 커버 이미지 */}
+          <div className="flex flex-col">
+            <h1 className="text-[#0a27a6] font-bold font-['OTF_B'] ml-[1em]">커버 이미지</h1>
+            <div className="flex justify-between ml-[2em] w-[80%]">
+               {HackathonData.coverImage ? (
+            <img
+              src={`http://localhost:3000/${HackathonData.coverImage}`}
+              style={{
+                width: "100px",
+                height: "100px",
+              // width: "100%",
+              // height: "100%",
+              objectFit: "cover",
+              borderRadius: "1em",
+              display: "block", 
+              marginLeft: "auto", 
+              marginRight: "auto", 
+            }}
+            />
+          ) : (
+            <div className="inline-block w-[5em] h-[5em] text-[#d0d1d9] bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center align-middle">+</div>
+         )}
+            </div>
+            {/* {HackathonData.coverImage ? (
+            <img
+              src={`http://localhost:3000/${HackathonData.coverImage}`}
+              style={{
+              width: "40%",
+              height: "30%",
+              objectFit: "cover",
+              borderRadius: "1em",
+              display: "block", // 중앙 정렬에 도움
+              marginLeft: "auto", // 오른쪽 이동
+              marginRight: "auto", // 중앙 정렬 유지
+            }}
+            />
+          ) : (
+            <ImageBox>+</ImageBox>
+         )} */}
+          </div>
+        </div>
+      </div>
+  
+      {/* 오른쪽 사이드 창 */}
+      <div className="sticky top-0 w-[50vh] h-[50vh] bg-white p-[5px_10px] shadow-[0px_4px_6px_rgba(0,0,0,0.4)] overflow-y-auto rounded-[2em] flex flex-col items-center justify-center">
+        <h1 className="w-[6vw] h-[6vw] mb-[-1em] [&>img]:w-full [&>img]:h-full [&>img]:object-contain">
+          {HackathonData.logo ? (
+            <img
+             src={`http://localhost:3000/${HackathonData.logo}`}
+             style={{
+             width: "100%",
+             height: "100%",
+             objectFit: "cover",
+             borderRadius: "1em",
+            }}
+            />
+          ) : (
+            <img src={logo} alt="Logo" />
+         )}
+
+        </h1>
+        <h1 className="text-[#0a27a6] font-bold font-['OTF_B']">{HackathonData.hackName}</h1>
+        <div className="flex flex-row gap-[1em]">
+          <div>
+            <div className="flex flex-row gap-[1em]">
+              <img className="w-[1.5em] h-[1.4em] mt-[0.4em]" src={Calendar} alt="달력" />
+              <h1 className="font-bold font-['OTF_R'] text-[1em] text-[#000]">
+                모집기간 {HackathonData.startDate} - {HackathonData.endDate}
+              </h1>
+            </div>
+            <div className="flex flex-row gap-[1em]">
+              <img className="w-[1.5em] h-[1.5em] mt-[1em]" src={person} alt="사람" />
+              <p className="w-[8em] h-[1.5em] text-[#000] font-bold font-['OTF_R'] text-[1em] ml-[-0.1em] flex items-center justify-center">현재 참여중인 인원 : </p>
+              <h1 className="font-bold font-['OTF_R'] text-[1em] text-[#000] mt-[1.2em]">{HackathonData.participant.length || "없습니다."}</h1>
+            </div>
+           
+          </div>
+        </div>
+        <button className={`text-[1em] font-extrabold rounded-[2em] border-none h-[3em] w-[50%] font-['OTF_R'] flex items-center justify-center relative ${isFull ? "bg-[#cccccc] text-[#666666] cursor-not-allowed" : "bg-[#0a27a6] text-[#ffffff] cursor-pointer"}`}
+          onClick={() => {
+            if (isOwner) {
+              console.log("팝업 상태를 토글합니다.");
+              handlePopupToggle();
+            } else {
+              handleParticipation();
+            }
+          }}
+        >
+          {isOwner ? "지원현황" : isUserParticipant ? "지원완료" : "지원하기"}
+        </button>
+      </div>
+
+    </div>
+    <div className="w-[85%] mx-auto">
+    {/* 수정, 삭제 버튼 */}
+    {isOwner && (
+      <div className="flex mr-[2em] justify-end gap-[1em]">
+        <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#0a27a6] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
+          onClick={() => {
+            navigate(`/ModifyHackathonPage/${hackId}`);
+          }}
+        >
+        수정
+        </button>
+        <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#0a27a6] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
+          onClick={async () => {
+            // 해커톤 삭제
+            await deleteHackathon(hackId);
+            // Mypage로 이동
+          navigate("/Mypage");
+      }}>삭제</button>
+      </div>
+    )}
+
+    {/* 지원현황을 클릭하면 지원자들을 볼 수 있도록 (내가 제작한 해커톤인 경우에만 보이게 ) */}
+    {isOwner && isPopupOpen && (
+      <div className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/50 flex justify-center items-center z-[1000]">
+        <div className="bg-white p-[20px] rounded-[8px] w-[50vw] shadow-[0_4px_6px_rgba(0,0,0,0.1)] relative">
+          <button className="bg-none border-none text-[1.5rem] absolute top-[1em] right-[1em] cursor-pointer text-[#0a27a6]" onClick={handlePopupToggle}>X</button>
+          <div className="mt-[6vh]">
+            <h2 className="font-bold font-['OTF_B'] text-[#0a27a6] text-center">지원자</h2>
+            <p className="text-[#000]">
+              {HackathonData.participant && HackathonData.participant.length > 0 ? (
+                HackathonData.participant.map((participant, index) => (
+                  <li key={index}>{participant}</li>
+                ))
+              ) : (
+                <li>지원자가 없습니다.</li>
+              )}
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+
+
+    </div>
         
 
     </>
@@ -397,427 +582,3 @@ const HackathonDetailPage = () => {
 };
 
 export default HackathonDetailPage;
-
-// css Wrapper
-const ContentSection1 = styled.div`
-  position: sticky;
-  top: 0;
-  width: 50vh; 
-  height: 50vh; 
-  background-color: #fff;
-  padding: 5px 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4); 
-  overflow-y: auto;
-  border-radius : 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center;
-`;
-const ContentSection2 = styled.div`
-  width: 100%;
-  height : 100vh;
-  color: #ccc;
-  border-radius: 2em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-bottom : 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-
-`;
-const LeftContent = styled.div`
-  flex: 1;
-  // margin-right: 20px;
-`;
-
-const MainWrapper = styled.div`
-  width: 85%; //수정중...
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between; 
-  align-items: flex-start;
-  gap : 2em;
-`;
-const VideoWrapper = styled.div`
-`;
-const TimeWrapper = styled.div`
-`;
-const ImageWrapper = styled.div`
-  display: flex;
-  // gap: -1em;
-  justify-content: space-between;
-  margin-left:2em;
-  width: 80%;
-`;
-
-const RowWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap : 1em;
-`;
-const ColWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const LinkWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 60%;
-`;
-const ColumnWrapper2 = styled.div`
-  display: flex;
-  // gap: 20%;
-  width: 100%;
-`;
-
-const Loading = styled.div`
-  display: flex;
-  justify-content: center;
-
-  font-size: 1vw;
-  font-weight: bold;
-`;
-const Line = styled.hr`
-  margin: 1.5vh 0;
-  border: 1px solid #d0d1d9;
-`;
-const Mem = styled.p`
-  width : 4em;
-  height : 1.5em;
-  color : #fff;
-  font-weight: bold;
-  font-family: "OTF R";
-  font-size : 1em;
-
-  border : 1px solid #ccc;
-  border-radius : 0.2em;
-  background-color : #0a27a6;
- 
-  display: flex;
-  align-items: center; 
-  justify-content: center;
-`;
-const Mem2 = styled.p`
-  width : 8em;
-  height : 1.5em;
-  color : #000;
-  font-weight: bold;
-  font-family: "OTF R";
-  font-size : 1em;
-  margin-left : -0.1em;
-  // border : 1px solid #ccc;
-  // border-radius : 0.2em;
-  // background-color : #0a27a6;
- 
-  display: flex;
-  align-items: center; 
-  justify-content: center;
-`;
-const DetailContainer = styled.div`
-  width: 85%;
-  margin: 0 auto;
-`;
-//css Input
-const LinkInput = styled.input`
-  border: 1.4px solid #0a27a6;
-  border-radius: 1em;
-  width: 100%;
-  height: 2em;
-  padding-left: 35px; 
-`;
-const ChoiceInput = styled.input`
-  border: 1px solid #d0d1d9;
-  border-radius: 2em;
-  outline: none;
-  height: 20em;
-  width: 35em; 
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-//css image
-const CalendarImage = styled.img`
-  width : 1.5em;
-  height : 1.4em;
-  margin-top:0.4em;
-`;
-const PersonImage = styled.img`
-  width : 1.5em;
-  height : 1.5em;
-  margin-top: 1em;
-`;
-const Logo = styled.h1`
-  width: 6vw;
-  height: 6vw;
-  margin-bottom : -1em;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-`;
-
-const LinkIcon = styled.img`
-  position: absolute; 
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-`;
-//css Text
-const HackTitle = styled.h1`
-  color : #0a27a6;
-  font-weight: bold;
-  font-family: "OTF B";
-  // color : #000;
-`;
-const HackTitle2 = styled.h1`
-  color : #0a27a6;
-  font-weight: bold;
-  font-family: "OTF B";
-  margin-left : 1em;
-  // color : #000;
-`;
-
-const TimeTitle = styled.h1`
-  font-weight: bold;
-  font-family: "OTF R";
-  font-size : 1em;
-  color : #000;
-
-`;
-const MemTitle = styled.h1`
-  font-weight: bold;
-  font-family: "OTF R";
-  font-size : 1em;
-  color : #000;
-  margin-top : 1.2em;
-`;
-const DesTitle = styled.p`
-  font-weight: bold;
-  font-family: "OTF R";
-  font-size : 1em;
-  color : #000;
-
-`;
-
-//css button
-const StartButton = styled.button`
-  // color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-  border-radius: 2em;
-  border: none;
-  // background-color: #0a27a6;
-  height: 3em;
-  width: 50%;
-  font-family: "OTF R";
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-  background-color: ${({ isFull }) => (isFull ? "#cccccc" : "#0a27a6")};
-  color: ${({ isFull }) => (isFull ? "#666666" : "#ffffff")};
-  cursor: ${({ isFull }) => (isFull ? "not-allowed" : "pointe")};
-
-`;
-
-
-const FileInput = styled.input`
-  position: absolute;
-  padding: 0;
-  overflow: hidden;
-  clip:rect(0,0,0,0);
-  border: 0;
-`;
-
-const FileLabel = styled.label`
-  display: inline-block;
-  width: 5em;  
-  height: 5em;
-  color: #d0d1d9;
-  font-size: inherit;
-  line-height: normal;
-  vertical-align: middle;
-  background-color: #fdfdfd;
-  cursor: pointer;
-  border: 1px solid #d0d1d9;
-  border-radius: 1em;  
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-
-// css 수정, 삭제 버튼
-const ButtonWrapper2 = styled.div`
-  display: flex;
-  margin-right : 2em;
-  justify-content: flex-end;
-  gap: 1em;
-`;
-const SubmitButton = styled.button`
-  border: none;
-  border-radius: 0.4em;
-
-  margin-top: 1vh;
-  width: 9.1em;
-  height: 2.25em;
-
-  float: right;
-
-  background-color: #0a27a6;
-  color: white;
-  font-size: 1.1vw;
-  font-family: "OTF B";
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0.2em 1em rgba(22, 26, 63, 0.2);
-  }
-  transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    width: 7em;
-    height: 2.25em;
-    font-size: 0.8125em;
-  }
-`;
-
-//css 지원자 
-const CommentsSection = styled.div`
-  margin-top: 6vh;
-`;
-
-const CommentsTitle = styled.h2`
-  font-weight: bold;
-  font-family: "OTF B";
-  color : #0a27a6;
-
-  text-align: center; 
-`;
-
-const ParticipantList = styled.p`
-  color:#000;
-`;
-
-const PopupOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-const PopupContainer = styled.div`
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 50vw;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative; 
-
-`;
-
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  cursor: pointer;
-  color : #0a27a6;
-`;
-
-const ImageBox = styled.div`
-  // width: 5em;
-  // height: 5em;
-  // border: 1px solid #000;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // font-size: 1vw;
-  // border-radius: 1em;
-  // overflow: hidden;
-
-  display: inline-block;
-  width: 5em;  
-  height: 5em;
-  color: #d0d1d9;
-  font-size: inherit;
-  line-height: normal;
-  vertical-align: middle;
-  background-color: #fdfdfd;
-  cursor: pointer;
-  border: 1px solid #d0d1d9;
-  border-radius: 1em;  
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-
-const VideoText = styled.p`
-  position: absolute;
-  left: 2em;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #000;
-  font-family: "OTF R";
-  // left: 2.5em;
-  // font-size: 1.5em;
-
-  @media (max-width: 768px) {
-    font-size: 1em;
-    top: 72%;
-    left: 5%;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.9em;
-    top: 75%;
-    left: 5%;
-  }
-`;
-const VideoBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center; 
-
-  border-radius: 1em;
-  font-size: 1vw;
-  width: 40em;
-  height: 15em;
-
-`;
-
-const VideoWrappeer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-
-  border: 1px solid #d0d1d9;
-  border-radius: 2em;
-  outline: none;
-  width: 30em;
-  height: 15em;
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;

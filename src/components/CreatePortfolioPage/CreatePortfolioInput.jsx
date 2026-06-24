@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { useState } from "react";
 // import Calendar from "./Calendar.jsx";
 import CalendarInput from "./CalendarInput.jsx";
@@ -144,177 +143,186 @@ const CreatePortfolioInput = ({ onInputChange, formData, onDateChange }) => {
   };
   
 
-
   return (
     <>
       {/* 필수항목 */}
-      <VitalWrapper>
-        <VitalText>필수 항목</VitalText>
-        <ColumnWrapper>
+      <div className="w-[80%] py-[40px] px-[40px] mx-auto border-[1.5px] border-[#d0d1d9] rounded-[2em] h-[53em] flex flex-col items-center">
+        <p className="text-black text-[1.5em] font-[800] font-['OTF_B']">필수 항목</p>
+        <div className="flex gap-[5%] justify-between w-full">
           {/* 포트폴리오 이름 */}
-          <InputWrapper>
-            <MainText>포트폴리오 이름</MainText>
-            <ExText>자신만의 포트폴리오 이름을 작성해주세요</ExText>
-            <VitalInput
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">포트폴리오 이름</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">자신만의 포트폴리오 이름을 작성해주세요</p>
+            <input
+              className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
               type="text"
               name="projectTitle"
               value={formData.projectTitle}
               onChange={onInputChange}
-            ></VitalInput>
-          </InputWrapper>
+            ></input>
+          </div>
           {/* 포트폴리오 설명 -> 글자수 제한해야한다.*/}
-          <InputWrapper>
-            <MainText>포트폴리오 설명</MainText>
-            <ExText>짧게 포트폴리오를 설명해주세요</ExText>
-            <VitalInput
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">포트폴리오 설명</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">짧게 포트폴리오를 설명해주세요</p>
+            <input
+              className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
               type="text"
               name="description"
               value={formData.description}
               onChange={onInputChange}
-            ></VitalInput>
-          </InputWrapper>
-        </ColumnWrapper>
+            ></input>
+          </div>
+        </div>
 
-        <ColumnWrapper>
+        <div className="flex gap-[5%] justify-between w-full">
           {/* 사용한 프로그램 */}
-          <InputWrapper>
-            <MainText>사용한 프로그램</MainText>
-            <ExText>사용한 언어/프로그램을 작성해주세요</ExText>
-            <VitalInput
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">사용한 프로그램</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">사용한 언어/프로그램을 작성해주세요</p>
+            <input
+              className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
               type="text"
               name="usedLanguage"
               value={formData.usedLanguage}
               onChange={onInputChange}
-            ></VitalInput>
-          </InputWrapper>
+            ></input>
+          </div>
           {/* 링크 */}
-          <InputWrapper>
-            <MainText>Links</MainText>
-            <ExText>
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">Links</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">
               Github, 웹사이트, 앱 스토어 등 프로젝트를 테스트할 수 있는 곳의
               링크를 추가하세요.
-            </ExText>
-            <VitalInput
+            </p>
+            <input
+              className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
               type="url"
               name="projectLink"
               value={formData.projectLink}
               onChange={onInputChange}
-            ></VitalInput>
-          </InputWrapper>
-        </ColumnWrapper>
+            ></input>
+          </div>
+        </div>
 
-        <ColumnWrapper>
+        <div className="flex gap-[5%] justify-between w-full">
           {/* The problem it solves -> 해결하는 문제 */}
-          <InputWrapper>
-            <MainText>해결하는 문제</MainText>
-            <ExText>
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">해결하는 문제</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">
               무엇에 사용할 수 있는지, 그것이 어떻게 기존 작업을 더 쉽고
               안전하게 만드는지 등을 설명합니다
-            </ExText>
-            <VitalInput2
+            </p>
+            <textarea
+              className="border border-[#d0d1d9] rounded-[1em] outline-none h-[6em] w-[35em] indent-[1em] placeholder:indent-[1em]"
               type="text"
               name="solving"
               value={formData.solving}
               onChange={onInputChange}
-            ></VitalInput2>
-          </InputWrapper>
-          <InputWrapper>
-            <MainText>내가 마주친 도전</MainText>
-            <ExText>
+            ></textarea>
+          </div>
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">내가 마주친 도전</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">
               이 프로젝트를 구축하는 동안 발생한 특정 버그,장애물에 대해
               알려주세요. 어떻게 극복하셨나요?{" "}
-            </ExText>
-            <VitalInput2
+            </p>
+            <textarea
+              className="border border-[#d0d1d9] rounded-[1em] outline-none h-[6em] w-[35em] indent-[1em] placeholder:indent-[1em]"
               type="text"
               name="challenge"
               value={formData.challenge}
               onChange={onInputChange}
-            ></VitalInput2>
-          </InputWrapper>
-        </ColumnWrapper>
+            ></textarea>
+          </div>
+        </div>
 
-        <ColumnWrapper3>
+        <div className="flex gap-[1vw] justify-between w-full md:gap-[4vw]">
           {/* 참여기간 */}
-          <InputWrapper>
-            <MainText>참여기간</MainText>
-            <ExText>이 프로젝트에 참여한 기간을 선택해주세요. </ExText>
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">참여기간</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">이 프로젝트에 참여한 기간을 선택해주세요. </p>
             <CalendarInput
               startDate={formData.startDate}
               endDate={formData.endDate}
               onDateChange={onDateChange}
             />
-          </InputWrapper>
-          <CWrapper>
-              <InputWrapper>
-                <MainText>공개</MainText>
-                <ExText>이 프로젝트의 공개 여부를 선택해주세요. <br></br>공개를 하시면 포트폴리오 열람 화면에서 확인하실 수 있습니다. </ExText>
-                <ToggleWrapper>
+          </div>
+          <div className="flex flex-col gap-[2em]">
+              <div className="flex flex-col">
+                <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">공개</p>
+                <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">이 프로젝트의 공개 여부를 선택해주세요. <br></br>공개를 하시면 포트폴리오 열람 화면에서 확인하실 수 있습니다. </p>
+                <div className="mt-[2em] flex items-center">
                 {/* 공개 상태 */}
-                <OnToggleText
+                <div
+                  className={`text-[0.9em] font-bold cursor-pointer transition-all duration-300 ease-in-out ${formData.share ? 'text-[#0A27A6]' : 'text-[#A2A3B2]'}`}
                   onClick={handleToggle}
-                  isOn={formData.share}
                 >
                   공개
-                </OnToggleText>
+                </div>
 
                 {/* 토글 박스 */}
-                <ToggleBox onClick={handleToggle}>
-                  <Toggle isOn={formData.share}></Toggle>
-                </ToggleBox>
+                <div className="mx-[0.8em] my-0 border-[1.5px] border-[#0a27a6] rounded-[10px] w-[3.5em] h-[1.4375em] flex items-center relative cursor-pointer" onClick={handleToggle}>
+                  <div className={`rounded-[30px] w-[1em] h-[1em] bg-[#0a27a6] absolute transition-all duration-300 ease-out ${formData.share ? 'left-[0.2em]' : 'left-[2.2em]'}`}></div>
+                </div>
 
                 {/* 비공개 상태 */}
-                <OffToggleText
+                <div
+                  className={`text-[0.9em] font-bold cursor-pointer transition-all duration-300 ease-in-out ${formData.share ? 'text-[#A2A3B2]' : 'text-[#0A27A6]'}`}
                   onClick={handleToggle}
-                  isOn={!formData.share}
                 >
                   비공개
-                </OffToggleText>
-              </ToggleWrapper>
-            </InputWrapper>
-            <InputWrapper>
-                  <MainText>카테고리</MainText>
-                  <ExText>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col">
+                  <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">카테고리</p>
+                  <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">
                     이 프로젝트의 카테고리를 입력해주세요.
-                  </ExText>
-                  <VitalInput
+                  </p>
+                  <input
+                    className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
                     type="text"
                     name="category"
                     value={formData.category}
                     onChange={onInputChange}
-                  ></VitalInput>
-            </InputWrapper>
-          </CWrapper>
-        </ColumnWrapper3>
-      </VitalWrapper>
+                  ></input>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* 선택항목 */}
-      <ChoiceWrapper>
-        <VitalText>선택 항목</VitalText>
-        <ColumnWrapper2>
+      <div className="w-[80%] py-[40px] px-[40px] mx-auto my-[8em] border-[1.5px] border-[#d0d1d9] rounded-[2em] h-[28em] flex flex-col items-center">
+        <p className="text-black text-[1.5em] font-[800] font-['OTF_B']">선택 항목</p>
+        <div className="flex gap-[20%] w-full">
           {/* 데모 비디오 */}
-          <InputWrapper>
-            <MainText>데모 비디오</MainText>
-            <ExText>프로젝트 기능을 데모하는 비디오에 링크를 추가하세요</ExText>
-            <ChoiceInput
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">데모 비디오</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">프로젝트 기능을 데모하는 비디오에 링크를 추가하세요</p>
+            <input
+              className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
               type="url"
               name="video"
               value={formData.video}
               onChange={onInputChange}
-            ></ChoiceInput>
-          </InputWrapper>
+            ></input>
+          </div>
           {/* 커버 이미지*/}
-        <InputWrapper>
-        <MainText2>커버 이미지</MainText2>
+        <div className="flex flex-col">
+        <p className="text-[1.5em] font-[800] text-[#0a27a6] font-['OTF_B']">커버 이미지</p>
             <form onSubmit={handleSubmit}>
-                <FileInput 
+                <input 
+                  className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                   type="file" 
                   accept="image/*" 
                   id="coverphotos"
                   multiple={false}
                   onChange={handleCoverImageChange} 
                   required />
-                <FileLabel
+                <label
                   htmlFor="coverphotos"
+                  className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                   style={{
                     backgroundImage: coverImagePreview
                       ? `url(${coverImagePreview})`
@@ -324,31 +332,33 @@ const CreatePortfolioInput = ({ onInputChange, formData, onDateChange }) => {
                   }}
                 >
                   {!coverImagePreview && "+"}
-                </FileLabel>
-                <SubmitButton type="submit">업로드</SubmitButton>
+                </label>
+                <button className="border border-[#0a27a6] rounded-[2em] bg-white text-[#0a27a6] text-[1em] font-[800] font-['OTF_R'] mt-[1em]" type="submit">업로드</button>
             </form>
-        </InputWrapper>  
+        </div>  
 
 
-        </ColumnWrapper2>
+        </div>
 
-        <ColumnWrapper2>
+        <div className="flex gap-[20%] w-full">
           {/* 사진 */}
-          <InputWrapper>
-          <MainText2>사진</MainText2>
+          <div className="flex flex-col">
+          <p className="text-[1.5em] font-[800] text-[#0a27a6] font-['OTF_B']">사진</p>
           <form onSubmit={handleSubmit3}>
-            <ImageWrapper>
+            <div className="flex gap-[1em] justify-between w-full">
               {photosPreview.map((preview, index) => (
-                <FileLabel
+                <label
                   key={index}
                   htmlFor={`photos-${index}`}
+                  className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                   style={{
                     backgroundImage: preview ? `url(${URL.createObjectURL(preview)})` : "none",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
                 >
-                  <FileInput
+                  <input
+                    className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                     type="file"
                     accept="image/*"
                     id={`photos-${index}`}
@@ -356,37 +366,40 @@ const CreatePortfolioInput = ({ onInputChange, formData, onDateChange }) => {
                     required={index === 0}
                   />
                   {!preview && "+"}
-                </FileLabel>
+                </label>
               ))}
               {photosPreview.length < 5 && (
-                <FileLabel
+                <label
                   htmlFor={`photos-${photosPreview.length}`}
+                  className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                   style={{
                     backgroundColor: "#f0f0f0",
                     border: "1px dashed #d0d0d0",
                   }}
                 >
-                  <FileInput
+                  <input
+                    className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                     type="file"
                     accept="image/*"
                     id={`photos-${photosPreview.length}`}
                     onChange={handlePhotosChange(photosPreview.length)}
                   />
                   +
-                </FileLabel>
+                </label>
               )}
-            </ImageWrapper>
-            <SubmitButton type="submit">업로드</SubmitButton>
+            </div>
+            <button className="border border-[#0a27a6] rounded-[2em] bg-white text-[#0a27a6] text-[1em] font-[800] font-['OTF_R'] mt-[1em]" type="submit">업로드</button>
           </form>
-        </InputWrapper>
+        </div>
 
           {/* 로고 */}
-          <InputWrapper>
-            <MainText>로고</MainText>
-            <ExText>프로젝트를 나타내는 로고를 업로드해주세요</ExText>
-            <ImageWrapper>
+          <div className="flex flex-col">
+            <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">로고</p>
+            <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">프로젝트를 나타내는 로고를 업로드해주세요</p>
+            <div className="flex gap-[1em] justify-between w-full">
             <form onSubmit={handleSubmit2}>
-              <FileInput
+              <input
+               className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                type="file" 
                accept="image/*" 
                multiple={false}
@@ -394,8 +407,9 @@ const CreatePortfolioInput = ({ onInputChange, formData, onDateChange }) => {
                id="Logo"
               onChange={handleLogoChange}
               />
-              <FileLabel
+              <label
                 htmlFor="Logo"
+                className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                 style={{
                   backgroundImage: LogoPreview ? `url(${LogoPreview})` : "none",
                   backgroundSize: "cover",
@@ -404,234 +418,15 @@ const CreatePortfolioInput = ({ onInputChange, formData, onDateChange }) => {
               >
                 {" "}
                 {!LogoPreview && "+"}
-              </FileLabel>
-              <SubmitButton type="submit">업로드</SubmitButton>
+              </label>
+              <button className="border border-[#0a27a6] rounded-[2em] bg-white text-[#0a27a6] text-[1em] font-[800] font-['OTF_R'] mt-[1em]" type="submit">업로드</button>
             </form>
-            </ImageWrapper>
-          </InputWrapper>
-        </ColumnWrapper2>
-      </ChoiceWrapper>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
 
 export default CreatePortfolioInput;
-
-//css Wrapper
-const CWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap : 2em;
-`
-const VitalWrapper = styled.div`
-  width: 80%;
-  padding: 40px 40px;
-  margin: 0 auto;
-
-  border: 1.5px solid #d0d1d9;
-  border-radius: 2em;
-  height: 53em;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ChoiceWrapper = styled.div`
-  width: 80%;
-  padding: 40px 40px;
-  margin: 8em auto;
-
-  border: 1.5px solid #d0d1d9;
-  border-radius: 2em;
-  height: 28em;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const ColumnWrapper = styled.div`
-  display: flex;
-  gap: 5%;
-  justify-content: space-between;
-  width: 100%;
-`;
-const ColumnWrapper2 = styled.div`
-  display: flex;
-  gap: 20%;
-  // justify-content: space-between;
-  width: 100%;
-`;
-const ColumnWrapper3 = styled.div`
-  display: flex;
-  gap: 1vw;
-  justify-content: space-between;
-  width: 100%;
-  @media (max-width: 768px) {
-     gap: 4vw; 
-
-  }
-`;
-const ImageWrapper = styled.div`
-  display: flex;
-  gap: 1em;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-//css input
-const VitalInput = styled.input`
-  border: 1px solid #d0d1d9;
-  border-radius: 2em;
-  outline: none;
-  height: 2em;
-  width: 35em;
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-const VitalInput2 = styled.textarea`
-  border: 1px solid #d0d1d9;
-  border-radius: 1em;
-  outline: none;
-  height: 6em;
-  width: 35em;
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-const ChoiceInput = styled.input`
-  border: 1px solid #d0d1d9;
-  border-radius: 2em;
-  outline: none;
-  height: 2em;
-  width: 35em;
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-
-//css Text
-const VitalText = styled.p`
-  color: black;
-  font-size: 1.5em;
-  font-weight: 800;
-  font-family: "OTF B";
-`;
-const ExText = styled.p`
-  color: black;
-  font-size: 0.8em;
-  font-weight: 800;
-  font-family: "OTF R";
-`;
-
-const MainText = styled.p`
-  font-size: 1.5em;
-  font-weight: 800;
-  color: #0a27a6;
-  margin-bottom: -0.2em;
-  // display : flex;
-  font-family: "OTF B";
-`;
-const FileInput = styled.input`
-  position: absolute;
-  // width: 1em;
-  // height: 1em;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-`;
-
-const FileLabel = styled.label`
-  display: inline-block;
-  width: 5em;
-  height: 5em;
-  color: #d0d1d9;
-  font-size: inherit;
-  line-height: normal;
-  vertical-align: middle;
-  background-color: #fdfdfd;
-  cursor: pointer;
-  border: 1px solid #d0d1d9;
-  border-radius: 1em;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-//토글
-
-const ToggleWrapper = styled.div`
-  margin-top: 2em;
-  display: flex;
-  align-items: center;
-`;
-
-const OnToggleText = styled.div`
-  color: ${(props) => (props.isOn ? "#0A27A6" : "#A2A3B2")};
-  font-size: 0.9em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-`;
-
-const OffToggleText = styled.div`
-  color: ${(props) => (props.isOn ? "#A2A3B2" : "#0A27A6")};
-  font-size: 0.9em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-`;
-
-const ToggleBox = styled.div`
-  margin: 0 0.8em;
-  border: 1.5px solid #0a27a6;
-  border-radius: 10px;
-  width: 3.5em;
-  height: 1.4375em;
-  display: flex;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-`;
-
-const Toggle = styled.div`
-  border-radius: 30px;
-  width: 1em;
-  height: 1em;
-  background-color: #0a27a6;
-  position: absolute;
-  left: ${(props) => (props.isOn ? "0.2em" : "2.2em")};
-  transition: all 0.3s ease-out;
-`;
-
-const SubmitButton = styled.button`
-  border : 1px solid #0a27a6;
-  border-radius : 2em;
-  background-color : #fff;
-  color : #0a27a6;
-  font-size: 1em;
-  font-weight: 800;
-  font-family: "OTF R";
-  margin-top :1em;
-  `;
-
-  const MainText2 = styled.p`
-  font-size: 1.5em;
-  font-weight: 800;
-  color: #0a27a6;
-  // margin-bottom: -0.2em;
-  // display : flex;
-  font-family: "OTF B";
-`;

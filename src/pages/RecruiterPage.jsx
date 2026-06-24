@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import TemplateCard from "../components/commmon/TemplateCard";
 import RecruiterSection from "../components/RecruiterPage/RecruiterSection";
 
@@ -83,7 +82,7 @@ function RecruiterPage() {
   );
 
   return (
-    <MyPageContainer className="MyPageContainer">
+    <div className="MyPageContainer w-[85%] mx-auto">
       <RecruiterSection
         title={"내가 연락한 포트폴리오"}
         data={myPortfolioList}
@@ -95,13 +94,8 @@ function RecruiterPage() {
       />
 
       <RecruiterSection title={"내가 찜한 포트폴리오"} button={false} />
-    </MyPageContainer>
+    </div>
   );
 }
 
 export default RecruiterPage;
-
-const MyPageContainer = styled.div`
-  width: 85%; //수정중...
-  margin: 0 auto;
-`;
