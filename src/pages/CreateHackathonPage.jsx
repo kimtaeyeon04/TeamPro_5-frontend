@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import Logo from "../assets/icons/Logo.png";
 import CreateHackathonInput from "../components/CreateHackathonPage/CreateHackathonInput";
 import { getCurrentUser } from "../components/features/currentUser";
@@ -112,88 +111,24 @@ const CreateHackathonPage = () => {
 
   return (
     <>
-      <HeaderWrapper>
-        <LogoImage src={Logo} alt="로고" />
-        <PageHeaderTitle>Hackathon</PageHeaderTitle>
-      </HeaderWrapper>
+      <div className="flex flex-col items-center justify-center gap-[1.5em] mb-[5em]">
+        <img src={Logo} alt="로고" className="w-[5em] h-[5em] -mb-[2em]" />
+        <div className="text-[#0a27a6] text-[2em] font-[800] font-['OTF_B'] max-md:text-[1.25em] max-md:mt-[0.75em] max-md:mb-[1em]">Hackathon</div>
+      </div>
 
-      <ContentWrapper>
+      <div className="flex flex-col items-center justify-center min-h-[80vh]">
         <CreateHackathonInput 
           onInputChange={handleInputChange}
           formData={formData}
           onDateChange={handleDateChange}
         />
-        <CreateButton 
+        <button 
+          className="text-[#fff] text-[1em] font-[800] rounded-[2em] border-none bg-[#0a27a6] h-[3em] w-[20%] -mt-[6em] font-['OTF_R'] cursor-pointer flex items-center justify-center relative disabled:bg-[#0a27a6] disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={isButtonDisabled}
-          onClick={handleSaveHack}>제작하기</CreateButton>
-      </ContentWrapper>
+          onClick={handleSaveHack}>제작하기</button>
+      </div>
     </>
   );
 };
 
 export default CreateHackathonPage;
-
-
-//css Wrapper
-const HeaderWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5em;
-  margin-bottom: 5em;
-`;
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-`;
-
-//css Image
-const LogoImage = styled.img`
-  widht: 5em;
-  height: 5em;
-  margin-bottom: -2em;
-`;
-
-//css Text
-const PageHeaderTitle = styled.div`
-  color: #0a27a6;
-  font-size: 2em;
-  font-weight: 800;
-  font-family: "OTF B";
-
-  @media (max-width: 768px) {
-    font-size: 1.25em;
-    margin-top: 0.75em;
-    margin-bottom: 1em;
-  }
-`;
-//css button
-const CreateButton = styled.button`
-  color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-  border-radius: 2em;
-  border: none;
-  background-color: #0a27a6;
-  height: 3em;
-  width: 20%;
-  margin-top: -6em;
-  font-family: "OTF R";
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-  &:disabled {
-    background-color: #0a27a6; 
-    opacity: 0.5; 
-    cursor: not-allowed; 
-  }
-`;

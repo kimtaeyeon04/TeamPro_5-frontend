@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import styled from "styled-components";
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { useState } from 'react';
 import { Navigate, useNavigate} from "react-router-dom";
@@ -8,14 +7,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-
 import N1 from "../../assets/icons/Mainpage/N1.svg";
 import N2 from "../../assets/icons/Mainpage/N2.svg";
 import N3 from "../../assets/icons/Mainpage/N3.svg";
 import N4 from "../../assets/icons/Mainpage/N4.svg";
 import job from "../../assets/images/Mainpage/JOB.jpg";
 import hackathon from "../../assets/images/Mainpage/hackathon.jpg";
-
 
 export default () => {
     const [swiperIndex, setSwiperIndex] = useState(0); // -> 페이지네이션용
@@ -30,9 +27,10 @@ export default () => {
     const navigate = useNavigate();
 
   return (
-    <SlideWrapper>
+    <div className="flex justify-center items-center w-full mt-[2em]">
 
-      <StyledSwiper
+      <Swiper
+        className="flex justify-center items-center h-[40em] w-full max-w-[85%] py-[40px] px-0 mx-auto [&_.swiper-pagination-bullet]:bg-[#0A27A6]"
         spaceBetween={50}
         modules={[Navigation, Pagination, A11y, Autoplay]}
         loop={true} // 슬아이드 반복 
@@ -48,252 +46,61 @@ export default () => {
 
           {/* 슬라이드 1 */}
           <SwiperSlide> 
-                  <N1Image src={N1} alt="Number1"/>
-                  <VideoWrapper1>
-                      <Sharevideo autoPlay loop muted>
+                  <img className="w-[20em] mt-[10em] mr-auto" src={N1} alt="Number1"/>
+                  <div className="flex items-center justify-center relative w-full">
+                      <video className="w-[30em] h-[25em] object-cover" autoPlay loop muted>
                               <source src="/videos/Sharevideo2.mp4" type="video/mp4" />
                               비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
-                      </Sharevideo>
-                      <TextWrapper>
-                          <PointText2>내가 만든 <br></br>포토폴리오를<br></br>공유해보세요</PointText2>
-                          <PointText3>자신이 만든 포토폴리오를 공유해서 다른 사람들과 소통해보세요!</PointText3>
-                          <PointText3>가장 인기있는 포토폴리오를 만들어 볼까요?</PointText3>
-                      </TextWrapper>
-                  </VideoWrapper1>
+                      </video>
+                      <div className="flex flex-col items-start justify-center ml-[2em] -mt-[5em]">
+                          <p className="text-[4em] font-[900] text-[#6633cc] mb-[0.2em] font-['OTF_B']">내가 만든 <br></br>포토폴리오를<br></br>공유해보세요</p>
+                          <p className="text-[0.8em] font-[600] text-[#000] -mb-[1em] font-['OTF_R']">자신이 만든 포토폴리오를 공유해서 다른 사람들과 소통해보세요!</p>
+                          <p className="text-[0.8em] font-[600] text-[#000] -mb-[1em] font-['OTF_R']">가장 인기있는 포토폴리오를 만들어 볼까요?</p>
+                      </div>
+                  </div>
           </SwiperSlide> 
 
           {/* 슬라이드 2 */}
           <SwiperSlide>
-                  <N2Image src={N2} alt="Number2"/>
-                  <VideoWrapper2>
-                      <HackathonImage src={hackathon} alt="해커톤"/>
-                  <TextWrapper>
-                      <HackathonText>함께 경험을<br></br> 쌓아볼까요?</HackathonText>
-                  </TextWrapper>
-              </VideoWrapper2>
+                  <img className="w-[20em] mt-[10em] mr-auto" src={N2} alt="Number2"/>
+                  <div className="flex items-center justify-center relative w-full">
+                      <img className="w-[38em]" src={hackathon} alt="해커톤"/>
+                  <div className="flex flex-col items-start justify-center ml-[2em] -mt-[5em]">
+                      <p className="text-[3em] font-[900] text-[#6633cc] mb-[0.2em] font-['OTF_B']">함께 경험을<br></br> 쌓아볼까요?</p>
+                  </div>
+              </div>
           </SwiperSlide>
 
 
           {/* 슬라이드 3 */}
           <SwiperSlide>
-                  <N3Image src={N3} alt="Number2"/>
-            <VideoWrapper3>
-                  <JobTextWrapper>
-                    <JOBImage src={job} alt="채용"/>
-                  </JobTextWrapper>
-                  <TextWrapper>
-                    <JobText>채용자에게 <br></br>내 포트폴리오를 <br></br>보여줄 수 있어요</JobText>
-                  </TextWrapper>
-              </VideoWrapper3>
+                  <img className="w-[20em] mt-[10em] mr-auto" src={N3} alt="Number2"/>
+            <div className="flex items-center justify-center relative w-full">
+                  <div className="w-[30em] h-[25em] object-cover">
+                    <img className="w-[40em]" src={job} alt="채용"/>
+                  </div>
+                  <div className="flex flex-col items-start justify-center ml-[2em] -mt-[5em]">
+                    <p className="text-[2.8em] font-[900] text-[#6633cc] mb-[0.2em] font-['OTF_B']">채용자에게 <br></br>내 포트폴리오를 <br></br>보여줄 수 있어요</p>
+                  </div>
+              </div>
           </SwiperSlide>
           
           {/* 슬라이드 4 */}
           <SwiperSlide>
-                  <N4Image src={N4} alt="Number4"/>
-                  <VideoWrapper4>
-                      <Drawvideo autoPlay loop muted>
+                  <img className="w-[20em] mt-[10em] mr-auto" src={N4} alt="Number4"/>
+                  <div className="flex items-center justify-center relative w-full">
+                      <video className="flex flex-col items-center justify-center w-[80%]" autoPlay loop muted>
                               <source src="/videos/Drawvideo.mp4" type="video/mp4" />
                               비디오를 재생할 수 없습니다. 브라우저가 이 형식을 지원하지 않습니다.
-                      </Drawvideo>
-                      <TextWrapper2>
-                          <PointText1>함께 만드는 <br></br>포토폴리오</PointText1>
-                          <StartButton onClick={() => navigate("/LoginPage")}>지금 시작하기</StartButton>
-                      </TextWrapper2>
-                  </VideoWrapper4>
+                      </video>
+                      <div className="flex-col absolute -mt-[2em]">
+                          <p className="text-[5em] font-[800] text-[#0A27A6] font-['OTF_B'] flex items-center justify-center text-center ml-[1em]">함께 만드는 <br></br>포토폴리오</p>
+                          <button className="text-[#fff] text-[1em] font-[800] rounded-[2em] border-none bg-[#0A27A6] h-[3em] w-[50%] -mt-[1em] font-['OTF_R'] ml-[10em]" onClick={() => navigate("/LoginPage")}>지금 시작하기</button>
+                      </div>
+                  </div>
           </SwiperSlide>
-      </StyledSwiper>
-    </SlideWrapper>
+      </Swiper>
+    </div>
 
   );
 };
-
-const StyledSwiper = styled(Swiper)`   
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40em;
-  width: 100%;
-  max-width: 85%;
-  padding: 40px 0;
-  margin: 0 auto;
-  
-  .swiper-pagination-bullet {
-    background-color: #0A27A6;
-  }
-`;
-
-const SlideWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%; 
-  margin-top: 2em;
-`;
-
-const VideoWrapper1 = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // width: 100%; 
-  position: relative;
-`; 
-
-const VideoWrapper2 = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // width: 100%; 
-  position: relative;
-`;
-
-const VideoWrapper3 = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // width: 100%; 
-  position: relative;
-`;
-
-const VideoWrapper4 = styled.div`
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // width: 100%; 
-  // position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-    width: 100%; 
-    position: relative; 
-`;
-
-const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin-left: 2em;
-  margin-top: -5em;
-`;
-
-const JobTextWrapper = styled.div`
-  width: 30em;
-  height: 25em;
-  object-fit: cover;
-`;
-
-const TextWrapper2 = styled.div`
-  flex-direction: column;
-  position: absolute;
-  // left : 20em;
-  margin-top : -2em;   
-
-`;
-
-const Sharevideo = styled.video`
-  width: 30em;
-  height: 25em;
-  object-fit: cover;
-`;
-
-const Drawvideo = styled.video`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 80%; 
-`;
-
-const StartButton = styled.button`
-  color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-  border-radius: 2em;
-  border: none;
-  background-color: #0A27A6;
-  height: 3em;
-  width: 50%;
-  margin-top: -1em;
-  font-family: "OTF R";    
-  margin-left : 10em;
-`;
-
-const N1Image = styled.img`
-  width: 20em;
-  margin-top: 10em;
-  margin-right: auto;
-   
-`;
-
-const N2Image = styled.img`
-  width: 20em;
-  margin-top: 10em;
-  margin-right: auto;
-`;
-
-const N3Image = styled.img`
-  width: 20em;
-  margin-top: 10em;
-  margin-right: auto;
-`;
-
-const N4Image = styled.img`
-  width: 20em;
-  margin-top: 10em;
-  margin-right: auto;
-`;
-
-const JOBImage = styled.img`
-  width: 40em;
-`;
-
-const HackathonImage = styled.img`
-  width: 38em;
-`;
-
-const PointText1 = styled.p`
-  font-size: 5em;
-  font-weight: 800;
-  color: #0A27A6;
-  font-family: "OTF B";    
-
-  align-items: center;
-  justify-content: center;
-  font-align : center;
-  margin-left : 1em;
-`;
-
-const PointText2 = styled.p`
-  font-size: 4em;
-  font-weight: 900;
-  color: #6633cc;
-  margin-bottom: 0.2em;
-  font-family: "OTF B";
-`;
-
-const PointText3 = styled.p`
-  font-size: 0.8em;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: -1em;
-  font-family: "OTF R";
-`;
-
-const JobText = styled.p`
-  font-size: 2.8em;
-  font-weight: 900;
-  color: #6633cc;
-  margin-bottom: 0.2em;
-  font-family: "OTF B";
-`;
-
-const HackathonText = styled.p`
-  font-size: 3em;
-  font-weight: 900;
-  color: #6633cc;
-  margin-bottom: 0.2em;
-  // margin-left: 2.5em;
-  font-family: "OTF B";
-
-`;

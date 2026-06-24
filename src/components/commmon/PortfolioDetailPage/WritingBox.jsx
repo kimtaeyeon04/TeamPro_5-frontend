@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getCurrentUser } from "../../features/currentUser";
@@ -126,9 +125,10 @@ const WritingBox = ({ addComment }) => {
   // };
 
   return (
-    <Wrapper>
-      <ToolbarWrapper>
-        <StyledFontSizeSelect
+    <div className="flex flex-col w-full mb-[1em]">
+      <div className="mt-[0.6em] h-[2em] flex items-center bg-[#fbfaff] text-[0.9em] overflow-x-scroll top-[60px]">
+        <select
+          className="flex justify-center pl-[0.25em] box-border border-[0.1vw] border-[#0a27a6] rounded-[0.4em] text-[1vw] font-['OTF_B'] font-[800] w-[6em] h-[1.75em] bg-transparent text-[#0a27a6] cursor-pointer focus:outline-none max-md:text-[0.75em]"
           name="fontSize"
           value={fontSize}
           onChange={applyFontSize}
@@ -140,15 +140,17 @@ const WritingBox = ({ addComment }) => {
           <option value="4">4h</option>
           <option value="5">5h</option>
           <option value="6">6h</option>
-        </StyledFontSizeSelect>
+        </select>
 
-        <StyledBar>|</StyledBar>
-        <StyledBoldIcon onClick={() => applyFormatting("**")} src={BoldIcon} />
-        <StyledItalicIcon
+        <div className="mx-[1.2em] my-0 text-[#a2a3b2]">|</div>
+        <img className="h-[4vh] hover:filter-[invert(42%)_sepia(59%)_saturate(4229%)_hue-rotate(238deg)_brightness(100%)_contrast(105%)] max-md:w-[0.75em]" onClick={() => applyFormatting("**")} src={BoldIcon} />
+        <img
+          className="mr-[0.8vw] h-[3.5vh] hover:filter-[invert(42%)_sepia(59%)_saturate(4229%)_hue-rotate(238deg)_brightness(100%)_contrast(105%)] max-md:w-[0.75em]"
           onClick={() => applyFormatting("*")}
           src={ItalicIcon}
         />
-        <StyledThroughIcon
+        <img
+          className="h-[2.3vh] hover:filter-[invert(42%)_sepia(59%)_saturate(4229%)_hue-rotate(238deg)_brightness(100%)_contrast(105%)] max-md:w-[0.75em]"
           onClick={() => applyFormatting("~~")}
           src={StrikeThroughIcon}
         />
@@ -158,14 +160,15 @@ const WritingBox = ({ addComment }) => {
         </FileInputLabel>
         <ImageUploadInput type="file" id="thumbNail" accept="image/*" />
         <StyledLinkIcon onClick={addLink} src={LinkIcon} /> */}
-        <StyledBar>|</StyledBar>
-        <StyledPreviewButton onClick={() => setIsModalOpen(true)}>
+        <div className="mx-[1.2em] my-0 text-[#a2a3b2]">|</div>
+        <div className="border-[0.1vw] border-[#0a27a6] rounded-[0.4em] text-[1vw] font-['OTF_B'] font-[800] w-[6em] h-[1.75em] box-border px-[0.25em] leading-[1.75em] text-center bg-transparent text-[#0a27a6] cursor-pointer max-md:text-[0.75em]" onClick={() => setIsModalOpen(true)}>
           미리보기
-        </StyledPreviewButton>
-      </ToolbarWrapper>
+        </div>
+      </div>
 
-      <TextareaWrapper>
-        <StyledTextarea
+      <div className="rounded-[15px] w-full h-auto p-[1em] pb-[0em] mt-[0.8125em] box-border flex flex-col items-center focus-within:shadow-[0_0.25em_1.25em_rgba(22,26,63,0.2)] transition-all duration-300">
+        <textarea
+          className="pt-[1.23em] pr-[1.23em] pl-[1.23em] pb-0 border-none w-full h-[10vh] leading-[1.845em] bg-transparent text-[1vw] font-[500] font-['NanumSquareNeo'] focus:outline-none placeholder:text-[#a2a3b2] placeholder:font-[700] resize-none"
           ref={textareaRef}
           value={markdown}
           onChange={handleMarkdownChange}
@@ -173,354 +176,38 @@ const WritingBox = ({ addComment }) => {
           placeholder="댓글의 내용을 입력해주세요."
           maxLength="100"
         />
-        <TextareaBottom>
-          <TextLength isOverLimit={lengthCount >= 100}>
+        <div className="w-full mt-[1em] flex flex-col">
+          <div className={`text-[0.8125em] ml-auto font-bold ${lengthCount >= 100 ? "text-[red]" : "text-[#A2A3B2]"}`}>
             {lengthCount}/100 자
-          </TextLength>
-          <StyledContentHr />
-        </TextareaBottom>
-      </TextareaWrapper>
+          </div>
+          <hr className="my-[1em] mx-0 border-none w-full h-[1.5px] bg-[rgba(162,163,178,0.4)]" />
+        </div>
+      </div>
 
-      <ButtonWrapper>
-        <SubmitButton
+      <div className="flex justify-end">
+        <button
+          className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#0a27a6] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
           onClick={
             //console.log("게시글 업로드")
             handleSubmit
           }
         >
           댓글 업로드
-        </SubmitButton>
-      </ButtonWrapper>
+        </button>
+      </div>
 
       {isModalOpen && (
-        <ModalOverlay onClick={() => setIsModalOpen(false)}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <CloseButton onClick={() => setIsModalOpen(false)}>x</CloseButton>
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.5)] flex items-center justify-center z-10" onClick={() => setIsModalOpen(false)}>
+          <div className="bg-[#fff] p-[2.4615em] rounded-[10px] w-[68em] max-h-[30.7692em] text-[0.8125em] overflow-y-auto relative max-md:w-[80%]" onClick={(e) => e.stopPropagation()}>
+            <button className="absolute top-[1em] right-[1em] bg-none border-none text-[1.5em] cursor-pointer" onClick={() => setIsModalOpen(false)}>x</button>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {markdown}
             </ReactMarkdown>
-          </ModalContent>
-        </ModalOverlay>
+          </div>
+        </div>
       )}
-    </Wrapper>
+    </div>
   );
 };
 
 export default WritingBox;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  //align-items: center;
-  width: 100%;
-  margin-bottom: 1em;
-`;
-const TitleWrapper = styled.div`
-  width: 100%;
-`;
-
-const TitleInput = styled.input`
-  border: none;
-  border-radius: 10px;
-  width: 100%;
-
-  background-color: transparent;
-  font-size: 0.8125em;
-  font-family: "NanumSquareNeo";
-  font-weight: bold;
-  &:focus {
-    outline: none;
-  }
-  transition: all 0.3s ease;
-  &::placeholder {
-    color: #a2a3b2;
-    font-weight: bold;
-  }
-`;
-
-const StyledTitleHr = styled.hr`
-  margin-bottom: 1em;
-  width: 100%;
-  border: none;
-  height: 1.5px;
-  background-color: ${(props) => (props.styledHr ? "#8E59FF" : "#A2A3B2")};
-  box-shadow: ${(props) =>
-    props.styledHr ? "0 -0.3125em 0.8em rgba(142,89,255,0.5)" : "none"};
-  transition: all 0.3s ease;
-`;
-
-const ToolbarWrapper = styled.div`
-  margin-top: 0.6em;
-  //width: 100%;
-  height: 2em;
-  display: flex;
-  align-items: center;
-  background-color: #fbfaff;
-  font-size: 0.9em;
-  overflow-x: scorll;
-  //position: sticky;
-  top: 60px;
-`;
-
-const StyledFontSizeSelect = styled.select`
-  display: flex;
-  justify-content: center;
-  padding-left: 0.25em;
-  box-sizing: border-box;
-  border: 0.1vw solid #0a27a6;
-  border-radius: 0.4em;
-
-  font-size: 1vw;
-  font-family: "OTF B";
-  font-weight: 800;
-
-  width: 6em;
-  height: 1.75em;
-
-  background-color: transparent;
-  color: #0a27a6;
-
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 0.75em;
-  }
-`;
-
-const StyledBar = styled.div`
-  margin: 0 1.2em;
-  color: #a2a3b2;
-`;
-
-const StyledBoldIcon = styled.img`
-  //width: 0.825em;
-  height: 4vh;
-  //font-size: 2vw;
-  &:hover {
-    filter: invert(42%) sepia(59%) saturate(4229%) hue-rotate(238deg)
-      brightness(100%) contrast(105%);
-  }
-  @media (max-width: 768px) {
-    width: 0.75em;
-  }
-`;
-
-const StyledItalicIcon = styled.img`
-  margin-right: 0.8vw;
-
-  height: 3.5vh;
-  &:hover {
-    filter: invert(42%) sepia(59%) saturate(4229%) hue-rotate(238deg)
-      brightness(100%) contrast(105%);
-  }
-  @media (max-width: 768px) {
-    width: 0.75em;
-  }
-`;
-
-const StyledThroughIcon = styled.img`
-  //width: 1.0625em;
-  height: 2.3vh;
-  //font-size: 2vw;
-  &:hover {
-    filter: invert(42%) sepia(59%) saturate(4229%) hue-rotate(238deg)
-      brightness(100%) contrast(105%);
-  }
-  @media (max-width: 768px) {
-    width: 0.75em;
-  }
-`;
-
-const FileInputLabel = styled.label`
-  display: flex;
-  align-items: center;
-  @media (max-width: 768px) {
-    width: 0.75em;
-  }
-`;
-
-const ImageUploadInput = styled.input`
-  display: none;
-`;
-
-const StyledImageIcon = styled.img`
-  margin-left: 0.7vw;
-  height: 2.5vh;
-  &:hover {
-    filter: invert(42%) sepia(59%) saturate(4229%) hue-rotate(238deg)
-      brightness(100%) contrast(105%);
-  }
-  @media (max-width: 768px) {
-    width: 0.75em;
-  }
-`;
-
-const StyledLinkIcon = styled.img`
-  margin-left: 1.5vw;
-  height: 2.4vh;
-  &:hover {
-    filter: invert(42%) sepia(59%) saturate(4229%) hue-rotate(238deg)
-      brightness(100%) contrast(105%);
-  }
-  @media (max-width: 768px) {
-    width: 0.8125em;
-    margin-left: 1em;
-  }
-`;
-
-const TextareaWrapper = styled.div`
-  border-radius: 15px;
-  width: 100%;
-  height: auto;
-  padding: 1em;
-  padding-bottom: 0em;
-  margin-top: 0.8125em;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &:focus-within {
-    box-shadow: 0 0.25em 1.25em rgba(22, 26, 63, 0.2);
-  }
-  transition: all 0.3s ease;
-`;
-
-const StyledTextarea = styled.textarea`
-  padding: 1.23em 1.23em 0 1.23em;
-  border: none;
-  width: 100%;
-  height: 10vh;
-  line-height: 1.845em;
-  background-color: transparent;
-  font-size: 1vw;
-  font-weight: 500;
-  font-family: "NanumSquareNeo";
-  &:focus {
-    outline: none;
-  }
-  &::placeholder {
-    color: #a2a3b2;
-    font-weight: 700;
-  }
-  resize: none;
-`;
-
-const TextareaBottom = styled.div`
-  width: 100%;
-  margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-`;
-
-const TextLength = styled.div`
-  font-size: 0.8125em;
-  margin-left: auto;
-  font-weight: bold;
-  color: ${(props) => (props.lengthCount >= 20000 ? "red" : "#A2A3B2")};
-`;
-
-const StyledContentHr = styled.hr`
-  margin: 1em 0 1em 0;
-  border: none;
-  width: 100%;
-  height: 1.5px;
-  background-color: rgba(162, 163, 178, 0.4);
-`;
-
-const StyledPreviewButton = styled.div`
-  border: 0.1vw solid #0a27a6;
-  border-radius: 0.4em;
-
-  font-size: 1vw;
-  font-family: "OTF B";
-  font-weight: 800;
-
-  width: 6em;
-  height: 1.75em;
-
-  box-sizing: border-box;
-  padding-left: 0.25em;
-  padding-right: 0.25em;
-  line-height: 1.75em;
-  text-align: center;
-
-  background-color: transparent;
-  color: #0a27a6;
-
-  cursor: pointer;
-  @media (max-width: 768px) {
-    font-size: 0.75em;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const SubmitButton = styled.button`
-  border: none;
-  border-radius: 0.4em;
-
-  margin-top: 1vh;
-  width: 9.1em;
-  height: 2.25em;
-
-  float: right;
-
-  background-color: #0a27a6;
-  color: white;
-  font-size: 1.1vw;
-  font-family: "OTF B";
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0.2em 1em rgba(22, 26, 63, 0.2);
-  }
-  transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    width: 7em;
-    height: 2.25em;
-    font-size: 0.8125em;
-  }
-`;
-
-// 모달
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-`;
-const ModalContent = styled.div`
-  background-color: #fff;
-  padding: 2.4615em;
-  border-radius: 10px;
-  width: 68em;
-  max-height: 30.7692em;
-  font-size: 0.8125em;
-  overflow-y: auto;
-  position: relative;
-  @media (max-width: 768px) {
-    width: 80%;
-  }
-`;
-const CloseButton = styled.button`
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-`;

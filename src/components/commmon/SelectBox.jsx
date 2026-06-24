@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
 import arrow from "../../assets/icons/SelectBox/arrow.png";
 import StyledButton from "./StyledButton";
 
@@ -91,10 +90,11 @@ const SelectBox = ({ onSort }) => {
   };
 
   return (
-    <SelectContainer className="SelectContiner">
+    <div className="flex mt-[0.8vh] font-bold flex-row relative w-[35vw]">
       {/* 카테고리 */}
-      <SelectWrapper className="SelectWrapper" ref={categoryRef}>
-        <SelectButton
+      <div className="relative inline-block text-center w-full" ref={categoryRef}>
+        <button
+          className="bg-white border-[0.125em] border-[#d0d1d9] rounded-[0.75em] py-[0.625em] px-0 text-[0.85vw] font-['OTF_B'] text-[#d0d1d9] cursor-pointer text-center w-[80%] float-left flex items-center justify-center"
           // 카테고리 버튼 누르면..
           onClick={() => {
             setIsCategoryOpen(!isCategoryOpen); // isCategoryOpen 토글, true -> false, false -> true
@@ -103,25 +103,30 @@ const SelectBox = ({ onSort }) => {
           }}
         >
           {selectedCategory ? selectedCategory : "카테고리"}
-          <ArrowImg src={arrow} alt="arrow" />
-        </SelectButton>
-        <SelectMenu isOpen={isCategoryOpen}>
+          <img className="w-[1vw] ml-[1vw]" src={arrow} alt="arrow" />
+        </button>
+        <div className={`absolute top-full w-[80%] bg-[#15243e80] rounded-[0.625em] z-10 text-[0.85vw] ${isCategoryOpen ? "block" : "hidden"}`}>
           {/* styled-components에 prop 전달, isCategoryOpen이 true이면 isOpen이 true 값으로 전달 */}
           {categories.map((item, index) => (
-            <SelectItem
+            <div
               key={index}
-              className={selectedCategory === item ? "highlight" : ""}
+              className={`m-[0.625em] text-white text-[0.85vw] cursor-pointer flex justify-center items-center box-border hover:rounded-[0.625em] hover:border-white ${
+                selectedCategory === item
+                  ? "border-[0.0625em] border-white rounded-[0.5em] p-[0.75em] font-bold"
+                  : "border-[0.2em] border-transparent rounded-[0.625em] p-[0.625em]"
+              }`}
               onClick={() => handleCategoryClick(item)}
             >
               {item}
-            </SelectItem>
+            </div>
           ))}
-        </SelectMenu>
-      </SelectWrapper>
+        </div>
+      </div>
 
       {/* 정렬 */}
-      <SelectWrapper ref={sortRef}>
-        <SelectButton
+      <div className="relative inline-block text-center w-full" ref={sortRef}>
+        <button
+          className="bg-white border-[0.125em] border-[#d0d1d9] rounded-[0.75em] py-[0.625em] px-0 text-[0.85vw] font-['OTF_B'] text-[#d0d1d9] cursor-pointer text-center w-[80%] float-left flex items-center justify-center"
           onClick={() => {
             setIsSortOpen(!isSortOpen);
             setIsCategoryOpen(false);
@@ -129,24 +134,29 @@ const SelectBox = ({ onSort }) => {
           }}
         >
           {selectedSort ? selectedSort : "정렬"}
-          <ArrowImg src={arrow} alt="arrow" />
-        </SelectButton>
-        <SelectMenu isOpen={isSortOpen}>
+          <img className="w-[1vw] ml-[1vw]" src={arrow} alt="arrow" />
+        </button>
+        <div className={`absolute top-full w-[80%] bg-[#15243e80] rounded-[0.625em] z-10 text-[0.85vw] ${isSortOpen ? "block" : "hidden"}`}>
           {sortOptions.map((item, index) => (
-            <SelectItem
+            <div
               key={index}
-              className={selectedSort === item ? "highlight" : ""}
+              className={`m-[0.625em] text-white text-[0.85vw] cursor-pointer flex justify-center items-center box-border hover:rounded-[0.625em] hover:border-white ${
+                selectedSort === item
+                  ? "border-[0.0625em] border-white rounded-[0.5em] p-[0.75em] font-bold"
+                  : "border-[0.2em] border-transparent rounded-[0.625em] p-[0.625em]"
+              }`}
               onClick={() => handleSortClick(item)}
             >
               {item}
-            </SelectItem>
+            </div>
           ))}
-        </SelectMenu>
-      </SelectWrapper>
+        </div>
+      </div>
 
       {/* 필터 */}
-      <SelectWrapper ref={filterRef}>
-        <SelectButton
+      <div className="relative inline-block text-center w-full" ref={filterRef}>
+        <button
+          className="bg-white border-[0.125em] border-[#d0d1d9] rounded-[0.75em] py-[0.625em] px-0 text-[0.85vw] font-['OTF_B'] text-[#d0d1d9] cursor-pointer text-center w-[80%] float-left flex items-center justify-center"
           onClick={() => {
             setIsFilterOpen(!isFilterOpen);
             setIsCategoryOpen(false);
@@ -154,26 +164,30 @@ const SelectBox = ({ onSort }) => {
           }}
         >
           {"필터"}
-          <ArrowImg src={arrow} alt="arrow" />
-        </SelectButton>
-        <SelectMenu isOpen={isFilterOpen}>
+          <img className="w-[1vw] ml-[1vw]" src={arrow} alt="arrow" />
+        </button>
+        <div className={`absolute top-full w-[80%] bg-[#15243e80] rounded-[0.625em] z-10 text-[0.85vw] ${isFilterOpen ? "block" : "hidden"}`}>
           {filterOptions.map((item, index) =>
             item === "경력" || item === "언어" || item === "학력" ? (
-              <SelectFilterMenu key={index}>{item}</SelectFilterMenu>
+              <div key={index} className="m-[0.625em] p-[0.625em] text-white text-[0.85vw] flex justify-center items-center bg-[#d0d1d9] rounded-[0.625em]">{item}</div>
             ) : (
-              <SelectItem
+              <div
                 key={index}
-                className={selectedFilters.includes(item) ? "highlight" : ""}
+                className={`m-[0.625em] text-white text-[0.85vw] cursor-pointer flex justify-center items-center box-border hover:rounded-[0.625em] hover:border-white ${
+                  selectedFilters.includes(item)
+                    ? "border-[0.0625em] border-white rounded-[0.5em] p-[0.75em] font-bold"
+                    : "border-[0.2em] border-transparent rounded-[0.625em] p-[0.625em]"
+                }`}
                 onClick={() => handleFilterClick(item)}
               >
                 {item}
-              </SelectItem>
+              </div>
             )
           )}
-        </SelectMenu>
-      </SelectWrapper>
+        </div>
+      </div>
 
-      <StyledButtonContainer>
+      <div className="w-full">
         <StyledButton
           text={"적용"}
           onClick={() => {
@@ -182,103 +196,9 @@ const SelectBox = ({ onSort }) => {
             onSort(selectedCategory, selectedSort, selectedFilters); // 정렬 적용 함수 호출
           }}
         />
-      </StyledButtonContainer>
-    </SelectContainer>
+      </div>
+    </div>
   );
 };
 
 export default SelectBox;
-
-const SelectContainer = styled.div`
-  display: flex;
-  margin-top: 0.8vh;
-  font-weight: 700;
-  flex-direction: row;
-  position: relative;
-  width: 35vw;
-`;
-
-const SelectWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-`;
-
-const SelectButton = styled.button`
-  background-color: white;
-  border: 0.125em solid #d0d1d9;
-  border-radius: 0.75em;
-  padding: 0.625em 0em;
-
-  font-size: 0.85vw;
-  font-family: "OTF B";
-  color: #d0d1d9;
-  cursor: pointer;
-  text-align: center;
-
-  width: 80%;
-  float: left;
-`;
-
-const ArrowImg = styled.img`
-  width: 1vw;
-  margin-left: 1vw;
-`;
-
-const SelectMenu = styled.div`
-  position: absolute;
-  top: 100%;
-  width: 80%;
-  background-color: #15243e80;
-  border-radius: 0.625em;
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  z-index: 1;
-  font-size: 0.85vw;
-`;
-
-const SelectFilterMenu = styled.div`
-  margin: 0.625em;
-  padding: 0.625em;
-  color: white;
-  font-size: 0.85vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #d0d1d9;
-  border-radius: 0.625em;
-`;
-
-const SelectItem = styled.div`
-  margin: 0.625em;
-  padding: 0.625em;
-  color: white;
-  font-size: 0.85vw;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0.2em solid transparent;
-  border-radius: 0.625em;
-  box-sizing: border-box;
-
-  &:hover {
-    border-radius: 0.625em;
-    border: 0.2em solid #fff;
-  }
-
-  &:last-child {
-    // border-bottom: none;
-  }
-
-  &.highlight {
-    border: 0.0625em solid white;
-    border-radius: 0.5em;
-    padding: 0.75em;
-    font-weight: bold;
-  }
-`;
-
-const StyledButtonContainer = styled.div`
-  width: 100%;
-`;

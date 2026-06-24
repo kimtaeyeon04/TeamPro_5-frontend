@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 const MergerCreatePortfolioPageInput = ({
   formData,
@@ -17,153 +16,73 @@ const MergerCreatePortfolioPageInput = ({
   };
 
   return (
-    <FormContainer>
-      <InputWrapper>
-        <Label>포트폴리오 이름</Label>
-        <Input
+    <div className="flex flex-col gap-[1.5em] mb-[2em]">
+      <div className="flex flex-col gap-[0.5em] mb-[1vh]">
+        <label className="text-[1.5em] font-[800] text-[#0a27a6] font-['OTF_B']">포트폴리오 이름</label>
+        <input
+          className="border border-[#d0d1d9] rounded-[1em] outline-none h-[2.5em] w-[30vw] pl-[1em] text-[1rem] placeholder:text-[#a2a3b2]"
           type="text"
           name="portfolioName"
           placeholder="포트폴리오 이름을 입력하세요"
           value={formData.portfolioName}
           onChange={onInputChange}
         />
-      </InputWrapper>
+      </div>
 
-      <Line></Line>
+      <hr className="my-[1.5vh] mx-0 border border-[#d0d1d9]" />
 
-      <InputWrapper>
-        <Label>사용 언어</Label>
-        <Input
+      <div className="flex flex-col gap-[0.5em] mb-[1vh]">
+        <label className="text-[1.5em] font-[800] text-[#0a27a6] font-['OTF_B']">사용 언어</label>
+        <input
+          className="border border-[#d0d1d9] rounded-[1em] outline-none h-[2.5em] w-[30vw] pl-[1em] text-[1rem] placeholder:text-[#a2a3b2]"
           type="text"
           name="usedLanguage"
           placeholder="예: JavaScript, Python"
           value={formData.usedLanguage}
           onChange={onInputChange}
         />
-      </InputWrapper>
+      </div>
 
-      <InputWrapper>
-        <Label>프론트엔드</Label>
-        <Input
+      <div className="flex flex-col gap-[0.5em] mb-[1vh]">
+        <label className="text-[1.5em] font-[800] text-[#0a27a6] font-['OTF_B']">프론트엔드</label>
+        <input
+          className="border border-[#d0d1d9] rounded-[1em] outline-none h-[2.5em] w-[30vw] pl-[1em] text-[1rem] placeholder:text-[#a2a3b2]"
           type="text"
           name="frontend"
           placeholder="예: Node.js, Zustand"
           value={formData.frontend}
           onChange={onInputChange}
         />
-      </InputWrapper>
+      </div>
 
-      <InputWrapper>
-        <Label>백엔드</Label>
-        <Input
+      <div className="flex flex-col gap-[0.5em] mb-[1vh]">
+        <label className="text-[1.5em] font-[800] text-[#0a27a6] font-['OTF_B']">백엔드</label>
+        <input
+          className="border border-[#d0d1d9] rounded-[1em] outline-none h-[2.5em] w-[30vw] pl-[1em] text-[1rem] placeholder:text-[#a2a3b2]"
           type="text"
           name="backend"
           placeholder="예: Django, Firebase"
           value={formData.backend}
           onChange={onInputChange}
         />
-      </InputWrapper>
+      </div>
 
-      <Line></Line>
+      <hr className="my-[1.5vh] mx-0 border border-[#d0d1d9]" />
 
-      <ToggleWrapper>
-        <Label>공유</Label>
-        <ToggleContainer>
-          <ToggleText isOn={formData.share}>공개</ToggleText>
-          <ToggleBox onClick={handleToggle}>
-            <Toggle isOn={formData.share} />
-          </ToggleBox>
-          <ToggleText isOn={!formData.share}>비공개</ToggleText>
-        </ToggleContainer>
-      </ToggleWrapper>
+      <div className="flex items-center justify-between">
+        <label className="text-[1.5em] font-[800] text-[#0a27a6] font-['OTF_B']">공유</label>
+        <div className="flex items-center">
+          <span className={`text-[0.9rem] font-bold cursor-pointer mx-[0.5em] my-0 ${formData.share ? "text-[#0a27a6]" : "text-[#a2a3b2]"}`}>공개</span>
+          <div className="w-[3.5em] h-[1.5em] border-[1.5px] border-[#0a27a6] rounded-[1.5em] flex items-center relative cursor-pointer" onClick={handleToggle}>
+            <div className={`w-[1.2em] h-[1.2em] rounded-[50%] bg-[#0a27a6] absolute transition-all duration-300 ease-in-out ${formData.share ? "left-[0.2em]" : "left-[2em]"}`} />
+          </div>
+          <span className={`text-[0.9rem] font-bold cursor-pointer mx-[0.5em] my-0 ${!formData.share ? "text-[#0a27a6]" : "text-[#a2a3b2]"}`}>비공개</span>
+        </div>
+      </div>
 
-      <Line></Line>
-    </FormContainer>
+      <hr className="my-[1.5vh] mx-0 border border-[#d0d1d9]" />
+    </div>
   );
 };
 
 export default MergerCreatePortfolioPageInput;
-
-// Styled Components
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-  margin-bottom: 2em;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  margin-bottom: 1vh;
-`;
-
-const Label = styled.label`
-  font-size: 1.5em;
-  font-weight: 800;
-  color: #0a27a6;
-  //margin-bottom: -0.2em;
-  // display : flex;
-  font-family: "OTF B";
-`;
-
-const Input = styled.input`
-  border: 1px solid #d0d1d9;
-  border-radius: 1em;
-  outline: none;
-  height: 2.5em;
-  width: 30vw;
-  padding-left: 1em;
-  font-size: 1rem;
-
-  &::placeholder {
-    color: #a2a3b2;
-  }
-`;
-
-const ToggleWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const ToggleContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ToggleText = styled.span`
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: ${(props) => (props.isOn ? "#0a27a6" : "#a2a3b2")};
-  cursor: pointer;
-  margin: 0 0.5em;
-`;
-
-const ToggleBox = styled.div`
-  width: 3.5em;
-  height: 1.5em;
-  border: 1.5px solid #0a27a6;
-  border-radius: 1.5em;
-  display: flex;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-`;
-
-const Toggle = styled.div`
-  width: 1.2em;
-  height: 1.2em;
-  border-radius: 50%;
-  background-color: #0a27a6;
-  position: absolute;
-  left: ${(props) => (props.isOn ? "0.2em" : "2em")};
-  transition: all 0.3s ease;
-`;
-
-//hr
-const Line = styled.hr`
-  margin: 1.5vh 0;
-  border: 1px solid #d0d1d9;
-`;

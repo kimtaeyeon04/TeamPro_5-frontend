@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import DashBoard from "../components/MyPage/DashBoard";
 import MyPageSection from "../components/MyPage/MyPageSection";
 import TemplateCard from "../components/commmon/TemplateCard";
@@ -121,10 +120,10 @@ function MyPage() {
     />
   );
   return (
-    <MyPageContainer className="MyPageContainer">
-      <DashBoardContainer>
+    <div className="w-[85%] mx-auto">
+      <div className="flex">
         <DashBoard name={currentUser.name} nickname={currentUser.nickname} />
-      </DashBoardContainer>
+      </div>
       {!currentUser.recruiter && (
         <>
           <MyPageSection
@@ -160,17 +159,8 @@ function MyPage() {
           />
         </>
       )}
-    </MyPageContainer>
+    </div>
   );
 }
 
 export default MyPage;
-
-const MyPageContainer = styled.div`
-  width: 85%; //수정중...
-  margin: 0 auto;
-`;
-
-const DashBoardContainer = styled.div`
-  display: flex;
-`;

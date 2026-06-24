@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 
 import HackPageHeader from "../components/commmon/HackPageHeader.jsx";
 import HackTemplateCard from "../components/commmon/HackTemplateCard.jsx";
@@ -77,16 +76,16 @@ const HackathonPage = () => {
         onSearch={handleSearchApply}
         onCancelSearch={handleCancelSearch}
       />
-      <MainWrapper>
-        <SelectBoxWrapper>
+      <div className="w-[85%] mx-auto">
+        <div className="flex items-center mt-[10vh]">
           <SelectBox_NoFilter onSort={handleSortApply} />
-        </SelectBoxWrapper>
-        <Line></Line>
+        </div>
+        <hr className="my-[0.625em] border border-[#d0d1d9]"></hr>
 
         {/* 12개의 카드를 그리드 형태로 출력 */}
-        <HackathonGridWrapper>
-          <TemplateGridWrapper>
-            <TemplateGrid>
+        <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center">
+            <div className="grid grid-cols-4 gap-y-[3vw] gap-x-[1vw] mt-[2em] w-full">
               {sharedHackathonList.map((Hackathon) => (
                 <HackTemplateCard
                   key={Hackathon.hackId}
@@ -94,119 +93,23 @@ const HackathonPage = () => {
                   templateButton={"보기"}
                 />
               ))}
-            </TemplateGrid>
-          </TemplateGridWrapper>
-        </HackathonGridWrapper>
+            </div>
+          </div>
+        </div>
         {/* 기존 해커톤 */}
-        <Line2></Line2>
+        <hr className="mt-[5em] mb-0 border border-[#d0d1d9]"></hr>
 
         <HackathonPageSlide />
 
-        <ButtonWrapper>
+        <div className="flex justify-center">
           {/* 포트폴리오 제작 페이지로 넘어갈 수 있는 버튼 추가 */}
-          <StartButton onClick={() => navigate("/CreateHackathonPage")}>
+          <button className="text-white text-[1em] font-extrabold rounded-[2em] border-none bg-[#0a27a6] h-[3em] w-[20%] font-['OTF_R'] flex items-center justify-center relative" onClick={() => navigate("/CreateHackathonPage")}>
             해커톤 제작하기
-          </StartButton>
-        </ButtonWrapper>
-      </MainWrapper>
+          </button>
+        </div>
+      </div>
     </>
   );
 };
 
 export default HackathonPage;
-
-//css Wrapper
-
-const MainWrapper = styled.div`
-  width: 85%; //수정중...
-  margin: 0 auto;
-`;
-const PageCategoryWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-const SelectBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10vh;
-`;
-const MyTemplateMenuWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10vh;
-`;
-
-const HackathonGridWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const TemplateGridWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-//css buttom
-const StartButton = styled.button`
-  color: #fff;
-  font-size: 1em;
-  font-weight: 800;
-  border-radius: 2em;
-  border: none;
-  background-color: #0a27a6;
-  height: 3em;
-  width: 20%;
-  font-family: "OTF R";
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-
-//css element
-const SearchInput = styled.input`
-  border-radius: 2em;
-  border: 1px solid #d0d1d9;
-  height: 3em;
-  width: 50%;
-  text-indent: 1em;
-  outline: none;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-
-const TemplateGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  //place-content: center center;
-  //justify-content: center;
-  gap: 3vw 1vw;
-
-  margin-top: 2em;
-  width: 100%;
-`;
-
-const Line = styled.hr`
-  margin: 0.625em 0;
-  border: 1px solid #d0d1d9;
-`;
-const Line2 = styled.hr`
-  margin: 5em 0 0 0;
-  border: 1px solid #d0d1d9;
-`;
-//css Text
-const HeaderText = styled.p`
-  color: #0a27a6;
-  font-size: 2em;
-  font-weight: 800;
-  font-family: "OTF B";
-`;

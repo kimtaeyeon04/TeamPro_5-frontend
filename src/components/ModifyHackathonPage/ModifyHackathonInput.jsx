@@ -1,5 +1,4 @@
 import React,{useEffect} from "react";
-import styled from "styled-components";
 import { useState } from "react";
 // import Calendar from "./Calendar.jsx";
 import CalendarInput from "./ModifyCalendarInput.jsx";
@@ -9,6 +8,7 @@ import {
   oriComments,
   initializeData,
 } from "../domain/startProgram.js";
+import {handleImageAdd, handleMultipleImageAdd } from "../features/fileUploadFeatures.jsx";
 
 const ModifyHackathonInput = ({ onInputChange, formData, onDateChange }) => {
   // 업로드 이미지 미리보기 코드
@@ -159,109 +159,116 @@ const ModifyHackathonInput = ({ onInputChange, formData, onDateChange }) => {
   return(
     <>
      {/* 필수항목 */}
-    <VitalWrapper> 
-     <VitalText>필수 항목</VitalText>
-      <ColumnWrapper>
+    <div className="w-[80%] py-[40px] px-[40px] mx-auto border-[1.5px] border-[#d0d1d9] rounded-[2em] h-[45em] flex flex-col items-center"> 
+     <p className="text-black text-[1.5em] font-[800] font-['OTF_B']">필수 항목</p>
+      <div className="flex gap-[5%] justify-between w-full">
         {/* 해커톤 이름 */}
-          <InputWrapper>
-              <MainText>해커톤 이름</MainText>
-              <ExText>해커톤 이름을 작성해주세요</ExText>
-              <VitalInput 
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">해커톤 이름</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">해커톤 이름을 작성해주세요</p>
+              <input 
+                className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
                 type="text"
                 name="hackName" 
                 value={HackathonData.hackName}
                 onChange={handleInputChange}>
-              </VitalInput>
-          </InputWrapper>
+              </input>
+          </div>
         {/* 링크 */}
-        <InputWrapper>
-              <MainText>Links</MainText>
-              <ExText>해커톤을 설명할 자료 링크를 입력해주세요.</ExText>
-              <VitalInput 
+        <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">Links</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">해커톤을 설명할 자료 링크를 입력해주세요.</p>
+              <input 
+                className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
                 type="url"
                 name="link" 
                 value={HackathonData.link}
                 onChange={handleInputChange}>
-              </VitalInput>
-          </InputWrapper>
-        </ColumnWrapper>
+              </input>
+          </div>
+        </div>
 
 
         {/* 모집 부분 */}
-        <ColumnWrapper>
-          <InputWrapper>
-              <MainText>모집 파트</MainText>
-              <ExText>모집할 파트를 입력해주세요.</ExText>
-              <VitalInput  
+        <div className="flex gap-[5%] justify-between w-full">
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">모집 파트</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">모집할 파트를 입력해주세요.</p>
+              <input  
+                className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
                 type="text"
                 name="part" 
                 value={HackathonData.part}
-                onChange={handleInputChange}></VitalInput>
-          </InputWrapper>
+                onChange={handleInputChange}></input>
+          </div>
 
-        <InputWrapper>
-              <MainText>모집인원</MainText>
-              <ExText>모집인원을 입력해주세요.</ExText>
-              <VitalInput 
+        <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">모집인원</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">모집인원을 입력해주세요.</p>
+              <input 
+                className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]"
                 type="text"
                 name="maxMemNumber" 
                 value={HackathonData.maxMemNumber}
                 onChange={handleInputChange}
-              ></VitalInput>
-          </InputWrapper>
-        </ColumnWrapper>
+              ></input>
+          </div>
+        </div>
 
-        <ColumnWrapper3>
+        <div className="flex gap-[1vw] justify-between w-full">
           {/* 참여기간 */}
-          <InputWrapper>
-              <MainText>참여기간</MainText>
-              <ExText>이 프로젝트에 참여한 기간을 선택해주세요. </ExText>
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">참여기간</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">이 프로젝트에 참여한 기간을 선택해주세요. </p>
               <CalendarInput
                startDate={HackathonData.startDate}
                endDate={HackathonData.endDate}
                onDateChange={onDateChange}
               />
-          </InputWrapper>
+          </div>
           {/* 공유 여부 */}
-          <InputWrapper>
-              <MainText>해커톤 설명</MainText>
-              <ExText>해커톤에 대해서 자세히 설명해주세요</ExText>
-              <VitalInput2
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">해커톤 설명</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">해커톤에 대해서 자세히 설명해주세요</p>
+              <textarea
+                className="border border-[#d0d1d9] rounded-[1em] outline-none h-[23em] w-[35em] indent-[1em] placeholder:indent-[1em]"
                 name="description" 
                 value={HackathonData.description}
                 onChange={handleInputChange}
-              ></VitalInput2>
-            </InputWrapper>
-        </ColumnWrapper3>
+              ></textarea>
+            </div>
+        </div>
         
         
 
-    </VitalWrapper>
+    </div>
 
     {/* 선택항목 */}
-    <ChoiceWrapper> 
-      <VitalText>선택 항목</VitalText>
-      <ColumnWrapper2>
+    <div className="w-[80%] py-[40px] px-[40px] mx-auto my-[8em] border-[1.5px] border-[#d0d1d9] rounded-[2em] h-[28em] flex flex-col items-center"> 
+      <p className="text-black text-[1.5em] font-[800] font-['OTF_B']">선택 항목</p>
+      <div className="flex gap-[20%] w-full">
         {/* 데모 비디오 */}
-          <InputWrapper>
-              <MainText>홍보 비디오</MainText>
-              <ExText>해커톤을 홍보하는 비디오를 링크에 추가하세요</ExText>
-              <ChoiceInput type="url"></ChoiceInput>
-          </InputWrapper>
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">홍보 비디오</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">해커톤을 홍보하는 비디오를 링크에 추가하세요</p>
+              <input className="border border-[#d0d1d9] rounded-[2em] outline-none h-[2em] w-[35em] indent-[1em] placeholder:indent-[1em]" type="url"></input>
+          </div>
         {/* 커버 이미지*/}
-          <InputWrapper>
-              <MainText>커버 이미지</MainText>
-              <ExText>해커톤을 보여줄 표지 이미지를 업로드해주세요</ExText>
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">커버 이미지</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">해커톤을 보여줄 표지 이미지를 업로드해주세요</p>
               <form onSubmit={handleSubmit}>
-                <FileInput 
+                <input 
+                  className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                   type="file" 
                   accept="image/*" 
                   id="coverphotos"
                   multiple={false}
                   onChange={handleCoverImageChange} 
                   required />
-                <FileLabel
+                <label
                   htmlFor="coverphotos"
+                  className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                   style={{
                     backgroundImage: coverImagePreview
                       ? `url(${coverImagePreview})`
@@ -271,30 +278,32 @@ const ModifyHackathonInput = ({ onInputChange, formData, onDateChange }) => {
                   }}
                 >
                   {!coverImagePreview && "+"}
-                </FileLabel>
-                <SubmitButton type="submit">업로드</SubmitButton>
+                </label>
+                <button className="border border-[#0a27a6] rounded-[2em] bg-white text-[#0a27a6] text-[1em] font-[800] font-['OTF_R'] mt-[1em]" type="submit">업로드</button>
             </form>
-          </InputWrapper>
-      </ColumnWrapper2>
+          </div>
+      </div>
 
-        <ColumnWrapper2>
+        <div className="flex gap-[20%] w-full">
         {/* 사진 */}
-          <InputWrapper>
-              <MainText>사진</MainText>
-              <ExText>최대 4장의 사진을 업로드하여 해커톤을 소개해주세요</ExText>
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">사진</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">최대 4장의 사진을 업로드하여 해커톤을 소개해주세요</p>
               <form onSubmit={handleSubmit3}>
-            <ImageWrapper>
+            <div className="flex gap-[1em] justify-between w-full">
               {photosPreview.map((preview, index) => (
-                <FileLabel
+                <label
                   key={index}
                   htmlFor={`photos-${index}`}
+                  className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                   style={{
                     backgroundImage: preview ? `url(${URL.createObjectURL(preview)})` : "none",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
                 >
-                  <FileInput
+                  <input
+                    className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                     type="file"
                     accept="image/*"
                     id={`photos-${index}`}
@@ -302,35 +311,38 @@ const ModifyHackathonInput = ({ onInputChange, formData, onDateChange }) => {
                     required={index === 0}
                   />
                   {!preview && "+"}
-                </FileLabel>
+                </label>
               ))}
               {photosPreview.length < 5 && (
-                <FileLabel
+                <label
                   htmlFor={`photos-${photosPreview.length}`}
+                  className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                   style={{
                     backgroundColor: "#f0f0f0",
-                    border: "1px dashed #d0d0d0",
+                    border: "1px dashed #d0d1d0",
                   }}
                 >
-                  <FileInput
+                  <input
+                    className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                     type="file"
                     accept="image/*"
                     id={`photos-${photosPreview.length}`}
                     onChange={handlePhotosChange(photosPreview.length)}
                   />
                   +
-                </FileLabel>
+                </label>
               )}
-            </ImageWrapper>
-            <SubmitButton type="submit">업로드</SubmitButton>
+            </div>
+            <button className="border border-[#0a27a6] rounded-[2em] bg-white text-[#0a27a6] text-[1em] font-[800] font-['OTF_R'] mt-[1em]" type="submit">업로드</button>
           </form>
-          </InputWrapper>
+          </div>
           {/* 로고 */}
-          <InputWrapper>
-              <MainText>로고</MainText>
-              <ExText>해커톤을 나타내는 로고를 업로드해주세요</ExText>
+          <div className="flex flex-col">
+              <p className="text-[1.5em] font-[800] text-[#0a27a6] -mb-[0.2em] font-['OTF_B']">로고</p>
+              <p className="text-black text-[0.8em] font-[800] font-['OTF_R']">해커톤을 나타내는 로고를 업로드해주세요</p>
               <form onSubmit={handleSubmit2}>
-              <FileInput
+              <input
+               className="absolute p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]"
                type="file" 
                accept="image/*" 
                multiple={false}
@@ -338,8 +350,9 @@ const ModifyHackathonInput = ({ onInputChange, formData, onDateChange }) => {
                id="Logo"
               onChange={handleLogoChange}
               />
-              <FileLabel
+              <label
                 htmlFor="Logo"
+                className="w-[5em] h-[5em] text-[#d0d1d9] text-[inherit] leading-normal align-middle bg-[#fdfdfd] cursor-pointer border border-[#d0d1d9] rounded-[1em] text-center flex items-center justify-center inline-block"
                 style={{
                   backgroundImage: LogoPreview ? `url(${LogoPreview})` : "none",
                   backgroundSize: "cover",
@@ -348,225 +361,16 @@ const ModifyHackathonInput = ({ onInputChange, formData, onDateChange }) => {
               >
                 {" "}
                 {!LogoPreview && "+"}
-              </FileLabel>
-              <SubmitButton type="submit">업로드</SubmitButton>
+              </label>
+              <button className="border border-[#0a27a6] rounded-[2em] bg-white text-[#0a27a6] text-[1em] font-[800] font-['OTF_R'] mt-[1em]" type="submit">업로드</button>
             </form>
-          </InputWrapper>
-        </ColumnWrapper2>
+          </div>
+        </div>
         
-    </ChoiceWrapper>
+    </div>
 
     </>
     );
 };
 
 export default ModifyHackathonInput;
-
-//css Wrapper
-
-const VitalWrapper = styled.div`
-  width: 80%;
-  padding: 40px 40px;
-  margin: 0 auto;
-
-  border : 1.5px solid #d0d1d9;
-  border-radius : 2em;
-  height : 45em;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-`;
-
-const ChoiceWrapper = styled.div`
-  width: 80%;
-  padding: 40px 40px;
-  margin: 8em auto;
-
-  border : 1.5px solid #d0d1d9;
-  border-radius : 2em;
-  height : 28em;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-`;
-
-const InputWrapper = styled.div`
-    display : flex;
-    flex-direction : column;
-    
-`;
-const ColumnWrapper = styled.div`
-  display: flex;
-  gap: 5%;
-  justify-content: space-between;
-  width: 100%;
-
-`;
-const ColumnWrapper2 = styled.div`
-  display: flex;
-  gap: 20%;
-  // justify-content: space-between;
-  width: 100%;
-`;
-const ColumnWrapper3 = styled.div`
-  display: flex;
-  gap: 1vw;
-  justify-content: space-between;
-  width: 100%;
-`;
-const ImageWrapper = styled.div`
-  display: flex;
-  gap: 1em;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-
-//css input
-const VitalInput = styled.input`
-  border: 1px solid #d0d1d9;
-  border-radius: 2em;
-  outline: none;
-  height: 2em;
-  width: 35em; 
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-const VitalInput2 = styled.textarea`
-  border: 1px solid #d0d1d9;
-  border-radius: 1em;
-  outline: none;
-  height: 23em;
-  width: 35em; 
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-const ChoiceInput = styled.input`
-  border: 1px solid #d0d1d9;
-  border-radius: 2em;
-  outline: none;
-  height: 2em;
-  width: 35em; 
-  text-indent: 1em;
-  &::placeholder {
-    text-indent: 1em;
-  }
-`;
-
-//css Text
-const VitalText = styled.p`
-  color: black;
-  font-size: 1.5em;
-  font-weight: 800;
-  font-family: "OTF B";
-
-`;
-const ExText = styled.p`
-  color: black;
-  font-size: 0.8em;
-  font-weight: 800;
-  font-family: "OTF R";
-`;
-
-const MainText = styled.p`
-    font-size : 1.5em;
-    font-weight : 800;
-    color : #0A27A6;
-    margin-bottom : -0.2em;
-    // display : flex;
-    font-family: "OTF B";
-`;
-const FileInput = styled.input`
-  position: absolute;
-  // width: 1em;
-  // height: 1em;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip:rect(0,0,0,0);
-  border: 0;
-`;
-
-const FileLabel = styled.label`
-  display: inline-block;
-  width: 5em;  
-  height: 5em;
-  color: #d0d1d9;
-  font-size: inherit;
-  line-height: normal;
-  vertical-align: middle;
-  background-color: #fdfdfd;
-  cursor: pointer;
-  border: 1px solid #d0d1d9;
-  border-radius: 1em;  
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-
-//토글
-
-const ToggleWrapper = styled.div`
-    margin-top: 2em;
-    display: flex;
-    align-items: center;
-`;
-
-const OnToggleText = styled.div`
-    color: ${(props) => (props.isOn ? '#0A27A6' : '#A2A3B2')};
-    font-size: 0.9em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-`;
-
-const OffToggleText = styled.div`
-    color: ${(props) => (props.isOn ? '#A2A3B2' : '#0A27A6')};
-    font-size: 0.9em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-`;
-
-const ToggleBox = styled.div`
-    margin: 0 0.8em;
-    border: 1.5px solid #0A27A6;;
-    border-radius: 10px;
-    width: 3.5em;
-    height: 1.4375em;
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-`;
-
-const Toggle = styled.div`
-    border-radius: 30px;
-    width: 1em;
-    height: 1em;
-    background-color: #0A27A6;;
-    position: absolute;
-    left: ${(props) => (props.isOn ? '0.2em' : '2.2em')};
-    transition: all 0.3s ease-out;
-`;
-
-const SubmitButton = styled.button`
-  border : 1px solid #0a27a6;
-  border-radius : 2em;
-  background-color : #fff;
-  color : #0a27a6;
-  font-size: 1em;
-  font-weight: 800;
-  font-family: "OTF R";
-  margin-top :1em;
-  `;

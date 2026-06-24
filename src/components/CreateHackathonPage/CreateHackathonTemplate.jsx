@@ -1,32 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 import SearchBar from "../commmon/SearchBar.jsx";
 import CreatePortfolioSlide from "./CreateHackathonSlide.jsx";
 const CreatePortfolioTemplate = () => {
     return(
         <>
-        <MainWrapper>
+        <div className="w-[80%] py-[40px] px-[40px] m-0 border-[1.5px] border-[#d0d1d9] rounded-[2em] h-[30em] flex flex-col items-center">
             <SearchBar/>
             <CreatePortfolioSlide/>
-        </MainWrapper>
+        </div>
         </>
        
     );
 };
 
 export default CreatePortfolioTemplate;
-
-const MainWrapper = styled.div`
-  width: 80%;
-  padding: 40px 40px;
-  margin: 0;
-
-  border : 1.5px solid #d0d1d9;
-  border-radius : 2em;
-  height : 30em;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-`;

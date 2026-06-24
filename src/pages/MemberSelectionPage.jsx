@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import Business from "../assets/images/MemberSelectionPage/Business.png";
 import General from "../assets/images/MemberSelectionPage/General.png";
@@ -9,159 +8,32 @@ const MemberSelectionPage = () => {
 
     const navigate = useNavigate();
     return (
-        <MainWrapper>
-                <MainText onClick={() => navigate("/")}>FolioFrame</MainText>
-                <ButtonWrapper>
-                    <GeneralButton>
-                        <Title>일반회원</Title>
+        <div className="flex flex-col items-center justify-center w-[85%] py-[3%] px-[20px] mx-auto gap-[2em]">
+                <p className="text-[4em] font-extrabold font-['OTF_B'] text-[#0A27A6] flex cursor-pointer" onClick={() => navigate("/")}>FolioFrame</p>
+                <div className="flex gap-[2em] w-full h-full mt-[-2em] items-center justify-center">
+                    <button className="flex flex-col items-center rounded-[1em] cursor-pointer w-[30em] h-[25em] border-2 border-[#0A27A6] bg-white">
+                        <p className="text-[2em] font-bold mb-[0.5em] py-[0.5em] px-[2em] font-['OTF_B']">일반회원</p>
                         <ol>
-                           <ExplainText>포트폴리오 제작 및 공유</ExplainText>
-                           <ExplainText>해커톤 참여</ExplainText>
-                           <ExplainText>프로젝트 관리</ExplainText>
-                           <ExplainText>채용자와의 연결</ExplainText>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">포트폴리오 제작 및 공유</li>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">해커톤 참여</li>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">프로젝트 관리</li>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">채용자와의 연결</li>
                         </ol>
-                        <JoinGeneralButton  onClick={() => navigate("/signUpDeveloperPage")}>참여하기</JoinGeneralButton>
-                    </GeneralButton>
-                    <BusinessButton>
-                        <Title>기업회원</Title>
+                        <button className="text-white text-[1em] font-extrabold font-['OTF_R'] bg-[#0A27A6] border border-[#0A27A6] rounded-[2em] h-[4em] w-[50%] mt-[-1.5em] transition-all duration-300 ease-out hover:bg-white hover:text-[#0A27A6] hover:py-[12px] hover:px-[20px] hover:font-bold hover:opacity-80" onClick={() => navigate("/signUpDeveloperPage")}>참여하기</button>
+                    </button>
+                    <button className="flex flex-col items-center rounded-[1em] cursor-pointer w-[30em] h-[25em] border-2 border-[#0A27A6] bg-white">
+                        <p className="text-[2em] font-bold mb-[0.5em] py-[0.5em] px-[2em] font-['OTF_B']">기업회원</p>
                         <ol>
-                           <ExplainText>포트폴리오 열람</ExplainText>
-                           <ExplainText>해커톤 열람</ExplainText>
-                           <ExplainText>일반회원 정보 열람 </ExplainText>
-                           <ExplainText>일반회원과 연결</ExplainText>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">포트폴리오 열람</li>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">해커톤 열람</li>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">일반회원 정보 열람 </li>
+                           <li className="text-[1.5em] text-black font-['OTF_R'] text-left mb-[1em]">일반회원과 연결</li>
                         </ol>
-                        <JoinBusinessButton  onClick={() => navigate("/SignUpRecruiterPage")}>참여하기</JoinBusinessButton>
-                    </BusinessButton>
-                </ButtonWrapper>
-        </MainWrapper>
+                        <button className="text-white text-[1em] font-extrabold font-['OTF_R'] bg-[#0A27A6] border border-[#0A27A6] rounded-[2em] h-[4em] w-[50%] mt-[-1.5em] transition-all duration-300 ease-out hover:bg-white hover:text-[#0A27A6] hover:py-[12px] hover:px-[20px] hover:font-bold hover:opacity-80" onClick={() => navigate("/SignUpRecruiterPage")}>참여하기</button>
+                    </button>
+                </div>
+        </div>
     );
 };
 
 export default MemberSelectionPage;
-
-// CSS Wrapper
-const MainWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  // padding: 90px;
-  width: 85%;
-  padding: 3% 20px;
-  margin: 0 auto;
-  gap: 2em;
-`;
-
-const ButtonWrapper = styled.div`
-    display: flex;
-    gap: 2em;
-    width: 100%;
-    height: 100%;
-    margin-top : -2em;
-    align-items: center;
-    justify-content: center;
-`;
-
-// CSS Buttons
-const GeneralButton = styled.button`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 1em;
-    border: none;
-    cursor: pointer;
-    width: 30em; 
-    height: 25em;
-    border: 2px solid #0A27A6; 
-    background-color : #fff;
-`;
-const BusinessButton = styled.button`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 1em;
-    border: none;
-    cursor: pointer;
-    width: 30em; 
-    height: 25em;
-    border: 2px solid #0A27A6; 
-    background-color : #fff;
-`;
-const JoinBusinessButton = styled.button`
-    color: #fff;
-    font-size: 1em;
-    font-weight: 800;
-    font-family: "OTF R";
-    background-color: #0A27A6;
-    border: 1px solid #0A27A6;
-    border-radius: 2em;
-    height: 4em;
-    width: 50%;
-    margin-top: -1.5em;
-    transition: all 0.3s ease-out; 
-
-    &:hover {
-        background-color: #fff;
-        border: 1px solid #0A27A6;
-        color: #0A27A6;
-        padding: 12px 20px;
-        font-weight: bold;
-        opacity: 0.8;
-        cursor: pointer;
-        transition: all 0.3s ease-out;
-    }
-`;
-const JoinGeneralButton = styled.button`
-    color: #fff;
-    font-size: 1em;
-    font-weight: 800;
-    font-family: "OTF R";
-    background-color: #0A27A6;
-    border: 1px solid #0A27A6;
-    border-radius: 2em;
-    height: 4em;
-    width: 50%;
-    margin-top: -1.5em;
-    transition: all 0.3s ease-out; 
-
-    &:hover {
-        background-color: #fff;
-        border: 1px solid #0A27A6;
-        color: #0A27A6;
-        padding: 12px 20px;
-        font-weight: bold;
-        opacity: 0.8;
-        cursor: pointer;
-        transition: all 0.3s ease-out;
-    }
-`;
-
-// CSS Images
-
-// CSS Text
-const MainText = styled.p`
-    font-size : 4em;
-    font-weight : 800;
-    font-family: "OTF B";
-    color : #0A27A6;
-    display : flex;
-    cursor:pointer;
-`;
-const Title = styled.p`
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-    // border: 0.2em solid #fff; 
-    // border-radius: 0.5em;
-    padding: 0.5em 2em;
-    font-family: "OTF B";
-
-`;
-
-const ExplainText = styled.li`
-    font-size: 1.5em;
-    color : black;
-    font-family: "OTF R";
-    text-align: left;
-    margin-bottom : 1em;
-`;

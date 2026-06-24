@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import InfoSection from "../components/ProfileEditPage/InfoSection";
 
 import {
@@ -26,17 +25,17 @@ const Modal = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null;
 
   return (
-    <ModalOverlay>
-      <ModalContent>
-        <ModalText>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000]">
+      <div className="bg-white p-[20px] rounded-[10px] text-center w-[300px]">
+        <p className="text-[16px] mb-[20px]">
           정말로 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.
-        </ModalText>
-        <ButtonContainer>
-          <CancelButton onClick={onClose}>취소</CancelButton>
-          <ConfirmButton onClick={onConfirm}>확인</ConfirmButton>
-        </ButtonContainer>
-      </ModalContent>
-    </ModalOverlay>
+        </p>
+        <div className="flex justify-around">
+          <button className="bg-gray-500 text-white py-[10px] px-[20px] border-none rounded-[5px] cursor-pointer" onClick={onClose}>취소</button>
+          <button className="bg-red-500 text-white py-[10px] px-[20px] border-none rounded-[5px] cursor-pointer" onClick={onConfirm}>확인</button>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -90,11 +89,11 @@ const ProfileEditPage = () => {
   };
 
   return (
-    <Container>
+    <div className="w-[70%] mx-auto">
       {/* 내 프로필 섹션 */}
-      <Section>
-        <SectionHeader>내 프로필</SectionHeader>
-        <InfoContainer>
+      <div className="mt-[5vh] py-[1.5rem] px-[2rem] border border-[#ddd] rounded-[0.625em] gap-[1rem]">
+        <div className="font-['OTF_R'] font-bold text-[1.8vw] leading-[2.25em] text-[#000000]">내 프로필</div>
+        <div className="flex gap-[0.5rem] flex-col">
           <InfoSection
             label={"이름"}
             value={currentUser.name}
@@ -106,13 +105,13 @@ const ProfileEditPage = () => {
             button={"설정"}
             onSave={handleUpdateNickname}
           />
-        </InfoContainer>
-      </Section>
+        </div>
+      </div>
 
       {/* 기본정보 섹션 */}
-      <Section>
-        <SectionHeader>기본 정보</SectionHeader>
-        <InfoContainer>
+      <div className="mt-[5vh] py-[1.5rem] px-[2rem] border border-[#ddd] rounded-[0.625em] gap-[1rem]">
+        <div className="font-['OTF_R'] font-bold text-[1.8vw] leading-[2.25em] text-[#000000]">기본 정보</div>
+        <div className="flex gap-[0.5rem] flex-col">
           <InfoSection
             label={"아이디/이메일"}
             value={
@@ -134,20 +133,20 @@ const ProfileEditPage = () => {
             button={"설정"}
             onSave={handleUpdatePhone}
           />
-        </InfoContainer>
-      </Section>
+        </div>
+      </div>
 
       {/* 연락방법 섹션 */}
-      <Section>
-        <HeaderContainer>
-          <SectionHeader>연락방법</SectionHeader>
+      <div className="mt-[5vh] py-[1.5rem] px-[2rem] border border-[#ddd] rounded-[0.625em] gap-[1rem]">
+        <div className="flex flex-[0_0_140px] gap-[0.5rem] items-center relative [&>img]:w-[1vw] [&>img]:h-[1vw] [&>img]:object-contain [&>.tooltip]:invisible [&>.tooltip]:absolute [&>.tooltip]:-bottom-[1.5vw] [&>.tooltip]:bg-[#333] [&>.tooltip]:text-white [&>.tooltip]:text-center [&>.tooltip]:py-[0.5vw] [&>.tooltip]:px-[1vw] [&>.tooltip]:rounded-[0.625em] [&>.tooltip]:text-[1vw] [&>.tooltip]:whitespace-nowrap [&>.tooltip]:z-10 [&>.tooltip]:opacity-0 [&>.tooltip]:transition-opacity [&>.tooltip]:duration-200 [&>img:hover+.tooltip]:visible [&>img:hover+.tooltip]:opacity-100">
+          <div className="font-['OTF_R'] font-bold text-[1.8vw] leading-[2.25em] text-[#000000]">연락방법</div>
 
           <img src={infoIcon} alt="info 아이콘" />
           <div className="tooltip">
             포트폴리오를 공유했을 시, 기업이 연락할 수단입니다.
           </div>
-        </HeaderContainer>
-        <InfoContainer>
+        </div>
+        <div className="flex gap-[0.5rem] flex-col">
           {currentUser.email ? (
             <InfoSection
               label={"이메일"}
@@ -162,27 +161,27 @@ const ProfileEditPage = () => {
               onSave={handleUpdateEmail}
             />
           )}
-        </InfoContainer>
-      </Section>
+        </div>
+      </div>
 
-      <Section>
-        <DeleteHeader>계정삭제</DeleteHeader>
-        <InfoContainer>
-          <DeleteInfo>
+      <div className="mt-[5vh] py-[1.5rem] px-[2rem] border border-[#ddd] rounded-[0.625em] gap-[1rem]">
+        <div className="font-['OTF_R'] font-bold text-[1.8vw] leading-[2.25em] text-red-500">계정삭제</div>
+        <div className="flex gap-[0.5rem] flex-col">
+          <div>
             1. 계정 탈퇴 시, 폴리오프레임 서비스에서 모두 탈퇴됩니다.
             <br />
             <br />
             2. 탈퇴 시 계정과 관련된 모든 권한이 사라지며 복구할 수 없습니다.
-          </DeleteInfo>
-          <DeleteButtonContainer>
-            <DeleteButtonWrapper onClick={() => setIsModalOpen(true)}>
-              <DeleteButton>
-                <ButtonText>탈퇴</ButtonText>
-              </DeleteButton>
-            </DeleteButtonWrapper>
-          </DeleteButtonContainer>
-        </InfoContainer>
-      </Section>
+          </div>
+          <div className="flex justify-end">
+            <button className="relative inline-block w-auto px-[1.125rem] appearance-none text-left no-underline leading-none box-border h-[2.25rem] rounded-[0.5rem] font-['OTF_R'] font-semibold text-[0.875rem] select-none cursor-pointer border border-[#ced4da] bg-white text-red-500" onClick={() => setIsModalOpen(true)}>
+              <div className="flex items-center justify-center h-full overflow-visible pointer-events-none">
+                <span className="whitespace-nowrap h-full overflow-hidden flex items-center">탈퇴</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* 탈퇴 확인 모달 */}
       <Modal
@@ -190,186 +189,8 @@ const ProfileEditPage = () => {
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleDeleteAccount}
       />
-    </Container>
+    </div>
   );
 };
 
 export default ProfileEditPage;
-
-// Styled Components
-const Container = styled.div`
-  width: 70%; //수정중...
-  margin: 0 auto;
-`;
-
-const Section = styled.div`
-  margin-top: 5vh;
-  padding: 1.5rem 2rem;
-  border: 1px solid #ddd;
-  border-radius: 0.625em;
-
-  gap: 1rem;
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  flex: 0 0 140px;
-  gap: 0.5rem;
-  -webkit-box-align: center;
-  align-items: center;
-  position: relative;
-
-  img {
-    width: 1vw;
-    height: 1vw;
-    object-fit: contain;
-  }
-
-  .tooltip {
-    visibility: hidden;
-    position: absolute;
-    bottom: -1.5vw; /* 툴팁 위치 조정 */
-    //left: 4vw;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 0.5vw 1vw;
-    border-radius: 0.625em;
-    font-size: 1vw;
-    white-space: nowrap;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-  }
-
-  /* 마우스 오버 시 툴팁 표시 */
-  img:hover + .tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-`;
-
-const SectionHeader = styled.div`
-  font-family: "OTF R";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.8vw;
-  line-height: 2.25em;
-  color: #000000;
-`;
-
-const DeleteHeader = styled.div`
-  font-family: "OTF R";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.8vw;
-  line-height: 2.25em;
-  color: red;
-`;
-
-const InfoContainer = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
-`;
-
-const DeleteInfo = styled.div``;
-
-const DeleteButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const DeleteButtonWrapper = styled.button`
-  position: relative;
-  display: inline-block;
-  width: auto;
-  padding: 0px 1.125rem;
-  appearance: none;
-  text-align: left;
-  text-decoration: none;
-  line-height: 1;
-  box-sizing: border-box;
-  height: 2.25rem;
-
-  border-radius: 0.5rem;
-  font-family: "OTF R";
-  font-weight: 600;
-
-  font-size: 0.875rem;
-  user-select: none;
-  cursor: pointer;
-  border: 0.0625rem solid rgb(206, 212, 218);
-  background-color: rgb(255, 255, 255);
-  color: red;
-`;
-
-const DeleteButton = styled.div`
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  height: 100%;
-  overflow: visible;
-  pointer-events: none;
-`;
-
-const ButtonText = styled.span`
-  white-space: nowrap;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-`;
-
-//탈퇴시
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-`;
-
-const ModalContent = styled.div`
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 300px;
-`;
-
-const ModalText = styled.p`
-  font-size: 16px;
-  margin-bottom: 20px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const CancelButton = styled.button`
-  background: gray;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
-const ConfirmButton = styled.button`
-  background: red;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;

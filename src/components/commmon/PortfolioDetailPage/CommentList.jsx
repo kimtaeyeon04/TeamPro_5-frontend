@@ -1,7 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm"; // GitHub 스타일의 마크다운 지원
-import styled from "styled-components";
 import { getCurrentUser } from "../../features/currentUser";
 import { oriComments } from "../../domain/startProgram";
 //댓글 삭제
@@ -46,70 +45,27 @@ const CommentList = ({ comments, setComments, portfolioId }) => {
   };
 
   return (
-    <CommentListWrapper>
+    <div className="flex flex-col w-full mb-[1em]">
       {comments.map((comment, index) => (
-        <Comment key={index}>
-          <CommentHeader>
-            <CommentUser>{comment.userId}</CommentUser>
-            <CommentDate>{comment.date}</CommentDate>
+        <div key={index} className="mt-[20px]">
+          <div className="flex items-center gap-[1vw]">
+            <span className="font-bold font-['OTF_B']">{comment.userId}</span>
+            <span className="font-bold font-['OTF_R']">{comment.date}</span>
             {comment.userId === getCurrentUser().id && (
-              <DeleteButton onClick={() => handleDelete(index)}>
+              <button className="py-[8px] px-[12px] border-none rounded-[4px] bg-[#0a27a6] text-white cursor-pointer mt-[5px] font-['OTF_B']" onClick={() => handleDelete(index)}>
                 삭제
-              </DeleteButton>
+              </button>
             )}
-          </CommentHeader>
-          <CommentText>
+          </div>
+          <div className="my-[10px] mx-0">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {comment.text}
             </ReactMarkdown>
-          </CommentText>
-        </Comment>
+          </div>
+        </div>
       ))}
-    </CommentListWrapper>
+    </div>
   );
 };
 
 export default CommentList;
-
-const CommentListWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  //align-items: center;
-  width: 100%;
-  margin-bottom: 1em;
-`;
-
-const Comment = styled.div`
-  margin-top: 20px;
-`;
-
-const CommentHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1vw;
-`;
-
-const CommentUser = styled.span`
-  font-weight: bold;
-  font-family: "OTF B";
-`;
-
-const CommentDate = styled.span`
-  font-weight: bold;
-  font-family: "OTF R";
-`;
-
-const CommentText = styled.p`
-  margin: 10px 0;
-`;
-
-const DeleteButton = styled.button`
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #0a27a6;
-  color: white;
-  cursor: pointer;
-  margin-top: 5px;
-  font-family: "OTF B";
-`;

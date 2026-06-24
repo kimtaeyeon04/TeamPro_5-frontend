@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import defaultProfilePicture from "../../assets/icons/Header/profileIcon.png"; // 기본 이미지
 import StyledButton from "./StyledButton";
 import { useLocation } from "react-router-dom";
@@ -80,73 +79,74 @@ function Header({}) {
   // };
 
   return (
-    <HeaderContainer className="HeaderContainer">
+    <header className="w-[85%] h-[5em] bg-[#ffffff] flex items-center mx-auto relative shadow-[0_0.5em_1em_rgba(0,0,0,0.1)] px-[20px] justify-between HeaderContainer">
       {/* 로고와 메뉴를 포함하는 메뉴박스 */}
-      <MenuBox>
+      <div className="flex items-center relative w-[70%] h-[5em]">
         {/* 프로젝트 로고 들어가야함 */}
-        <Logo onClick={() => navigate("./")}>FolioFrame</Logo>
+        <div className="font-['OTF_B'] not-italic font-[700] text-[2.2em] leading-[43px] text-[#0a27a6] absolute left-0 top-[calc(50%-48px/2)] cursor-pointer" onClick={() => navigate("./")}>FolioFrame</div>
         {/* 네비게이션바에 있는 메뉴들 */}
-        <TextWrapper>
-          <Text 
+        <nav className="flex items-center ml-[200px]">
+          <a 
+            className={`font-['OTF_B'] font-[700] text-[1.2em] leading-[36px] no-underline ml-[30px] cursor-pointer hover:text-[#0a27a6] ${isActive("/PortfolioPage") ? "text-[#0a27a6]" : "text-[#919194]"}`}
             onClick={() => navigate("/PortfolioPage")}
-            active={isActive("/PortfolioPage")}
-          >포트폴리오</Text>
-          <Text 
+          >포트폴리오</a>
+          <a 
+            className={`font-['OTF_B'] font-[700] text-[1.2em] leading-[36px] no-underline ml-[30px] cursor-pointer hover:text-[#0a27a6] ${isActive("/HackathonPage") ? "text-[#0a27a6]" : "text-[#919194]"}`}
             onClick={() => navigate("/HackathonPage")}
-            active={isActive("/HackathonPage")}
-          >해커톤</Text>
+          >해커톤</a>
           {currentUser?.recruiter && (
-            <Text 
+            <a 
+              className={`font-['OTF_B'] font-[700] text-[1.2em] leading-[36px] no-underline ml-[30px] cursor-pointer hover:text-[#0a27a6] ${isActive(`/RecruiterPage/${currentUser.id}`) ? "text-[#0a27a6]" : "text-[#919194]"}`}
               onClick={() => navigate(`/RecruiterPage/${currentUser.id}`)}
-              active={isActive(`/RecruiterPage/${currentUser.id}`)}
             >채용
-            </Text>
+            </a>
           )}
-        </TextWrapper>
+        </nav>
 
         {/* <Nav>
           <NavLink href="#templates">템플릿</NavLink>
           <NavLink href="#hackathon">해커톤</NavLink>
         </Nav> */}
-      </MenuBox>
+      </div>
 
       {/* 로그인 여부에 따라 프로필 이미지 또는 로그인/로그아웃 버튼 렌더링 */}
-      <Profile className="Profile">
+      <div className="relative w-[6vw] rounded-full flex items-center Profile">
         {getCurrentUser() ? (
           <>
-            <ProfileWrapper className="ProfileWrapper">
-              <ProfilePic
-                className="ProfilePic"
+            <div className="relative flex items-center justify-center w-full ProfileWrapper">
+              <img
+                className="rounded-full cursor-pointer w-[2.8vw] ProfilePic"
                 onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                 src={defaultProfilePicture}
                 alt="profile"
               />
               {isProfileMenuOpen && (
-                <ProfilePicMenuWrapper ref={menuRef}>
-                  <TriangleIcon>
+                <div className="absolute top-full flex flex-col justify-center" ref={menuRef}>
+                  <div className="flex justify-center text-[#15243e80]">
                     <TbTriangleFilled />
-                  </TriangleIcon>
-                  <ProfilePicMenu isOpen={isProfileMenuOpen}>
+                  </div>
+                  <div className={`w-[10vw] bg-[#15243e80] rounded-[0.625em] flex-col justify-between z-[3] ${isProfileMenuOpen ? "flex" : "hidden"}`}>
                     {profileMenuItems.map((item, index) => (
-                      <ProfilePicMenuItems
+                      <div
+                        className="m-[0.625em] p-[0.25vw] text-white text-[1vw] font-normal font-['OTF_B'] flex items-center border-[0.2em] border-transparent rounded-[0.625em] box-border hover:bg-[#15243e60] hover:cursor-pointer"
                         key={index}
                         onClick={() => handleMenuClick(item.label)}
                       >
-                        <MenuItemIcon>{item.icon}</MenuItemIcon>
+                        <div className="inline-block mr-[0.2vw] text-[0.85vw] cursor-pointer">{item.icon}</div>
                         {item.label}
-                      </ProfilePicMenuItems>
+                      </div>
                     ))}
-                  </ProfilePicMenu>
-                </ProfilePicMenuWrapper>
+                  </div>
+                </div>
               )}
               {/* <LoginButton onClick={handleLogout}>로그아웃</LoginButton> */}
-            </ProfileWrapper>
+            </div>
           </>
         ) : (
           <StyledButton text="로그인" onClick={() => navigate("/LoginPage")} />
         )}
-      </Profile>
-    </HeaderContainer>
+      </div>
+    </header>
   );
 }
 
@@ -159,183 +159,3 @@ Header.defaultProps = {
 };
 
 export default Header;
-
-const HeaderContainer = styled.header`
-  width: 85%; //수정 중..
-  height: 5em;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  margin: 0 auto; /* 가운데 정렬 */
-  position: relative;
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
-  padding-left: 20px;
-  padding-right: 20px;
-  justify-content: space-between;
-`;
-
-const ProfileWrapper = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  //gap: 0.5em;
-  //margin-left: -5em;
-  width: 100%;
-`;
-
-const ProfilePicMenuWrapper = styled.div`
-  position: absolute;
-  top: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const TriangleIcon = styled.div`
-  //position: absolute;
-  //top: 100%;
-  display: flex;
-  justify-content: center;
-
-  color: #15243e80;
-`;
-
-const ProfilePicMenu = styled.div`
-  //position: absolute;
-  //top: 135%;
-  width: 10vw;
-  //height: 17vh;
-  background-color: #15243e80;
-  border-radius: 0.625em;
-  display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 3;
-`;
-
-const MenuItemIcon = styled.div`
-  display: inline-block;
-  margin-right: 0.2vw;
-  font-size: 0.85vw;
-  cursor: pointer;
-`;
-
-const ProfilePicMenuItems = styled.div`
-  margin: 0.625em;
-  padding: 0.25vw;
-
-  color: white;
-  font-size: 1vw;
-  font-weight: Normal;
-  font-family: "OTF B";
-
-  display: flex;
-  //justify-content: space-between;
-  align-items: center;
-
-  border: 0.2em solid transparent;
-  border-radius: 0.625em;
-  box-sizing: border-box;
-
-  &:hover {
-    //border-radius: 0.625em;
-    //border: 0.15vw solid #fff;
-    background-color: #15243e60;
-    cursor: pointer;
-  }
-
-  &:last-child {
-    // border-bottom: none;
-  }
-
-  &.highlight {
-    border: 0.0625em solid white;
-    border-radius: 0.5em;
-    padding: 0.75em;
-    font-weight: bold;
-  }
-`;
-
-const MenuBox = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 70%;
-  height: 5em;
-`;
-
-const Logo = styled.div`
-  font-family: "OTF B";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 2.2em;
-  line-height: 43px;
-  color: #0a27a6;
-  position: absolute;
-  left: 0;
-  top: calc(50% - 48px / 2);
-  cursor: pointer;
-`;
-
-const TextWrapper = styled.nav`
-  display: flex;
-  align-items: center;
-  margin-left: 200px;
-
-
-`;
-
-const Text = styled.a`
-  font-family: "Inria Sans", sans-serif;
-  font-family: "OTF B";
-  font-weight: 700;
-  font-size: 1.2em;
-  line-height: 36px;
-  color: #919194;
-  text-decoration: none;
-  margin-left: 30px;
-  cursor: pointer;
-
-  color: ${(props) => (props.active ? "#0a27a6" : "#919194")}; 
-
-  &:hover {
-    color: #0a27a6;
-  }
-`;
-
-const Profile = styled.div`
-  position: relative;
-  width: 6vw;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-`;
-
-const ProfilePic = styled.img`
-  //width: 25%;
-  //height: 25%;
-  border-radius: 50%;
-  cursor: pointer;
-
-  width: 2.8vw;
-`;
-
-const LoginButton = styled.button`
-  // padding: 0.625em 0em;
-  // width: 80%;
-  height: 2em;
-  width: 10em;
-  background-color: #0a27a6;
-  color: white;
-  border: none;
-  border-radius: 0.75em;
-  font-size: 1vw;
-  cursor: pointer;
-  text-align: center;
-  float: left;
-
-  &:hover {
-    background-color: #092091;
-  }
-`;

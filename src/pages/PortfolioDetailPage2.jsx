@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {
@@ -169,21 +168,21 @@ const PortfolioDetailPage2 = () => {
     if (currentUser.recruiter && showContactInfo) {
       return (
         <>
-          <DevInfo>{portfolioData.ownerName}</DevInfo>
-          <DevInfo>{portfolioData.ownerEmail || "이메일 없음"}</DevInfo>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">{portfolioData.ownerName}</div>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">{portfolioData.ownerEmail || "이메일 없음"}</div>
         </>
       );
     } else if (currentUser.recruiter) {
       return (
-        <ButtonWrapper>
-          <Button onClick={handleContactClick}>연락</Button>
-        </ButtonWrapper>
+        <div className="flex my-[2vh] mx-[0.5vw]">
+          <button className="bg-[#000] text-white py-[8px] px-[12px] border-none rounded-[4px] cursor-pointer font-['OTF_R']" onClick={handleContactClick}>연락</button>
+        </div>
       );
     } else {
       return (
         <>
-          <DevInfo>{portfolioData.ownerNickname || "익명"}</DevInfo>
-          <DevInfo>example@example.com</DevInfo>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">{portfolioData.ownerNickname || "익명"}</div>
+          <div className="bg-[#f0f0f0] m-[0.8vw] p-[0.4vw] border border-[#ccc] rounded-[4px] w-[80%]">example@example.com</div>
         </>
       );
     }
@@ -192,59 +191,59 @@ const PortfolioDetailPage2 = () => {
   // console.log(portfolioData.projectTemplate);
 
   if (!portfolioData) {
-    return <Loading>로딩 중...</Loading>;
+    return <div className="flex justify-center text-[1vw] font-bold">로딩 중...</div>;
   }
   return (
     <>
-      <MainWrapper>
-        <TitleWrapper>
-          <InfoButtons>
-            <Button>조회수 {portfolioData.hits || 0}</Button>
-            <Button>기업 연락 {portfolioData.contacts.length || 0}</Button>
-            <HeartBox onClick={handleLikeClick}>
+      <div className="w-[80%] py-[40px] px-[40px] mx-auto border-[5px] border-[#000] rounded-[2em] h-[80%] flex flex-col">
+        <div className="mb-[2.5vw]">
+          <div className="flex gap-[1vw]">
+            <button className="bg-[#000] text-white py-[8px] px-[12px] border-none rounded-[4px] cursor-pointer font-['OTF_R']">조회수 {portfolioData.hits || 0}</button>
+            <button className="bg-[#000] text-white py-[8px] px-[12px] border-none rounded-[4px] cursor-pointer font-['OTF_R']">기업 연락 {portfolioData.contacts.length || 0}</button>
+            <div className="flex justify-between items-center gap-[0.4vw] w-[2vw] cursor-pointer font-bold [&>img]:w-[1.5vw] [&>img]:h-auto [&>img]:object-contain" onClick={handleLikeClick}>
               <img
                 src={isLiked ? heart_fill : heart_none} // 좋아요 상태에 따라 이미지 변경
                 alt={isLiked ? "heart-fill" : "heart-none"}
               />
-              <Likes>{portfolioData.likes.length}</Likes>
-            </HeartBox>
-          </InfoButtons>
-          <ProjectTitle>{portfolioData.projectTitle}</ProjectTitle>
-          <ProjectDescription>{portfolioData.description}</ProjectDescription>
-        </TitleWrapper>
+              <div className="font-['OTF_B']">{portfolioData.likes.length}</div>
+            </div>
+          </div>
+          <h1 className="font-bold font-['OTF_B']">{portfolioData.projectTitle}</h1>
+          <p className="font-bold font-['OTF_B'] -mt-[0.5em]">{portfolioData.description}</p>
+        </div>
 
-        <Maincomponent>
-          <Wrapper1>
-            <Label1Wrapper>
+        <div className="flex justify-between items-start px-[2rem] max-md:flex-col max-md:items-center max-md:p-[1rem]">
+          <div className="w-[60%] mr-[1rem] max-md:w-full max-md:mr-0">
+            <div className="flex flex-row relative">
               {/* 참여기간 */}
-              <PeriodText>참여기간</PeriodText>
-              <Image3 src={Notepad3} alt="Notepad3" />
-              <Bar>
+              <p className="absolute top-0 text-[1em] font-bold text-white ml-[3.6em] mt-[1.8em] font-['OTF_R']">참여기간</p>
+              <img className="w-[10em] h-auto mr-[1em] mt-[0.2em]" src={Notepad3} alt="Notepad3" />
+              <p className="relative text-[1em] m-0 mt-[2.5em] font-['OTF_R'] after:content-[''] after:block after:w-[10em] after:h-[0.08em] after:bg-[#000] after:absolute after:left-0">
                 {portfolioData.startDate} - {portfolioData.endDate}
-              </Bar>
-            </Label1Wrapper>
+              </p>
+            </div>
             {/* 사용한 언어 */}
-            <Label1Wrapper>
-              <PeriodText>사용한 언어</PeriodText>
-              <Image3 src={Notepad3} alt="Notepad3" />
-              <Bar>{portfolioData.usedLanguage}</Bar>
-            </Label1Wrapper>
+            <div className="flex flex-row relative">
+              <p className="absolute top-0 text-[1em] font-bold text-white ml-[3.6em] mt-[1.8em] font-['OTF_R']">사용한 언어</p>
+              <img className="w-[10em] h-auto mr-[1em] mt-[0.2em]" src={Notepad3} alt="Notepad3" />
+              <p className="relative text-[1em] m-0 mt-[2.5em] font-['OTF_R'] after:content-[''] after:block after:w-[10em] after:h-[0.08em] after:bg-[#000] after:absolute after:left-0">{portfolioData.usedLanguage}</p>
+            </div>
             {/* 프로젝트 링크 */}
-            <Label1Wrapper>
-              <PeriodText>프로젝트 링크</PeriodText>
-              <Image3 src={Notepad3} alt="Notepad3" />
-              <Bar>{portfolioData.projectLink}</Bar>
-            </Label1Wrapper>
+            <div className="flex flex-row relative">
+              <p className="absolute top-0 text-[1em] font-bold text-white ml-[3.6em] mt-[1.8em] font-['OTF_R']">프로젝트 링크</p>
+              <img className="w-[10em] h-auto mr-[1em] mt-[0.2em]" src={Notepad3} alt="Notepad3" />
+              <p className="relative text-[1em] m-0 mt-[2.5em] font-['OTF_R'] after:content-[''] after:block after:w-[10em] after:h-[0.08em] after:bg-[#000] after:absolute after:left-0">{portfolioData.projectLink}</p>
+            </div>
 
-            <Label2Wrapper>
+            <div className="mt-[1em] flex flex-col relative">
               {/* 사진  등록된 사진의 갯수에 따라서 생성*/}
-              <PhotoWrappeer>
-                <PhotoText>사진</PhotoText>
-                <Image3 src={Notepad12} alt="Notepad12" />
-                <ImageContainer>
+              <div className="flex flex-col">
+                <p className="absolute left-[2.5em] text-[1.5em] font-bold text-[#000] font-['OTF_R'] max-md:text-[1.2em] max-md:-top-[2%] max-md:left-[8%] max-[480px]:text-[1em] max-[480px]:top-[6%] max-[480px]:left-[5%]">사진</p>
+                <img className="w-[10em] h-auto mr-[1em] mt-[0.2em]" src={Notepad12} alt="Notepad12" />
+                <div className="grid gap-[1em] w-full grid-cols-4">
                   {portfolioData.images && portfolioData.images.length > 0 ? (
                     portfolioData.images.slice(0, 4).map((image, index) => (
-                      <ImageBox key={index}>
+                      <div className="w-[5em] h-[5em] border-[2px] border-[#000] flex items-center justify-center text-[1vw] rounded-[1em] overflow-hidden" key={index}>
                         <img
                           src={`http://localhost:3000/${image}`}
                           alt={`프로젝트 이미지 ${index + 1}`}
@@ -255,20 +254,20 @@ const PortfolioDetailPage2 = () => {
                             borderRadius: "8px",
                           }}
                         />
-                      </ImageBox>
+                      </div>
                     ))
                   ) : (
-                    <ImageBox>+</ImageBox>
+                    <div className="w-[5em] h-[5em] border-[2px] border-[#000] flex items-center justify-center text-[1vw] rounded-[1em] overflow-hidden">+</div>
                   )}
-                </ImageContainer>
-              </PhotoWrappeer>
+                </div>
+              </div>
 
               {/* 로고 */}
-              <LogoWrappeer>
-                <PhotoText>로고</PhotoText>
-                <Image3 src={Notepad12} alt="Notepad12" />
-                <LogoContainer>
-                <ImageBox>
+              <div className="flex flex-col">
+                <p className="absolute left-[2.5em] text-[1.5em] font-bold text-[#000] font-['OTF_R'] max-md:text-[1.2em] max-md:-top-[2%] max-md:left-[8%] max-[480px]:text-[1em] max-[480px]:top-[6%] max-[480px]:left-[5%]">로고</p>
+                <img className="w-[10em] h-auto mr-[1em] mt-[0.2em]" src={Notepad12} alt="Notepad12" />
+                <div className="grid gap-[1em] w-full grid-cols-4">
+                <div className="w-[5em] h-[5em] border-[2px] border-[#000] flex items-center justify-center text-[1vw] rounded-[1em] overflow-hidden">
                   {portfolioData.logo ? (
                     <img
                       src={`http://localhost:3000/${portfolioData.logo}`}
@@ -282,30 +281,30 @@ const PortfolioDetailPage2 = () => {
                   ) : (
                     <p>+</p>
                   )}
-                </ImageBox>
-                </LogoContainer>
-              </LogoWrappeer>
+                </div>
+                </div>
+              </div>
 
               {/* 데모 비디오 */}
-              <VideoWrappeer>
-                <VideoText>데모 비디오</VideoText>
-                <Image3 src={Notepad12} alt="Notepad12" />
+              <div className="flex flex-col mt-[1em]">
+                <p className="absolute left-[2em] text-[1.2em] font-bold text-[#000] font-['OTF_R'] max-md:text-[1em] max-md:top-[72%] max-md:left-[5%] max-[480px]:text-[0.9em] max-[480px]:top-[75%] max-[480px]:left-[5%]">데모 비디오</p>
+                <img className="w-[10em] h-auto mr-[1em] mt-[0.2em]" src={Notepad12} alt="Notepad12" />
                 {portfolioData.video ? (
-                  <VideoBox>
+                  <div className="flex items-center justify-center border-[3px] border-[#000] rounded-[1em] text-[1vw] w-[40em] h-[15em]">
                     <video width="100%" height="100%" controls>
                       <source src={portfolioData.video} type="video/mp4" />
                       비디오를 지원하지 않는 브라우저입니다.
                     </video>
-                  </VideoBox>
+                  </div>
                 ) : (
-                  <VideoBox>비디오 없음</VideoBox>
+                  <div className="flex items-center justify-center border-[3px] border-[#000] rounded-[1em] text-[1vw] w-[40em] h-[15em]">비디오 없음</div>
                 )}
-              </VideoWrappeer>
-            </Label2Wrapper>
+              </div>
+            </div>
 
             {/* 개발자 개인정보 */}
-            <InfoWrapper>
-              <Image16 src={Notepad16} alt="Notepad16" />
+            <div className="flex flex-col gap-[-2em] mt-[6em]">
+              <img className="w-[4em] h-auto -mt-[2.3em]" src={Notepad16} alt="Notepad16" />
               {/* <Bar>{portfolioData.ownerName} </Bar>
               <Bar>
                 {portfolioData.ownerEmail
@@ -313,66 +312,66 @@ const PortfolioDetailPage2 = () => {
                   : "이메일 없음."}{" "}
               </Bar> */}
               {renderDeveloperInfo()}
-            </InfoWrapper>
-          </Wrapper1>
+            </div>
+          </div>
 
           {showModal && (
-            <ModalOverlay className="ModalOverlay">
-              <ModalContainer>
+            <div className="fixed top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center z-[1000] ModalOverlay">
+              <div className="bg-white text-[1.3vw] font-bold p-[1vw] w-[25vw] rounded-[0.3125em] text-center shadow-[0_4px_6px_rgba(0,0,0,0.1)] z-[1001] [&>button]:mt-[1.5vw] [&>button]:py-[0.5vw] [&>button]:px-[1vw] [&>button]:bg-[#0a27a6] [&>button]:text-white [&>button]:border-none [&>button]:rounded-[0.3125em] [&>button]:cursor-pointer hover:[&>button]:bg-[#0056b3]">
                 <p>{modalMessage}</p>
                 <button onClick={() => setShowModal(false)}>확인</button>
-              </ModalContainer>
-            </ModalOverlay>
+              </div>
+            </div>
           )}
 
-          <Wrapper2>
+          <div className="w-[80%] mt-[2em] gap-[5em] flex flex-col max-md:w-full max-md:mr-0">
             {/* 배운점 */}
-            <LearnedWrapper>
-              <LearnedText>배운점</LearnedText>
-              <Image5 src={Notepad5} alt="Notepad5" />
-              <TextBox>
+            <div className="w-full h-[20em] border-[3px] border-[#000] rounded-[2em] relative">
+              <p className="absolute top-0 text-[1em] font-bold text-[#000] -mt-[2%] ml-[42.5%] font-['OTF_R']">배운점</p>
+              <img className="w-[10em] h-auto -mt-[10%] ml-[30%]" src={Notepad5} alt="Notepad5" />
+              <div className="bg-white p-[0.4vw] rounded-[4px]">
               {portfolioData.challenge
                 ? portfolioData.challenge
                 : "배운점 없음."}
-            </TextBox>
-            </LearnedWrapper>
+            </div>
+            </div>
             {/* 문제설명 */}
-            <ProblemWrapper>
-              <ProblemText>해결한 점</ProblemText>
-              <Image5 src={Notepad5} alt="Notepad5" />
-              <TextBox>
+            <div className="w-full h-[20em] border-[3px] border-[#000] rounded-[2em] relative">
+              <p className="absolute top-0 text-[1em] font-bold text-[#000] -mt-[2%] ml-[42.5%] font-['OTF_R']">해결한 점</p>
+              <img className="w-[10em] h-auto -mt-[10%] ml-[30%]" src={Notepad5} alt="Notepad5" />
+              <div className="bg-white p-[0.4vw] rounded-[4px]">
               {portfolioData.solving
                 ? portfolioData.solving
                 : "문제 해결 내용 없음."}
-            </TextBox>
-            </ProblemWrapper>
-          </Wrapper2>
-        </Maincomponent>
+            </div>
+            </div>
+          </div>
+        </div>
         {/* 수정 버튼 작성자와 포폴의 아이디가 동일할 경우에만 보이게한다. */}
         {isOwner && (
-          <ButtonWrapper2>
-            <SubmitButton
+          <div className="flex justify-end gap-[1em]">
+            <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#000] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
               onClick={() => {
                 navigate(`/ModifyPortfolioPage/${portfolioId}`);
               }}
             >
               수정
-            </SubmitButton>
-            <SubmitButton
+            </button>
+            <button className="border-none rounded-[0.4em] mt-[1vh] w-[9.1em] h-[2.25em] float-right bg-[#000] text-white text-[1.1vw] font-['OTF_B'] font-bold cursor-pointer hover:shadow-[0_0.2em_1em_rgba(22,26,63,0.2)] transition-all duration-300 max-md:w-[7em] max-md:h-[2.25em] max-md:text-[0.8125em]"
               onClick={async () => {
                 await deleteProject(portfolioId);
                 navigate("/Mypage");
               }}
             >
               삭제
-            </SubmitButton>
-          </ButtonWrapper2>
+            </button>
+          </div>
         )}
-      </MainWrapper>
+      </div>
 
       {/* 댓글 */}
-      <CommentsSection>
-        <CommentsTitle>댓글</CommentsTitle>
+      <div className="w-[85%] py-[40px] px-[40px] mx-auto mt-[6vh]">
+        <h2 className="font-bold font-['OTF_B']">댓글</h2>
         <WritingBox addComment={addComment} />
         {/* <CommentList
           comments={comments}
@@ -380,442 +379,9 @@ const PortfolioDetailPage2 = () => {
           portfolioId={portfolioId}
         /> */}
         <CommentList comments={comments} setComments={setComments} />
-      </CommentsSection>
+      </div>
     </>
   );
 };
 
 export default PortfolioDetailPage2;
-
-//css Wrapper
-const MainWrapper = styled.div`
-  width: 80%;
-  padding: 40px 40px;
-  margin: 0 auto;
-
-  border: 5px solid #000;
-  border-radius: 2em;
-  height: 80%;
-
-  display: flex;
-  flex-direction: column;
-  // align-items: center;
-`;
-const Maincomponent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-  }
-`;
-const Loading = styled.div`
-  display: flex;
-  justify-content: center;
-
-  font-size: 1vw;
-  font-weight: bold;
-`;
-const TitleWrapper = styled.div`
-  margin-bottom: 2.5vw;
-`;
-const Label1Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  position: relative;
-`;
-const Label2Wrapper = styled.div`
-  margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-`;
-const Wrapper1 = styled.div`
-  width: 60%;
-  margin-right: 1rem;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-right: 0;
-  }
-`;
-const Wrapper2 = styled.div`
-  width: 80%;
-  margin-top: 2em;
-  gap: 5em;
-  display: flex;
-  flex-direction: column;
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-right: 0;
-  }
-`;
-const LearnedWrapper = styled.div`
-  width: 100%;
-  height: 20em;
-  border: 3px solid #000;
-  border-radius: 2em;
-  position: relative;
-`;
-const ProblemWrapper = styled.div`
-  width: 100%;
-  height: 20em;
-  border: 3px solid #000;
-  border-radius: 2em;
-  position: relative;
-`;
-const GridContainer = styled.div`
-  display: grid;
-  gap: 1em;
-  width: 100%;
-  grid-template-columns: repeat(4, 1fr);
-`;
-
-const ImageContainer = GridContainer;
-const LogoContainer = GridContainer;
-
-const PhotoWrappeer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const LogoWrappeer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const VideoWrappeer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-`;
-const InfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: -2em;
-  margin-top: 6em;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  //justify-content: center;
-  //align-items: center;
-
-  margin: 2vh 0.5vw;
-`;
-
-//css button
-const InfoButtons = styled.div`
-  display: flex;
-  gap: 1vw;
-`;
-const Button = styled.button`
-  background-color: #000;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: "OTF R";
-`;
-
-const HeartBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.4vw;
-  width: 2vw;
-
-  cursor: pointer;
-
-  font-weight: bold;
-
-  img {
-    width: 1.5vw; /* 하트 크기 조정 */
-    height: auto; /* 비율 유지 */
-    object-fit: contain; /* 이미지를 잘 보이게 */
-  }
-`;
-
-const Likes = styled.div`
-  font-family: "OTF B";
-`;
-
-// css component
-const Bar = styled.p`
-  position: relative;
-  font-size: 1em;
-  margin: 0;
-  margin-top: 2.5em;
-  font-family: "OTF R";
-
-  &::after {
-    content: "";
-    display: block;
-    width: 10em;
-    height: 0.08em;
-    background-color: #000;
-    position: absolute;
-    left: 0;
-  }
-`;
-const ImageBox = styled.div`
-  width: 5em;
-  height: 5em;
-  border: 2px solid #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1vw;
-  border-radius: 1em;
-  overflow: hidden;
-`;
-const VideoBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 3px solid #000;
-  border-radius: 1em;
-  font-size: 1vw;
-  width: 40em;
-  height: 15em;
-`;
-
-const DevInfo = styled.div`
-  background-color: #f0f0f0;
-  margin: 0.8vw;
-  padding: 0.4vw;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 80%;
-`;
-//css image
-const Image3 = styled.img`
-  width: 10em;
-  height: auto;
-  margin-right: 1em;
-  margin-top: 0.2em;
-`;
-const Image5 = styled.img`
-  width: 10em;
-  height: auto;
-  margin-top: -10%;
-  margin-left: 30%;
-`;
-const Image16 = styled.img`
-  width: 4em;
-  height: auto;
-  margin-top: -2.3em;
-`;
-
-//css text
-const ProjectTitle = styled.h1`
-  font-weight: bold;
-  font-family: "OTF B";
-`;
-
-const ProjectDescription = styled.p`
-  font-weight: bold;
-  font-family: "OTF B";
-  margin-top: -0.5em;
-`;
-
-const PeriodText = styled.p`
-  position: absolute;
-  top: 0px;
-  font-size: 1em;
-  font-weight: bold;
-  color: #fff;
-  margin-left: 3.6em;
-  margin-top: 1.8em;
-  font-family: "OTF R";
-`;
-
-const LearnedText = styled.p`
-  position: absolute;
-  top: 0px;
-  font-size: 1em;
-  font-weight: bold;
-  color: #000;
-  margin-top: -2%;
-  margin-left: 42.5%;
-  font-family: "OTF R";
-`;
-
-const ProblemText = styled.p`
-  position: absolute;
-  top: 0px;
-  font-size: 1em;
-  font-weight: bold;
-  color: #000;
-  margin-top: -2%;
-  margin-left: 42.5%;
-  font-family: "OTF R";
-`;
-
-const PhotoText = styled.p`
-  position: absolute;
-  // top: -2%;
-  left: 2.5em;
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #000;
-  font-family: "OTF R";
-
-  @media (max-width: 768px) {
-    font-size: 1.2em;
-    top: -2%;
-    left: 8%;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1em;
-    top: 6%;
-    left: 5%;
-  }
-`;
-
-const LogoText = styled.p`
-  position: absolute;
-  // top: 22%;
-  left: 2.5em;
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #000;
-  font-family: "OTF R";
-
-  @media (max-width: 768px) {
-    font-size: 1.2em;
-    top: 30%;
-    left: 8%;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1em;
-    top: 33%;
-    left: 5%;
-  }
-`;
-
-const VideoText = styled.p`
-  position: absolute;
-  left: 2em;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #000;
-  font-family: "OTF R";
-  // left: 2.5em;
-  // font-size: 1.5em;
-
-  @media (max-width: 768px) {
-    font-size: 1em;
-    top: 72%;
-    left: 5%;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.9em;
-    top: 75%;
-    left: 5%;
-  }
-`;
-
-// 댓글 css
-const CommentsSection = styled.div`
-  width: 85%;
-  padding: 40px 40px;
-  margin: 0 auto;
-
-  margin-top: 6vh;
-`;
-const CommentsTitle = styled.h2`
-  font-weight: bold;
-  font-family: "OTF B";
-  //margin-bottom: 20px;
-`;
-
-//css 수정, 삭제 버튼
-const ButtonWrapper2 = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 1em;
-`;
-const SubmitButton = styled.button`
-  border: none;
-  border-radius: 0.4em;
-
-  margin-top: 1vh;
-  width: 9.1em;
-  height: 2.25em;
-
-  float: right;
-
-  background-color: #000;
-  color: white;
-  font-size: 1.1vw;
-  font-family: "OTF B";
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0.2em 1em rgba(22, 26, 63, 0.2);
-  }
-  transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    width: 7em;
-    height: 2.25em;
-    font-size: 0.8125em;
-  }
-`;
-
-//모달
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-const ModalContainer = styled.div`
-  background: white;
-  font-size: 1.3vw;
-  font-weight: bold;
-  padding: 1vw;
-  width: 25vw;
-
-  border-radius: 0.3125em;
-
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-
-  button {
-    margin-top: 1.5vw;
-    padding: 0.5vw 1vw;
-    background: #0a27a6;
-    color: white;
-    border: none;
-    border-radius: 0.3125em;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #0056b3;
-  }
-`;
-
-const TextBox = styled.div`
-  background-color: white;
-  padding: 0.4vw;
-  // border: 1px solid #ccc;
-  border-radius: 4px;
-`;
